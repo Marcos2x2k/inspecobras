@@ -42,7 +42,11 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
             allowNull: true
         },
-        paseafecha:{
+        pasea:{
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        fechapasea:{
             type: DataTypes.STRING,
             allowNull: true
         }

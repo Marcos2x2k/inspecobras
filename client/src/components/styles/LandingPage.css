@@ -1,21 +1,21 @@
 .logo{
-    border-radius:180px;
-    border:5px solid black;
+    border-radius:2000px;
+    border: 3px solid black;
     width: 230px;
     height: 230px;
     animation-duration: 3s;
     animation-name: logo;
-    /* animation-iteration-count: infinite; */
+    animation-iteration-count: infinite;
 }
 
 @keyframes logo{
     50%{
-        width: 280px;
-        height: 280px;
+        width: 240px;
+        height: 240px;
     }
     50%{
-        width: 330px;
-        height: 330px;
+        width: 245px;
+        height: 245px;
     }
 }
 

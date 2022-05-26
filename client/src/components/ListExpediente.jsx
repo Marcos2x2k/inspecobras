@@ -1,4 +1,3 @@
-
 import React from 'react';
 // import Button from '@material-ui/core/Button'; // importo estilo de boton
 // import Button from '@mui/material/Button'; // importo estilo de boton
@@ -21,7 +20,7 @@ import {Link} from 'react-router-dom';
 // import SearchBar from './SearchBar';
 // import Paginado from './Paginado';
 
-export default function Home (){ 
+export default function ListExpediente (){ 
 
     return(
         
@@ -32,23 +31,28 @@ export default function Home (){
                     <br/>
                     <img src='https://ciudaddecorrientes.gov.ar/sites/default/themes/ciudaddecorrientes/logo.png' height="110" alt="to home" />
                 
-                    <h1 className="colorLetras">Bienvenidos a la App de Sector Inspección de Obras</h1> 
+                    <h1 className="colorLetras">Listado de Expedientes</h1> 
                     {/* <Button variant="contained">CARGAR EXPEDIENTE</Button> */}
 
                     {/* <Link to= '/ExpedCreate'><button className="selectfont">CARGAR EXPEDIENTE</button></Link> */}
-                    <Link to= '/ListExpediente'><Button  variant="contained" component="span">LISTAR EXPEDIENTES</Button></Link>
-                    <Link to= '/ExpedCreate'><Button  variant="contained" component="span">CARGAR EXPEDIENTE</Button></Link>                    
-                    <Link to= '/TicketCreate'><Button  variant="contained" component="span">CARGAR TICKET</Button></Link>
-                    <Link to= '/InspecCreate'><Button  variant="contained" component="span">CARGAR INSPECCION</Button></Link>                    
-                    <Link to= '/IntimCreate'><Button  variant="contained" component="span">CARGAR INTIMACION</Button></Link>   
-                                        
-                    <Link to= '/'><Button variant="outlined" color="error">IR A LANZAMIENTO</Button></Link>  
-                    <br/><br/>
+                    <Link to= '/Home'><Button variant="contained" component="span">Volver Menu Principal</Button></Link>  
+                    <br/><br/>                  
+                    
+                                                        
+                    
                 </div>
                 {/* <br /><br /> */}
                 <img src="https://ciudaddecorrientes.gov.ar/sites/default/themes/ciudaddecorrientes/images/bottom-bg.png"/>
                 <br/>
-                <img className='logocorrientes' src="https://ciudaddecorrientes.gov.ar/sites/default/files/se_aletica.jpg" width="600" height="300" />
+                <select className="selectfont">
+                        <option value="" selected disabled hidden>ORDENAR</option>                
+                        <option value='asc'>Fecha</option>
+                        <option value='desc'>Estado</option>
+                        <option value='desc'>Fecha Inicio Expediente</option>
+                        <option value='desc'>Fecha Plano Registrado</option>
+                </select>  
+                <br/><br/>
+                {/* <img className='logocorrientes' src="https://ciudaddecorrientes.gov.ar/sites/default/files/se_aletica.jpg" width="600" height="300" /> */}
 {/*                 
                 <br/><br/>
                 <label className="selectfont">Numero de Expediente:</label>

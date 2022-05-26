@@ -5,7 +5,7 @@ import './styles/LandingPage.css'; // importo los styles de mi landinpage.css
 export default function LandingPage(){
     return(
         <div>
-            
+            <br/>
             <img src='https://ciudaddecorrientes.gov.ar/sites/default/themes/ciudaddecorrientes/logo.png' alt="to home" />
                 <h1 className="colorLetras">Página de Inspeciones Urbanas</h1>            
                 

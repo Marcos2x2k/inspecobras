@@ -65,26 +65,34 @@ router.post('/newexpediente', async (req, res) => {
 
         let {
             numexpediente,
+            fechainicioentrada,
             estado,
             iniciadornomyape,
             domicilio,
             adrema,
-            directorobraperitovisor,
-            destinoobra,
-            zona,
+            directorobraoperitovisor,
+            destinodeobra,
+            superficieterreno,
+            superficieaconstruir,
+            superficiesubsueloplantabaja,
+            superficieprimerpisoymaspisos,
             observaciones,
             permisobraoactainfrac
         } = req.body
 
         let expedienteCreate = await Expediente.create({
             numexpediente,
+            fechainicioentrada,
             estado,
             iniciadornomyape,
             domicilio,
             adrema,
-            directorobraperitovisor,
-            destinoobra,
-            zona,
+            directorobraoperitovisor,
+            destinodeobra,
+            superficieterreno,
+            superficieaconstruir,
+            superficiesubsueloplantabaja,
+            superficieprimerpisoymaspisos,
             observaciones,
             permisobraoactainfrac
         })
@@ -135,7 +143,7 @@ router.post('/newinspeccion', async (req, res) =>{
 router.post ('/newticket', async (req, res) =>{
 
     let {
-        ticket,
+        numticket,
         iniciador,
         ubicacion,
         adrema,
@@ -156,7 +164,7 @@ router.post ('/newticket', async (req, res) =>{
     } = req.body
 
     let ticketcreate = await Ticket.create ({
-        ticket,
+        numticket,
         iniciador,
         ubicacion,
         adrema,

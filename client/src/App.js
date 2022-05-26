@@ -25,6 +25,7 @@ import TicketCreate from './components/TicketCreate';
 import ExpedCreate from './components/ExpedCreate.jsx';
 import InspecCreate from './components/InspecCreate.jsx';
 import IntimCreate from './components/IntimCreate.jsx';
+import ListExpediente from './components/ListExpediente.jsx'
 //import Details from './components/Details.jsx'
 
 
@@ -43,6 +44,7 @@ const App = () => {
           <Route  path='/TicketCreate' element={<TicketCreate/>}/>
           <Route  path='/InspecCreate' element={<InspecCreate/>}/>
           <Route  path='/IntimCreate' element={<IntimCreate/>}/>
+          <Route  path='/ListExpediente' element={<ListExpediente/>}/>
           {/* <Route exact path='/expedientes/:id' element={<Details/>}/> */}
           {/* <Route path='/expedcreate' element={<ExpedCreate/>}/>         */}
         </Routes>   

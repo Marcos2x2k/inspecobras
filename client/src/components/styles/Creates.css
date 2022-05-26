@@ -1,0 +1,16 @@
+.selecfont{
+    font-size:12px;
+    /* font-family: Helvetica, Arial, sans-serif; */
+    /* font-weight: bold; */
+    /* display: inline-block; */
+    /* width: 80px; */
+    /* color: blue;
+    text-shadow: 1px 1px 1px black; */
+  }
+
+  .colorLetras{
+    color: rgb(242, 234, 234);
+    background-color: rgb(155, 45, 100);
+    border:2px solid black;
+    
+}

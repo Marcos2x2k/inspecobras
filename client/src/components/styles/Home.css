@@ -37,4 +37,11 @@
       /* background-color: royalblue; */
       /* justify-content: left;  */
       /* flex-direction: row */      
-    }
+  }
+
+    .logocorrientes{
+      border-radius:2000px;
+      border: 3px solid black;
+      
+    
+  }

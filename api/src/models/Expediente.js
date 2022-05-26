@@ -26,6 +26,10 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false      
     },
+    fechainicioentrada:{
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     estado: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -54,10 +58,6 @@ module.exports = (sequelize) => {
     //   type: DataTypes.STRING,
     //   allowNull: true
     // },
-    superficiesuelo:{
-      type: DataTypes.STRING,
-      allowNull: true
-    },
     superficieterreno:{
       type: DataTypes.STRING,
       allowNull: true
@@ -77,10 +77,6 @@ module.exports = (sequelize) => {
     observaciones:{
       type: DataTypes.STRING,
       allowNull: true
-    },
-    fechainicioentrada:{
-      type: DataTypes.STRING,
-      allownull: false
     },
     permisobraoactainfrac:{
       type: DataTypes.STRING,
