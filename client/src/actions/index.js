@@ -109,3 +109,10 @@ export function setPage(page){
         payload: page
     }
 }
+
+export function orderByName(payload){
+    return{
+        type: 'ORDER_BY_NAME',
+        payload
+    }
+}

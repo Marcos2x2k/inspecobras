@@ -3,9 +3,7 @@ import React from 'react';
 // import Button from '@material-ui/core/Button'; // importo estilo de boton
 // import Button from '@mui/material/Button'; // importo estilo de boton
 import Button from '@mui/material/Button';
-import ButtonGroup from '@mui/material/Button';
 import './styles/Home.css'; // importo los styles de mi Home.css
-import SearchBar from './SearchBar';
 
 //IMPORTO PORQUE USAMOS HOOKS
 import {useState, useEffect, Fragment} from 'react'; //  HOOK USAMOS useState es un hook (//)Fragment es como un div para envolver hijos div en app)
@@ -36,11 +34,14 @@ export default function Home (){
                     {/* <Button variant="contained">CARGAR EXPEDIENTE</Button> */}
 
                     {/* <Link to= '/ExpedCreate'><button className="selectfont">CARGAR EXPEDIENTE</button></Link> */}
-                    <Link to= '/ListExpediente'><Button  variant="contained" component="span">LISTAR EXPEDIENTES</Button></Link>
+                    
                     <Link to= '/ExpedCreate'><Button  variant="contained" component="span">CARGAR EXPEDIENTE</Button></Link>                    
                     <Link to= '/TicketCreate'><Button  variant="contained" component="span">CARGAR TICKET</Button></Link>
                     <Link to= '/InspecCreate'><Button  variant="contained" component="span">CARGAR INSPECCION</Button></Link>                    
-                    <Link to= '/IntimCreate'><Button  variant="contained" component="span">CARGAR INTIMACION</Button></Link>   
+                    <Link to= '/IntimCreate'><Button  variant="contained" component="span">CARGAR INTIMACION</Button></Link>  
+                    <br/>
+                    <Link to= '/ListExpediente'><button> LISTAR EXPEDIENTES </button></Link> 
+                    <label> </label>
                                         
                     <Link to= '/'><Button variant="outlined" color="error">IR A LANZAMIENTO</Button></Link>  
                     <br/><br/>
