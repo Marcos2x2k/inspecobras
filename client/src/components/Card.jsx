@@ -9,10 +9,10 @@ export default function Card({numexpediente, fechainicioentrada, adrema, estado,
     //     Array.isArray(genre)     
     return (
         <div>   
-            <h2 >{numexpediente}</h2>
-            <h2 >{adrema}</h2>  
-            <h2 >{fechainicioentrada}</h2> 
-            <h2 >{estado}</h2>            
+            <h2 class="heading">{numexpediente}</h2>
+            <h2 class="heading">{adrema}</h2>  
+            <h2 class="heading">{fechainicioentrada}</h2> 
+            <h2 class="heading">{estado}</h2>            
             {/* <img src={image} alt="img not found" width = "400px" height="270px"/> */}
             <h5> ------- </h5>
         </div>)

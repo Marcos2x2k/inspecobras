@@ -21,9 +21,10 @@ const getDbInfo = async () => {
            atributes: ['numexpediente']
        } 
     })
+    return infoDB;
 }
 
-const getallexpedientes = async () =>{
+const getAllExpedientes = async () =>{
     try{
         const DBinfo = await getDbInfo()
         return DBinfo;
@@ -32,18 +33,17 @@ const getallexpedientes = async () =>{
     }
 }
 
-
-
 // ********* Sector de GET Y POST
 
 router.get ('/expedientes', async (req,res) => {
-    const numexpediente = req.query.numexpediente;
-    const infoTotal = await getallexpedientes();
+    const numexpediente = req.query.name;
+    const infoTotal = await getAllExpedientes();
     if(numexpediente) {
-        const expedientesnum = await infoTotal.filter(p => p.numexpedientetoLowerCase().includes(numexpediente.toLowerCase()))
+        const expedientesnum = await infoTotal.filter(p => p.numexpediente.toLowerCase().includes(numexpediente.toLowerCase()))
+        res.status(200).send(expedientesnum)
+        res.status(400).send('No se encuentra el Expediente Requerido')
     }else{
         res.status(200).send(infoTotal)
-        res.status(400).send('No se encuentra el Expediente Requerido')
     }   
 })
 
