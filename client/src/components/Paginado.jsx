@@ -9,6 +9,7 @@ export default function Paginado ({expedientesPerPage, allExpedientes, paginado}
     return(
         <nav>                        
                 <div  style={{
+                    color: 'black',
                     display: 'flex',
                     flexdirection: 'row',                    
                     flexWrap: 'wrap',

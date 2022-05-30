@@ -2,19 +2,20 @@
 import React from "react";
 import './styles/Card.css'; // importo los styles de mi Card.css
 
-export default function Card({numexpediente, fechainicioentrada, adrema, estado, }){ // platform
+export default function Card({numexpediente, fechainicioentrada, adrema, estado, iniciadornomyape }){ // platform
     
     // var genre2= []
     // if (genre) { 
     //     Array.isArray(genre)     
     return (
         <div>   
-            <h2 class="heading">{numexpediente}</h2>
-            <h2 class="heading">{adrema}</h2>  
-            <h2 class="heading">{fechainicioentrada}</h2> 
-            <h2 class="heading">{estado}</h2>            
-            {/* <img src={image} alt="img not found" width = "400px" height="270px"/> */}
-            <h5> ------- </h5>
+            <h2 class="headingRojo">EXPEDIENTE: {numexpediente}</h2>
+            <h2 class="heading">ADREMA: {adrema}</h2>  
+            <h2 class="heading">INICIO ENTRADA: {fechainicioentrada}</h2> 
+            <h2 class="heading">ESTADO: {estado}</h2> 
+            <h2 class="heading">INICIADOR: {iniciadornomyape}</h2>           
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnyWAaTFapVC--3RYbSrGnlOPepq00cPmRZw&usqp=CAU" alt="img not found" width = "200px" height="100px"/>
+            <h5> ----------------------------------------------------------------- </h5>
         </div>)
 }
 

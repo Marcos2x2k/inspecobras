@@ -126,7 +126,7 @@ export default function Home (){
                 {/* <br /><br /> */}
                 <img src="https://ciudaddecorrientes.gov.ar/sites/default/themes/ciudaddecorrientes/images/bottom-bg.png"/>
                            
-                <form onSubmit={(p) => handleSubmit(p)}>
+                <form onSubmit={(p) => handleSubmit(p)} >
                  <div>
                       <div>
                         <br/><br/>

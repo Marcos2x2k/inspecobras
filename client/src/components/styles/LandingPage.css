@@ -22,9 +22,16 @@
 .colorLetras{
     color: rgb(242, 234, 234);
     background-color: rgb(155, 45, 100);
-    border:2px solid black;
-    
+    border:2px solid black;    
 }
+.colorLetrasamarillas{
+    font-size:24px;
+    color: rgb(242, 234, 234);
+    background-color: rgb(143, 172, 38);
+    border:2px solid black;
+    text-shadow: black 1px 3px;       
+}
+
 
 .colorLetrasBienvenido{   
     border-radius:30px;

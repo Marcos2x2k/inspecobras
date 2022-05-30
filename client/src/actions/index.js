@@ -116,3 +116,15 @@ export function orderByName(payload){
         payload
     }
 }
+
+export function getDetailsExpedientes(id){
+    return function(dispatch){
+        axios.get('http://localhost:3001/expedientes/'+id)
+        .then((response)=>{
+            dispatch({type:'GET_DETAILS_EXPEDIENTES', payload: response.data})
+        })
+        .catch(()=>{
+            console.log('No se encuentra Id');
+        })
+    }
+}

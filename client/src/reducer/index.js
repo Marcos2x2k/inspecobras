@@ -1,8 +1,8 @@
 // ** ACÁ EN REDUCER CREO MI ESTADO INICIAL - 
 // ** Y HAGO LA LOGICA DE MIS FILTRADOS
 const initialState = {
-    numxpediente: [],    
-    expediente:[],
+    numxpedientes: [],    
+    expedientes:[],
     // anio:[],
     // fecha:[],
     // ticket: [],
@@ -17,11 +17,52 @@ export default function rootReducer(state =  initialState, action){
         case 'GET_EXPEDIENTES':
             return{
                 ...state, // guardamos el estado anterior como buena practica
-                expediente: action.payload,  
+                expedientes: action.payload,  
                 //Asi creamos en JSON - var json = await axios.get("http://localhost:3001/dogs",{});
                 // el payload lo creamos en actions como payload: json.data
-                allExpediente: action.payload
+                allExpedientes: action.payload
             }     
+            case 'GET_NAME_EXPEDIENTES':
+            return{
+                ...state,
+                expedientes: action.payload
+            }  
+            case 'POST_EXPEDIENTES'://No se declara en actions, se declara en el reducer. 
+                          //en action solo se trae la ruta
+                 return{
+                    ...state
+                 }
+                
+        case 'GET_DETAILS_EXPEDIENTES':            
+                return {
+                    ...state,
+                    expedientesDetails: action.payload
+                }        
+        case 'ORDER_BY_NAME':
+                let sortedArr = action.payload === 'asc' ?
+                state.expedientes.sort(function(a,b){
+                    if (a.name > b.name) {
+                        return 1;
+                    }
+                    if (a.name < b.name) {
+                        return -1;
+                    }
+                    return 0;
+                }) :
+                state.expedientes.sort(function(a,b){
+                    if (a.name > b.name) {
+                        return -1;
+                    }
+                    if (a.name < b.name) {
+                        return 1;
+                    }
+                    return 0;
+                })        
+                
+                return{
+                   ...state,
+                   expedientes: sortedArr // paso al estado el ordenamiento
+            }
             default:
                 return state;
         }

@@ -3,7 +3,6 @@ import React from 'react';
 import Button from '@mui/material/Button'; // importo estilo de boton
 
 import './styles/Home.css'; // importo los styles de mi Home.css
-import Paginado from './Paginado';
 
 //IMPORTO PORQUE USAMOS HOOKS
 import {useState, useEffect, Fragment} from 'react'; //  HOOK USAMOS useState es un hook (//)Fragment es como un div para envolver hijos div en app)
@@ -17,6 +16,7 @@ import {Link} from 'react-router-dom';
 //ME IMPORTO EL COMPONENTE Card y renderizo en linea 
 import Card from './Card';
 import SearchBar from './SearchBar';
+import Paginado from './Paginado';
 
 export default function ListExpediente (){ 
     const { expedientes, name, page, order} = useSelector(state => state);    
@@ -32,15 +32,16 @@ export default function ListExpediente (){
 
     //currentGames devuelve un arreglo q entra del 1 al 15
     //creo una constante de los Games en la pagina actual y me traigo el array del estado de los Games 
-    // const currentExpedientes =  allExpedientes.slice(indexOfFirstexpediente, indexOfLastexpediente)  
+    //const currentExpedientes =  allExpedientes.slice(indexOfFirstexpediente, indexOfLastexpediente)  /// rompeee la pagina
+    
     const paginado = (pageNumber) => {
         setCurrentPage(pageNumber)
     }
     // TRAIGO DEL ESTADO LOS Expedientes CUANDO EL COMPONENTE SE MONTA
-    //  useEffect (()=>{
-    //     dispatch(getExpedientes());      
-    //     // getListGenres para usar con filtrados por Genero
-    // },[dispatch])
+     useEffect (()=>{
+        dispatch(getExpedientes());      
+        // getListGenres para usar con filtrados por Genero
+    },[dispatch])
     // PARA RESETEAR AL TOCAR EL BOTON volver a cargar los Expedientes
     function handleClick(p){
         p.preventDefault(); //PREVENTIVO PARA Q NO RECARGUE TODA LA PAGINA
@@ -67,8 +68,8 @@ export default function ListExpediente (){
                     />  
                     <select className="selectfont">
                         <option value="" selected disabled hidden>ORDENAR</option>                
-                        <option value='fecha'>Fecha</option>
-                        <option value='estado'>Estado</option>
+                        <option value='asc'>Fecha</option>
+                        <option value='desc'>Estado</option>
                         <option value='inicioexpediente'>Fecha Inicio Expediente</option>
                         <option value='fecharegistrado'>Fecha Plano Registrado</option>
                     </select>  
@@ -80,14 +81,16 @@ export default function ListExpediente (){
                     <br/>
                 </div>
                 
-                
+                <div>
+                {/* Rompen pagina */}
                 <Paginado
-                    // expedientesPerPage = {expedientesPerPage}
-                    // allExpedientes={allExpedientes.length}
-                    // paginado = {paginado}                    
-                />
-                 
-                {/* {currentExpedientes?.map ((p) =>{  // CON ? PREGUNTA SI EXISTE Y DESPUES MAPEA   
+                        expedientesPerPage = {expedientesPerPage}
+                        allExpedientes={allExpedientes.length}
+                        paginado = {paginado}                    
+                 />
+                </div>
+            <div>
+                {expedientes?.map ((p) =>{  // CON ? PREGUNTA SI EXISTE Y DESPUES MAPEA   
                     return( 
                     <Fragment>                    
                         <div>                           
@@ -96,25 +99,27 @@ export default function ListExpediente (){
                                 to={`/expedientes/${p.id}`}                            
                             >
                             <Card
-                                    name={p.numexpediente} 
+                                    numexpediente={p.numexpediente} 
                                     // image={p.image ? p.image : p.image}
+                                    fechainicioentrada={p.fechainicioentrada}
                                     adrema={p.adrema}  
-                                    direccion={p.direccion}                              
-                                    
+                                    estado={p.estado}  
+                                    iniciadornomyape={p.iniciadornomyape}
                             />                        
                             </Link>
-                            : (
+                            {/* : (
                             <div>
                                 <h1>CARGANDO...</h1>                  
                             </div>
-                            )
+                            ) */}
                         </div>
                     
                     </Fragment> 
                 );
-                })}*/}
+                })}
+            </div>
                        
-            <img className='logocorrientes' src="http://www.cij.gov.ar/adj/fotos/2019-03/44-0.971624001553273257_B.jpg" width="600" height="300" />
+            {/* <img className='logocorrientes' src="http://www.cij.gov.ar/adj/fotos/2019-03/44-0.971624001553273257_B.jpg" width="600" height="300" /> */}
 
             <img src="https://ciudaddecorrientes.gov.ar/sites/default/themes/ciudaddecorrientes/images/bottom-bg.png"/>
             <br/>
