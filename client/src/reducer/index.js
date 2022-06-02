@@ -22,12 +22,12 @@ export default function rootReducer(state =  initialState, action){
                 // el payload lo creamos en actions como payload: json.data
                 allExpedientes: action.payload
             }     
-            case 'GET_NAME_EXPEDIENTES':
+        case 'GET_NAME_EXPEDIENTES':
             return{
                 ...state,
                 expedientes: action.payload
             }  
-            case 'POST_EXPEDIENTES'://No se declara en actions, se declara en el reducer. 
+        case 'POST_EXPEDIENTES'://No se declara en actions, se declara en el reducer. 
                           //en action solo se trae la ruta
                  return{
                     ...state
@@ -35,8 +35,8 @@ export default function rootReducer(state =  initialState, action){
                 
         case 'GET_DETAILS_EXPEDIENTES':            
                 return {
-                    ...state,
-                    expedientesDetails: action.payload
+                    ...state,                    
+                    expedientesDetails: action.payload                    
                 }        
         case 'ORDER_BY_NAME':
                 let sortedArr = action.payload === 'asc' ?

@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import './styles/Card.css';
 
 function Details(){
-    // trae del Reducer-index-> CASE (GET_DETAILS_DOG) gamesDetail
+    // trae del Reducer-index-> CASE (GET_DETAILS_EXPEDIENTE) expedientesDetail
     const allDetails = useSelector((state) => state.expedientesDetails);
     console.log(allDetails) 
     const dispatch = useDispatch();
@@ -26,7 +26,7 @@ function Details(){
                 <Link to='/home'><button>REGRESAR AL HOME</button></Link>
                 <br /><br /><br />
 
-                <h1 class="heading">{allDetails[0].numexpediente}</h1>
+                <h1 class="heading">{allDetails[0].name}</h1>
                 {/* <img className="card" src={allDetails[0].image} alt="img not found"/> */}
                     {/* //fecha lanzamiento = released */}
                     <h3 class="heading"> NUMERO EXPEDIENTE: {allDetails[0].numexpediente}</h3> 

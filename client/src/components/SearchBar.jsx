@@ -25,7 +25,8 @@ export default function SearchBar(){
                 <input
                 type = 'text'
                 placeholder = "Buscar Expediente..."
-                onChange={(p) => handInputChange(p)}                />
+                onChange={(p) => handInputChange(p)}                
+            />
                 <button type='submit'>Buscar</button>
             </form>
         </div>

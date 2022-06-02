@@ -116,9 +116,10 @@ export default function Home (){
         
         <div>        
             <div>             
-                <div><img src='https://ciudaddecorrientes.gov.ar/sites/default/themes/ciudaddecorrientes/logo.png' alt="to home" />
-                
-                    <h1 className="colorLetras">SECCIÓN DE CREACIÓN DE EXPEDIENTES</h1>                    
+                <div>
+                    <img height="50" src={require('./images/logoMuni.png')}/>                
+                    <h1 className="colorLetrasGris">SECCIÓN DE CREACIÓN DE EXPEDIENTES</h1> 
+                    <Link to= '/Home'><button variant="contained" component="span">Volver Menu Principal</button></Link>                   
                     
                     {/* <select className="selectfont">
                         <option value="" selected disabled hidden>ORDENAR</option>                
@@ -126,14 +127,13 @@ export default function Home (){
                         <option value='desc'>Estado</option>
                         <option value='desc'>Fecha Inicio Expediente</option>
                         <option value='desc'>Fecha Plano Registrado</option>
-                    </select>        */}
+                    </select>        */} 
                     
-                    <Link to= '/Home'><Button variant="contained" component="span">Volver Menu Principal</Button></Link>  
-                    <br/><br/>
                 </div>
                 {/* <br /><br /> */}
-                <img src="https://ciudaddecorrientes.gov.ar/sites/default/themes/ciudaddecorrientes/images/bottom-bg.png"/>
-                           
+                {/* <img src="https://ciudaddecorrientes.gov.ar/sites/default/themes/ciudaddecorrientes/images/bottom-bg.png"/> */}
+                <img src={require('./images/separadorpagina.png')}/>
+                
                 <form onSubmit={(p) => handleSubmit(p)}>
                  <div>
                       <div>
@@ -143,11 +143,12 @@ export default function Home (){
                         type="text" 
                         value= {input.numexpediente}                                           
                         name="numexpediente"
-                        size="40"
-                        placeholder="nnnn/l/aaaa"                        
+                        size="30"
+                        placeholder="NNNN/L/AAAA"                        
                         onChange={(p)=>handleChange(p)}
                         autoComplete="off"
                         />
+                        <label> </label>
                         {/* <br /> */}                
                         <label className='selectfont'>  Fecha Inicio/Entrada: </label>
                         <input
@@ -160,19 +161,21 @@ export default function Home (){
                         autoComplete="off"
                         />
                 <br /><br />
-                <label> Estado:  </label>
+                <label className='selectfont'> Estado:  </label>
                 <input
                         type="text"                    
                         name="estado"
+                        placeholder="Inspección /Retenido /Salir" 
                         value= {input.estado}
                         onChange={(p)=>handleChange(p)}
                         autoComplete="off"
                         />
                 {/* <br /> */}
-                <label className="selectfont"> Iniciador (nombre y apellido): </label>
+                <label className="selectfont"> Iniciador: </label>
                 <input
                         type="text"                    
                         name="iniciadornomyape"
+                        placeholder="Nombre y Apellido"
                         value= {input.iniciadornomyape}
                         onChange={(p)=>handleChange(p)}
                         autoComplete="off"
@@ -182,24 +185,27 @@ export default function Home (){
                 <input
                         type="text"                    
                         name="domicilio"
+                        placeholder="Ingrese Domicilio"
                         value= {input.domicilio}
                         onChange={(p)=>handleChange(p)}
                         autoComplete="off"
                         />
                 {/* <br /> */}
-                <label className="selectfont"> Nº Adrema: </label>
+                <label className="selectfont"> Adrema: </label>
                 <input
                         type="text"                    
                         name="adrema"
+                        placeholder="Numero de Adrema"
                         value= {input.adrema}
                         onChange={(p)=>handleChange(p)}
                         autoComplete="off"
                         />
                 <br /><br />
-                <label className="selectfont"> Director de obra/Perito visor: </label>
+                <label className="selectfont"> Dirección: </label>
                 <input
                         type="text"                    
                         name="directorobraoperitovisor"
+                        placeholder="Director de obra/Perito visor"
                         value={input.directorobraoperitovisor}
                         onChange={(p)=>handleChange(p)}
                         autoComplete="off"
@@ -210,6 +216,7 @@ export default function Home (){
                         type="text"                    
                         name="destinodeobra"
                         value= {input.destinodeobra}
+                        placeholder="Viv.Familiar/Deposito/Negocio/etc"
                         onChange={(p)=>handleChange(p)}
                         autoComplete="off"
                         />
@@ -218,6 +225,7 @@ export default function Home (){
                 <input
                         type="text"                    
                         name="superficieterreno"
+                        placeholder="superficie en M2" 
                         value= {input.superficieterreno}
                         onChange={(p)=>handleChange(p)}
                         autoComplete="off"
@@ -227,24 +235,27 @@ export default function Home (){
                 <input
                         type="text"                    
                         name="superficieaconstruir"
+                        placeholder="superficie en M2"
                         value= {input.superficieaconstruir}
                         onChange={(p)=>handleChange(p)}
                         autoComplete="off"
                         />
                 <br /><br />
-                <label className="selectfont"> Superficie SubSuelo/Planta Baja: </label>
+                <label className="selectfont"> Superficie A:</label>
                 <input
                         type="text"                    
+                        placeholder=" SubSuelo/Planta Baja"
                         name="superficiesubsueloplantabaja"
                         value= {input.superficiesubsueloplantabaja}
                         onChange={(p)=>handleChange(p)}
                         autoComplete="off"
                         />
                 {/* <br /> */}
-                <label className="selectfont"> Superficie 1º piso/más pisos: </label>
+                <label className="selectfont"> Superficie B:</label>
                 <input
                         type="text"                    
                         name="superficieprimerpisoymaspisos"
+                        placeholder=" 1º piso  - más pisos"
                         value= {input.superficieprimerpisoymaspisos}
                         onChange={(p)=>handleChange(p)}
                         autoComplete="off"
@@ -260,32 +271,46 @@ export default function Home (){
                         />
                 {/* <br /> */}                
                 <br/><br/>
-                <label className="selectfont"> Permiso Obra/Acta Infracción: </label>
+                <label className="selectfont"> Permiso / Obra: /  </label>
+                <label className="selectfont">Acta Infracción: </label>
+                <br/>
                 <input
                         type="text"                    
                         name="permisobraoactainfrac"
+                        placeholder="NO POSEE" 
                         value= {input.permisobraoactainfrac}
                         onChange={(p)=>handleChange(p)}
                         autoComplete="off"
                         />
-                <br />
+                <br /> <br />
                 <label className="selectfont"> Observaciones: </label>
+                <br/>
                 <textarea rows="4" cols="50"                 
                         name="observaciones"
+                        placeholder="Ingrese Observaciones Pertinentes a la Obra" 
                         value= {input.observaciones}
                         onChange={(p)=>handleChange(p)}
                         autoComplete="off"
                 />                
                 <br/><br/><br/>                
-                <button type='submit'> Crear Expediente! </button>
-                <input type='reset'></input>
+                <Button variant="contained" component="span" type='submit'> Crear Expediente! </Button>             
+                 
                 </div>
                 </div>  
         </form>
+        <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                document.querySelectorAll('input[type=text]').forEach( node => node.addEventListener('keypress', e => {
+                if(e.keyCode == 13) {
+                        e.preventDefault();
+                }
+                }))
+                });
+        </script>
 
-                <br />  <br /><br /><br /> 
-            <img src="https://ciudaddecorrientes.gov.ar/sites/default/themes/ciudaddecorrientes/images/bottom-bg.png"/>
-            <h5>TODOS LOS DERECHOS RESERVADOS • MUNICIPALIDAD DE LA CIUDAD DE CORRIENTES • © 2022</h5>
+                <br />  <br /><br /><br />                 
+                <img src={require('./images/separadorpagina.png')}/>
+                <h5>TODOS LOS DERECHOS RESERVADOS • MUNICIPALIDAD DE LA CIUDAD DE CORRIENTES • © 2022</h5>
             </div>
         </div>        
 )}

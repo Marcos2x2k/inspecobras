@@ -79,7 +79,17 @@ export function postInspeccion(payload){ //recibe un objeto con toda la info del
     }
 }
 // la logica siempre hacerla en reducer o en los components
-
+export function getDetailsExpedientes(id){
+    return function(dispatch){
+        axios.get('http://localhost:3001/expedientes/'+id)
+        .then((response)=>{
+            dispatch({type:'GET_DETAILS_EXPEDIENTES', payload: response.data})
+        })
+        .catch(()=>{
+            console.log('No se encuentra Id');
+        })
+    }
+}
 //hacemos la accion de filtrar por API o Bdatos // payload trae el value de la accion q elija
 export function filterCreated(value){ //payload es el value q me llega
     // console.log(payload)
@@ -117,14 +127,3 @@ export function orderByName(payload){
     }
 }
 
-export function getDetailsExpedientes(id){
-    return function(dispatch){
-        axios.get('http://localhost:3001/expedientes/'+id)
-        .then((response)=>{
-            dispatch({type:'GET_DETAILS_EXPEDIENTES', payload: response.data})
-        })
-        .catch(()=>{
-            console.log('No se encuentra Id');
-        })
-    }
-}

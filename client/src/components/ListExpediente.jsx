@@ -1,6 +1,7 @@
 import React from 'react';
 // import Button from '@material-ui/core/Button'; // importo estilo de boton
 import Button from '@mui/material/Button'; // importo estilo de boton
+// import Pagination from '@mui/material/Pagination'
 
 import './styles/Home.css'; // importo los styles de mi Home.css
 
@@ -60,10 +61,13 @@ export default function ListExpediente (){
             <div>                    
                 <div>
                     <br/>
-                    <img src='https://ciudaddecorrientes.gov.ar/sites/default/themes/ciudaddecorrientes/logo.png' height="110" alt="to home" />
+                    
+                    <img height="110" src={require('./images/logoMuni.png')}/>
+                    {/* <img height="200" src="./images/logoMuni.jpg" /> */}
+                    {/* <img src='https://ciudaddecorrientes.gov.ar/sites/default/themes/ciudaddecorrientes/logo.png' height="110" alt="to home" /> */}
                 
                     <h1 className="colorLetras">Listado de Expedientes</h1> 
-                    
+                    {/* <Pagination count={10} color="primary" /> */}
                     <SearchBar
                     />  
                     <select className="selectfont">
@@ -77,12 +81,13 @@ export default function ListExpediente (){
                     <Link to= '/Home'><Button variant="contained" component="span">Volver Menu Principal</Button></Link>  
                     <br/><br/> 
                     {/* <br /><br /> */}
-                    <img src="https://ciudaddecorrientes.gov.ar/sites/default/themes/ciudaddecorrientes/images/bottom-bg.png"/>
+                    <img src={require('./images/separadorpagina.png')}/>
+                    {/* <img src="https://ciudaddecorrientes.gov.ar/sites/default/themes/ciudaddecorrientes/images/bottom-bg.png"/> */}
                     <br/>
                 </div>
                 
                 <div>
-                {/* Rompen pagina */}
+                {/* Rompía pagina */}
                 <Paginado
                         expedientesPerPage = {expedientesPerPage}
                         allExpedientes={allExpedientes.length}
@@ -120,12 +125,17 @@ export default function ListExpediente (){
             </div>
                        
             {/* <img className='logocorrientes' src="http://www.cij.gov.ar/adj/fotos/2019-03/44-0.971624001553273257_B.jpg" width="600" height="300" /> */}
-
-            <img src="https://ciudaddecorrientes.gov.ar/sites/default/themes/ciudaddecorrientes/images/bottom-bg.png"/>
+            {/* <img src="https://ciudaddecorrientes.gov.ar/sites/default/themes/ciudaddecorrientes/images/bottom-bg.png"/> */}
+            <img src={require('./images/separadorpagina.png')}/>
+            <br/><br/>
+            {/* <img src=" https://ciudaddecorrientes.gov.ar/sites/default/themes/ciudaddecorrientes/images/call_negro.png"/>            
+            <img src="https://ciudaddecorrientes.gov.ar/sites/default/files/direccion_negro.png"/> */}
+            <h5>TODOS LOS DERECHOS RESERVADOS • MUNICIPALIDAD DE LA CIUDAD DE CORRIENTES • © 2022</h5>
+            {/* <img src="https://ciudaddecorrientes.gov.ar/sites/default/themes/ciudaddecorrientes/images/bottom-bg.png"/>
             <br/>
             <img src=" https://ciudaddecorrientes.gov.ar/sites/default/themes/ciudaddecorrientes/images/call_negro.png"/>            
             <img src="https://ciudaddecorrientes.gov.ar/sites/default/files/direccion_negro.png"/>
-            <h5>TODOS LOS DERECHOS RESERVADOS • MUNICIPALIDAD DE LA CIUDAD DE CORRIENTES • © 2022</h5>
+            <h5>TODOS LOS DERECHOS RESERVADOS • MUNICIPALIDAD DE LA CIUDAD DE CORRIENTES • © 2022</h5> */}
             </div>
         </div>        
 )}

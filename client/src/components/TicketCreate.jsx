@@ -121,9 +121,10 @@ export default function Home (){
         
         <div>        
             <div>             
-                <div><img src='https://ciudaddecorrientes.gov.ar/sites/default/themes/ciudaddecorrientes/logo.png' alt="to home" />
-                
-                    <h1 className="colorLetras">SECCIÓN DE CREACIÓN DE TICKETS</h1>                    
+                <div>
+                    <img height="50" src={require('./images/logoMuni.png')}/>                     
+                    {/* <img src='https://ciudaddecorrientes.gov.ar/sites/default/themes/ciudaddecorrientes/logo.png' alt="to home" />                 */}
+                    <h1 className="colorLetrasGris">SECCIÓN DE CREACIÓN DE TICKETS</h1>                    
                     
                     {/* <select className="selectfont">
                         <option value="" selected disabled hidden>ORDENAR</option>                
@@ -133,11 +134,12 @@ export default function Home (){
                         <option value='desc'>Fecha Plano Registrado</option>
                     </select>        */}
                     
-                    <Link to= '/Home'><Button variant="contained" component="span">Volver Menu Principal</Button></Link>  
+                    <Link to= '/Home'><button variant="contained" component="span">Volver Menu Principal</button></Link>  
                     <br/><br/>
                 </div>
                 {/* <br /><br /> */}
-                <img src="https://ciudaddecorrientes.gov.ar/sites/default/themes/ciudaddecorrientes/images/bottom-bg.png"/>
+                <img src={require('./images/separadorpagina.png')}/>
+                {/* <img src="https://ciudaddecorrientes.gov.ar/sites/default/themes/ciudaddecorrientes/images/bottom-bg.png"/> */}
                            
                 <form onSubmit={(p) => handleSubmit(p)}>
                  <div>
@@ -312,11 +314,20 @@ export default function Home (){
                 </div>
                 </div>  
         </form>
+        <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                document.querySelectorAll('input[type=text]').forEach( node => node.addEventListener('keypress', e => {
+                if(e.keyCode == 13) {
+                        e.preventDefault();
+                }
+                }))
+                });
+        </script>
 
-                <br />  <br /><br /><br /> 
-            <img src="https://ciudaddecorrientes.gov.ar/sites/default/themes/ciudaddecorrientes/images/bottom-bg.png"/>
-            <h5>TODOS LOS DERECHOS RESERVADOS • MUNICIPALIDAD DE LA CIUDAD DE CORRIENTES • © 2022</h5>
-            </div>
+                <br />  <br /><br /><br />                 
+                <img src={require('./images/separadorpagina.png')}/>
+                <h5>TODOS LOS DERECHOS RESERVADOS • MUNICIPALIDAD DE LA CIUDAD DE CORRIENTES • © 2022</h5>
+        </div>
         </div>        
 )}
 

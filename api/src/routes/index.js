@@ -49,7 +49,7 @@ router.get ('/expedientes', async (req,res) => {
 
 router.get("/expedientes/:id", async (req, res) => {
     const id = req.params.id;
-    const infoTotal = await getallexpedientes();    
+    const infoTotal = await getAllExpedientes();    
     //console.log (infoTotal)
     if (id){
         const expId = await infoTotal.filter((p) => p.id == id)
