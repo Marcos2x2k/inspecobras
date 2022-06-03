@@ -21,7 +21,7 @@ import {Link} from 'react-router-dom';
 // import SearchBar from './SearchBar';
 // import Paginado from './Paginado';
 
-export default function Home (){ 
+export default function ExpedCreate (){ 
         const [errors, setErrors] = useState({});
         const dispatch = useDispatch();    
         const navigate = useNavigate();
@@ -119,16 +119,16 @@ export default function Home (){
                 <div>
                     <img height="50" src={require('./images/logoMuni.png')}/>                
                     <h1 className="colorLetrasGris">SECCIÓN DE CREACIÓN DE EXPEDIENTES</h1> 
-                    <Link to= '/Home'><button variant="contained" component="span">Volver Menu Principal</button></Link>                   
                     
+                    <Link to= '/Home'><button variant="contained" component="span">Volver Menu Principal</button></Link>                   
+                    <br/><br/>
                     {/* <select className="selectfont">
                         <option value="" selected disabled hidden>ORDENAR</option>                
                         <option value='asc'>Fecha</option>
                         <option value='desc'>Estado</option>
                         <option value='desc'>Fecha Inicio Expediente</option>
                         <option value='desc'>Fecha Plano Registrado</option>
-                    </select>        */} 
-                    
+                    </select>        */}                     
                 </div>
                 {/* <br /><br /> */}
                 {/* <img src="https://ciudaddecorrientes.gov.ar/sites/default/themes/ciudaddecorrientes/images/bottom-bg.png"/> */}

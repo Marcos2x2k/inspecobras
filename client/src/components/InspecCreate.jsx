@@ -21,7 +21,7 @@ import {Link} from 'react-router-dom';
 // import SearchBar from './SearchBar';
 // import Paginado from './Paginado';
 
-export default function Home (){ 
+export default function InspecCreate (){ 
         const [errors, setErrors] = useState({});
         const dispatch = useDispatch();    
         const navigate = useNavigate();

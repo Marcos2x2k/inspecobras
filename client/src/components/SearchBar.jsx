@@ -5,13 +5,13 @@ import {getNameExpedientes} from '../actions';
 
 export default function SearchBar(){
      // aca usamos Hook
-    const dispatch =useDispatch()
+    const dispatch = useDispatch()
     const [name, setName] = useState("")
 
     function handInputChange(p){
         p.preventDefault()
         setName(p.target.value)
-        console.log(name)
+        // console.log(name)
     }
     function handleSubmit(p){
         p.preventDefault()

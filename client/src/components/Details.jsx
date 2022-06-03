@@ -10,14 +10,13 @@ import './styles/Card.css';
 function Details(){
     // trae del Reducer-index-> CASE (GET_DETAILS_EXPEDIENTE) expedientesDetail
     const allDetails = useSelector((state) => state.expedientesDetails);
-    console.log(allDetails) 
+    //console.log(allDetails) 
     const dispatch = useDispatch();
     const { id } = useParams();
     useEffect(() => {
         dispatch(getDetailsExpedientes(id));
       },[dispatch,id])
-
-      console.log(allDetails)
+      //console.log(allDetails)
     return (
         <div>
             {allDetails.length > 0 ? (
@@ -26,14 +25,14 @@ function Details(){
                 <Link to='/home'><button>REGRESAR AL HOME</button></Link>
                 <br /><br /><br />
 
-                <h1 class="heading">{allDetails[0].name}</h1>
-                {/* <img className="card" src={allDetails[0].image} alt="img not found"/> */}
+                     {/* <h1 class="heading">{allDetails.numexpediente}</h1> */}
+                    {/* <img className="card" src={allDetails[0].image} alt="img not found"/> */}
                     {/* //fecha lanzamiento = released */}
-                    <h3 class="heading"> NUMERO EXPEDIENTE: {allDetails[0].numexpediente}</h3> 
-                    <h3 class="heading"> FECHA INICIO ENTRADA: {allDetails[0].fechainicioentrada}</h3>
-                    <h3 class="heading">ESTADO: {allDetails[0].estado}</h3>
-                    <h3 class="heading">INICIADOR (NyA): {allDetails[0].iniciadornomyape}</h3>
-                    <h3 class="heading">ADREMA: {(allDetails[0].adrema)}</h3>
+                    <h3 class="heading"> NUMERO EXPEDIENTE: {allDetails.numexpediente}</h3> 
+                    <h3 class="heading"> FECHA INICIO ENTRADA: {allDetails.fechainicioentrada}</h3>
+                    <h3 class="heading">ESTADO: {allDetails.estado}</h3>
+                    <h3 class="heading">INICIADOR (NyA): {allDetails.iniciadornomyape}</h3>
+                    <h3 class="heading">ADREMA: {allDetails.adrema}</h3>
                     {/* <h3 class="heading">PLATAFORMAS: {allDetails[0].platforms
                         ? allDetails[0].platform.map((p) => p + ", ")
                         : allDetails[0].platforms.map((p) => p + ", ")}</h3>  */}
@@ -56,9 +55,9 @@ function Details(){
 } 
 
 export default Details;
-//     // var genre2= []
-//     // if (genre) { 
-//     //     Array.isArray(genre)     
+// var genre2= []
+// if (genre) { 
+//     Array.isArray(genre)     
 //     return (
 //         <div>   
 //             <h2 >{numexpediente}</h2> 

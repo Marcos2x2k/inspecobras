@@ -41,19 +41,19 @@ export default function rootReducer(state =  initialState, action){
         case 'ORDER_BY_NAME':
                 let sortedArr = action.payload === 'asc' ?
                 state.expedientes.sort(function(a,b){
-                    if (a.name > b.name) {
+                    if (a.expedientes > b.expedientes) {
                         return 1;
                     }
-                    if (a.name < b.name) {
+                    if (a.expedientes < b.expedientes) {
                         return -1;
                     }
                     return 0;
                 }) :
                 state.expedientes.sort(function(a,b){
-                    if (a.name > b.name) {
+                    if (a.expedientes > b.expedientes) {
                         return -1;
                     }
-                    if (a.name < b.name) {
+                    if (a.expedientes < b.expedientes) {
                         return 1;
                     }
                     return 0;
