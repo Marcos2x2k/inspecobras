@@ -3,7 +3,7 @@
 const initialState = {
     numxpedientes: [],    
     expedientes:[],
-    // expedientesDetails:[]
+    expedientesDetails:[]
     // anio:[],
     // fecha:[],
     // ticket: [],
@@ -34,10 +34,13 @@ export default function rootReducer(state =  initialState, action){
                     ...state
                  }
                 
-        case 'GET_DETAILS_EXPEDIENTES':            
-                return {
-                    ...state,                    
-                    expedientesDetails: action.payload                    
+        case 'GET_DETAILS_EXPEDIENTES': 
+                // console.log (state)
+                console.log (action.payload)          
+                return {                    
+                    ...state,     
+                    expedientesDetails: action.payload              
+                                  
                 }        
         case 'ORDER_BY_NAME':
                 let sortedArr = action.payload === 'asc' ?

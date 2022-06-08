@@ -74,8 +74,8 @@ export default function ListExpediente (){
                         <option value="" selected disabled hidden>ORDENAR</option>                
                         <option value='asc'>Fecha</option>
                         <option value='desc'>Estado</option>
-                        <option value='inicioexpediente'>Fecha Inicio Expediente</option>
-                        <option value='fecharegistrado'>Fecha Plano Registrado</option>
+                        {/* <option value='inicioexpediente'>Fecha Inicio Expediente</option>
+                        <option value='fecharegistrado'>Fecha Plano Registrado</option> */}
                     </select>  
                     <br/><br/>
                     <Link to= '/Home'><Button variant="contained" component="span">Volver Menu Principal</Button></Link>  
@@ -101,16 +101,15 @@ export default function ListExpediente (){
                         <div>                           
                             <Link 
                                 key={p.id}
-                                to={`/expedientes/${p.id}`}                            
-                            >
-                            <Card
+                                to={`/expedientes/${p.id}`}>
+                                <Card
                                     numexpediente={p.numexpediente} 
                                     // image={p.image ? p.image : p.image}
                                     fechainicioentrada={p.fechainicioentrada}
                                     adrema={p.adrema}  
                                     estado={p.estado}  
                                     iniciadornomyape={p.iniciadornomyape}
-                            />                        
+                                />                        
                             </Link>
                             {/* : (
                             <div>
@@ -134,8 +133,7 @@ export default function ListExpediente (){
             {/* <img src="https://ciudaddecorrientes.gov.ar/sites/default/themes/ciudaddecorrientes/images/bottom-bg.png"/>
             <br/>
             <img src=" https://ciudaddecorrientes.gov.ar/sites/default/themes/ciudaddecorrientes/images/call_negro.png"/>            
-            <img src="https://ciudaddecorrientes.gov.ar/sites/default/files/direccion_negro.png"/>
-            <h5>TODOS LOS DERECHOS RESERVADOS • MUNICIPALIDAD DE LA CIUDAD DE CORRIENTES • © 2022</h5> */}
+            <img src="https://ciudaddecorrientes.gov.ar/sites/default/files/direccion_negro.png"/>*/}
             </div>
         </div>        
 )}
