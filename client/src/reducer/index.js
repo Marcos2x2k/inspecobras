@@ -3,6 +3,7 @@
 const initialState = {
     numxpedientes: [],    
     expedientes:[],
+    // expedientesDetails:[]
     // anio:[],
     // fecha:[],
     // ticket: [],
