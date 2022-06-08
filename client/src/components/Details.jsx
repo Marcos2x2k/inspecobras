@@ -14,19 +14,22 @@ function Details(){
     const { id } = useParams();
     useEffect(() => {
         dispatch(getDetailsExpedientes(id));
+        window.scrollTo(0, 0);
       },[dispatch,id])
-
+      
     //   console.log(allDetails)
     return (
          
         <div>
             {allDetails.length > 0 ? (
             <div>
-                <img height="50" src={require('./images/logoMuni.png')}/>               
+                {/* <img height="50" src={require('./images/logoMuni.png')}/>                */}
                 
                 <h1 className="colorLetrasamarillas">DETALLES DE EXPEDIENTE SELECCIONADO</h1> 
-
-                <Link to='/home'><button>REGRESAR AL HOME</button></Link>
+                <img className='logoredondo'  src={require('./images/mirandoplano.jpg')} width="400" height="200" /> 
+                <br />
+                <Link to='/home'><button>REGRESAR AL MENU PRINCIPAL</button></Link> <label> </label>
+                <Link to='/ListExpediente'><button>REGRESAR AL LISTADO</button></Link>
                 <br />
                 <img src={require('./images/separadorpagina.png')}/>
                 <br /><br />
@@ -48,7 +51,8 @@ function Details(){
                     <h2 class="heading">ZONA: {allDetails[0].zona}</h2> 
                     <h2 class="heading">OBSERVACIONES:  {allDetails[0].observaciones}</h2> 
                     <h2 class="heading">PERMISO OBRA/ACTA INFRACCIÓN:  {allDetails[0].permisobraoactainfrac}</h2>
-                    {/* <img src={image} alt="img not found" width = "400px" height="270px"/> */}                    
+                    {/* <img src={require('./images/mirandoplano.jpg')} width = "400px" height="270px"/>   */}
+                    {/* <img className='logoredondo'  src={require('./images/mirandoplano.jpg')} width="400" height="270" />                   */}
             </div>
             ) : (
                 <div>

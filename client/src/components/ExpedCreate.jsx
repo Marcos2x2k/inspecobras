@@ -37,6 +37,7 @@ export default function ExpedCreate (){
                 return errors;
                 };
         }
+        
         const [input, setInput] = useState({
             
             numexpediente: "",

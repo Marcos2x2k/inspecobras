@@ -30,3 +30,8 @@
     color: rgb(35, 180, 122);
     text-shadow: 1px 2px black;
 }
+
+.logoredondo{
+    border-radius:2000px;
+    border: 3px solid black;   
+}
