@@ -25,41 +25,99 @@ function Details(){
             <div>
                 {/* <img height="50" src={require('./images/logoMuni.png')}/>                */}
                 
+                {/* <h1 className="colorLetrasamarillas">DETALLES DE EXPEDIENTE SELECCIONADO</h1>  */}
+                {/* <img src={require('./images/separadorpagina.png')}/> */}
+                {/* <br /> */}
                 <h1 className="colorLetrasamarillas">DETALLES DE EXPEDIENTE SELECCIONADO</h1> 
-                <img className='logoredondo'  src={require('./images/mirandoplano.jpg')} width="400" height="200" /> 
-                <br />
+                           
+                <img src={require('./images/separadorpagina.png')}/>
+                <br />   
                 <Link to='/home'><button>REGRESAR AL MENU PRINCIPAL</button></Link> <label> </label>
                 <Link to='/ListExpediente'><button>REGRESAR AL LISTADO</button></Link>
+                <br /> 
+                
+                
                 <br />
+                {/* <h1 className="colorLetrasamarillas">DETALLES DE EXPEDIENTE SELECCIONADO</h1> 
                 <img src={require('./images/separadorpagina.png')}/>
-                <br /><br />
+                <br /><br /> */}
 
                 {/* <h1 class="heading">{allDetails[0].name}</h1> */}
                 {/* <img className="card" src={allDetails[0].image} alt="img not found"/> */}
                     {/* //fecha lanzamiento = released */}
-                    <h3 class="heading"> NUMERO EXPEDIENTE: {allDetails[0].numexpediente}</h3> 
-                    <h3 class="heading"> FECHA INICIO ENTRADA: {allDetails[0].fechainicioentrada}</h3>
-                    <h3 class="heading">ESTADO: {allDetails[0].estado}</h3>
-                    <h3 class="heading">INICIADOR (NyA): {allDetails[0].iniciadornomyape}</h3>
-                    <h3 class="heading">ADREMA: {allDetails[0].adrema}</h3>
-                    <h2 class="heading">DIRECTOS DE OBRA: {allDetails[0].directorobraoperitovisor}</h2> 
-                    <h2 class="heading">DESTINO DE OBRA: {allDetails[0].destinodeobra}</h2> 
-                    <h2 class="heading">SUP. TERRENO: {allDetails[0].superficieterreno}</h2> 
-                    <h2 class="heading">SUP. A CONSTRUIR: {allDetails[0].superficieaconstruir}</h2> 
-                    <h2 class="heading">SUP. SUELO P.B.: {allDetails[0].superficiesubsueloplantabaja}</h2> 
-                    <h2 class="heading">SUP. SUELO 1º PISO O PISOS:  {allDetails[0].superficieprimerpisoymaspisos}</h2>  
-                    <h2 class="heading">ZONA: {allDetails[0].zona}</h2> 
-                    <h2 class="heading">OBSERVACIONES:  {allDetails[0].observaciones}</h2> 
-                    <h2 class="heading">PERMISO OBRA/ACTA INFRACCIÓN:  {allDetails[0].permisobraoactainfrac}</h2>
+                
+                
+                  <div class="detailcontainer">  
+                  <div class="header">               
+                    <h3 class="heading"> NUMERO EXPEDIENTE: </h3> 
+                    <h3 class="headingRojo"> {allDetails[0].numexpediente}</h3>
+                  </div>
+                  <div class="header">
+                    <h3 class="heading"> FECHA INICIO ENTRADA: </h3> 
+                    <h3 class="headingRojo">{allDetails[0].fechainicioentrada}</h3>
+                    </div>
+                    <div class="header">
+                    <h3 class="heading">ESTADO: </h3> 
+                    <h3 class="headingRojo">{allDetails[0].estado}</h3>
+                    </div>
+                    <div class="header">
+                    <h3 class="heading">INICIADOR (NyA): </h3> 
+                    <h3 class="headingRojo">{allDetails[0].iniciadornomyape}</h3>
+                    </div>
+                  <div class="header">
+                    <h3 class="heading">ADREMA: </h3> 
+                    <h3 class="headingRojo">{allDetails[0].adrema}</h3>
+                    </div>
+                    <div class="header">
+                    <h3 class="heading">DIRECTOS DE OBRA: </h3> 
+                    <h3 class="headingRojo">{allDetails[0].directorobraoperitovisor}</h3>
+                    </div> 
+                    <div class="header">
+                    <h3 class="heading">DESTINO DE OBRA: </h3> 
+                    <h3 class="headingRojo">{allDetails[0].destinodeobra}</h3> 
+                    </div>
+                    <div class="header">
+                    <h3 class="heading">SUP. TERRENO:  </h3> 
+                    <h3 class="headingRojo">{allDetails[0].superficieterreno}</h3>
+                    </div> 
+                    <div class="header">
+                    <h3 class="heading">SUP. A CONSTRUIR: </h3> 
+                    <h3 class="headingRojo">{allDetails[0].superficieaconstruir}</h3> 
+                    </div>
+                    <div class="header">
+                    <h3 class="heading">SUP. SUELO P.B.: </h3> 
+                    <h3 class="headingRojo">{allDetails[0].superficiesubsueloplantabaja}</h3>
+                    </div>
+                    <div class="header">
+                    <h3 class="heading">SUP. SUELO 1º PISO O PISOS: </h3> 
+                    <h3 class="headingRojo">{allDetails[0].superficieprimerpisoymaspisos}</h3> 
+                    </div>
+                    <div class="header">
+                    <h3 class="heading">ZONA: </h3> 
+                    <h3 class="headingRojo">{allDetails[0].zona}</h3> 
+                    </div>
+                    <div class="header">
+                    <h3 class="heading">OBSERVACIONES: </h3>
+                    <h3 class="headingRojo">{allDetails[0].observaciones}</h3>
+                    </div>
+                    <div class="header">
+                    <h3 class="heading">PERMISO OBRA/ACTA INFRACCIÓN: </h3>
+                    <h3 class="headingRojo"> {allDetails[0].permisobraoactainfrac}</h3>
+                    </div>
+                    <br/>
+                    <img className='logoredondo'  src={require('./images/mirandoplano.jpg')} width="400" height="200" /> <br/>
                     {/* <img src={require('./images/mirandoplano.jpg')} width = "400px" height="270px"/>   */}
-                    {/* <img className='logoredondo'  src={require('./images/mirandoplano.jpg')} width="400" height="270" />                   */}
+                    {/* <img className='logoredondo'  src={require('./images/mirandoplano.jpg')} width="400" height="270" /> */}
+                </div>            
             </div>
             ) : (
                 <div>
                     <h1>CARGANDO...</h1>                  
                 </div>
             )}
-              <br /> <br /><br /><br />                 
+             
+             
+                 <br />                  
               <img src={require('./images/separadorpagina.png')}/>
               <h5>TODOS LOS DERECHOS RESERVADOS • MUNICIPALIDAD DE LA CIUDAD DE CORRIENTES • © 2022</h5>
         </div>

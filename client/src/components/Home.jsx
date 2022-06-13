@@ -21,6 +21,25 @@ import {Link} from 'react-router-dom';
 // import Paginado from './Paginado';
 
 export default function Home (){ 
+    const expedientes = [
+        {
+                        numexpediente: "0920Ñ2020",
+                        fechainicioentrada:"20/10/2020",
+                        estado:"P/Insp",
+                        iniciadornomyape: "Joselo Ortiz",
+                        domicilio:"Las Heras 2029",
+                        adrema:"A1-888888-1",
+                        directorobraoperitovisor:"Sosa Hernan Carlos",
+                        destinodeobra:"Viv.Familiar",
+                        superficieterreno:"1000",
+                        superficieaconstruir:"500",
+                        superficiesubsueloplantabaja:"500",
+                        superficieprimerpisoymaspisos:"0",
+                        zona:"A1",
+                        observaciones:"",
+                        permisobraoactainfrac:""
+        },
+    ]
 
     return(
         

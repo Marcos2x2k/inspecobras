@@ -78,6 +78,7 @@ export default function ListExpediente (){
                         <option value='fecharegistrado'>Fecha Plano Registrado</option> */}
                     </select>  
                     <br/><br/>
+                    <button className="selectfont" onClick={p => {handleClick(p)}}>Cargar Todos los Expedientes</button>
                     <Link to= '/Home'><Button variant="contained" component="span">Volver Menu Principal</Button></Link>  
                     <br/><br/> 
                     {/* <br /><br /> */}

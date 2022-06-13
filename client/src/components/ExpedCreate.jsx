@@ -202,7 +202,7 @@ export default function ExpedCreate (){
                         autoComplete="off"
                         />
                 <br /><br />
-                <label className="selectfont"> Dirección: </label>
+                <label className="selectfont"> Director o Perito: </label>
                 <input
                         type="text"                    
                         name="directorobraoperitovisor"
@@ -294,10 +294,11 @@ export default function ExpedCreate (){
                         autoComplete="off"
                 />                
                 <br/><br/><br/>                
-                <Button variant="contained" component="span" type='submit'> Crear Expediente! </Button>             
+                         
                  
                 </div>
                 </div>  
+                <button variant="contained" component="span" type='submit'> Crear Expediente! </button>  
         </form>
         <script>
                 document.addEventListener('DOMContentLoaded', () => {

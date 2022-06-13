@@ -22,10 +22,10 @@ export function getExpedientes(){  // esta Action permite renderizar todos los G
     }
 }
 
-export function getNameExpedientes(name){ // esta Action permite BUSQUEDA todos los Games por nombres
+export function getNameExpedientes(name){ // esta Action permite BUSQUEDA todos los expedientes por numExpediente
     return async function (dispatch){
     try{
-        var json = await axios.get("http://localhost:3001/Expedientes?name=" + name);
+        var json = await axios.get("http://localhost:3001/expedientes?name=" + name);
         return dispatch({
             type: "GET_NAME_EXPEDIENTES",
             payload: json.data

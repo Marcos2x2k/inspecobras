@@ -27,11 +27,23 @@
 
 .headingRojo {
     font-size:20px;
-    color: rgb(35, 180, 122);
-    text-shadow: 1px 2px black;
+    color: red;
+    text-shadow: 2px 1px gray;
+    /* text-shadow: 1px 2px black; */
 }
 
 .logoredondo{
     border-radius:2000px;
-    border: 3px solid black;   
+    border: 3px solid rgb(238, 234, 234);   
 }
+
+.detailcontainer {
+    border: 3px solid black; 
+    border-color:rgb(167, 189, 22);
+    border-style: inset;
+    display: table ;
+    justify-content: center;
+    margin: 0 auto;   }
+
+ .header h3 {
+      display:inline; }

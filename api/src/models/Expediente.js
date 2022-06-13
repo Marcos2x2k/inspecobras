@@ -52,7 +52,7 @@ module.exports = (sequelize) => {
     },
     destinodeobra:{
       type: DataTypes.STRING,
-      allowNull: true
+      allowNull: true,
     },
     // zona:{   **** zona no se usa mas en esta gestión, se Reemplaza con Superficie-suelo
     //   type: DataTypes.STRING,
@@ -60,27 +60,33 @@ module.exports = (sequelize) => {
     // },
     superficieterreno:{
       type: DataTypes.STRING,
-      allowNull: true
+      allowNull: true,
+      defaultValue: "0"
     },
     superficieaconstruir:{
       type: DataTypes.STRING,
-      allowNull: true
+      allowNull: true,
+      defaultValue: "0"
     },
     superficiesubsueloplantabaja:{
       type: DataTypes.STRING,
-      allowNull: true
+      allowNull: true,
+      defaultValue: "0"
     },
     superficieprimerpisoymaspisos:{
       type: DataTypes.STRING,
-      allowNull: true
+      allowNull: true,
+      defaultValue: "0"
     },
     observaciones:{
       type: DataTypes.STRING,
-      allowNull: true
+      allowNull: true,
+      defaultValue: "No Posee"
     },
     permisobraoactainfrac:{
       type: DataTypes.STRING,
       allowNull: true,
+      defaultValue: "No Posee"
     },
   });
 };
