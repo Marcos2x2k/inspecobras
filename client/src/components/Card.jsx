@@ -8,14 +8,32 @@ export default function Card({numexpediente, fechainicioentrada, adrema, estado,
     // if (genre) { 
     //     Array.isArray(genre)     
     return (
-        <div>   
-            <h2 class="headingRojo">EXPEDIENTE: {numexpediente}</h2>
-            <h2 class="heading">ADREMA: {adrema}</h2>  
-            <h2 class="heading">INICIO ENTRADA: {fechainicioentrada}</h2> 
-            <h2 class="heading">ESTADO: {estado}</h2> 
-            <h2 class="heading">INICIADOR: {iniciadornomyape}</h2>           
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnyWAaTFapVC--3RYbSrGnlOPepq00cPmRZw&usqp=CAU" alt="img not found" width = "200px" height="100px"/>
-            <h5> ----------------------------------------------------------------- </h5>
+        <div > 
+            <div class="detailcontainerlist">
+                <div class="header"> 
+                    <h3 class="heading">EXPEDIENTE:</h3>
+                    <h3 class="headingRojo">  {numexpediente}</h3>
+                </div>
+                <div class="header">
+                    <h3 class="heading">  ADREMA: </h3>                 
+                    <h3 class="headingRojo"> {adrema}  </h3>  
+                </div>
+                <div class="header">
+                    <h3 class="heading">INICIO ENTRADA: </h3> 
+                    <h3 class="headingRojo"> {fechainicioentrada}</h3> 
+                </div>
+                <div class="header">
+                    <h3 class="heading">ESTADO: </h3>
+                    <h3 class="headingRojo"> {estado}</h3> 
+                </div>
+                <div class="header">
+                    <h3 class="heading">INICIADOR: </h3>
+                    <h3 class="headingRojo"> {iniciadornomyape}</h3>
+                </div>      
+                <p> </p>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnyWAaTFapVC--3RYbSrGnlOPepq00cPmRZw&usqp=CAU" alt="img not found" width = "200px" height="100px"/>
+                <h5 class="blanco"> ------------------------------------------------------------------------ </h5>
+            </div>
         </div>)
 }
 

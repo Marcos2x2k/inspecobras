@@ -55,57 +55,58 @@ function Details(){
                   <div class="header">
                     <h3 class="heading"> FECHA INICIO ENTRADA: </h3> 
                     <h3 class="headingRojo">{allDetails[0].fechainicioentrada}</h3>
-                    </div>
-                    <div class="header">
+                  </div>
+                  <div class="header">
                     <h3 class="heading">ESTADO: </h3> 
                     <h3 class="headingRojo">{allDetails[0].estado}</h3>
-                    </div>
-                    <div class="header">
+                  </div>
+                  <div class="header">
                     <h3 class="heading">INICIADOR (NyA): </h3> 
                     <h3 class="headingRojo">{allDetails[0].iniciadornomyape}</h3>
-                    </div>
+                  </div>
                   <div class="header">
                     <h3 class="heading">ADREMA: </h3> 
                     <h3 class="headingRojo">{allDetails[0].adrema}</h3>
-                    </div>
-                    <div class="header">
+                  </div>
+                  <div class="header">
                     <h3 class="heading">DIRECTOS DE OBRA: </h3> 
                     <h3 class="headingRojo">{allDetails[0].directorobraoperitovisor}</h3>
-                    </div> 
-                    <div class="header">
+                  </div> 
+                  <div class="header">
                     <h3 class="heading">DESTINO DE OBRA: </h3> 
                     <h3 class="headingRojo">{allDetails[0].destinodeobra}</h3> 
-                    </div>
-                    <div class="header">
+                  </div>
+                  <div class="header">
                     <h3 class="heading">SUP. TERRENO:  </h3> 
                     <h3 class="headingRojo">{allDetails[0].superficieterreno}</h3>
-                    </div> 
-                    <div class="header">
+                  </div> 
+                  <div class="header">
                     <h3 class="heading">SUP. A CONSTRUIR: </h3> 
                     <h3 class="headingRojo">{allDetails[0].superficieaconstruir}</h3> 
-                    </div>
-                    <div class="header">
+                  </div>
+                  <div class="header">
                     <h3 class="heading">SUP. SUELO P.B.: </h3> 
                     <h3 class="headingRojo">{allDetails[0].superficiesubsueloplantabaja}</h3>
-                    </div>
-                    <div class="header">
+                  </div>
+                  <div class="header">
                     <h3 class="heading">SUP. SUELO 1º PISO O PISOS: </h3> 
                     <h3 class="headingRojo">{allDetails[0].superficieprimerpisoymaspisos}</h3> 
-                    </div>
-                    <div class="header">
+                  </div>
+                  <div class="header">
                     <h3 class="heading">ZONA: </h3> 
                     <h3 class="headingRojo">{allDetails[0].zona}</h3> 
-                    </div>
-                    <div class="header">
+                  </div>
+                  <div class="header">
                     <h3 class="heading">OBSERVACIONES: </h3>
                     <h3 class="headingRojo">{allDetails[0].observaciones}</h3>
-                    </div>
-                    <div class="header">
+                  </div>
+                  <div class="header">
                     <h3 class="heading">PERMISO OBRA/ACTA INFRACCIÓN: </h3>
                     <h3 class="headingRojo"> {allDetails[0].permisobraoactainfrac}</h3>
-                    </div>
-                    <br/>
-                    <img className='logoredondo'  src={require('./images/mirandoplano.jpg')} width="400" height="200" /> <br/>
+                  </div>
+                  <br/>
+                  <img className='logoredondo'  src={require('./images/mirandoplano.jpg')} width="400" height="200" /> <br/>
+                  <h5 className='blanco'> --------------------------------------------------------------------------------- </h5>
                     {/* <img src={require('./images/mirandoplano.jpg')} width = "400px" height="270px"/>   */}
                     {/* <img className='logoredondo'  src={require('./images/mirandoplano.jpg')} width="400" height="270" /> */}
                 </div>            

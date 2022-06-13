@@ -68,18 +68,20 @@ export default function ListExpediente (){
                 
                     <h1 className="colorLetras">Listado de Expedientes</h1> 
                     {/* <Pagination count={10} color="primary" /> */}
-                    <SearchBar
-                    />  
-                    <select className="selectfont">
+                   
+                    {/* <select className="selectfont">
                         <option value="" selected disabled hidden>ORDENAR</option>                
                         <option value='asc'>Fecha</option>
                         <option value='desc'>Estado</option>
                         {/* <option value='inicioexpediente'>Fecha Inicio Expediente</option>
-                        <option value='fecharegistrado'>Fecha Plano Registrado</option> */}
-                    </select>  
+                        <option value='fecharegistrado'>Fecha Plano Registrado</option>
+                    </select>   */}
+                    <Link to= '/Home'><Button variant="contained" component="span">Volver Menu Principal</Button></Link> <label> </label>                  
+                    <Link to= '/ExpedCreate'><Button  variant="contained" component="span">CARGAR EXPEDIENTE</Button></Link> <label> </label>
+                    <Button variant="contained" component="span"  onClick={p => {handleClick(p)}}>Recargar Exp.</Button> 
                     <br/><br/>
-                    <button className="selectfont" onClick={p => {handleClick(p)}}>Cargar Todos los Expedientes</button>
-                    <Link to= '/Home'><Button variant="contained" component="span">Volver Menu Principal</Button></Link>  
+                    <SearchBar
+                    />  
                     <br/><br/> 
                     {/* <br /><br /> */}
                     <img src={require('./images/separadorpagina.png')}/>

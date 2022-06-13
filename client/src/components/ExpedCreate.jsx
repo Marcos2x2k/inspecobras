@@ -120,8 +120,8 @@ export default function ExpedCreate (){
                 <div>
                     <img height="50" src={require('./images/logoMuni.png')}/>                
                     <h1 className="colorLetrasGris">SECCIÓN DE CREACIÓN DE EXPEDIENTES</h1> 
-                    
-                    <Link to= '/Home'><button variant="contained" component="span">Volver Menu Principal</button></Link>                   
+                    <Link to= '/ListExpediente'><Button variant="contained" component="span"> Volver Lista Expedientes </Button></Link> <label> </label>
+                    <Link to= '/Home'><Button variant="contained" component="span">Volver Menu Principal</Button></Link>                   
                     <br/><br/>
                     {/* <select className="selectfont">
                         <option value="" selected disabled hidden>ORDENAR</option>                

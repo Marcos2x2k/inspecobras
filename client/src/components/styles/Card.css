@@ -45,5 +45,21 @@
     justify-content: center;
     margin: 0 auto;   }
 
+.detailcontainerlist{
+    text-decoration-color: none;
+    text-decoration-style: none;
+    text-decoration: none;
+    border: 2px rgb(68, 69, 66);
+    border-color:rgb(68, 69, 66);
+    border-width: thin;
+    border-style: dotted;
+    display: table ;
+    justify-content: center;
+    margin: 0 auto;   }
+
  .header h3 {
       display:inline; }
+
+      .blanco{
+        color:rgb(255, 255, 255)
+      }
