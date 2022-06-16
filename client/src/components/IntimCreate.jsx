@@ -129,8 +129,9 @@ export default function Home (){
                         <option value='desc'>Fecha Inicio Expediente</option>
                         <option value='desc'>Fecha Plano Registrado</option>
                     </select>        */}
+                    <Link to= '/ListInfraccion'><Button  variant="contained" component="span">Volver Lista Infracciones</Button></Link> <label> </label> 
+                    <Link to= '/Home'><Button  variant="outlined">Volver Menu Principal</Button></Link> <label> </label> 
                     
-                    <Link to= '/Home'><button variant="contained" component="span">Volver Menu Principal</button></Link>  
                     <br/><br/>
                 </div>
                 {/* <br /><br /> */}

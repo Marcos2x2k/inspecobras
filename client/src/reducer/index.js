@@ -23,6 +23,15 @@ export default function rootReducer(state =  initialState, action){
                 // el payload lo creamos en actions como payload: json.data
                 allExpedientes: action.payload
             }     
+        case 'GET_INFRACCIONES':
+                return{
+                    ...state, // guardamos el estado anterior como buena practica
+                    infracciones: action.payload,  
+                    //Asi creamos en JSON - var json = await axios.get("http://localhost:3001/dogs",{});
+                    // el payload lo creamos en actions como payload: json.data
+                    allInfracciones: action.payload
+                }  
+
         case 'GET_NAME_EXPEDIENTES':
             return{
                 ...state,
@@ -33,7 +42,19 @@ export default function rootReducer(state =  initialState, action){
                  return{
                     ...state
                  }
-                
+        case 'POST_INFRACCIONES'://No se declara en actions, se declara en el reducer. 
+                 //en action solo se trae la ruta
+        return{
+           ...state
+        }
+        case 'GET_DETAILS_INFRACCIONES': 
+                // console.log (state)
+                console.log (action.payload)          
+                return {                    
+                    ...state,     
+                    expedientesDetails: action.payload              
+                                  
+        }       
         case 'GET_DETAILS_EXPEDIENTES': 
                 // console.log (state)
                 console.log (action.payload)          

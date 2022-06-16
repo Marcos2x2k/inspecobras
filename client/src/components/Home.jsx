@@ -54,15 +54,17 @@ export default function Home (){
                     {/* <Button variant="contained">CARGAR EXPEDIENTE</Button> */}
                     {/* <Link to= '/ExpedCreate'><button className="selectfont">CARGAR EXPEDIENTE</button></Link> */}                    
                                         
-                    <Link to= '/ListExpediente'><button> LISTAR EXPEDIENTES </button></Link> <label> </label>
-                    <Link to= '/ListTicket'><button> LISTAR TICKET </button></Link> <label> </label>
-                    <Link to= '/ListInspeccion'><button> LISTAR INSPECCIONES </button></Link> <label> </label>
-                    <Link to= '/ListInfraccion'><button> LISTAR INFRACCIONES </button></Link> <label> </label>                    
+                    <Link to= '/ListExpediente'><Button  variant="outlined"> LISTAR EXPEDIENTES </Button></Link> <label> </label>
+                    <Link to= '/ListInfraccion'><Button  variant="outlined"> LISTAR INFRACCIONES </Button></Link> <label> </label> 
+                    <Link to= '/ListTicket'><Button  variant="outlined"> LISTAR TICKET </Button></Link> <label> </label>
+                    <Link to= '/ListInspeccion'><Button  variant="outlined"> LISTAR INSPECCIONES </Button></Link> <label> </label>
+                                      
                     <br/><br/>
                     <Link to= '/ExpedCreate'><Button  variant="contained" component="span">CARGAR EXPEDIENTE</Button></Link> <label> </label>
+                    <Link to= '/IntimCreate'><Button  variant="contained" component="span">CARGAR INFRACCIONES</Button></Link> <label> </label>
                     <Link to= '/TicketCreate'><Button  variant="contained" component="span">CARGAR TICKET</Button></Link> <label> </label>
                     <Link to= '/InspecCreate'><Button  variant="contained" component="span">CARGAR INSPECCION</Button></Link> <label> </label>
-                    <Link to= '/IntimCreate'><Button  variant="contained" component="span">CARGAR INFRACCIONES</Button></Link> <label> </label>  
+                      
                     <br/><br/>
                 </div>
                 {/* <br /><br /> */}

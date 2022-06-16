@@ -22,6 +22,18 @@ export function getExpedientes(){  // esta Action permite renderizar todos los G
     }
 }
 
+export function getInfracciones(){  // esta Action permite renderizar todos los Games
+    return function(dispatch){
+        axios.get('http://localhost:3001/infracciones',{})
+        .then((json) => {
+            dispatch({type: 'GET_INFRACCIONES', payload: json.data})
+        })
+        .catch(() =>{
+            console.log ('HUBO UN ERROR EN LOS DATOS');
+        })
+    }
+}
+
 export function getNameExpedientes(name){ // esta Action permite BUSQUEDA todos los expedientes por numExpediente
     return async function (dispatch){
     try{

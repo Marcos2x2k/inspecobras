@@ -15,11 +15,11 @@ import {getExpedientes, setPage, orderByName} from '../actions/index.js';//Siemp
 import {Link} from 'react-router-dom';
 
 //ME IMPORTO EL COMPONENTE Card y renderizo en linea 
-import Card from './Card';
-import SearchBar from './SearchBar';
+import Card from './CardInfraccion';
+import SearchBar from './SearchBarInfraccion';
 import Paginado from './Paginado';
 
-export default function ListExpediente (){ 
+export default function ListInfraccion (){ 
     const { expedientes, name, page, order} = useSelector(state => state);    
     const dispatch = useDispatch(); // PARA USAR HOOKS
     const allExpedientes = useSelector((state) => state.expedientes) //HOOKS es lo mismo q maps.state.props
@@ -62,11 +62,11 @@ export default function ListExpediente (){
                 <div>
                     <br/>
                     
-                    <img height="110" src={require('./images/logoMuni.png')}/>
+                    <img height="150" src={require('./images/inpectorobras.jpg')}/>
                     {/* <img height="200" src="./images/logoMuni.jpg" /> */}
                     {/* <img src='https://ciudaddecorrientes.gov.ar/sites/default/themes/ciudaddecorrientes/logo.png' height="110" alt="to home" /> */}
                 
-                    <h1 className="colorLetras">Listado de Expedientes</h1> 
+                    <h1 className="colorLetras">Listado de Infracciones</h1> 
                     {/* <Pagination count={10} color="primary" /> */}
                    
                     {/* <select className="selectfont">
@@ -76,10 +76,10 @@ export default function ListExpediente (){
                         {/* <option value='inicioexpediente'>Fecha Inicio Expediente</option>
                         <option value='fecharegistrado'>Fecha Plano Registrado</option>
                     </select>   */}
-                                      
-                    <Link to= '/ExpedCreate'><Button  variant="contained" component="span">CARGAR EXPEDIENTE</Button></Link> <label> </label>
-                    <Button variant="contained" component="span"  onClick={p => {handleClick(p)}}>Recargar Exp.</Button> <label> </label>
-                    <Link to= '/Home'><Button variant="outlined">Volver Menu Principal</Button></Link> 
+                                     
+                    <Link to= '/IntimCreate'><Button  variant="contained" component="span">Cargar Infracción</Button></Link> <label> </label>
+                    <Button variant="contained" component="span"  onClick={p => {handleClick(p)}}>Recargar Infracciones</Button> <label> </label>  
+                    <Link to= '/Home'><Button variant="outlined">Volver Menu Principal</Button></Link>
                     <br/><br/>
                     <SearchBar
                     />  
