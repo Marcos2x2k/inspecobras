@@ -5,16 +5,16 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 // *** IMPORTO 
-import {Provider} from 'react-redux';
-import {store} from './store';
-import {BrowserRouter} from 'react-router-dom'
+import { Provider } from 'react-redux';
+import { store } from './store';
+import { BrowserRouter } from 'react-router-dom'
 
 ReactDOM.render(
   <BrowserRouter>
     {/* // SIEMPRE ENVOLVER EN PROVIDER O REDUX NO NOS VA A ANDAR  */}
-    <Provider store={store}> 
+    <Provider store={store}>
       <React.StrictMode>
-        <App/>
+        <App />
       </React.StrictMode>
     </Provider>,
   </BrowserRouter>,

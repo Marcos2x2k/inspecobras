@@ -54,10 +54,10 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: true,
     },
-    // zona:{   **** zona no se usa mas en esta gestión, se Reemplaza con Superficie-suelo
-    //   type: DataTypes.STRING,
-    //   allowNull: true
-    // },
+    zona:{ 
+      type: DataTypes.STRING,
+      allowNull: true
+    },
     superficieterreno:{
       type: DataTypes.STRING,
       allowNull: true,

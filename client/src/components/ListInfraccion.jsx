@@ -1,6 +1,8 @@
 import React from 'react';
 // import Button from '@material-ui/core/Button'; // importo estilo de boton
-import Button from '@mui/material/Button'; // importo estilo de boton
+// import Button from '@mui/material/Button'; // importo estilo de boton
+import 'bootstrap/dist/css/bootstrap.min.css'
+import {Button, Tablet, Container} from 'reactstrap'
 // import Pagination from '@mui/material/Pagination'
 
 import './styles/Home.css'; // importo los styles de mi Home.css
@@ -8,28 +10,28 @@ import './styles/Home.css'; // importo los styles de mi Home.css
 //IMPORTO PORQUE USAMOS HOOKS
 import {useState, useEffect, Fragment} from 'react'; //  HOOK USAMOS useState es un hook (//)Fragment es como un div para envolver hijos div en app)
 import {useDispatch, useSelector} from 'react-redux'; 
-import {getExpedientes, setPage, orderByName} from '../actions/index.js';//Siempre importo las acciones nuevas 
+import {getInfracciones, setPage, orderByName} from '../actions/index.js';//Siempre importo las acciones nuevas 
 
 //LINK nos sirve para poder movernos por nuestra aplicación
 //más fácilmente en lugar de tener que cambiar la URL manualmente en el navegador.
 import {Link} from 'react-router-dom';
 
 //ME IMPORTO EL COMPONENTE Card y renderizo en linea 
-import Card from './CardInfraccion';
+import CardInfraccion from './CardInfraccion';
 import SearchBar from './SearchBarInfraccion';
 import Paginado from './Paginado';
 
 export default function ListInfraccion (){ 
-    const { expedientes, name, page, order} = useSelector(state => state);    
+    const { infracciones, name, page, order} = useSelector(state => state);    
     const dispatch = useDispatch(); // PARA USAR HOOKS
-    const allExpedientes = useSelector((state) => state.expedientes) //HOOKS es lo mismo q maps.state.props
+    const allInfracciones = useSelector((state) => state.infracciones) //HOOKS es lo mismo q maps.state.props
     const [orden, setOrden] = useState(''); // es un estado local q arranca vacio para el Asc y Desc Order
 
     //CREO VARIOS ESTADOS LOCALES y lo seteo en 1- ACA CALCULO LAS CARD POR PAGINAS
     const [currentPage, setCurrentPage] = useState(1); //defino 2 stados 1 con pagina actual y otro q resetea pagina actual
-    const [expedientesPerPage, setExpedientesPerPage] = useState(10); // seteo los perros por pagina, depues usar variable para mostrar por cantidad elegida    
-    const indexOfLastexpediente = currentPage * expedientesPerPage // aca vale 0 a 14 = 15
-    const indexOfFirstexpediente = indexOfLastexpediente - expedientesPerPage // 0
+    const [infraccionesPerPage, setInfraccionesPerPage] = useState(10); // seteo los perros por pagina, depues usar variable para mostrar por cantidad elegida    
+    const indexOfLastinfracciones = currentPage * infraccionesPerPage // aca vale 0 a 14 = 15
+    const indexOfFirstinfracciones = indexOfLastinfracciones - infraccionesPerPage // 0
 
     //currentGames devuelve un arreglo q entra del 1 al 15
     //creo una constante de los Games en la pagina actual y me traigo el array del estado de los Games 
@@ -40,13 +42,13 @@ export default function ListInfraccion (){
     }
     // TRAIGO DEL ESTADO LOS Expedientes CUANDO EL COMPONENTE SE MONTA
      useEffect (()=>{
-        dispatch(getExpedientes());      
+        dispatch(getInfracciones());      
         // getListGenres para usar con filtrados por Genero
     },[dispatch])
     // PARA RESETEAR AL TOCAR EL BOTON volver a cargar los Expedientes
     function handleClick(p){
         p.preventDefault(); //PREVENTIVO PARA Q NO RECARGUE TODA LA PAGINA
-        dispatch(getExpedientes())
+        dispatch(getInfracciones())
     };
     // ORDENAMIENTO DE PAGINA ASCENDENTE O DESCENDENTE
     function handleSort(p){
@@ -62,7 +64,7 @@ export default function ListInfraccion (){
                 <div>
                     <br/>
                     
-                    <img height="150" src={require('./images/inpectorobras.jpg')}/>
+                    <img height="130" src={require('./images/inpectorobras.jpg')}/>
                     {/* <img height="200" src="./images/logoMuni.jpg" /> */}
                     {/* <img src='https://ciudaddecorrientes.gov.ar/sites/default/themes/ciudaddecorrientes/logo.png' height="110" alt="to home" /> */}
                 
@@ -77,9 +79,9 @@ export default function ListInfraccion (){
                         <option value='fecharegistrado'>Fecha Plano Registrado</option>
                     </select>   */}
                                      
-                    <Link to= '/IntimCreate'><Button  variant="contained" component="span">Cargar Infracción</Button></Link> <label> </label>
-                    <Button variant="contained" component="span"  onClick={p => {handleClick(p)}}>Recargar Infracciones</Button> <label> </label>  
-                    <Link to= '/Home'><Button variant="outlined">Volver Menu Principal</Button></Link>
+                    <Link to= '/IntimCreate'><Button  color='primary'>Cargar Infracción</Button></Link> <label> </label>
+                    <Button color='primary'  onClick={p => {handleClick(p)}}>Recargar Infracciones</Button> <label> </label>  
+                    <Link to= '/Home'><Button color='danger'>Volver Menu Principal</Button></Link>
                     <br/><br/>
                     <SearchBar
                     />  
@@ -93,26 +95,26 @@ export default function ListInfraccion (){
                 <div>
                 {/* Rompía pagina */}
                 <Paginado
-                        expedientesPerPage = {expedientesPerPage}
-                        allExpedientes={allExpedientes.length}
+                        expedientesPerPage = {infraccionesPerPage}
+                        allInfracciones={allInfracciones.length}
                         paginado = {paginado}                    
                  />
                 </div>
             <div>
-                {expedientes?.map ((p) =>{  // CON ? PREGUNTA SI EXISTE Y DESPUES MAPEA   
+                {infracciones?.map ((p) =>{  // CON ? PREGUNTA SI EXISTE Y DESPUES MAPEA   
                     return( 
                     <Fragment>                    
                         <div>                           
                             <Link 
                                 key={p.id}
-                                to={`/expedientes/${p.id}`}>
-                                <Card
-                                    numexpediente={p.numexpediente} 
+                                to={`/infracciones/${p.id}`}>
+                                <CardInfraccion
+                                    numacta={p.numacta} 
                                     // image={p.image ? p.image : p.image}
-                                    fechainicioentrada={p.fechainicioentrada}
-                                    adrema={p.adrema}  
-                                    estado={p.estado}  
-                                    iniciadornomyape={p.iniciadornomyape}
+                                    fechainfraccion={p.fechainfraccion}
+                                    infractor={p.infractor}  
+                                    domicilio={p.domicilio}  
+                                    // fotoinfraccion={p.fotoinfraccion}
                                 />                        
                             </Link>
                             {/* : (

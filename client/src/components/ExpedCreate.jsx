@@ -1,7 +1,9 @@
 import React from 'react';
 //import Button from '@material-ui/core/Button'; // importo estilo de boton
 import './styles/Creates.css'; // importo los styles de mi Home.css
-import Button from '@mui/material/Button';
+// import Button from '@mui/material/Button';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import {Button, Tablet, Container} from 'reactstrap'
 import SearchBar from './SearchBar';
 
 //IMPORTO PORQUE USAMOS HOOKS
@@ -120,8 +122,8 @@ export default function ExpedCreate (){
                 <div>
                     <img height="50" src={require('./images/logoMuni.png')}/>                
                     <h1 className="colorLetrasGris">SECCIÓN DE CREACIÓN DE EXPEDIENTES</h1> 
-                    <Link to= '/ListExpediente'><Button variant="contained" component="span"> Volver Lista Expedientes </Button></Link> <label> </label>
-                    <Link to= '/Home'><Button variant="outlined">Volver Menu Principal</Button></Link>                   
+                    <Link to= '/ListExpediente'><Button color='primary'> Volver Lista Expedientes </Button></Link> <label> </label>
+                    <Link to= '/Home'><Button color='danger'>Volver Menu Principal</Button></Link>                   
                     <br/><br/>
                     {/* <select className="selectfont">
                         <option value="" selected disabled hidden>ORDENAR</option>                

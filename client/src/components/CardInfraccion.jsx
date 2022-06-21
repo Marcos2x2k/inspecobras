@@ -2,7 +2,7 @@
 import React from "react";
 import './styles/Card.css'; // importo los styles de mi Card.css
 
-export default function Card({numacta, fechainfraccion, infractor, fotoinfraccion, domicilio }){ // platform
+export default function CardInfraccion({numacta, fechainfraccion, infractor, fotoinfraccion, domicilio }){ // platform
     
     // var genre2= []
     // if (genre) { 

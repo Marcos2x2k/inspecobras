@@ -1,7 +1,9 @@
 import React from 'react';
 //import Button from '@material-ui/core/Button'; // importo estilo de boton
 import './styles/Creates.css'; // importo los styles de mi Home.css
-import Button from '@mui/material/Button';
+// import Button from '@mui/material/Button';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import {Button, Tablet, Container} from 'reactstrap'
 import SearchBar from './SearchBar';
 
 //IMPORTO PORQUE USAMOS HOOKS
@@ -122,7 +124,7 @@ export default function InspecCreate (){
                         <option value='desc'>Fecha Plano Registrado</option>
                     </select>        */}
                     
-                    <Link to= '/Home'><button variant="contained" component="span">Volver Menu Principal</button></Link>  
+                    <Link to= '/Home'><button color="primary">Volver Menu Principal</button></Link>  
                     <br/><br/>
                 </div>
                 {/* <br /><br /> */}

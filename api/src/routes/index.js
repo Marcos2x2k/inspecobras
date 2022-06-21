@@ -47,6 +47,18 @@ router.get ('/expedientes', async (req,res) => {
     }   
 })
 
+router.get ('/infracciones', async (req,res) => {
+    const numinfracciones = req.query.name;
+    const infoTotali = await getAllInfracciones();
+    if(numinfracciones) {
+        const infraccionesnum = await infoTotal.filter(p => p.numinfraccion.toLowerCase().includes(numinfraccion.toLowerCase()))
+        res.status(200).send(infraccionesnum)
+        res.status(400).send('No se encuentra el Expediente Requerido')
+    }else{
+        res.status(200).send(infoTotali)
+    }   
+})
+
 router.get("/expedientes/:id", async (req, res) => {
     const id = req.params.id;
     const infoTotal = await getAllExpedientes();    
@@ -60,6 +72,24 @@ router.get("/expedientes/:id", async (req, res) => {
                 res.status(404).send('NO EXISTE Id del Expediente Requerido')        
     } 
 });
+
+router.get("/infracciones/:id", async (req, res) => {
+    const id = req.params.id;
+    const infoTotal = await getAllInfracciones();    
+    //console.log (infoTotal)
+    if (id){
+        const infId = await infoTotal.filter((p) => p.id == id)
+        
+        console.log(infId)        
+        expId.length ? 
+                res.status(200).send(infId) : 
+                res.status(404).send('NO EXISTE Id del Expediente Requerido')        
+    } 
+});
+
+
+// *************** post **************
+
 
 router.post('/newexpediente', async (req, res) => {
 
@@ -77,6 +107,7 @@ router.post('/newexpediente', async (req, res) => {
             superficiesubsueloplantabaja,
             superficieprimerpisoymaspisos,
             observaciones,
+            zona,
             permisobraoactainfrac
         } = req.body
 
@@ -94,6 +125,7 @@ router.post('/newexpediente', async (req, res) => {
             superficiesubsueloplantabaja,
             superficieprimerpisoymaspisos,
             observaciones,
+            zona,
             permisobraoactainfrac
         })
 
@@ -103,6 +135,7 @@ router.post('/newexpediente', async (req, res) => {
         //expedienteCreate.addExpediente(expedienteCreate)
         res.send('Expediente Nuevo Creado')
 })
+
 
 router.post('/newinspeccion', async (req, res) =>{
 
