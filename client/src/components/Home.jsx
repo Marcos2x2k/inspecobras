@@ -50,7 +50,7 @@ export default function Home() {
             <div>
 
                 <div>
-                    <img height="70" src={require('./images/logoMuni.png')} />
+                    <a href="/"><img height="80" src={require('./images/logoMuni.png')} /></a><br/><br/>
                     {/* <img src='https://ciudaddecorrientes.gov.ar/sites/default/themes/ciudaddecorrientes/logo.png' height="50" alt="to home" /> */}
 
                     <h1 className="colorLetrasamarillas">Menú del Sector de Inspección de Obras</h1>

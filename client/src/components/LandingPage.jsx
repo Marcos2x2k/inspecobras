@@ -6,10 +6,13 @@ export default function LandingPage(){
     return(
         <div>
             <br/>
-            <img height="110" src={require('./images/logoMuni.png')} alt="to home"/><br/><br/>
+            <img height="90" src={require('./images/logoMuni.png')} alt="to home"/> 
+            <label className='blanco'> ----------------- </label>
+            <img height="110" src={require('./images/logo redondo muni.png')} alt="to home"/>
+            <br/>
             {/* <img src='https://ciudaddecorrientes.gov.ar/sites/default/themes/ciudaddecorrientes/logo.png' alt="to home" /> */}
                 <h1 className="colorLetras">Bienvenidos a la App de Inspeciones Urbanas</h1>            
-                
+                <img src={require('./images/separadorpagina.png')}/><br/>
                 <Link to = '/home'>     
                     <br/>
                     <img className="logo"  src={require('./images/obras-y-gestion.png')} alt="to home"/>   
@@ -28,7 +31,7 @@ export default function LandingPage(){
             <img src="https://ciudaddecorrientes.gov.ar/sites/default/files/direccion_negro.png"/> */}
             <h5>TODOS LOS DERECHOS RESERVADOS • MUNICIPALIDAD DE LA CIUDAD DE CORRIENTES • © 2022</h5>
             
-            <h5><a href="https://www.linkedin.com/in/Marcos-Dacunda/" target="_blank">WebMaster: Marcos A. Dacunda G.</a></h5>            
+            <p><a href="https://www.linkedin.com/in/Marcos-Dacunda/" target="_blank">WebMaster: Marcos A. Dacunda G.</a></p>            
         </div>
     )
 }
