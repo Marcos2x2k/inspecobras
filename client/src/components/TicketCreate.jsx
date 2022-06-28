@@ -1,7 +1,8 @@
 import React from 'react';
 //import Button from '@material-ui/core/Button'; // importo estilo de boton
 import './styles/Creates.css'; // importo los styles de mi Home.css
-import Button from '@mui/material/Button';
+// import Button from '@mui/material/Button';
+import {Button, Tablet, Container} from 'reactstrap'
 import SearchBar from './SearchBar';
 
 //IMPORTO PORQUE USAMOS HOOKS
@@ -124,7 +125,8 @@ export default function TicketCreate (){
                 <div>
                     <img height="50" src={require('./images/logoMuni.png')}/>                     
                     {/* <img src='https://ciudaddecorrientes.gov.ar/sites/default/themes/ciudaddecorrientes/logo.png' alt="to home" />                 */}
-                    <h1 className="colorLetrasGris">SECCIÓN DE CREACIÓN DE TICKETS</h1>                    
+                    <h1 className="colorLetrasGris">SECCIÓN DE CREACIÓN DE TICKETS</h1>  
+                    <img className='logocorrientes' height="200" src={require('./images/fileserver.jpg')} /> <br/>                  
                     
                     {/* <select className="selectfont">
                         <option value="" selected disabled hidden>ORDENAR</option>                
@@ -133,8 +135,8 @@ export default function TicketCreate (){
                         <option value='desc'>Fecha Inicio Expediente</option>
                         <option value='desc'>Fecha Plano Registrado</option>
                     </select>        */}
-                    
-                    <Link to= '/Home'><button variant="contained" component="span">Volver Menu Principal</button></Link>  
+                    <Link to= '/ListTicket'><Button color='primary'> Ir Lista Ticket </Button></Link> <label> </label>                       
+                    <Link to= '/Home'><Button color='danger'>Volver Menu Principal</Button></Link>    
                     <br/><br/>
                 </div>
                 {/* <br /><br /> */}

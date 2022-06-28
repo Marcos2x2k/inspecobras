@@ -120,9 +120,10 @@ export default function ExpedCreate (){
         <div>        
             <div>             
                 <div>
-                    <img height="50" src={require('./images/logoMuni.png')}/>                
+                    <a href="/home"><img height="50" src={require('./images/logoMuni.png')} /></a><br/>                                 
                     <h1 className="colorLetrasGris">SECCIÓN DE CREACIÓN DE EXPEDIENTES</h1> 
-                    <Link to= '/ListExpediente'><Button color='primary'> Volver Lista Expedientes </Button></Link> <label> </label>
+                    <img className='logocorrientes' height="200" src={require('./images/fileserver.jpg')} /> <br/>
+                    <Link to= '/ListExpediente'><Button color='primary'> Ir Lista Expedientes </Button></Link> <label> </label>
                     <Link to= '/Home'><Button color='danger'>Volver Menu Principal</Button></Link>                   
                     <br/><br/>
                     {/* <select className="selectfont">
@@ -140,7 +141,7 @@ export default function ExpedCreate (){
                 <form onSubmit={(p) => handleSubmit(p)}>
                  <div>
                       <div>
-                        <br/><br/>
+                        <br/>
                         <label className='selectfont'> Nº Expediente: </label>
                         <input
                         type="text" 

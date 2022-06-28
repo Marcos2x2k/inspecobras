@@ -17,7 +17,7 @@ import { getExpedientes, setPage, orderByName } from '../actions/index.js';//Sie
 import { Link } from 'react-router-dom';
 
 //ME IMPORTO EL COMPONENTE Card y renderizo en linea 
-import Card from './Cards/Card';
+import CardTicket from './Cards/CardTicket';
 import SearchBar from './SearchBar';
 import Paginado from './Paginado';
 
@@ -58,73 +58,63 @@ export default function ListExpediente() {
         setOrden(`Ordenado ${p.target.value}`)  //es un estado local vacio, lo uso para modif estado local y renderize
     };
 
-    const listaExpedientes = [{
-            numexpediente: "2222Z2022",
-            fechainicioentrada:"12/12/12",
-            estado: "P/Inspeccion",
-            iniciadornomyape: "SOTOMAYOR ROBERTO",
-            domicilio:"ALMIRANTE BROWN Nº 2756",
-            adrema:"A1-16964-1",
-            directorobraoperitovisor:"ARQº ROBERTO JOSELOCHI",
-            destinodeobra:"VIVIENDA FAMILIAR",
-            superficieterreno:"250",
-            superficieaconstruir:"200",
-            superficiesubsueloplantabaja:"150",
-            superficieprimerpisoymaspisos:"0",
-            zona:"1Z",
-            observaciones:"RELEVAMIENTO Y CONFORME A OBRA",
-            permisobraoactainfrac:"p/Inspeccion"
-    }, {
-        numexpediente: "2323Z2021",
-        fechainicioentrada:"21/02/2020",
-        estado: "P/Reforma",
-        iniciadornomyape: "JUAN CARLOS AGUIRRE",
-        domicilio:"LaMadrid Nº 224",
-        adrema:"A1-321312-2",
-        directorobraoperitovisor:"ARQº DIEGO SOSA",
-        destinodeobra:"DEPOSITO",
-        superficieterreno:"2500",
-        superficieaconstruir:"1500",
-        superficiesubsueloplantabaja:"1500",
-        superficieprimerpisoymaspisos:"0",
-        zona:"1Z",
-        observaciones:"RELEVAMIENTO Y CONFORME A OBRA",
-        permisobraoactainfrac:"p/Inspeccion"
-}, {
-    numexpediente: "1123G2019",
-    fechainicioentrada:"12/12/19",
-    estado: "P/Inspeccion",
-    iniciadornomyape: "MAXIMILIANO OBRA",
-    domicilio:"GENERAL PAZ Nº 1234",
-    adrema:"A1-43234E-1",
-    directorobraoperitovisor:"ARQº LUIS FERNANDEZ",
-    destinodeobra:"VIVIENDA FAMILIAR",
-    superficieterreno:"550",
-    superficieaconstruir:"500",
-    superficiesubsueloplantabaja:"400",
-    superficieprimerpisoymaspisos:"100",
-    zona:"A4",
-    observaciones:"RELEVAMIENTO Y CONFORME A OBRA",
-    permisobraoactainfrac:"p/Inspeccion"
-},
-{
-    numexpediente: "2218Z2018",
-    fechainicioentrada:"03/01/18",
-    estado: "P/Inspeccion",
-    iniciadornomyape: "JESUS AMARILLA",
-    domicilio:"LOS TULIPANES Nº S/N",
-    adrema:"A1-345634-4",
-    directorobraoperitovisor:"ARQº JESUS AMARILLA",
-    destinodeobra:"NEGOCIO FAMILIAR",
-    superficieterreno:"250",
-    superficieaconstruir:"200",
-    superficiesubsueloplantabaja:"150",
-    superficieprimerpisoymaspisos:"0",
-    zona:"1Z",
-    observaciones:"RELEVAMIENTO Y CONFORME A OBRA",
-    permisobraoactainfrac:"p/Inspeccion"
-}]
-const infoTotal = listaExpedientes.concat(expedientes);
+    const listaticket = [
+        {
+        numticket: "2020",
+        iniciador: "Jose Ramirez",
+        ubicacion: "Las Heras Nº 2020",
+        adrema: "A1-343434-1",
+        directordeobra: "Carlos Rosendo",
+        destinodelaobra: "Viv.Familiar",
+        observaciones:"No Posee",
+        permisodeobranum :"1232A2020",
+        actasdeinfraccionnum: "123123",
+        fechaentradaainspecciones:"12/05/2020",
+        inspector:"Alberto Sanchez",
+        fechainspecccion:"02/06/2020",
+        intimacion:"5050",
+        infracciones:"1",
+        observacioneslugar:"Terreno Baldio",
+        pasea:"Sector Suelo",
+        fecha:"14/06/2020",
+    },{
+        numticket: "2020",
+        iniciador: "Jose Ramirez",
+        ubicacion: "Las Heras Nº 2020",
+        adrema: "A1-343434-1",
+        directordeobra: "Carlos Rosendo",
+        destinodelaobra: "Viv.Familiar",
+        observaciones:"No Posee",
+        permisodeobranum :"1232A2020",
+        actasdeinfraccionnum: "123123",
+        fechaentradaainspecciones:"12/05/2020",
+        inspector:"Alberto Sanchez",
+        fechainspecccion:"02/06/2020",
+        intimacion:"5050",
+        infracciones:"1",
+        observacioneslugar:"Terreno Baldio",
+        pasea:"Sector Suelo",
+        fecha:"14/06/2020",
+    },{
+        numticket: "2020",
+        iniciador: "Jose Ramirez",
+        ubicacion: "Las Heras Nº 2020",
+        adrema: "A1-343434-1",
+        directordeobra: "Carlos Rosendo",
+        destinodelaobra: "Viv.Familiar",
+        observaciones:"No Posee",
+        permisodeobranum :"1232A2020",
+        actasdeinfraccionnum: "123123",
+        fechaentradaainspecciones:"12/05/2020",
+        inspector:"Alberto Sanchez",
+        fechainspecccion:"02/06/2020",
+        intimacion:"5050",
+        infracciones:"1",
+        observacioneslugar:"Terreno Baldio",
+        pasea:"Sector Suelo",
+        fecha:"14/06/2020",
+    }]
+
     return (
 
         <div>
@@ -135,8 +125,8 @@ const infoTotal = listaExpedientes.concat(expedientes);
                     <img height="130" src={require('./images/logoexpedientes.jpg')} />
                     {/* <img height="200" src="./images/logoMuni.jpg" /> */}
                     {/* <img src='https://ciudaddecorrientes.gov.ar/sites/default/themes/ciudaddecorrientes/logo.png' height="110" alt="to home" /> */}
-                    
-                    <h1 className="colorLetras">Listado de Expedientes</h1>
+
+                    <h1 className="colorLetras">Listado de Tickets</h1>
                     {/* <Pagination count={10} color="primary" /> */}
 
                     {/* <select className="selectfont">
@@ -147,8 +137,8 @@ const infoTotal = listaExpedientes.concat(expedientes);
                         <option value='fecharegistrado'>Fecha Plano Registrado</option>
                     </select>   */}
 
-                    <Link to='/ExpedCreate'><Button color='primary'>CREAR EXPEDIENTE</Button></Link> <label> </label>
-                    <Button color='primary' onClick={p => { handleClick(p) }}>Recargar Exp.</Button> <label> </label>
+                    <Link to='/TicketCreate'><Button color='primary'>CARGAR TICKET</Button></Link> <label> </label>
+                    <Button color='primary' onClick={p => { handleClick(p) }}>Recargar Tickets</Button> <label> </label>
                     <Link to='/Home'><Button color="danger">Volver Menu Principal</Button></Link>
                     <br /><br />
                     <SearchBar
@@ -169,20 +159,20 @@ const infoTotal = listaExpedientes.concat(expedientes);
                     />
                 </div>
                 <div>
-                    {infoTotal?.map((p) => {  // CON ? PREGUNTA SI EXISTE Y DESPUES MAPEA   
+                    {listaticket?.map((p) => {  // CON ? PREGUNTA SI EXISTE Y DESPUES MAPEA   
                         return (
                             <Fragment>
                                 <div>
                                     <Link
                                         key={p.id}
                                         to={`/expedientes/${p.id}`}>
-                                        <Card
-                                            numexpediente={p.numexpediente}
+                                        <CardTicket
+                                            numticket={p.numticket}
                                             // image={p.image ? p.image : p.image}
-                                            fechainicioentrada={p.fechainicioentrada}
+                                            iniciador={p.iniciador}
+                                            ubicacion={p.ubicacion}
                                             adrema={p.adrema}
-                                            estado={p.estado}
-                                            iniciadornomyape={p.iniciadornomyape}
+                                            directordeobra={p.directordeobra}
                                         />
                                     </Link>
                                     {/* : (

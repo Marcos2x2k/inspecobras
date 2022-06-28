@@ -24,7 +24,7 @@ export default function SearchBar(){
             <form onSubmit={(p)=> handleSubmit(p)}> 
                 <input
                 type = 'text'
-                placeholder = "Buscar Expediente..."
+                placeholder = "Buscar..."
                 onChange={(p) => handInputChange(p)}                
             />
                 <button type='submit'>Buscar</button>

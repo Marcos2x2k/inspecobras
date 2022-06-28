@@ -115,7 +115,7 @@ export default function InspecCreate (){
                     {/* <img src='https://ciudaddecorrientes.gov.ar/sites/default/themes/ciudaddecorrientes/logo.png' alt="to home" /> */}
                 
                     <h1 className="colorLetrasGris">SECCIÓN DE CREACIÓN DE INSPECCIONES</h1>                    
-                    
+                    <img className='logocorrientes' height="200" src={require('./images/fileserver.jpg')} /> <br/>
                     {/* <select className="selectfont">
                         <option value="" selected disabled hidden>ORDENAR</option>                
                         <option value='asc'>Fecha</option>
@@ -123,8 +123,8 @@ export default function InspecCreate (){
                         <option value='desc'>Fecha Inicio Expediente</option>
                         <option value='desc'>Fecha Plano Registrado</option>
                     </select>        */}
-                    
-                    <Link to= '/Home'><button color="primary">Volver Menu Principal</button></Link>  
+                    <Link to= '/ListInspección'><Button color='primary'> Ir Lista Inspección </Button></Link> <label> </label>                       
+                    <Link to= '/Home'><Button color='danger'>Volver Menu Principal</Button></Link>  
                     <br/><br/>
                 </div>
                 {/* <br /><br /> */}

@@ -17,7 +17,7 @@ import { getExpedientes, setPage, orderByName } from '../actions/index.js';//Sie
 import { Link } from 'react-router-dom';
 
 //ME IMPORTO EL COMPONENTE Card y renderizo en linea 
-import Card from './Cards/Card';
+import CardInspeccion from './Cards/CardInspeccion';
 import SearchBar from './SearchBar';
 import Paginado from './Paginado';
 
@@ -58,73 +58,47 @@ export default function ListExpediente() {
         setOrden(`Ordenado ${p.target.value}`)  //es un estado local vacio, lo uso para modif estado local y renderize
     };
 
-    const listaExpedientes = [{
-            numexpediente: "2222Z2022",
-            fechainicioentrada:"12/12/12",
-            estado: "P/Inspeccion",
-            iniciadornomyape: "SOTOMAYOR ROBERTO",
-            domicilio:"ALMIRANTE BROWN Nº 2756",
-            adrema:"A1-16964-1",
-            directorobraoperitovisor:"ARQº ROBERTO JOSELOCHI",
-            destinodeobra:"VIVIENDA FAMILIAR",
-            superficieterreno:"250",
-            superficieaconstruir:"200",
-            superficiesubsueloplantabaja:"150",
-            superficieprimerpisoymaspisos:"0",
-            zona:"1Z",
-            observaciones:"RELEVAMIENTO Y CONFORME A OBRA",
-            permisobraoactainfrac:"p/Inspeccion"
-    }, {
-        numexpediente: "2323Z2021",
-        fechainicioentrada:"21/02/2020",
-        estado: "P/Reforma",
-        iniciadornomyape: "JUAN CARLOS AGUIRRE",
-        domicilio:"LaMadrid Nº 224",
-        adrema:"A1-321312-2",
-        directorobraoperitovisor:"ARQº DIEGO SOSA",
-        destinodeobra:"DEPOSITO",
-        superficieterreno:"2500",
-        superficieaconstruir:"1500",
-        superficiesubsueloplantabaja:"1500",
-        superficieprimerpisoymaspisos:"0",
-        zona:"1Z",
-        observaciones:"RELEVAMIENTO Y CONFORME A OBRA",
-        permisobraoactainfrac:"p/Inspeccion"
-}, {
-    numexpediente: "1123G2019",
-    fechainicioentrada:"12/12/19",
-    estado: "P/Inspeccion",
-    iniciadornomyape: "MAXIMILIANO OBRA",
-    domicilio:"GENERAL PAZ Nº 1234",
-    adrema:"A1-43234E-1",
-    directorobraoperitovisor:"ARQº LUIS FERNANDEZ",
-    destinodeobra:"VIVIENDA FAMILIAR",
-    superficieterreno:"550",
-    superficieaconstruir:"500",
-    superficiesubsueloplantabaja:"400",
-    superficieprimerpisoymaspisos:"100",
-    zona:"A4",
-    observaciones:"RELEVAMIENTO Y CONFORME A OBRA",
-    permisobraoactainfrac:"p/Inspeccion"
-},
-{
-    numexpediente: "2218Z2018",
-    fechainicioentrada:"03/01/18",
-    estado: "P/Inspeccion",
-    iniciadornomyape: "JESUS AMARILLA",
-    domicilio:"LOS TULIPANES Nº S/N",
-    adrema:"A1-345634-4",
-    directorobraoperitovisor:"ARQº JESUS AMARILLA",
-    destinodeobra:"NEGOCIO FAMILIAR",
-    superficieterreno:"250",
-    superficieaconstruir:"200",
-    superficiesubsueloplantabaja:"150",
-    superficieprimerpisoymaspisos:"0",
-    zona:"1Z",
-    observaciones:"RELEVAMIENTO Y CONFORME A OBRA",
-    permisobraoactainfrac:"p/Inspeccion"
-}]
-const infoTotal = listaExpedientes.concat(expedientes);
+    const listainspecciones = [{
+        numexpediente:"xxxxxxx",
+        fechaentradinspec:"12/12/2020",
+        inspecfecha:"20/01/2021",
+        inspector:"xxxxxxx xxxxxxx",
+        fotoinspeccion:"Foto",
+        intimacion:"105025",
+        infracciones:"No Posee",
+        observaciones:"No Posee",
+        paseanumdestino:"xxxxxxxxxxxxxx",
+        fecha:"20/02/2021",
+        pasea:"xxxxxxx",
+        fechapasea:"20/08/2022"
+    },{
+        numexpediente:"xxxxxxx",
+        fechaentradinspec:"12/12/2020",
+        inspecfecha:"20/01/2021",
+        inspector:"xxxxxxx xxxxxxx",
+        fotoinspeccion:"Foto",
+        intimacion:"105025",
+        infracciones:"No Posee",
+        observaciones:"No Posee",
+        paseanumdestino:"xxxxxxxxxxxxxx",
+        fecha:"20/02/2021",
+        pasea:"xxxxxxx",
+        fechapasea:"20/08/2022"
+    },{
+        numexpediente:"xxxxxxx",
+        fechaentradinspec:"12/12/2020",
+        inspecfecha:"20/01/2021",
+        inspector:"xxxxxxx xxxxxxx",
+        fotoinspeccion:"Foto",
+        intimacion:"105025",
+        infracciones:"No Posee",
+        observaciones:"No Posee",
+        paseanumdestino:"xxxxxxxxxxxxxx",
+        fecha:"20/02/2021",
+        pasea:"xxxxxxx",
+        fechapasea:"20/08/2022"
+    }]
+
     return (
 
         <div>
@@ -135,8 +109,8 @@ const infoTotal = listaExpedientes.concat(expedientes);
                     <img height="130" src={require('./images/logoexpedientes.jpg')} />
                     {/* <img height="200" src="./images/logoMuni.jpg" /> */}
                     {/* <img src='https://ciudaddecorrientes.gov.ar/sites/default/themes/ciudaddecorrientes/logo.png' height="110" alt="to home" /> */}
-                    
-                    <h1 className="colorLetras">Listado de Expedientes</h1>
+
+                    <h1 className="colorLetras">Listado de Inspecciones</h1>
                     {/* <Pagination count={10} color="primary" /> */}
 
                     {/* <select className="selectfont">
@@ -147,8 +121,8 @@ const infoTotal = listaExpedientes.concat(expedientes);
                         <option value='fecharegistrado'>Fecha Plano Registrado</option>
                     </select>   */}
 
-                    <Link to='/ExpedCreate'><Button color='primary'>CREAR EXPEDIENTE</Button></Link> <label> </label>
-                    <Button color='primary' onClick={p => { handleClick(p) }}>Recargar Exp.</Button> <label> </label>
+                    <Link to='/InspecCreate'><Button color='primary'>CARGAR INSPECCION</Button></Link> <label> </label>
+                    <Button color='primary' onClick={p => { handleClick(p) }}>Recargar Inspeciones</Button> <label> </label>
                     <Link to='/Home'><Button color="danger">Volver Menu Principal</Button></Link>
                     <br /><br />
                     <SearchBar
@@ -169,20 +143,22 @@ const infoTotal = listaExpedientes.concat(expedientes);
                     />
                 </div>
                 <div>
-                    {infoTotal?.map((p) => {  // CON ? PREGUNTA SI EXISTE Y DESPUES MAPEA   
+                    {listainspecciones?.map((p) => {  // CON ? PREGUNTA SI EXISTE Y DESPUES MAPEA   
                         return (
                             <Fragment>
                                 <div>
                                     <Link
                                         key={p.id}
                                         to={`/expedientes/${p.id}`}>
-                                        <Card
+                                        <CardInspeccion
                                             numexpediente={p.numexpediente}
                                             // image={p.image ? p.image : p.image}
-                                            fechainicioentrada={p.fechainicioentrada}
-                                            adrema={p.adrema}
-                                            estado={p.estado}
-                                            iniciadornomyape={p.iniciadornomyape}
+                                            fechaentradinspec={p.fechaentradinspec}
+                                            inspecfecha={p.inspecfecha}
+                                            inspector={p.inspector}
+                                            fotoinspeccion={p.fotoinspeccion}
+                                            intimacion={p.intimacion}
+                                            infracciones={p.infracciones}
                                         />
                                     </Link>
                                     {/* : (

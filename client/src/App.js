@@ -28,8 +28,10 @@ import IntimCreate from './components/IntimCreate.jsx';
 import ListExpediente from './components/ListExpediente.jsx'
 import ListInfraccion from './components/ListInfraccion.jsx'
 import Details from './components/Details.jsx'
-//import Details from './components/Details.jsx'
-
+import Estadisticas from './components/Estadisticas.jsx'
+import Construccion from './components/Construccion.jsx'
+import ListTicket from './components/ListTicket.jsx'
+import ListInspeccion from './components/ListInspeccion.jsx'
 
 //function App() { // me gusta mas trabajar con constantes
 const App = () => {
@@ -49,6 +51,11 @@ const App = () => {
           <Route  path='/ListExpediente' element={<ListExpediente/>}/>
           <Route  path='/ListInfraccion' element={<ListInfraccion/>}/>
           <Route  path='/expedientes/:id' element={<Details/>}/>
+          <Route  path='/Estadisticas' element={<Estadisticas/>}/>
+          <Route  path='/Construccion' element={<Construccion/>}/>
+          <Route  path='/ListTicket' element={<ListTicket/>}/>
+          <Route  path='/ListInspeccion' element={<ListInspeccion/>}/>
+          
           {/* <Route exact path='/expedientes/:id' element={<Details/>}/> */}
           {/* <Route path='/expedcreate' element={<ExpedCreate/>}/>         */}
         </Routes>   

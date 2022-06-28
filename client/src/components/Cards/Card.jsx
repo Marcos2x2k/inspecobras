@@ -1,6 +1,6 @@
 //Card solo renderiza lo que yo necesito
 import React from "react";
-import './styles/Card.css'; // importo los styles de mi Card.css
+import '../styles/Card.css'; // importo los styles de mi Card.css
 
 export default function Card({numexpediente, fechainicioentrada, adrema, estado, iniciadornomyape }){ // platform
     

@@ -23,7 +23,7 @@ import {Link} from 'react-router-dom';
 // import SearchBar from './SearchBar';
 // import Paginado from './Paginado';
 
-export default function Home (){ 
+export default function Infracciones (){ 
         const [errors, setErrors] = useState({});
         const dispatch = useDispatch();    
         const navigate = useNavigate();
@@ -123,7 +123,7 @@ export default function Home (){
                     {/* <img src='https://ciudaddecorrientes.gov.ar/sites/default/themes/ciudaddecorrientes/logo.png' alt="to home" /> */}
                 
                     <h1 className="colorLetrasGris">SECCIÓN DE CARGA DE INFRACCIONES</h1>                    
-                    
+                    <img className='logocorrientes' height="200" src={require('./images/fileserver.jpg')} /> <br/>
                     {/* <select className="selectfont">
                         <option value="" selected disabled hidden>ORDENAR</option>                
                         <option value='asc'>Fecha</option>
@@ -131,7 +131,7 @@ export default function Home (){
                         <option value='desc'>Fecha Inicio Expediente</option>
                         <option value='desc'>Fecha Plano Registrado</option>
                     </select>        */}
-                    <Link to= '/ListInfraccion'><Button  color='primary'>Volver Lista Infracciones</Button></Link> <label> </label> 
+                    <Link to= '/ListInfraccion'><Button  color='primary'>Ir Lista Infracciones</Button></Link> <label> </label> 
                     <Link to= '/Home'><Button color='danger'>Volver Menu Principal</Button></Link> <label> </label> 
                     
                     <br/><br/>

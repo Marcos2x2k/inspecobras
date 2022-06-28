@@ -1,6 +1,6 @@
 //Card solo renderiza lo que yo necesito
 import React from "react";
-import './styles/Card.css'; // importo los styles de mi Card.css
+import '../styles/Card.css'; // importo los styles de mi Card.css
 
 export default function CardInfraccion({numacta, fechainfraccion, infractor, fotoinfraccion, domicilio }){ // platform
     
@@ -31,7 +31,8 @@ export default function CardInfraccion({numacta, fechainfraccion, infractor, fot
                     <h3 class="headingRojo"> {domicilio}</h3>
                 </div>      
                 <p> </p>
-                <img src="https://ciudaddecorrientes.gov.ar/sites/default/modules/custom/frontpage_sections/front_varios/icons/consulta-de-infracciones.png?4443" alt="img not found" width = "130px"/>
+                <img className='logomulta' src={require('../images/Multa.jpg')} alt="img not found" width = "150px"/>
+                {/* <img src="https://ciudaddecorrientes.gov.ar/sites/default/modules/custom/frontpage_sections/front_varios/icons/consulta-de-infracciones.png?4443" alt="img not found" width = "130px"/> */}
                 <h5 class="blanco"> ------------------------------------------------------------------------ </h5>
             </div>
         </div>)

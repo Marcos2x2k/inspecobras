@@ -3,12 +3,12 @@ const {DataTypes} = require('sequelize')
 
 module.exports = (sequelize) => {
     sequelize.define('ticket', {
-        // id:{
-        // type: DataTypes.UUID,
-        // defaultValue: DataTypes.UUIDV4,
-        // primaryKey: true,
-        // allowNull: false
-        // },
+        id:{
+        type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV4,
+        primaryKey: true,
+        allowNull: false
+        },
         numticket:{
             type: DataTypes.STRING,
             allowNull: true
