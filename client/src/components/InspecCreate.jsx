@@ -13,34 +13,35 @@ function InspecCreate() {
       intimacion: 105025,
       inspecfecha:"20/01/2021",
       inspector:"José Romero",
+      vencintimacion:"22/01/2019"
     },
     { id: 2, numexpediente: "1221P2019", intimacion: 225,
     inspecfecha:"20/01/2019",
-    inspector:"Carlos Soto", },
+    inspector:"Carlos Soto", vencintimacion:"22/01/2019" },
     { id: 3, numexpediente: "1561P2020", intimacion: 216,
     inspecfecha:"20/01/2021",
-    inspector:"Marcelos Alegre", },
+    inspector:"Marcelos Alegre", vencintimacion:"22/01/2019" },
     { id: 4, numexpediente: "1289P2018", intimacion: 216,
     inspecfecha:"20/01/2018",
-    inspector:"Fabián Zacarias", },
+    inspector:"Fabián Zacarias", vencintimacion:"22/01/2019" },
     { id: 5, numexpediente: "1037P2017", intimacion: 207,
     inspecfecha:"20/01/2017",
-    inspector:"Martín Mesa", },
+    inspector:"Martín Mesa", vencintimacion:"22/01/2019" },
     { id: 6, numexpediente: "1221P2016", intimacion: 195,
     inspecfecha:"20/01/2016",
-    inspector:"Agustin Sotomayor", },
+    inspector:"Agustin Sotomayor", vencintimacion:"22/01/2019"},
     { id: 7, numexpediente: "1221P2021", intimacion: 191,
     inspecfecha:"09/06/2021",
-    inspector:"Carlos Samudio", },
+    inspector:"Carlos Samudio", vencintimacion:"22/01/2019"},
     { id: 8, numexpediente: "1221P2020", intimacion: 190,
     inspecfecha:"20/01/2020",
-    inspector:"Armando Encina", },
+    inspector:"Armando Encina", vencintimacion:"22/01/2019"},
     { id: 9, numexpediente: "1229P2015", intimacion: 190,
     inspecfecha:"20/01/2015",
-    inspector:"Marcos Romero", },
+    inspector:"Marcos Romero", vencintimacion:"22/01/2019"},
     { id: 10, numexpediente: "1221P2022", intimacion: 186,
     inspecfecha:"20/01/2021",
-    inspector:"Maximiliano Ayala", },
+    inspector:"Maximiliano Ayala", vencintimacion:"22/01/2019"},
   ];
   const listainspecciones = [{
     numexpediente:"xxxxxxx",
@@ -94,6 +95,7 @@ function InspecCreate() {
     intimacion: '',
     inspecfecha:'',
     inspector:'',
+    vencintimacion:""
   });
 
   const seleccionarPais=(elemento, caso)=>{
@@ -116,7 +118,8 @@ setExpedienteSeleccionado(elemento);
         intimacion.intimacion=ExpedienteSeleccionado.intimacion;
         intimacion.numexpediente=ExpedienteSeleccionado.numexpediente;
         intimacion.inspecfecha=ExpedienteSeleccionado.inspecfecha;
-        intimacion.inspector=ExpedienteSeleccionado.inspector;    
+        intimacion.inspector=ExpedienteSeleccionado.inspector; 
+        intimacion.vencintimacion=ExpedienteSeleccionado.vencintimacion;   
       }
     });  
     setData(dataNueva);
@@ -159,8 +162,9 @@ setExpedienteSeleccionado(elemento);
                         <option value='desc'>Fecha Plano Registrado</option>
                     </select>        */}
                     <button className="btn btn-success" onClick={()=>abrirModalInsertar()}>Crear Inspección</button> {" - "}
-                    <Link to= '/ListInfraccion'><Button  color='primary'>Ir Lista Inspecciones</Button></Link> {" - "} 
-                    <Link to= '/Home'><Button color='danger'>Volver Menu Principal</Button></Link> {" - "} 
+                    <button className="btn btn-danger" onClick={()=>abrirModalInsertar()}>Crear Multa</button> {" - "}                    
+                    <Link to= '/ListInfraccion'><Button  color='secondary'>Ir Lista Inspecciones</Button></Link> {" - "} 
+                    <Link to= '/Home'><Button color='primary'>Volver Menu Principal</Button></Link> {" - "} 
                     <img src={require('./images/separadorpagina.png')} />
       {/* <h2>Países en los que la gente pasa más tiempo en redes sociales (2019)</h2> */}
       {/* <br /> */}
@@ -171,9 +175,10 @@ setExpedienteSeleccionado(elemento);
           <tr>
             {/* <th>ID</th> */}
             <th>numero de expediente</th>
-            <th>Inspección</th>
+            <th>Intimación</th>
             <th>Fecha Inspección</th>
             <th>Inspector</th>
+            <th>Vencimiento Intimación</th>
           </tr>
         </thead>
         <tbody>
@@ -184,6 +189,7 @@ setExpedienteSeleccionado(elemento);
               <td>{elemento.intimacion}</td>
               <td>{elemento.inspecfecha}</td>
               <td>{elemento.inspector}</td>
+              <td>{elemento.vencintimacion}</td>
               <td><button className="btn btn-primary" onClick={()=>seleccionarPais(elemento, 'Editar')}>Editar</button> {"   "} 
               <button className="btn btn-danger" onClick={()=>seleccionarPais(elemento, 'Eliminar')}>Eliminar</button></td>
             </tr>
@@ -200,14 +206,14 @@ setExpedienteSeleccionado(elemento);
         </ModalHeader>
         <ModalBody>
           <div className="form-group">
-            <label>ID</label>
+            {/* <label>ID</label>
             <input
               className="form-control"
               readOnly
               type="text"
               name="id"
               value={ExpedienteSeleccionado && ExpedienteSeleccionado.id}
-            />
+            /> */}
             <br />
 
             <label>Expediente</label>
@@ -215,16 +221,18 @@ setExpedienteSeleccionado(elemento);
               className="form-control"
               type="text"
               name="numexpediente"
+              readOnly
               value={ExpedienteSeleccionado && ExpedienteSeleccionado.numexpediente}
               onChange={handleChange}
             />
             <br />
 
-            <label>Inspección</label>
+            <label>Intimación</label>
             <input
               className="form-control"
               type="text"
               name="intimacion"
+              readOnly
               value={ExpedienteSeleccionado && ExpedienteSeleccionado.intimacion}
               onChange={handleChange}
             />
@@ -234,6 +242,7 @@ setExpedienteSeleccionado(elemento);
               className="form-control"
               type="text"
               name="inspecfecha"
+              readOnly
               value={ExpedienteSeleccionado && ExpedienteSeleccionado.inspecfecha}
               onChange={handleChange}
             />
@@ -246,6 +255,16 @@ setExpedienteSeleccionado(elemento);
               value={ExpedienteSeleccionado && ExpedienteSeleccionado.inspector}
               onChange={handleChange}
             />
+            <br />
+            <label>Vencimiento Intimación</label>
+            <input
+              className="form-control"
+              type="text"
+              name="inspector"
+              value={ExpedienteSeleccionado && ExpedienteSeleccionado.vencintimacion}
+              onChange={handleChange}
+            />
+            
             <br />
           </div>
         </ModalBody>
@@ -265,7 +284,10 @@ setExpedienteSeleccionado(elemento);
 
       <Modal isOpen={modalEliminar}>
         <ModalBody>
-          Estás Seguro que deseas eliminar el Expediente/Intimación {ExpedienteSeleccionado && ExpedienteSeleccionado.numexpediente}
+
+          Estás Seguro que deseas eliminar la Intimación Nº {ExpedienteSeleccionado && ExpedienteSeleccionado.intimacion}
+          <br/>
+          del Expediente Nº {ExpedienteSeleccionado && ExpedienteSeleccionado.numexpediente}
         </ModalBody>
         <ModalFooter>
           <button className="btn btn-danger" onClick={()=>eliminar()}>
@@ -284,22 +306,21 @@ setExpedienteSeleccionado(elemento);
         <Modal isOpen={modalInsertar}>
         <ModalHeader>
           <div>
-            <h3>Insertar Expediente/Intimación</h3>
+            <h3>Insertar Intimación</h3>
           </div>
         </ModalHeader>
         <ModalBody>
           <div className="form-group">
-            <label>ID</label>
+            {/* <label>ID</label>
             <input
               className="form-control"
               readOnly
               type="text"
               name="id"
               value={data[data.length-1].id+1}
-            />
+            /> */}
             <br />
-
-            <label>Expediente</label>
+            <label>Expediente Nº</label>
             <input
               className="form-control"
               type="text"
@@ -308,13 +329,39 @@ setExpedienteSeleccionado(elemento);
               onChange={handleChange}
             />
             <br />
-
-            <label>Intimación</label>
+            <label>Intimación Nº</label>
             <input
               className="form-control"
               type="text"
               name="intimacion"
               value={ExpedienteSeleccionado ? ExpedienteSeleccionado.intimacion: ''}
+              onChange={handleChange}
+            />
+            <br />
+            <label>Fecha Intimación (mes/dia/año)</label>
+            <input
+              className="form-control"
+              type="text"
+              name="inspecfecha"
+              value={ExpedienteSeleccionado ? ExpedienteSeleccionado.inspecfecha: ''}
+              onChange={handleChange}
+            />
+            <br />
+            <label>Inspector</label>
+            <input
+              className="form-control"
+              type="text"
+              name="inspector"
+              value={ExpedienteSeleccionado ? ExpedienteSeleccionado.inspector: ''}
+              onChange={handleChange}
+            />
+            <br />
+            <label>Vencimiento Intimación</label>
+            <input
+              className="form-control"
+              type="text"
+              name="vencintimacion"
+              value={ExpedienteSeleccionado ? ExpedienteSeleccionado.vencintimacion: ''}
               onChange={handleChange}
             />
             <br />
