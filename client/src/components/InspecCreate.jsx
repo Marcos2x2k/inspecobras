@@ -269,6 +269,9 @@ setExpedienteSeleccionado(elemento);
           </div>
         </ModalBody>
         <ModalFooter>
+         <button className="btn btn-success" onClick={()=>editar()}>
+            Modo Admin
+          </button>
           <button className="btn btn-primary" onClick={()=>editar()}>
             Actualizar
           </button>
