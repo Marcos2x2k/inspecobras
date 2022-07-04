@@ -2,7 +2,7 @@
 import React from "react";
 import '../styles/Card.css'; // importo los styles de mi Card.css
 
-export default function Card({numexpediente, fechainicioentrada, adrema, estado, iniciadornomyape }){ // platform
+export default function Card({numexpediente, fechainicioentrada, adrema, estado, iniciadornomyape, fotoexpediente }){ // platform
     
     // var genre2= []
     // if (genre) { 
@@ -31,7 +31,8 @@ export default function Card({numexpediente, fechainicioentrada, adrema, estado,
                     <h3 class="headingRojo"> {estado}</h3> 
                 </div>                 
                 <p> </p>
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnyWAaTFapVC--3RYbSrGnlOPepq00cPmRZw&usqp=CAU" alt="img not found" width = "200px" height="100px"/>
+                <img className='miniaturaimagen' src={fotoexpediente} alt="img not found" width = "200px" height="100px"/>
+                {/* <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnyWAaTFapVC--3RYbSrGnlOPepq00cPmRZw&usqp=CAU" alt="img not found" width = "200px" height="100px"/> */}
                 <h5 class="blanco"> ------------------------------------------------------------------------ </h5>
             </div>
         </div>)

@@ -32,6 +32,7 @@ import Estadisticas from './components/Estadisticas.jsx'
 import Construccion from './components/Construccion.jsx'
 import ListTicket from './components/ListTicket.jsx'
 import ListInspeccion from './components/ListInspeccion.jsx'
+import ListIntimacion from './components/ListIntimacion.jsx'
 
 //function App() { // me gusta mas trabajar con constantes
 const App = () => {
@@ -55,7 +56,7 @@ const App = () => {
           <Route  path='/Construccion' element={<Construccion/>}/>
           <Route  path='/ListTicket' element={<ListTicket/>}/>
           <Route  path='/ListInspeccion' element={<ListInspeccion/>}/>
-          
+          <Route  path='/ListIntimacion' element={<ListIntimacion/>}/>
           {/* <Route exact path='/expedientes/:id' element={<Details/>}/> */}
           {/* <Route path='/expedcreate' element={<ExpedCreate/>}/>         */}
         </Routes>   

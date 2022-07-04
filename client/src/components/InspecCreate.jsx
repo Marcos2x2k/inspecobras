@@ -2,11 +2,11 @@ import React, {useState} from 'react';
 import logo from './styles/logo.svg';
 import './styles/App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Modal, ModalBody, ModalHeader, ModalFooter, Button} from 'reactstrap';
+import {Modal, ModalBody, ModalHeader, ModalFooter, Button, Label} from 'reactstrap';
 import {Link} from 'react-router-dom';
 import { applyMiddleware } from 'redux';
 
-const upload = require('./libs/storage')
+// const upload = require('./libs/storage')
 // import multer from 'multer';
 
 // const multer = require ('multer')
@@ -52,46 +52,6 @@ function InspecCreate() {
     inspecfecha:"20/01/2021",
     inspector:"Maximiliano Ayala", vencintimacion:"22/01/2019", fotoinspeccion:""},
   ];
-//   const listainspecciones = [{
-//     numexpediente:"xxxxxxx",
-//     fechaentradinspec:"12/12/2020",
-//     inspecfecha:"20/01/2021",
-//     inspector:"xxxxxxx xxxxxxx",
-//     fotoinspeccion:"Foto",
-//     intimacion:"105025",
-//     infracciones:"No Posee",
-//     observaciones:"No Posee",
-//     paseanumdestino:"xxxxxxxxxxxxxx",
-//     fecha:"20/02/2021",
-//     pasea:"xxxxxxx",
-//     fechapasea:"20/08/2022"
-// },{
-//     numexpediente:"xxxxxxx",
-//     fechaentradinspec:"12/12/2020",
-//     inspecfecha:"20/01/2021",
-//     inspector:"xxxxxxx xxxxxxx",
-//     fotoinspeccion:"Foto",
-//     intimacion:"105025",
-//     infracciones:"No Posee",
-//     observaciones:"No Posee",
-//     paseanumdestino:"xxxxxxxxxxxxxx",
-//     fecha:"20/02/2021",
-//     pasea:"xxxxxxx",
-//     fechapasea:"20/08/2022"
-// },{
-//     numexpediente:"xxxxxxx",
-//     fechaentradinspec:"12/12/2020",
-//     inspecfecha:"20/01/2021",
-//     inspector:"xxxxxxx xxxxxxx",
-//     fotoinspeccion:"Foto",
-//     intimacion:"105025",
-//     infracciones:"No Posee",
-//     observaciones:"No Posee",
-//     paseanumdestino:"xxxxxxxxxxxxxx",
-//     fecha:"20/02/2021",
-//     pasea:"xxxxxxx",
-//     fechapasea:"20/08/2022"
-// }]
 
   const [data, setData] = useState(dataExpedientes);
   const [modalEditar, setModalEditar] = useState(false);
@@ -162,8 +122,8 @@ setExpedienteSeleccionado(elemento);
                     <a href="/home"><img height="50" src={require('./images/logoMuni.png')} /></a><br/>    
                     {/* <img src='https://ciudaddecorrientes.gov.ar/sites/default/themes/ciudaddecorrientes/logo.png' alt="to home" /> */}
                 
-                    <h1 className="colorLetrasGris">SECCIÓN DE CARGA DE INSPECCIONES</h1>                    
-                    <img className='logocorrientes' height="200" src={require('./images/fileserver.jpg')} /> <br/>
+                    <h2 className="colorLetrasGris">SECCIÓN DE CARGA DE MULTAS/INTIMACIONES</h2>                    
+                    <img className='logocorrientes' height="200" src={require('./images/Multa-1.jpg')} /> <br/><br/>
                     {/* <select className="selectfont">
                         <option value="" selected disabled hidden>ORDENAR</option>                
                         <option value='asc'>Fecha</option>
@@ -171,15 +131,18 @@ setExpedienteSeleccionado(elemento);
                         <option value='desc'>Fecha Inicio Expediente</option>
                         <option value='desc'>Fecha Plano Registrado</option>
                     </select>        */}
-                    <button className="btn btn-success" onClick={()=>abrirModalInsertar()}>Crear Inspección</button> {" - "}
-                    <button className="btn btn-danger" onClick={()=>abrirModalInsertar()}>Crear Multa</button> {" - "}                    
-                    <Link to= '/ListInfraccion'><Button  color='secondary'>Ir Lista Inspecciones</Button></Link> {" - "} 
+                    
+                    {/* <Link to= '/ListInfraccion'><Button  color='secondary'>Lista Multas</Button></Link> {" - "}  */}
+                    {/* <button className="btn btn-success" onClick={()=>abrirModalInsertar()}>Crear Intimación</button> {" - "} */}
+                    <button className="btn btn-danger" onClick={()=>abrirModalInsertar()}>Crear Multa/Infracción</button> {" - "}
                     <Link to= '/Home'><Button color='primary'>Volver Menu Principal</Button></Link> {" - "} 
-                    <img src={require('./images/separadorpagina.png')} />
+                    <Link to= '/ListIntimacion'><Button  color='secondary'>Lista Instimaciones</Button></Link> {" - "} 
+                    <img src={require('./images/separadorpagina.png')} /> <br/>
+                    <h1 className="">Lista de Multas</h1>                     
       {/* <h2>Países en los que la gente pasa más tiempo en redes sociales (2019)</h2> */}
       {/* <br /> */}
     
-    <br /><br />
+    
       <table className="table table-bordered">
         <thead>
           <tr>
@@ -319,7 +282,7 @@ setExpedienteSeleccionado(elemento);
         <Modal isOpen={modalInsertar}>
         <ModalHeader>
           <div>
-            <h3>Insertar Intimación</h3>
+            <h3>Acta de Infracción/Multa</h3>
           </div>
         </ModalHeader>
         <ModalBody>

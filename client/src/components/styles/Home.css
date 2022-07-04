@@ -39,7 +39,8 @@
   }
 
     .logocorrientes{
-      border-radius:2000px;
+      border-radius:80px;
+      opacity: 0.8;
       /* border: 3px solid black;    */
   }
 

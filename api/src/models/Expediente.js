@@ -88,5 +88,9 @@ module.exports = (sequelize) => {
       allowNull: true,
       defaultValue: "No Posee"
     },
+    fotoexpediente:{
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
   });
 };

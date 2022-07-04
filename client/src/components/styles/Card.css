@@ -63,3 +63,8 @@
       .blanco{
         color:rgb(255, 255, 255)
       }
+
+      .miniaturaimagen{
+        border-radius:10px;
+        border: 2px solid black;
+    }

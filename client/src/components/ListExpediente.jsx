@@ -73,7 +73,8 @@ export default function ListExpediente() {
             superficieprimerpisoymaspisos:"0",
             zona:"1Z",
             observaciones:"RELEVAMIENTO Y CONFORME A OBRA",
-            permisobraoactainfrac:"p/Inspeccion"
+            permisobraoactainfrac:"p/Inspeccion",
+            fotoexpediente:"https://resizer.glanacion.com/resizer/6tyJgUJUFqTuEpSotiR7u10cvRU=/768x0/filters:format(webp):quality(80)/cloudfront-us-east-1.images.arcpublishing.com/lanacionar/BEJIF6ZS75BFVHJZU72YBZLO5A.jpg"
     }, {
         numexpediente: "2323Z2021",
         fechainicioentrada:"21/02/2020",
@@ -89,7 +90,8 @@ export default function ListExpediente() {
         superficieprimerpisoymaspisos:"0",
         zona:"1Z",
         observaciones:"RELEVAMIENTO Y CONFORME A OBRA",
-        permisobraoactainfrac:"p/Inspeccion"
+        permisobraoactainfrac:"p/Inspeccion",
+        fotoexpediente:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4UVudBSvwFfvrF1-BAwEA6cp_gl1bw16eug&usqp=CAU"
 }, {
     numexpediente: "1123G2019",
     fechainicioentrada:"12/12/19",
@@ -105,7 +107,8 @@ export default function ListExpediente() {
     superficieprimerpisoymaspisos:"100",
     zona:"A4",
     observaciones:"RELEVAMIENTO Y CONFORME A OBRA",
-    permisobraoactainfrac:"p/Inspeccion"
+    permisobraoactainfrac:"p/Inspeccion",
+    fotoexpediente:"https://imagenes.elpais.com/resizer/Wxv4_f95isHNmO6ilKtN74DJQ1s=/414x0/filters:focal(3108x1948:3118x1958)/cloudfront-eu-central-1.images.arcpublishing.com/prisa/OFZQVBC35ZB3HCQNBBWPDEGTSY.jpg"
 },
 {
     numexpediente: "2218Z2018",
@@ -122,7 +125,8 @@ export default function ListExpediente() {
     superficieprimerpisoymaspisos:"0",
     zona:"1Z",
     observaciones:"RELEVAMIENTO Y CONFORME A OBRA",
-    permisobraoactainfrac:"p/Inspeccion"
+    permisobraoactainfrac:"p/Inspeccion",
+    fotoexpediente:"https://www.lavoz.com.ar/resizer/VJkxJ2b6AtsPB5CFrkSFv7UFdj8=/1023x682/smart/cloudfront-us-east-1.images.arcpublishing.com/grupoclarin/HCBQO25UF5AFZBZOSVP7S7MGPA.jpg"
 }]
 const infoTotal = listaExpedientes.concat(expedientes);
     return (
@@ -183,6 +187,7 @@ const infoTotal = listaExpedientes.concat(expedientes);
                                             adrema={p.adrema}
                                             estado={p.estado}
                                             iniciadornomyape={p.iniciadornomyape}
+                                            fotoexpediente={p.fotoexpediente}
                                         />
                                     </Link>
                                     {/* : (

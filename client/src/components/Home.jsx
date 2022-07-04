@@ -84,10 +84,11 @@ export default function Home() {
                 <img className='logocorrientes' src={require('./images/constructor.jpg')} width="550" height="280" />
                 <br />
                 <br />
+                <Link to='/InspecCreate'><Button color='danger'>INSPECCION</Button></Link>  {" - "}
                 <Link to='/ExpedCreate'><Button color='danger'>CREAR EXPEDIENTE</Button></Link>  {" - "}
-                <Link to='/IntimCreate'><Button color='danger'>CREAR INFRACCIONES</Button></Link>  {" - "}
+                {/* <Link to='/IntimCreate'><Button color='danger'>CREAR INFRACCIONES</Button></Link>  {" - "} */}
                 <Link to='/TicketCreate'><Button color='danger'>CREAR TICKET</Button></Link>  {" - "}
-                <Link to='/InspecCreate'><Button color='danger'>CREAR INSPECCION</Button></Link>  {" - "}
+                
 
                 {/* <img className='logocorrientes' src="https://muchosnegociosrentables.com/wp-content/uploads/2020/11/crear-una-constructora-guia-completa.jpg" width="600" height="300" /> */}
 
