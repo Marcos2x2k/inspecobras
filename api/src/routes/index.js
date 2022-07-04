@@ -89,7 +89,7 @@ router.get("/infracciones/:id", async (req, res) => {
 
 
 // *************** post **************
-
+// router.post('/inspecCreate', upload.single('fotoinspeccion'), addProduct)
 
 router.post('/newexpediente', async (req, res) => {
 

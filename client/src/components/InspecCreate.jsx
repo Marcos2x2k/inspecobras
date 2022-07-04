@@ -4,6 +4,15 @@ import './styles/App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Modal, ModalBody, ModalHeader, ModalFooter, Button} from 'reactstrap';
 import {Link} from 'react-router-dom';
+import { applyMiddleware } from 'redux';
+
+const upload = require('./libs/storage')
+// import multer from 'multer';
+
+// const multer = require ('multer')
+// const upload = multer({
+//   dest: 'Storage/imgs'  
+// })
 
 function InspecCreate() {
 
@@ -17,72 +26,72 @@ function InspecCreate() {
     },
     { id: 2, numexpediente: "1221P2019", intimacion: 225,
     inspecfecha:"20/01/2019",
-    inspector:"Carlos Soto", vencintimacion:"22/01/2019" },
+    inspector:"Carlos Soto", vencintimacion:"22/01/2019", fotoinspeccion:""},
     { id: 3, numexpediente: "1561P2020", intimacion: 216,
     inspecfecha:"20/01/2021",
-    inspector:"Marcelos Alegre", vencintimacion:"22/01/2019" },
+    inspector:"Marcelos Alegre", vencintimacion:"22/01/2019", fotoinspeccion:""},
     { id: 4, numexpediente: "1289P2018", intimacion: 216,
     inspecfecha:"20/01/2018",
-    inspector:"Fabián Zacarias", vencintimacion:"22/01/2019" },
+    inspector:"Fabián Zacarias", vencintimacion:"22/01/2019", fotoinspeccion:""},
     { id: 5, numexpediente: "1037P2017", intimacion: 207,
     inspecfecha:"20/01/2017",
-    inspector:"Martín Mesa", vencintimacion:"22/01/2019" },
+    inspector:"Martín Mesa", vencintimacion:"22/01/2019", fotoinspeccion:""},
     { id: 6, numexpediente: "1221P2016", intimacion: 195,
     inspecfecha:"20/01/2016",
-    inspector:"Agustin Sotomayor", vencintimacion:"22/01/2019"},
+    inspector:"Agustin Sotomayor", vencintimacion:"22/01/2019", fotoinspeccion:""},
     { id: 7, numexpediente: "1221P2021", intimacion: 191,
     inspecfecha:"09/06/2021",
-    inspector:"Carlos Samudio", vencintimacion:"22/01/2019"},
+    inspector:"Carlos Samudio", vencintimacion:"22/01/2019", fotoinspeccion:""},
     { id: 8, numexpediente: "1221P2020", intimacion: 190,
     inspecfecha:"20/01/2020",
-    inspector:"Armando Encina", vencintimacion:"22/01/2019"},
+    inspector:"Armando Encina", vencintimacion:"22/01/2019", fotoinspeccion:""},
     { id: 9, numexpediente: "1229P2015", intimacion: 190,
     inspecfecha:"20/01/2015",
-    inspector:"Marcos Romero", vencintimacion:"22/01/2019"},
+    inspector:"Marcos Romero", vencintimacion:"22/01/2019", fotoinspeccion:""},
     { id: 10, numexpediente: "1221P2022", intimacion: 186,
     inspecfecha:"20/01/2021",
-    inspector:"Maximiliano Ayala", vencintimacion:"22/01/2019"},
+    inspector:"Maximiliano Ayala", vencintimacion:"22/01/2019", fotoinspeccion:""},
   ];
-  const listainspecciones = [{
-    numexpediente:"xxxxxxx",
-    fechaentradinspec:"12/12/2020",
-    inspecfecha:"20/01/2021",
-    inspector:"xxxxxxx xxxxxxx",
-    fotoinspeccion:"Foto",
-    intimacion:"105025",
-    infracciones:"No Posee",
-    observaciones:"No Posee",
-    paseanumdestino:"xxxxxxxxxxxxxx",
-    fecha:"20/02/2021",
-    pasea:"xxxxxxx",
-    fechapasea:"20/08/2022"
-},{
-    numexpediente:"xxxxxxx",
-    fechaentradinspec:"12/12/2020",
-    inspecfecha:"20/01/2021",
-    inspector:"xxxxxxx xxxxxxx",
-    fotoinspeccion:"Foto",
-    intimacion:"105025",
-    infracciones:"No Posee",
-    observaciones:"No Posee",
-    paseanumdestino:"xxxxxxxxxxxxxx",
-    fecha:"20/02/2021",
-    pasea:"xxxxxxx",
-    fechapasea:"20/08/2022"
-},{
-    numexpediente:"xxxxxxx",
-    fechaentradinspec:"12/12/2020",
-    inspecfecha:"20/01/2021",
-    inspector:"xxxxxxx xxxxxxx",
-    fotoinspeccion:"Foto",
-    intimacion:"105025",
-    infracciones:"No Posee",
-    observaciones:"No Posee",
-    paseanumdestino:"xxxxxxxxxxxxxx",
-    fecha:"20/02/2021",
-    pasea:"xxxxxxx",
-    fechapasea:"20/08/2022"
-}]
+//   const listainspecciones = [{
+//     numexpediente:"xxxxxxx",
+//     fechaentradinspec:"12/12/2020",
+//     inspecfecha:"20/01/2021",
+//     inspector:"xxxxxxx xxxxxxx",
+//     fotoinspeccion:"Foto",
+//     intimacion:"105025",
+//     infracciones:"No Posee",
+//     observaciones:"No Posee",
+//     paseanumdestino:"xxxxxxxxxxxxxx",
+//     fecha:"20/02/2021",
+//     pasea:"xxxxxxx",
+//     fechapasea:"20/08/2022"
+// },{
+//     numexpediente:"xxxxxxx",
+//     fechaentradinspec:"12/12/2020",
+//     inspecfecha:"20/01/2021",
+//     inspector:"xxxxxxx xxxxxxx",
+//     fotoinspeccion:"Foto",
+//     intimacion:"105025",
+//     infracciones:"No Posee",
+//     observaciones:"No Posee",
+//     paseanumdestino:"xxxxxxxxxxxxxx",
+//     fecha:"20/02/2021",
+//     pasea:"xxxxxxx",
+//     fechapasea:"20/08/2022"
+// },{
+//     numexpediente:"xxxxxxx",
+//     fechaentradinspec:"12/12/2020",
+//     inspecfecha:"20/01/2021",
+//     inspector:"xxxxxxx xxxxxxx",
+//     fotoinspeccion:"Foto",
+//     intimacion:"105025",
+//     infracciones:"No Posee",
+//     observaciones:"No Posee",
+//     paseanumdestino:"xxxxxxxxxxxxxx",
+//     fecha:"20/02/2021",
+//     pasea:"xxxxxxx",
+//     fechapasea:"20/08/2022"
+// }]
 
   const [data, setData] = useState(dataExpedientes);
   const [modalEditar, setModalEditar] = useState(false);
@@ -95,7 +104,8 @@ function InspecCreate() {
     intimacion: '',
     inspecfecha:'',
     inspector:'',
-    vencintimacion:""
+    vencintimacion:"",
+    fotos:""
   });
 
   const seleccionarPais=(elemento, caso)=>{
@@ -368,6 +378,14 @@ setExpedienteSeleccionado(elemento);
               onChange={handleChange}
             />
             <br />
+            <label>Subir Fotos:</label>
+            <input
+              className="form-control"
+              type="file"
+              name="fotoinspeccion"
+              value={ExpedienteSeleccionado ? ExpedienteSeleccionado.fotoinspeccion:''}
+              onChange={handleChange}
+            />
           </div>
         </ModalBody>
         <ModalFooter>
