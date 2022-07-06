@@ -82,6 +82,23 @@ function ListIntimacion() {
         numcodigoint:"07/046",
         Inspectorint:"Ramos Carlos Alegre",
         fotosint:"Se Desconoce"
+      },{ id: 4, 
+        boletaintnum: "0504", 
+        adremaint:"A1-00000-1",
+        numexpedienteint:"1111P2019",
+        señorseñora: "Sosa diego",
+        domiciliopart:"Se perdio",
+        lugaractuacion:"Tte. Ibañez",
+        otorgaplazode:"4 dias",
+        paracumplimientoa:"proceder a reparar la vereda en mal estado",
+        fechaintimacion:"05/076/2022",
+        horaintimacion:"00:49",
+        vencimientoint:"08/06/2022",
+        notificadoint:"propuetario o responsable Ausente",
+        aclaracion:"se deja presente al propietario",
+        numcodigoint:"07/046",
+        Inspectorint:"Ramos Carlos Alegre",
+        fotosint:"Se Desconoce"
       },
   ];
 
@@ -218,10 +235,15 @@ function ListIntimacion() {
                     </select>        */}
                     {/* <Link to= '/ListInfraccion'><Button  color='secondary'>Lista Instimaciones</Button></Link> {" - "}  */}
                     {/* <Link to= '/ListInfraccion'><Button  color='secondary'>Lista Multas</Button></Link> {" - "}  */}
+                                        
                     <button className="btn btn-success" onClick={()=>abrirModalInsertar()}>Crear Intimación</button> {" - "}
-                    <Link to= '/InspecCreate'><Button color='primary'>Volver a Multas</Button></Link> {" - "} 
-                    <Link to= '/Home'><Button color='danger'>Volver Menu Principal</Button></Link> {" - "} 
+                    <Link to= '/Home'><Button color='primary'>Volver Menu Principal</Button></Link> {" - "} 
+                    <Link to= '/InspecCreate'><Button color='secondary'>Ir a Multas/Infracciones</Button></Link>
+                    <br/>
                     <img src={require('./images/separadorpagina.png')} />
+                    <h1 className="">Lista de Intimaciones</h1>  
+                    
+                    
       {/* <h2>Países en los que la gente pasa más tiempo en redes sociales (2019)</h2> */}
       {/* <br /> */}
     
@@ -598,7 +620,7 @@ function ListIntimacion() {
         <Modal isOpen={modalInsertar}>
         <ModalHeader>
           <div>
-            <h3>Boleta Intimación</h3>
+            <h3>Carga de Boleta Intimación</h3>
           </div>
         </ModalHeader>
         <ModalBody>

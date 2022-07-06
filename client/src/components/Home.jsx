@@ -84,9 +84,9 @@ export default function Home() {
                 <img className='logocorrientes' src={require('./images/constructor.jpg')} width="550" height="280" />
                 <br />
                 <br />
-                <Link to='/InspecCreate'><Button color='danger'>INSPECCION</Button></Link>  {" - "}
-                <Link to='/ExpedCreate'><Button color='danger'>CREAR EXPEDIENTE</Button></Link>  {" - "}
-                {/* <Link to='/IntimCreate'><Button color='danger'>CREAR INFRACCIONES</Button></Link>  {" - "} */}
+                <Link to='/ListIntimacion'><Button color='danger'>INTIMACIONES</Button></Link>  {" - "}
+                <Link to='/InspecCreate'><Button color='danger'> INFRACCIONES/MULTAS </Button></Link>  {" - "}
+                <Link to='/ExpedCreate'><Button color='danger'>CREAR EXPEDIENTE</Button></Link>  {" - "}                
                 <Link to='/TicketCreate'><Button color='danger'>CREAR TICKET</Button></Link>  {" - "}
                 
 
