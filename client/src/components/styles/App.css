@@ -27,6 +27,16 @@
   .App-link {
     color: #61dafb;
   }
+
+  .labelcreateediteliminar{
+    color: #c92121;
+    font-weight: bold;
+  }
+
+  .labelcreateediteliminarbold{
+    color: #000000;
+    font-weight: bold;
+  }
   
   @keyframes App-logo-spin {
     from {
