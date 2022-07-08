@@ -238,7 +238,7 @@ function InspecCreate() {
                     <a href="/home"><img height="50" src={require('./images/logoMuni.png')} /></a><br/>    
                     {/* <img src='https://ciudaddecorrientes.gov.ar/sites/default/themes/ciudaddecorrientes/logo.png' alt="to home" /> */}
                 
-                    <h2 className="colorLetrasGris">SECCIÓN DE CARGA DE MULTAS/INTIMACIONES</h2>                    
+                    <h2 className="colorLetrasGris">SECCIÓN DE CARGA DE MULTAS/INFRACIONES</h2>                    
                     <img className='logocorrientes' height="200" src={require('./images/Multa-1.jpg')} /> <br/><br/>
                     {/* <select className="selectfont">
                         <option value="" selected disabled hidden>ORDENAR</option>                
@@ -764,7 +764,7 @@ function InspecCreate() {
         <Modal isOpen={modalInsertar}>
         <ModalHeader>
           <div>
-            <h3>Carga de Boleta Intimación</h3>
+            <h3>Carga de Boleta Multa/Infracción</h3>
           </div>
         </ModalHeader>
         <ModalBody>

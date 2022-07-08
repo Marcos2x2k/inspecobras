@@ -62,26 +62,26 @@ export default function ListExpediente() {
         {numacta: "1233H2020",
         fechainfraccion: "16/08/2020",
         infractor: "Jose Rodriguez",
-        fotoinfraccion: "Foto",    
+        fotoinfraccion: "https://www.revistaareatres.com.ar/files/image/4/4963/626156fdacc84.jpg",    
         domicilio:"Las Perlas Nº 2020"},
         {numacta: "4444H2021",
         fechainfraccion: "16/02/2021",
         infractor: "Walter Ramirez",
-        fotoinfraccion: "Foto",
+        fotoinfraccion: "https://factorenergetico.mx/wp-content/uploads/2021/03/SECTOR-CONSTRUCCION1.jpg",
         domicilio:"Las Rosalias Nº 2896"},
         {numacta: "8977H2022",
         fechainfraccion: "03/01/2022",
         infractor: "Carlos Augusto Romero",
-        fotoinfraccion: "Foto",
+        fotoinfraccion: "https://www.diarioelnorte.com.ar/wp-content/uploads/2022/04/13-trabajador-4c.jpg",
         domicilio:"Av. Maipu Nº 4312"},
         {numacta: "1233H2022",
         fechainfraccion: "06/03/2022",
         infractor: "Alberto Sosa",
-        fotoinfraccion: "Foto",
-        domicilio:"Aviador Arguello Nº S/N",}
+        fotoinfraccion: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3wuvUNgFp37giC61NbCLqrfMT9F510kF81w&usqp=CAU",
+        domicilio:"Aviador Arguello Nº S/N",},
+        
     ]
     return (  
-
 
         <div>
             <div>

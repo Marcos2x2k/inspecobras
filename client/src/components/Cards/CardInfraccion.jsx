@@ -22,16 +22,16 @@ export default function CardInfraccion({numacta, fechainfraccion, infractor, fot
                     <h3 class="heading">Infractor (NyA): </h3> 
                     <h3 class="headingRojo"> {infractor}</h3> 
                 </div>
-                <div class="header">
+                {/* <div class="header">
                     <h3 class="heading">Foto Infracción: </h3>
                     <h3 class="headingRojo"> {fotoinfraccion}</h3> 
-                </div>
+                </div> */}
                 <div class="header">
                     <h3 class="heading">Domicilio: </h3>
                     <h3 class="headingRojo"> {domicilio}</h3>
                 </div>      
                 <p> </p>
-                <img className='logomulta' src={require('../images/Multa.jpg')} alt="img not found" width = "150px"/>
+                <img className='miniaturaimagen' src={fotoinfraccion} alt="img not found" width = "250px"/>
                 {/* <img src="https://ciudaddecorrientes.gov.ar/sites/default/modules/custom/frontpage_sections/front_varios/icons/consulta-de-infracciones.png?4443" alt="img not found" width = "130px"/> */}
                 <h5 class="blanco"> ------------------------------------------------------------------------ </h5>
             </div>

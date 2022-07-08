@@ -39,10 +39,11 @@ export default function Estadisticas() {
                     {/* <Link to= '/ExpedCreate'><button className="selectfont">CARGAR EXPEDIENTE</button></Link> */}
 
                     <Link to='/Construccion'><Button color='warning'> Estadisticas Expedientes </Button></Link> {" - "}
-                    <Link to='/Construccion'><Button color='warning'> Estadisticas Infracciones </Button></Link> {" - "}
+                    <Link to='/Construccion'><Button color='primary'> Estadisticas Infracciones </Button></Link> {" - "}
                     <Link to='/Construccion'><Button color='warning'> Estadisticas Ticket </Button></Link> {" - "}
-                    <Link to='/Construccion'><Button color='warning'> Estadisticas Inspecciones </Button></Link> {" - "}                    
-                    <br/>
+                    <Link to='/Construccion'><Button color='primary'> Estadisticas Inspecciones </Button></Link> {" - "} 
+                    <Link to='/Home'><Button color="success"> IR AL MENU </Button></Link>                   
+                    <br/><br/>
                     <select>                
                             <option value="" selected disabled hidden>Expedientes Años</option>                
                             <option value="r20">2020</option>
@@ -103,7 +104,7 @@ export default function Estadisticas() {
 
                 {/* <img className='logocorrientes' src="https://muchosnegociosrentables.com/wp-content/uploads/2020/11/crear-una-constructora-guia-completa.jpg" width="600" height="300" /> */}
 
-                <Link to='/Home'><Button color="success"> IR AL MENU </Button></Link>
+                
                 <br />
                 <img src={require('./images/separadorpagina.png')} />
 

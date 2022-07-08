@@ -32,7 +32,8 @@ function ListIntimacion() {
       notificadoint:"propuetario o responsable de Adrema Ausente",
       aclaracion:"se deja presente en la puerta de entrada",
       numcodigoint:"07/046",
-      Inspectorint:"Ramos Carlos Alegre"
+      Inspectorint:"Ramos Carlos Alegre",
+      fotosint:"https://www.infobae.com/new-resizer/GUVdWl-zD75lCXwnQSKkM2SCUOc=/1200x900/filters:format(webp):quality(85)//cloudfront-us-east-1.images.arcpublishing.com/infobae/5ZAS7YKNLFGDDJFJWMK3RDWROI.jpeg"
     },{ id: 2, 
         boletaintnum: "7106", 
         adremaint:"A1-655656-1",
@@ -48,7 +49,8 @@ function ListIntimacion() {
         notificadoint:"propuetario o responsable de Adrema Ausente",
         aclaracion:"se deja presente en la puerta de entrada",
         numcodigoint:"07/046",
-        Inspectorint:"Ramos Carlos Alegre"
+        Inspectorint:"Ramos Carlos Alegre",
+        fotosint:"https://www.elindependiente.com/wp-content/uploads/2022/04/construccion-656x368.jpg"
       },{ id: 3, 
         boletaintnum: "7106", 
         adremaint:"A1-232323-1",
@@ -64,7 +66,8 @@ function ListIntimacion() {
         notificadoint:"propuetario o responsable de Adrema Ausente",
         aclaracion:"se deja presente en la puerta de entrada",
         numcodigoint:"07/046",
-        Inspectorint:"Ramos Carlos Alegre"
+        Inspectorint:"Ramos Carlos Alegre",
+        fotosint:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4-eihuwaWCZCE3nTplaz-ezykiIB8xezbhtWicPynTGOml7drYLxxqtHg6eq5YuDqKhA&usqp=CAU"
       },{ id: 4, 
         boletaintnum: "7106", 
         adremaint:"A1-662239-1",
@@ -81,7 +84,8 @@ function ListIntimacion() {
         aclaracion:"se deja presente al propietario",
         numcodigoint:"07/046",
         Inspectorint:"Ramos Carlos Alegre",
-        fotosint:"Se Desconoce"
+        fotosint:"Se Desconoce",
+        fotosint:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4-eihuwaWCZCE3nTplaz-ezykiIB8xezbhtWicPynTGOml7drYLxxqtHg6eq5YuDqKhA&usqp=CAU"
       },{ id: 4, 
         boletaintnum: "0504", 
         adremaint:"A1-00000-1",
@@ -98,7 +102,8 @@ function ListIntimacion() {
         aclaracion:"se deja presente al propietario",
         numcodigoint:"07/046",
         Inspectorint:"Ramos Carlos Alegre",
-        fotosint:"Se Desconoce"
+        fotosint:"Se Desconoce",
+        fotosint:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFTdWH9IB1MQ7DObxNsQXNh7Od82V3cUJZdqnLkGsc-HX1tek2zDj1g0dYDydy182kHpo&usqp=CAU"
       },
   ];
 
@@ -576,7 +581,8 @@ function ListIntimacion() {
             <br />
             <label>Fotos de Obra</label>
             <br /><br />
-            <img src={require('./images/obradeconstruccion.jpg')} />
+            <img src={fotosint}
+            {/* <img src={require('./images/obradeconstruccion.jpg')} /> */}
             <br />
           </div>
         </ModalBody>
@@ -643,6 +649,24 @@ function ListIntimacion() {
               onChange={handleChange}
             />
             <br />
+            <label>ADREMA (en el caso que tenga)</label>
+            <input
+              className="form-control"
+              type="text"
+              name="adremaint"
+              value={IntimacionSeleccionado ? IntimacionSeleccionado.adremaint: ''}
+              onChange={handleChange}
+            />
+            <br />
+            <label>EXPEDIENTE Nº (en el caso que tenga)</label>
+            <input
+              className="form-control"
+              type="text"
+              name="numexpedienteint"
+              value={IntimacionSeleccionado ? IntimacionSeleccionado.numexpedienteint: ''}
+              onChange={handleChange}
+            />
+            <br />
             <label>Fecha Intimación (mes/dia/año)</label>
             <input
               className="form-control"
@@ -657,6 +681,15 @@ function ListIntimacion() {
               type="text"
               name="horaintimacion"
               value={IntimacionSeleccionado ? IntimacionSeleccionado.horaintimacion: ''}
+              onChange={handleChange}
+            />
+            <br />
+            <label>Vencimiento Intimación:</label>
+            <input
+              className="form-control"
+              type="text"
+              name="vencimientoint"
+              value={IntimacionSeleccionado ? IntimacionSeleccionado.vencimientoint: ''}
               onChange={handleChange}
             />
             <br />

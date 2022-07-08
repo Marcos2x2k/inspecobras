@@ -56,7 +56,8 @@ export default function ExpedCreate (){
             superficieprimerpisoymaspisos:"",
             zona:"",
             observaciones:"",
-            permisobraoactainfrac:""
+            permisobraoactainfrac:"",
+            fotoexpediente:""
    
         })
 
@@ -110,7 +111,8 @@ export default function ExpedCreate (){
                         superficieprimerpisoymaspisos:"",
                         zona:"",
                         observaciones:"",
-                        permisobraoactainfrac:""
+                        permisobraoactainfrac:"",
+                        fotoexpediente:""
                 })
                 // history.push('/home')
                 navigate('/home');
@@ -154,7 +156,7 @@ export default function ExpedCreate (){
                         />
                         <label> </label>
                         {/* <br /> */}                
-                        <label className='selectfont'>  Fecha Inicio/Entrada: </label>
+                        <label className='selectfont'>  Fecha Ini/Ent: </label>
                         <input
                         type="text"                    
                         name="fechainicioentrada"
@@ -235,7 +237,7 @@ export default function ExpedCreate (){
                         autoComplete="off"
                         />
                 {/* <br /> */}
-                <label className="selectfont"> Superficie a Construir: </label>
+                <label className="selectfont"> Superf. a Const.: </label>
                 <input
                         type="text"                    
                         name="superficieaconstruir"
@@ -295,7 +297,17 @@ export default function ExpedCreate (){
                         value= {input.observaciones}
                         onChange={(p)=>handleChange(p)}
                         autoComplete="off"
-                />                
+                />  
+                <br/>          
+                <label className="negrita">Subir Fotos:</label>
+                <br/>
+                <input
+                //  className="negrita"
+                 type="file"
+                 name="fotosint"
+                 value={input.fotoexpediente}
+                 onChange={(p)=>handleChange(p)}
+                  />    
                 <br/><br/><br/>                
                          
                  

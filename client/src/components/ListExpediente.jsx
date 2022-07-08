@@ -129,6 +129,7 @@ export default function ListExpediente() {
     fotoexpediente:"https://www.lavoz.com.ar/resizer/VJkxJ2b6AtsPB5CFrkSFv7UFdj8=/1023x682/smart/cloudfront-us-east-1.images.arcpublishing.com/grupoclarin/HCBQO25UF5AFZBZOSVP7S7MGPA.jpg"
 }]
 const infoTotal = listaExpedientes.concat(expedientes);
+
     return (
 
         <div>

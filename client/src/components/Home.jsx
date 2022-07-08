@@ -60,16 +60,16 @@ export default function Home() {
                     {/* <NavBar
                     /> */}
 
-                    <Link to='/ListExpediente'><Button color='primary'> LISTAR EXPEDIENTES </Button></Link> {" - "}
+                    <Link to='/ListExpediente'><Button color='primary'> LISTA EXPEDIENTES </Button></Link> {" - "}
 
-                    <Link to='/ListInfraccion'><Button color='primary'> LISTAR INFRACCIONES </Button></Link> {" - "}
+                    <Link to='/ListInfraccion'><Button color='primary'> LISTA INFRACCIONES </Button></Link> {" - "}
                     {/* <Link to='/Construccion'><Button color='primary'> LISTAR INFRACCIONES </Button></Link> {" - "} */}
 
                     {/* <Link to='/ListTicket'><Button color='primary'> LISTAR TICKET </Button></Link> {" - "} */}
-                    <Link to='/ListTicket'><Button color='primary'> LISTAR TICKET </Button></Link> {" - "}
+                    <Link to='/ListTicket'><Button color='primary'> LISTA TICKET </Button></Link> {" - "}
 
                     {/* <Link to='/ListInspeccion'><Button color='primary'> LISTAR INSPECCIONES </Button></Link> {" - "} */}
-                    <Link to='/ListInspeccion'><Button color='primary'> LISTAR INSPECCIONES </Button></Link> {" - "}
+                    {/* <Link to='/ListInspeccion'><Button color='primary'> LISTA INSPECCIONES </Button></Link> {" - "} */}
                     <Link to='/Estadisticas'><Button color='warning'> Sección Estadisticas </Button></Link>
 
 
@@ -86,8 +86,8 @@ export default function Home() {
                 <br />
                 <Link to='/ListIntimacion'><Button color='danger'>INTIMACIONES</Button></Link>  {" - "}
                 <Link to='/InspecCreate'><Button color='danger'> INFRACCIONES/MULTAS </Button></Link>  {" - "}
-                <Link to='/ExpedCreate'><Button color='danger'>CREAR EXPEDIENTE</Button></Link>  {" - "}                
-                <Link to='/TicketCreate'><Button color='danger'>CREAR TICKET</Button></Link>  {" - "}
+                {/* <Link to='/ExpedCreate'><Button color='danger'>CREAR EXPEDIENTE</Button></Link>  {" - "}                
+                <Link to='/TicketCreate'><Button color='danger'>CREAR TICKET</Button></Link>  {" - "} */}
                 
 
                 {/* <img className='logocorrientes' src="https://muchosnegociosrentables.com/wp-content/uploads/2020/11/crear-una-constructora-guia-completa.jpg" width="600" height="300" /> */}
