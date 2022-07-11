@@ -6,6 +6,7 @@ const router = express.Router();
 // Ejemplo: const authRouter = require('./auth.js');
 router.use(express.json());
 const axios = require('axios');
+const multer = require('multer');
 
 
 //defino los models a usar e importo los modelos conectados
@@ -89,7 +90,24 @@ router.get("/infracciones/:id", async (req, res) => {
 
 
 // *************** post **************
-// router.post('/inspecCreate', upload.single('fotoinspeccion'), addProduct)
+
+const storage = multer.diskStorage({
+    destination:(req, res, cb) =>{
+      cb(null, './uploads') //guarda imagen cruda
+      },
+    filename:(req, file, cb) => {
+        const ext = file.originalname.split('.').pop() // retorna png
+        cb(null, `${Date.now()}.${ext}`)
+      }    
+  })
+
+  const upload = multer({storage:storage})
+  
+  router.post('/upload', upload.single('file'), (req, res) => {
+    res.send ({data:'Imagen Cargada'})
+  })
+  
+
 
 router.post('/newexpediente', async (req, res) => {
 

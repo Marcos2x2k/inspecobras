@@ -5,9 +5,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {Modal, ModalBody, ModalHeader, ModalFooter, Button} from 'reactstrap';
 import {Link} from 'react-router-dom';
 import { applyMiddleware } from 'redux';
-
-// const upload = require('./libs/storage')
-// import multer from 'multer';
+const cors = require('cors');
+const multer = require('multer');
+const sharp = require('sharp');
+app.use(cors()) // middleware
 
 // const multer = require ('multer')
 // const upload = multer({
@@ -15,6 +16,9 @@ import { applyMiddleware } from 'redux';
 // })
 
 function ListIntimacion() {
+
+  
+
 
   const dataIntimacion = [
     { id: 1, 
@@ -454,7 +458,7 @@ function ListIntimacion() {
         </ModalHeader>
         <ModalBody>
           <div className="form-group">
-            <label>Boleta Intimacion Nº</label>
+            <label className = "labelcreateediteliminar">Boleta Intimacion Nº</label>
             {/* <h1>{IntimacionSeleccionado.señorseñora}</h1> */}
             <input
               className="form-control" type="text" name="boletaintnum" readOnly
@@ -581,7 +585,7 @@ function ListIntimacion() {
             <br />
             <label>Fotos de Obra</label>
             <br /><br />
-            <img src={fotosint}
+            <img className="imagenredondo" src={IntimacionSeleccionado.fotosint}/>
             {/* <img src={require('./images/obradeconstruccion.jpg')} /> */}
             <br />
           </div>
@@ -594,7 +598,7 @@ function ListIntimacion() {
             Actualizar
           </button> */}
           <button
-            className="btn btn-danger"
+            className="btn btn-success"
             onClick={()=>setModalEditarInfo(false)}
           >
             Aceptar

@@ -37,7 +37,8 @@ function InspecCreate() {
       Inspectorcod:"07/045",
       detallegeneral:"se realizaron trabajos de elevacion de techo y mamposteria",
       informeinpecnum:"3939",
-      inforinspecobsevaciones:"En el dia de la fecha se labro acta de infraccion, y paralizacion de obra numero 520"
+      inforinspecobsevaciones:"En el dia de la fecha se labro acta de infraccion, y paralizacion de obra numero 520",
+      fotoinf:"https://cloudfront-us-east-1.images.arcpublishing.com/infobae/6JZ3CA5VYBBUFOKM7V7WYLOC4A.jpg"
     },{ id: 2, 
       actainfnum: "7106",
       fechainfraccion:"06/06/2022",
@@ -58,7 +59,8 @@ function InspecCreate() {
       Inspectorcod:"07/045",
       detallegeneral:"se realizaron trabajos de elevacion de techo y mamposteria",
       informeinpecnum:"3939",
-      inforinspecobsevaciones:"En el dia de la fecha se labro acta de infraccion, y paralizacion de obra numero 520"
+      inforinspecobsevaciones:"En el dia de la fecha se labro acta de infraccion, y paralizacion de obra numero 520",
+      fotoinf:"https://cloudfront-us-east-1.images.arcpublishing.com/infobae/6JZ3CA5VYBBUFOKM7V7WYLOC4A.jpg"
     },{ id: 3, 
       actainfnum: "7106",
       fechainfraccion:"06/06/2022",
@@ -79,7 +81,8 @@ function InspecCreate() {
       Inspectorcod:"07/045",
       detallegeneral:"se realizaron trabajos de elevacion de techo y mamposteria",
       informeinpecnum:"3939",
-      inforinspecobsevaciones:"En el dia de la fecha se labro acta de infraccion, y paralizacion de obra numero 520"
+      inforinspecobsevaciones:"En el dia de la fecha se labro acta de infraccion, y paralizacion de obra numero 520",
+      fotoinf:"https://www.portafolio.co/files/article_multimedia/uploads/2021/05/21/60a871f85a678.jpeg"
     },{ id: 4, 
       actainfnum: "7106",
       fechainfraccion:"06/06/2022",
@@ -100,7 +103,8 @@ function InspecCreate() {
       Inspectorcod:"07/045",
       detallegeneral:"se realizaron trabajos de elevacion de techo y mamposteria",
       informeinpecnum:"3939",
-      inforinspecobsevaciones:"En el dia de la fecha se labro acta de infraccion, y paralizacion de obra numero 520"
+      inforinspecobsevaciones:"En el dia de la fecha se labro acta de infraccion, y paralizacion de obra numero 520",
+      fotoinf:"https://resizer.glanacion.com/resizer/uPDa4YdZzQTkWwOKkv89_-FFA1s=/768x0/filters:format(webp):quality(80)/cloudfront-us-east-1.images.arcpublishing.com/lanacionar/PXQS63VFNRHCZGMQB3QNJXYRWA.jpg"
     },
   ];
 
@@ -131,7 +135,8 @@ function InspecCreate() {
         Inspectorcod:'',
         detallegeneral:'',
         informeinpecnum:'',
-        inforinspecobsevaciones:''
+        inforinspecobsevaciones:'',
+        fotoinf:''
   });
 
   const seleccionarIntimacion=(elemento, caso)=>{
@@ -177,6 +182,7 @@ function InspecCreate() {
         infraccion.detallegeneral=InfraccionSeleccionado.detallegeneral;
         infraccion.informeinpecnum=InfraccionSeleccionado.informeinpecnum;
         infraccion.inforinspecobsevaciones=InfraccionSeleccionado.inforinspecobsevaciones;
+        infraccion.fotoinf=InfraccionSeleccionado.fotoinf;
       }
     });  
     setData(dataNueva);
@@ -207,6 +213,7 @@ function InspecCreate() {
             infraccion.detallegeneral=InfraccionSeleccionado.detallegeneral;
             infraccion.informeinpecnum=InfraccionSeleccionado.informeinpecnum;
             infraccion.inforinspecobsevaciones=InfraccionSeleccionado.inforinspecobsevaciones;
+            infraccion.fotoinf=InfraccionSeleccionado.fotoinf;
           }
         });  
         setData(dataNueva);
@@ -292,7 +299,8 @@ function InspecCreate() {
           }
         </tbody>
       </table>
-      {/* MODO EDITAR */}
+
+      {/* ************************************ MODO EDITAR ********************************* */}
       <Modal isOpen={modalEditar}>
         <ModalHeader>
           <div>
@@ -496,7 +504,8 @@ function InspecCreate() {
             <br />
             <label>Fotos de Obra</label>
             <br /><br />
-            <img src={require('./images/obradeconstruccion.jpg')} />
+            <img className="imagenredondo" src={InfraccionSeleccionado.fotosinf}/>
+            {/* <img src={require('./images/obradeconstruccion.jpg')} /> */}
             <br />
           </div>
         </ModalBody>
@@ -720,7 +729,8 @@ function InspecCreate() {
             <br />
             <label>Fotos de Obra</label>
             <br /><br />
-            <img src={require('./images/obradeconstruccion.jpg')} />
+            <img className="imagenredondo" src={InfraccionSeleccionado.fotoinf}/>
+            {/* <img src={require('./images/obradeconstruccion.jpg')} /> */}
             <br />
           </div>
         </ModalBody>
@@ -732,7 +742,7 @@ function InspecCreate() {
             Actualizar
           </button> */}
           <button
-            className="btn btn-danger"
+            className="btn btn-success"
             onClick={()=>setModalEditarInfo(false)}
           >
             Aceptar
@@ -962,7 +972,7 @@ function InspecCreate() {
               className="form-control"
               type="file"
               name="fotosint"
-              value={InfraccionSeleccionado ? InfraccionSeleccionado.fotosint:''}
+              value={InfraccionSeleccionado ? InfraccionSeleccionado.fotosinf:''}
               onChange={handleChange}
             />
           </div>

@@ -57,6 +57,7 @@ const App = () => {
           <Route  path='/ListTicket' element={<ListTicket/>}/>
           <Route  path='/ListInspeccion' element={<ListInspeccion/>}/>
           <Route  path='/ListIntimacion' element={<ListIntimacion/>}/>
+          <Route  path='/uploads' element={<uploads/>}/>  {/* subir imagenes */}
           {/* <Route exact path='/expedientes/:id' element={<Details/>}/> */}
           {/* <Route path='/expedcreate' element={<ExpedCreate/>}/>         */}
         </Routes>   
