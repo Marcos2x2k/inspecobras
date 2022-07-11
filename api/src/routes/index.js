@@ -93,7 +93,7 @@ router.get("/infracciones/:id", async (req, res) => {
 
 const storage = multer.diskStorage({
     destination:(req, res, cb) =>{
-      cb(null, './uploads') //guarda imagen cruda
+      cb(null, './src/uploads') //guarda imagen cruda
       },
     filename:(req, file, cb) => {
         const ext = file.originalname.split('.').pop() // retorna png
@@ -103,7 +103,7 @@ const storage = multer.diskStorage({
 
   const upload = multer({storage:storage})
   
-  router.post('/upload', upload.single('file'), (req, res) => {
+  router.post('/upload', upload.single('file'), (req, res) => {    
     res.send ({data:'Imagen Cargada'})
   })
   
