@@ -33,6 +33,8 @@ import Construccion from './components/Construccion.jsx'
 import ListTicket from './components/ListTicket.jsx'
 import ListInspeccion from './components/ListInspeccion.jsx'
 import ListIntimacion from './components/ListIntimacion.jsx'
+// import uploads from './components/uploads'
+
 
 //function App() { // me gusta mas trabajar con constantes
 const App = () => {
@@ -57,7 +59,7 @@ const App = () => {
           <Route  path='/ListTicket' element={<ListTicket/>}/>
           <Route  path='/ListInspeccion' element={<ListInspeccion/>}/>
           <Route  path='/ListIntimacion' element={<ListIntimacion/>}/>
-          <Route  path='/uploads' element={<uploads/>}/>  {/* subir imagenes */}
+          {/* <Route  path='/uploads' element={<uploads/>}/>  subir imagenes */}
           {/* <Route exact path='/expedientes/:id' element={<Details/>}/> */}
           {/* <Route path='/expedcreate' element={<ExpedCreate/>}/>         */}
         </Routes>   

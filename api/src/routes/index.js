@@ -98,7 +98,7 @@ const storage = multer.diskStorage({
     filename:(req, file, cb) => {
         const ext = file.originalname.split('.').pop() // retorna png
         cb(null, `${Date.now()}.${ext}`)
-      }    
+      }
   })
 
   const upload = multer({storage:storage})

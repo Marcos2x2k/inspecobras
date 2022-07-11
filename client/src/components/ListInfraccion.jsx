@@ -78,7 +78,7 @@ export default function ListExpediente() {
         fechainfraccion: "06/03/2022",
         infractor: "Alberto Sosa",
         fotoinfraccion: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3wuvUNgFp37giC61NbCLqrfMT9F510kF81w&usqp=CAU",
-        domicilio:"Aviador Arguello Nº S/N",},
+        domicilio:"Aviador Arguello Nº S/N"}
         
     ]
     return (  

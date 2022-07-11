@@ -5,19 +5,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {Modal, ModalBody, ModalHeader, ModalFooter, Button} from 'reactstrap';
 import {Link} from 'react-router-dom';
 import { applyMiddleware } from 'redux';
-const cors = require('cors');
-const multer = require('multer');
-const sharp = require('sharp');
-app.use(cors()) // middleware
 
-// const multer = require ('multer')
-// const upload = multer({
-//   dest: 'Storage/imgs'  
-// })
 
-function ListIntimacion() {
-
-  
+function ListIntimacion() { 
 
 
   const dataIntimacion = [
@@ -37,7 +27,7 @@ function ListIntimacion() {
       aclaracion:"se deja presente en la puerta de entrada",
       numcodigoint:"07/046",
       Inspectorint:"Ramos Carlos Alegre",
-      fotosint:"https://www.infobae.com/new-resizer/GUVdWl-zD75lCXwnQSKkM2SCUOc=/1200x900/filters:format(webp):quality(85)//cloudfront-us-east-1.images.arcpublishing.com/infobae/5ZAS7YKNLFGDDJFJWMK3RDWROI.jpeg"
+      fotoint:"https://www.infobae.com/new-resizer/GUVdWl-zD75lCXwnQSKkM2SCUOc=/1200x900/filters:format(webp):quality(85)//cloudfront-us-east-1.images.arcpublishing.com/infobae/5ZAS7YKNLFGDDJFJWMK3RDWROI.jpeg"
     },{ id: 2, 
         boletaintnum: "7106", 
         adremaint:"A1-655656-1",
@@ -54,7 +44,7 @@ function ListIntimacion() {
         aclaracion:"se deja presente en la puerta de entrada",
         numcodigoint:"07/046",
         Inspectorint:"Ramos Carlos Alegre",
-        fotosint:"https://www.elindependiente.com/wp-content/uploads/2022/04/construccion-656x368.jpg"
+        fotoint:"https://www.elindependiente.com/wp-content/uploads/2022/04/construccion-656x368.jpg"
       },{ id: 3, 
         boletaintnum: "7106", 
         adremaint:"A1-232323-1",
@@ -71,7 +61,7 @@ function ListIntimacion() {
         aclaracion:"se deja presente en la puerta de entrada",
         numcodigoint:"07/046",
         Inspectorint:"Ramos Carlos Alegre",
-        fotosint:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4-eihuwaWCZCE3nTplaz-ezykiIB8xezbhtWicPynTGOml7drYLxxqtHg6eq5YuDqKhA&usqp=CAU"
+        fotoint:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4-eihuwaWCZCE3nTplaz-ezykiIB8xezbhtWicPynTGOml7drYLxxqtHg6eq5YuDqKhA&usqp=CAU"
       },{ id: 4, 
         boletaintnum: "7106", 
         adremaint:"A1-662239-1",
@@ -88,8 +78,7 @@ function ListIntimacion() {
         aclaracion:"se deja presente al propietario",
         numcodigoint:"07/046",
         Inspectorint:"Ramos Carlos Alegre",
-        fotosint:"Se Desconoce",
-        fotosint:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4-eihuwaWCZCE3nTplaz-ezykiIB8xezbhtWicPynTGOml7drYLxxqtHg6eq5YuDqKhA&usqp=CAU"
+        fotoint:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4-eihuwaWCZCE3nTplaz-ezykiIB8xezbhtWicPynTGOml7drYLxxqtHg6eq5YuDqKhA&usqp=CAU"
       },{ id: 4, 
         boletaintnum: "0504", 
         adremaint:"A1-00000-1",
@@ -106,9 +95,8 @@ function ListIntimacion() {
         aclaracion:"se deja presente al propietario",
         numcodigoint:"07/046",
         Inspectorint:"Ramos Carlos Alegre",
-        fotosint:"Se Desconoce",
-        fotosint:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFTdWH9IB1MQ7DObxNsQXNh7Od82V3cUJZdqnLkGsc-HX1tek2zDj1g0dYDydy182kHpo&usqp=CAU"
-      },
+        fotoint:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFTdWH9IB1MQ7DObxNsQXNh7Od82V3cUJZdqnLkGsc-HX1tek2zDj1g0dYDydy182kHpo&usqp=CAU"
+      }
   ];
 
   const [data, setData] = useState(dataIntimacion);
@@ -134,7 +122,7 @@ function ListIntimacion() {
         aclaracion:'',
         numcodigoint:'',
         Inspectorint:'',
-        fotosint:''
+        fotoint:''
   });
 
   const seleccionarIntimacion=(elemento, caso)=>{
@@ -175,7 +163,7 @@ function ListIntimacion() {
         intimacion.aclaracion=IntimacionSeleccionado.aclaracion;
         intimacion.numcodigoint=IntimacionSeleccionado.numcodigoint;
         intimacion.Inspectorint=IntimacionSeleccionado.Inspectorint;
-        intimacion.fotosint=IntimacionSeleccionado.fotosint;
+        intimacion.fotoint=IntimacionSeleccionado.fotoint;
       }
     });  
     setData(dataNueva);
@@ -201,7 +189,7 @@ function ListIntimacion() {
             intimacion.aclaracion=IntimacionSeleccionado.aclaracion;
             intimacion.numcodigoint=IntimacionSeleccionado.numcodigoint;
             intimacion.Inspectorint=IntimacionSeleccionado.Inspectorint;
-            intimacion.fotosint=IntimacionSeleccionado.fotosint;
+            intimacion.fotoint=IntimacionSeleccionado.fotoint;
           }
         });  
         setData(dataNueva);
@@ -285,7 +273,8 @@ function ListIntimacion() {
           }
         </tbody>
       </table>
-      {/* MODO EDITAR */}
+
+      {/* ************* MODO EDITAR ***************/}
       <Modal isOpen={modalEditar}>
         <ModalHeader>
           <div>
@@ -428,9 +417,23 @@ function ListIntimacion() {
             />
             <br />
             <label>Fotos de Obra</label>
+            <br />
+            <input
+              className="form-control"
+              type="text"
+              name="fotoint"
+            //   readOnly
+              value={IntimacionSeleccionado && IntimacionSeleccionado.fotoint}
+              onChange={handleChange}
+            />
+            {/* <img className="imagenredondo" src={IntimacionSeleccionado.fotoint}/> */}
+            {/* <img src={require('./images/obradeconstruccion.jpg')} /> */}
+            <br />
+            {/* <br />
+            <label>Fotos de Obra</label>
             <br /><br />
             <img src={require('./images/obradeconstruccion.jpg')} />
-            <br />
+            <br /> */}
           </div>
         </ModalBody>
         <ModalFooter>
@@ -585,7 +588,7 @@ function ListIntimacion() {
             <br />
             <label>Fotos de Obra</label>
             <br /><br />
-            <img className="imagenredondo" src={IntimacionSeleccionado.fotosint}/>
+            <img className="imagenredondo" src={IntimacionSeleccionado.fotoint}/>
             {/* <img src={require('./images/obradeconstruccion.jpg')} /> */}
             <br />
           </div>
@@ -627,7 +630,7 @@ function ListIntimacion() {
       </Modal>
 
 
-        <Modal isOpen={modalInsertar}>
+      <Modal isOpen={modalInsertar}>
         <ModalHeader>
           <div>
             <h3>Carga de Boleta Intimación</h3>
@@ -781,9 +784,9 @@ function ListIntimacion() {
             <label>Subir Fotos:</label>
             <input
               className="form-control"
-              type="file"
-              name="fotosint"
-              value={IntimacionSeleccionado ? IntimacionSeleccionado.fotosint:''}
+              type="text"
+              name="fotoint"
+              value={IntimacionSeleccionado ? IntimacionSeleccionado.fotoint: ''}
               onChange={handleChange}
             />
           </div>

@@ -98,8 +98,6 @@ export default function ListExpediente() {
         pasea:"xxxxxxx",
         fechapasea:"20/08/2022"
     }]
-
-    router.post('/inspecCreate', upload.single('fotoinspeccion'), addProduct)
     
     return (
 

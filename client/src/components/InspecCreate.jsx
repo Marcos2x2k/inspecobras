@@ -503,9 +503,16 @@ function InspecCreate() {
             />          
             <br />
             <label>Fotos de Obra</label>
-            <br /><br />
-            <img className="imagenredondo" src={InfraccionSeleccionado.fotosinf}/>
-            {/* <img src={require('./images/obradeconstruccion.jpg')} /> */}
+            <br />
+            <input             
+              className="form-control"
+              type="text"
+              name="fotoinf"
+              value={InfraccionSeleccionado && InfraccionSeleccionado.fotoinf}
+              onChange={handleChange}
+              // {/* <img className="imagenredondo" src={InfraccionSeleccionado.fotoinf}/> */}
+              // {/* <img src={require('./images/obradeconstruccion.jpg')} /> */}
+            />  
             <br />
           </div>
         </ModalBody>
@@ -970,15 +977,15 @@ function InspecCreate() {
             <label>Subir Fotos:</label>
             <input
               className="form-control"
-              type="file"
-              name="fotosint"
-              value={InfraccionSeleccionado ? InfraccionSeleccionado.fotosinf:''}
+              type="text"
+              name="fotoinf"
+              value={InfraccionSeleccionado ? InfraccionSeleccionado.fotoinf:''}
               onChange={handleChange}
             />
           </div>
         </ModalBody>
         <ModalFooter>
-          <button className="btn btn-primary"
+          <button className="btn btn-danger"
           onClick={()=>insertar()}>
             Insertar
           </button>
