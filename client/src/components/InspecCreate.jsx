@@ -986,7 +986,7 @@ function InspecCreate() {
             <label>Subir Fotos:</label>
             <input
               className="form-control"
-              type="text"
+              type="file"
               name="fotoinf"
               value={InfraccionSeleccionado ? InfraccionSeleccionado.fotoinf:''}
               onChange={handleChange}
