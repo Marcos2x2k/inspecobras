@@ -27,77 +27,77 @@ function ListIntimacion() {
       aclaracion:"se deja presente en la puerta de entrada",
       numcodigoint:"07/046",
       Inspectorint:"Ramos Carlos Alegre",
-      // fotoint:"https://www.infobae.com/new-resizer/GUVdWl-zD75lCXwnQSKkM2SCUOc=/1200x900/filters:format(webp):quality(85)//cloudfront-us-east-1.images.arcpublishing.com/infobae/5ZAS7YKNLFGDDJFJWMK3RDWROI.jpeg"
+      fotoint:"https://www.infobae.com/new-resizer/GUVdWl-zD75lCXwnQSKkM2SCUOc=/1200x900/filters:format(webp):quality(85)//cloudfront-us-east-1.images.arcpublishing.com/infobae/5ZAS7YKNLFGDDJFJWMK3RDWROI.jpeg"
     }
-    // ,{ id: 2, 
-    //     boletaintnum: "7106", 
-    //     adremaint:"A1-655656-1",
-    //     numexpedienteint:"3354P2021",
-    //     señorseñora: "Jose Romero",
-    //     domiciliopart:"Gral Paz 5854",
-    //     lugaractuacion:"Santa Fé esquina Rivadavia",
-    //     otorgaplazode:"48 hs",
-    //     paracumplimientoa:"proceder a reparar la vereda en mal estado, conforme normativas vigentes",
-    //     fechaintimacion:"06/06/2022",
-    //     horaintimacion:"11:05",
-    //     vencimientoint:"08/06/2022",
-    //     notificadoint:"propuetario o responsable de Adrema Ausente",
-    //     aclaracion:"se deja presente en la puerta de entrada",
-    //     numcodigoint:"07/046",
-    //     Inspectorint:"Ramos Carlos Alegre",
-    //     fotoint:"https://www.elindependiente.com/wp-content/uploads/2022/04/construccion-656x368.jpg"
-    //   },{ id: 3, 
-    //     boletaintnum: "7106", 
-    //     adremaint:"A1-232323-1",
-    //     numexpedienteint:"5454P2022",
-    //     señorseñora: "Jose Romero",
-    //     domiciliopart:"Se Desconoce",
-    //     lugaractuacion:"Santa Fé esquina Rivadavia",
-    //     otorgaplazode:"48 hs",
-    //     paracumplimientoa:"proceder a reparar la vereda en mal estado, conforme normativas vigentes",
-    //     fechaintimacion:"06/06/2022",
-    //     horaintimacion:"11:05",
-    //     vencimientoint:"08/06/2022",
-    //     notificadoint:"propuetario o responsable de Adrema Ausente",
-    //     aclaracion:"se deja presente en la puerta de entrada",
-    //     numcodigoint:"07/046",
-    //     Inspectorint:"Ramos Carlos Alegre",
-    //     fotoint:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4-eihuwaWCZCE3nTplaz-ezykiIB8xezbhtWicPynTGOml7drYLxxqtHg6eq5YuDqKhA&usqp=CAU"
-    //   },{ id: 4, 
-    //     boletaintnum: "7106", 
-    //     adremaint:"A1-662239-1",
-    //     numexpedienteint:"1111P2019",
-    //     señorseñora: "Jose Romero",
-    //     domiciliopart:"Se Desconoce",
-    //     lugaractuacion:"Santa Fé esquina Rivadavia",
-    //     otorgaplazode:"48 hs",
-    //     paracumplimientoa:"proceder a reparar la vereda en mal estado, conforme normativas vigentes",
-    //     fechaintimacion:"06/06/2019",
-    //     horaintimacion:"11:05",
-    //     vencimientoint:"08/06/2020",
-    //     notificadoint:"propuetario o responsable Ausente",
-    //     aclaracion:"se deja presente al propietario",
-    //     numcodigoint:"07/046",
-    //     Inspectorint:"Ramos Carlos Alegre",
-    //     fotoint:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4-eihuwaWCZCE3nTplaz-ezykiIB8xezbhtWicPynTGOml7drYLxxqtHg6eq5YuDqKhA&usqp=CAU"
-    //   },{ id: 5, 
-    //     boletaintnum: "0504", 
-    //     adremaint:"A1-00000-1",
-    //     numexpedienteint:"1111P2019",
-    //     señorseñora: "Sosa diego",
-    //     domiciliopart:"Se perdio",
-    //     lugaractuacion:"Tte. Ibañez",
-    //     otorgaplazode:"4 dias",
-    //     paracumplimientoa:"proceder a reparar la vereda en mal estado",
-    //     fechaintimacion:"05/076/2022",
-    //     horaintimacion:"00:49",
-    //     vencimientoint:"08/06/2022",
-    //     notificadoint:"propuetario o responsable Ausente",
-    //     aclaracion:"se deja presente al propietario",
-    //     numcodigoint:"07/046",
-    //     Inspectorint:"Ramos Carlos Alegre",
-    //     fotoint:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFTdWH9IB1MQ7DObxNsQXNh7Od82V3cUJZdqnLkGsc-HX1tek2zDj1g0dYDydy182kHpo&usqp=CAU"
-    //   }
+    ,{ id: 2, 
+        boletaintnum: "7106", 
+        adremaint:"A1-655656-1",
+        numexpedienteint:"3354P2021",
+        señorseñora: "Jose Romero",
+        domiciliopart:"Gral Paz 5854",
+        lugaractuacion:"Santa Fé esquina Rivadavia",
+        otorgaplazode:"48 hs",
+        paracumplimientoa:"proceder a reparar la vereda en mal estado, conforme normativas vigentes",
+        fechaintimacion:"06/06/2022",
+        horaintimacion:"11:05",
+        vencimientoint:"08/06/2022",
+        notificadoint:"propuetario o responsable de Adrema Ausente",
+        aclaracion:"se deja presente en la puerta de entrada",
+        numcodigoint:"07/046",
+        Inspectorint:"Ramos Carlos Alegre",
+        fotoint:"https://www.elindependiente.com/wp-content/uploads/2022/04/construccion-656x368.jpg"
+      },{ id: 3, 
+        boletaintnum: "7106", 
+        adremaint:"A1-232323-1",
+        numexpedienteint:"5454P2022",
+        señorseñora: "Jose Romero",
+        domiciliopart:"Se Desconoce",
+        lugaractuacion:"Santa Fé esquina Rivadavia",
+        otorgaplazode:"48 hs",
+        paracumplimientoa:"proceder a reparar la vereda en mal estado, conforme normativas vigentes",
+        fechaintimacion:"06/06/2022",
+        horaintimacion:"11:05",
+        vencimientoint:"08/06/2022",
+        notificadoint:"propuetario o responsable de Adrema Ausente",
+        aclaracion:"se deja presente en la puerta de entrada",
+        numcodigoint:"07/046",
+        Inspectorint:"Ramos Carlos Alegre",
+        fotoint:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4-eihuwaWCZCE3nTplaz-ezykiIB8xezbhtWicPynTGOml7drYLxxqtHg6eq5YuDqKhA&usqp=CAU"
+      },{ id: 4, 
+        boletaintnum: "7106", 
+        adremaint:"A1-662239-1",
+        numexpedienteint:"1111P2019",
+        señorseñora: "Jose Romero",
+        domiciliopart:"Se Desconoce",
+        lugaractuacion:"Santa Fé esquina Rivadavia",
+        otorgaplazode:"48 hs",
+        paracumplimientoa:"proceder a reparar la vereda en mal estado, conforme normativas vigentes",
+        fechaintimacion:"06/06/2019",
+        horaintimacion:"11:05",
+        vencimientoint:"08/06/2020",
+        notificadoint:"propuetario o responsable Ausente",
+        aclaracion:"se deja presente al propietario",
+        numcodigoint:"07/046",
+        Inspectorint:"Ramos Carlos Alegre",
+        fotoint:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4-eihuwaWCZCE3nTplaz-ezykiIB8xezbhtWicPynTGOml7drYLxxqtHg6eq5YuDqKhA&usqp=CAU"
+      },{ id: 5, 
+        boletaintnum: "0504", 
+        adremaint:"A1-00000-1",
+        numexpedienteint:"1111P2019",
+        señorseñora: "Sosa diego",
+        domiciliopart:"Se perdio",
+        lugaractuacion:"Tte. Ibañez",
+        otorgaplazode:"4 dias",
+        paracumplimientoa:"proceder a reparar la vereda en mal estado",
+        fechaintimacion:"05/076/2022",
+        horaintimacion:"00:49",
+        vencimientoint:"08/06/2022",
+        notificadoint:"propuetario o responsable Ausente",
+        aclaracion:"se deja presente al propietario",
+        numcodigoint:"07/046",
+        Inspectorint:"Ramos Carlos Alegre",
+        fotoint:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFTdWH9IB1MQ7DObxNsQXNh7Od82V3cUJZdqnLkGsc-HX1tek2zDj1g0dYDydy182kHpo&usqp=CAU"
+      }
   ];
 
   const [data, setData] = useState(dataIntimacion);
@@ -123,7 +123,7 @@ function ListIntimacion() {
         aclaracion:'',
         numcodigoint:'',
         Inspectorint:'',
-        // fotoint:''
+        fotoint:''
   });
 
   const seleccionarIntimacion=(elemento, caso)=>{
@@ -164,7 +164,7 @@ function ListIntimacion() {
         intimacion.aclaracion=IntimacionSeleccionado.aclaracion;
         intimacion.numcodigoint=IntimacionSeleccionado.numcodigoint;
         intimacion.Inspectorint=IntimacionSeleccionado.Inspectorint;
-        // intimacion.fotoint=IntimacionSeleccionado.fotoint;
+        intimacion.fotoint=IntimacionSeleccionado.fotoint;
       }
     });  
     setData(dataNueva);
@@ -190,7 +190,7 @@ function ListIntimacion() {
             intimacion.aclaracion=IntimacionSeleccionado.aclaracion;
             intimacion.numcodigoint=IntimacionSeleccionado.numcodigoint;
             intimacion.Inspectorint=IntimacionSeleccionado.Inspectorint;
-            // intimacion.fotoint=IntimacionSeleccionado.fotoint;
+            intimacion.fotoint=IntimacionSeleccionado.fotoint;
           }
         });  
         setData(dataNueva);
@@ -413,7 +413,7 @@ function ListIntimacion() {
               onChange={handleChange}
             />
             <br />
-            {/* <label>Fotos de Obra</label>
+            <label>Fotos de Obra</label>
             <br />
             <input
               className="form-control"
@@ -422,7 +422,7 @@ function ListIntimacion() {
             //   readOnly
               value={IntimacionSeleccionado && IntimacionSeleccionado.fotoint}
               onChange={handleChange}
-            /> */}
+            />
             {/* <img className="imagenredondo" src={IntimacionSeleccionado.fotoint}/> */}
             {/* <img src={require('./images/obradeconstruccion.jpg')} /> */}
             <br />
@@ -582,8 +582,19 @@ function ListIntimacion() {
               value={IntimacionSeleccionado && IntimacionSeleccionado.Inspectorint}
               onChange={handleChange}
             />
-            {/* <br />
+            <br/>
             <label>Fotos de Obra</label>
+            <br/>
+            <input 
+            type="image" 
+            className="imagenredondo"
+            src={IntimacionSeleccionado && IntimacionSeleccionado.fotoint} 
+            readOnly 
+            width="380" 
+            >
+            </input>
+            {/* <br />
+            
             <br /><br />
             <img className="imagenredondo" src={IntimacionSeleccionado.fotoint}/>
             {/* <img src={require('./images/obradeconstruccion.jpg')} /> */}
@@ -772,14 +783,14 @@ function ListIntimacion() {
               onChange={handleChange}
             />
             <br />
-            {/* <label>Subir Fotos:</label>
+            <label>Subir Fotos:</label>
             <input
               className="form-control"
               type="text"
               name="fotoint"
               value={IntimacionSeleccionado ? IntimacionSeleccionado.fotoint: ''}
               onChange={handleChange}
-            /> */}
+            />
           </div>
         </ModalBody>
         <ModalFooter>

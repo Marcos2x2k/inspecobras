@@ -735,8 +735,17 @@ function InspecCreate() {
             />          
             <br />
             <label>Fotos de Obra</label>
-            <br /><br />
-            <img className="imagenredondo" src={InfraccionSeleccionado.fotoinf}/>
+            <br />
+            <input 
+            type="image" 
+            className="imagenredondo"
+            src={InfraccionSeleccionado && InfraccionSeleccionado.fotoinf} 
+            readOnly 
+            width="380" 
+            >
+            </input>
+            <br />
+            {/* <img className="imagenredondo" src={InfraccionSeleccionado.fotoinf}/> */}
             {/* <img src={require('./images/obradeconstruccion.jpg')} /> */}
             <br />
           </div>
@@ -786,14 +795,14 @@ function InspecCreate() {
         </ModalHeader>
         <ModalBody>
           <div className="form-group">
-            {/* <label>ID</label>
+            {/* <label>ID</label> */}
             <input
               className="form-control"
               readOnly
               type="text"
               name="id"
               value={data[data.length-1].id+1}
-            /> */}
+            />
             <br />
             <label>Acta Infracción Nº</label>
             <input
