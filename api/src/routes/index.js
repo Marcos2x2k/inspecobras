@@ -6,11 +6,14 @@ const router = express.Router();
 // Ejemplo: const authRouter = require('./auth.js');
 router.use(express.json());
 const axios = require('axios');
+
+// ACA DEFINO PARA PODER SUBIR IMAGENES
 const multer = require('multer');
 
 
 //defino los models a usar e importo los modelos conectados
 const { Expediente, Inspeccion, Ticket, expedienteinspeccion } = require('../db.js'); 
+const { route } = require('../app.js');
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
@@ -91,6 +94,7 @@ router.get("/infracciones/:id", async (req, res) => {
 
 // *************** post **************
 
+// con MULTER
 const storage = multer.diskStorage({
     destination:(req, res, cb) =>{
       cb(null, './src/uploads') //guarda imagen cruda
@@ -100,14 +104,22 @@ const storage = multer.diskStorage({
         cb(null, `${Date.now()}.${ext}`)
       }
   })
-
+  
   const upload = multer({storage:storage})
   
   router.post('/upload', upload.single('file'), (req, res) => {    
     res.send ({data:'Imagen Cargada'})
   })
-  
 
+// CON EXPRESS UPLOAD
+// const uploadexpress = require('express-fileupload')
+// router.post('/uploadexpress', (req, res) => {
+//     let fileUpload = req.files.file
+//     fileUpload.mv(`./upload/$(fileUpload.name)`, err =>{
+//         if(err) return res.status(500).send({message : err})
+//         return res.status(200).send({message:'Archivo Cargado al Server'})
+//     })
+// })
 
 router.post('/newexpediente', async (req, res) => {
 

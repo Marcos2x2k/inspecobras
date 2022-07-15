@@ -33,7 +33,7 @@ export default function Card({numexpediente, fechainicioentrada, adrema, estado,
                 <p> </p>
                 {/* <img className='miniaturaimagen' src={fotoexpediente} alt="Imagen No Disponible" width = "200px" height="100px"/> */}
                 
-                <img className='miniaturaimagen' src={fotoexpediente} alt="Imagen No Disponible" width = "200px" height="100px"/>
+                <img className='miniaturaimagen' src={fotoexpediente} alt="Imagen No Disponible" width = "280px" height="150px"/>
                 {/* <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnyWAaTFapVC--3RYbSrGnlOPepq00cPmRZw&usqp=CAU" alt="img not found" width = "200px" height="100px"/> */}
                 <h5 class="blanco"> ------------------------------------------------------------------------ </h5>
             </div>

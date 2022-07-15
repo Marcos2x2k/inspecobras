@@ -12,3 +12,15 @@
 .fontNegraBold {
   font-style: bold;
 }
+
+/* hace visite o invisible  */
+.hideme
+{
+    display:none;
+    visibility:hidden;
+}
+.showme
+{
+    display:inline;
+    visibility:visible;
+}

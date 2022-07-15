@@ -26,11 +26,11 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
             allowNull: true,
         },
-        infracciones:{
+        infraccion:{
             type: DataTypes.STRING,
             allowNull: true
         },
-        observaciones:{
+        observacion:{
             type: DataTypes.STRING,
             allowNull: true
         },

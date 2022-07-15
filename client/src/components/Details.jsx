@@ -23,11 +23,8 @@ function Details(){
         <div>
             {allDetails.length > 0 ? (
             <div>
-                {/* <img height="50" src={require('./images/logoMuni.png')}/>                */}
+                <img height="50" src={require('./images/logoMuni.png')}/>               
                 
-                {/* <h1 className="colorLetrasamarillas">DETALLES DE EXPEDIENTE SELECCIONADO</h1>  */}
-                {/* <img src={require('./images/separadorpagina.png')}/> */}
-                {/* <br /> */}
                 <h1 className="colorLetrasamarillas">DETALLES DE EXPEDIENTE SELECCIONADO</h1> 
                            
                 <img src={require('./images/separadorpagina.png')}/>
@@ -114,7 +111,17 @@ function Details(){
             </div>
             ) : (
                 <div>
-                    <h1>CARGANDO...</h1>                  
+                  <img height="50" src={require('./images/logoMuni.png')}/>               
+                
+                  <h1 className="colorLetrasamarillas">DETALLES DE EXPEDIENTE SELECCIONADO</h1> 
+                           
+                   <img src={require('./images/separadorpagina.png')}/>
+                    <h1>CARGANDO...</h1>    
+                    <label></label>
+                    <p></p>
+                    <label>Si Demora mucho la Carga o se cuelga presionar el siguiente Botón</label>
+                    <p></p>
+                    <Link to='/Home'><button color="success"> IR AL MENU </button></Link>             
                 </div>
             )}
              

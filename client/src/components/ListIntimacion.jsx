@@ -588,15 +588,14 @@ function ListIntimacion() {
             <br/>
             <label className='fontNegraBold' >Fotos de Obra</label>
             <br/><br/>
-            {/* <input 
-            type="image"             
+            <img   
             className="imagenredondo"
-            src={IntimacionSeleccionado && IntimacionSeleccionado.fotoint[0]}            
+            src={IntimacionSeleccionado && IntimacionSeleccionado.fotoint}            
             readOnly 
             width="380" 
-            >
-            </input>
+            />
             <br/>
+            {/* 
             <input 
             type="image" 
             className="imagenredondo"
@@ -814,14 +813,18 @@ function ListIntimacion() {
             />
             <br />
             <label>Subir Fotos:</label>
-            <input
+            {/* <input
               className="form-control"
               type="text"
               name="fotoint"
               value= {IntimacionSeleccionado ? IntimacionSeleccionado.fotoint: ''}
               onChange={handleChange}
-            />
+            /> */}
           </div>
+          <form method="post" enctype="multipart/form-data" action="/upload">
+                <input type="file" name="file"></input>
+                {/* <input type="submit" value="Submit"></input> */}
+          </form>
         </ModalBody>
         <ModalFooter>
           <button className="btn btn-primary"
