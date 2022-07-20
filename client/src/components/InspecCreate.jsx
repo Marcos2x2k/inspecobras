@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import logo from './styles/logo.svg';
-import './styles/App.css';
+import './styles/AppCrud.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Modal, ModalBody, ModalHeader, ModalFooter, Button, Label} from 'reactstrap';
 import {Link} from 'react-router-dom';
@@ -300,7 +300,232 @@ function InspecCreate() {
         </tbody>
       </table>
 
-      {/* ************************************ MODO EDITAR ********************************* */}
+      // **** INSERTAR - CREAR ****
+  <Modal isOpen={modalInsertar}>
+        <ModalHeader>
+          <div>
+            <h3>Carga de Boleta Multa/Infracción</h3>
+          </div>
+        </ModalHeader>
+        <ModalBody>
+          <div className="form-group">
+            {/* <label>ID</label> */}
+            {/* <input
+              className="form-control"
+              readOnly
+              type="text"
+              name="id"
+              value={data[data.length-1].id+1}
+            /> */}
+            <br />
+            <h5>Acta Infracción Nº</h5>
+            <input
+              className="form-control"
+              type="text"
+              name="actainfnum"
+              value={InfraccionSeleccionado ? InfraccionSeleccionado.actainfnum: ''}
+              onChange={handleChange}
+            />
+            <br />
+            <label>Fecha de Infracción (dd/mm/aaaa)</label>
+            <input
+              className="form-control"
+              type="text"
+              name="fechainfraccion"
+              value={InfraccionSeleccionado ? InfraccionSeleccionado.fechainfraccion: ''}
+              onChange={handleChange}
+            />
+            <label>Hora Infracción (hora/minuto)</label>
+            <input
+              className="form-control"
+              type="text"
+              name="horainfraccion"
+              value={InfraccionSeleccionado ? InfraccionSeleccionado.horainfraccion: ''}
+              onChange={handleChange}
+            />
+            <br />
+            <label>Número de Expediente</label>
+            <input
+              className="form-control"
+              type="text"
+              name="numexpedienteinf"
+              value={InfraccionSeleccionado ? InfraccionSeleccionado.numexpedienteinf: ''}
+              onChange={handleChange}
+            />
+            <br />
+            <label>ADREMA</label>
+            <input
+              className="form-control"
+              type="text"
+              name="adremainf"
+              value={InfraccionSeleccionado ? InfraccionSeleccionado.adremainf: ''}
+              onChange={handleChange}
+            />
+            <br />
+            <label>Propietario (N y A)</label>
+            <input
+              className="form-control"
+              type="text"
+              name="apellidonombrepropietarioinf"
+              value={InfraccionSeleccionado ? InfraccionSeleccionado.apellidonombrepropietarioinf: ''}
+              onChange={handleChange}
+            />
+            <br />
+            <label>Documento Nacional Identidad</label>
+            <input
+              className="form-control"
+              type="text"
+              name="dnipropietarioinf"
+              value={InfraccionSeleccionado ? InfraccionSeleccionado.dnipropietarioinf: ''}
+              onChange={handleChange}
+            />
+            <br />
+            <label>Cuit / Cuit Propietario</label>
+            <input
+              className="form-control"
+              type="text"
+              name="cuilpropietarioinf"
+              value={InfraccionSeleccionado ? InfraccionSeleccionado.cuilpropietarioinf: ''}
+              onChange={handleChange}
+            />
+            <br />
+            <label>Lugar de Constitución</label>
+            <input
+              className="form-control"
+              type="text"
+              name="lugardeconstitucioninf"
+              value={InfraccionSeleccionado ? InfraccionSeleccionado.lugardeconstitucioninf: ''}
+              onChange={handleChange}
+            />
+            <br />
+            <label>Causas</label>
+            <textarea
+              rows="2"
+              className="form-control"
+              type="text"
+              name="Causasinf"
+              value={InfraccionSeleccionado ? InfraccionSeleccionado.Causasinf: ''}
+              onChange={handleChange}
+            />
+            <br />
+            <label>Ordenanza Nº</label>
+            <input
+              className="form-control"
+              type="text"
+              name="Ordenanzanum"
+              value={InfraccionSeleccionado ? InfraccionSeleccionado.Ordenanzanum: ''}
+              onChange={handleChange}
+            />
+            <br />
+            <label>Articulo Nº</label>
+            <input
+              className="form-control"
+              type="text"
+              name="articuloinf"
+              value={InfraccionSeleccionado ? InfraccionSeleccionado.articuloinf: ''}
+              onChange={handleChange}
+            />
+            <br />
+            <label>Inciso Nº</label>
+            <input
+              className="form-control"
+              type="text"
+              name="incisonum"
+              value={InfraccionSeleccionado ? InfraccionSeleccionado.incisonum: ''}
+              onChange={handleChange}
+            />
+            <br />
+            <label>Observaciones</label>
+            <textarea
+              rows="2"
+              className="form-control"
+              type="text"
+              name="observacion"
+              value={InfraccionSeleccionado ? InfraccionSeleccionado.observacion: ''}
+              onChange={handleChange}
+            />
+            <br />
+            <label>Testigo (A y N)</label>
+            <input
+              className="form-control"
+              type="text"
+              name="apellidonombretestigoinf"
+              value={InfraccionSeleccionado ? InfraccionSeleccionado.apellidonombretestigoinf: ''}
+              onChange={handleChange}
+            />
+            <br />
+            <label>Inspector (N y A)</label>
+            <input
+              className="form-control"
+              type="text"
+              name="Inspectorinf"
+              value={InfraccionSeleccionado ? InfraccionSeleccionado.Inspectorinf: ''}
+              onChange={handleChange}
+            />
+            <br />
+            <label>Código Inspector</label>
+            <input
+              className="form-control"
+              type="text"
+              name="Inspectorcod"
+              value={InfraccionSeleccionado ? InfraccionSeleccionado.Inspectorcod: ''}
+              onChange={handleChange}
+            />
+            <br />
+            <label>Detalle General</label>
+            <textarea
+              rows="3"
+              className="form-control"
+              type="text"
+              name="detallegeneral"
+              value={InfraccionSeleccionado ? InfraccionSeleccionado.detallegeneral: ''}
+              onChange={handleChange}
+            />           
+            <br />
+            <label>Informe Inspección Nº</label>
+            <input
+              className="form-control"
+              type="text"
+              name="informeinpecnum"
+              value={InfraccionSeleccionado ? InfraccionSeleccionado.informeinpecnum: ''}
+              onChange={handleChange}
+            />
+            <br />
+            <label>Informe Inspector Observaciones</label>
+            <textarea
+              rows="3"
+              className="form-control"
+              type="text"
+              name="inforinspecobsevaciones"
+              value={InfraccionSeleccionado ? InfraccionSeleccionado.inforinspecobsevaciones: ''}
+              onChange={handleChange}
+            />
+            <br />
+            <label>Subir Fotos:</label>
+            <input
+              className="form-control"
+              type="file"
+              name="fotoinf"
+              value={InfraccionSeleccionado ? InfraccionSeleccionado.fotoinf:''}
+              onChange={handleChange}
+            />
+          </div>
+        </ModalBody>
+        <ModalFooter>
+          <button className="btn btn-danger"
+          onClick={()=>insertar()}>
+            Insertar
+          </button>
+          <button
+            className="btn btn-danger"
+            onClick={()=>setModalInsertar(false)}
+          >
+            Cancelar
+          </button>
+        </ModalFooter>
+      </Modal>
+
+      // ****************** MODO EDITAR ******************
       <Modal isOpen={modalEditar}>
         <ModalHeader>
           <div>
@@ -309,7 +534,7 @@ function InspecCreate() {
         </ModalHeader>
         <ModalBody>
           <div className="form-group">
-            <label className = "labelcreateediteliminar" >Acta Infracción Nº</label>
+            <h5 >Acta Infracción Nº</h5>
             {/* <h1>{InfraccionSeleccionado.señorseñora}</h1> */}
             <input
               className="form-control" 
@@ -393,7 +618,8 @@ function InspecCreate() {
             />
             <br />
             <label>Causas</label>
-            <input
+            <textarea
+              rows="2"
               className="form-control"
               type="text"
               name="Causasinf"
@@ -433,7 +659,8 @@ function InspecCreate() {
             />
             <br />
             <label>Observaciones</label>
-            <input
+            <textarea
+              rows="2"
               className="form-control"
               type="text"
               name="observacion"
@@ -473,7 +700,8 @@ function InspecCreate() {
             />
             <br />
             <label>Detalle General</label>
-            <input
+            <textarea
+              rows="3"
               className="form-control"
               type="text"
               name="detallegeneral"
@@ -493,7 +721,8 @@ function InspecCreate() {
             />
             <br />
             <label>Observaciones del Inf. de Inspección</label>
-            <input             
+            <textarea
+              rows="3"             
               className="form-control"
               type="text"
               name="inforinspecobsevaciones"
@@ -541,7 +770,7 @@ function InspecCreate() {
         </ModalHeader>
         <ModalBody>
           <div className="form-group">
-            <label className = "labelcreateediteliminar" >Acta Infracción Nº</label>
+            <h5>Acta Infracción Nº</h5>
             {/* <h1>{InfraccionSeleccionado.señorseñora}</h1> */}
             <input
               className="form-control" 
@@ -625,7 +854,8 @@ function InspecCreate() {
             />
             <br />
             <label>Causas</label>
-            <input
+            <textarea
+              rows="2"
               className="form-control"
               type="text"
               name="Causasinf"
@@ -665,7 +895,8 @@ function InspecCreate() {
             />
             <br />
             <label>Observaciones</label>
-            <input
+            <textarea
+              rows="2"
               className="form-control"
               type="text"
               name="observacion"
@@ -705,7 +936,8 @@ function InspecCreate() {
             />
             <br />
             <label>Detalle General</label>
-            <input
+            <textarea
+              rows="3"
               className="form-control"
               type="text"
               name="detallegeneral"
@@ -725,7 +957,8 @@ function InspecCreate() {
             />
             <br />
             <label>Observaciones del Inf. de Inspección</label>
-            <input
+            <textarea
+              rows="3"
               className="form-control"
               type="text"
               name="inforinspecobsevaciones"
@@ -785,230 +1018,10 @@ function InspecCreate() {
           </button>
         </ModalFooter>
       </Modal>
-
-
-        <Modal isOpen={modalInsertar}>
-        <ModalHeader>
-          <div>
-            <h3>Carga de Boleta Multa/Infracción</h3>
-          </div>
-        </ModalHeader>
-        <ModalBody>
-          <div className="form-group">
-            {/* <label>ID</label> */}
-            <input
-              className="form-control"
-              readOnly
-              type="text"
-              name="id"
-              value={data[data.length-1].id+1}
-            />
-            <br />
-            <label>Acta Infracción Nº</label>
-            <input
-              className="form-control"
-              type="text"
-              name="actainfnum"
-              value={InfraccionSeleccionado ? InfraccionSeleccionado.actainfnum: ''}
-              onChange={handleChange}
-            />
-            <br />
-            <label>Fecha de Infracción (dd/mm/aaaa)</label>
-            <input
-              className="form-control"
-              type="text"
-              name="fechainfraccion"
-              value={InfraccionSeleccionado ? InfraccionSeleccionado.fechainfraccion: ''}
-              onChange={handleChange}
-            />
-            <label>Hora Infracción (hora/minuto)</label>
-            <input
-              className="form-control"
-              type="text"
-              name="horainfraccion"
-              value={InfraccionSeleccionado ? InfraccionSeleccionado.horainfraccion: ''}
-              onChange={handleChange}
-            />
-            <br />
-            <label>Número de Expediente</label>
-            <input
-              className="form-control"
-              type="text"
-              name="numexpedienteinf"
-              value={InfraccionSeleccionado ? InfraccionSeleccionado.numexpedienteinf: ''}
-              onChange={handleChange}
-            />
-            <br />
-            <label>ADREMA</label>
-            <input
-              className="form-control"
-              type="text"
-              name="adremainf"
-              value={InfraccionSeleccionado ? InfraccionSeleccionado.adremainf: ''}
-              onChange={handleChange}
-            />
-            <br />
-            <label>Propietario (N y A)</label>
-            <input
-              className="form-control"
-              type="text"
-              name="apellidonombrepropietarioinf"
-              value={InfraccionSeleccionado ? InfraccionSeleccionado.apellidonombrepropietarioinf: ''}
-              onChange={handleChange}
-            />
-            <br />
-            <label>Documento Nacional Identidad</label>
-            <input
-              className="form-control"
-              type="text"
-              name="dnipropietarioinf"
-              value={InfraccionSeleccionado ? InfraccionSeleccionado.dnipropietarioinf: ''}
-              onChange={handleChange}
-            />
-            <br />
-            <label>Cuit / Cuit Propietario</label>
-            <input
-              className="form-control"
-              type="text"
-              name="cuilpropietarioinf"
-              value={InfraccionSeleccionado ? InfraccionSeleccionado.cuilpropietarioinf: ''}
-              onChange={handleChange}
-            />
-            <br />
-            <label>Lugar de Constitución</label>
-            <input
-              className="form-control"
-              type="text"
-              name="lugardeconstitucioninf"
-              value={InfraccionSeleccionado ? InfraccionSeleccionado.lugardeconstitucioninf: ''}
-              onChange={handleChange}
-            />
-            <br />
-            <label>Causas</label>
-            <input
-              className="form-control"
-              type="text"
-              name="Causasinf"
-              value={InfraccionSeleccionado ? InfraccionSeleccionado.Causasinf: ''}
-              onChange={handleChange}
-            />
-            <br />
-            <label>Ordenanza Nº</label>
-            <input
-              className="form-control"
-              type="text"
-              name="Ordenanzanum"
-              value={InfraccionSeleccionado ? InfraccionSeleccionado.Ordenanzanum: ''}
-              onChange={handleChange}
-            />
-            <br />
-            <label>Articulo Nº</label>
-            <input
-              className="form-control"
-              type="text"
-              name="articuloinf"
-              value={InfraccionSeleccionado ? InfraccionSeleccionado.articuloinf: ''}
-              onChange={handleChange}
-            />
-            <br />
-            <label>Inciso Nº</label>
-            <input
-              className="form-control"
-              type="text"
-              name="incisonum"
-              value={InfraccionSeleccionado ? InfraccionSeleccionado.incisonum: ''}
-              onChange={handleChange}
-            />
-            <br />
-            <label>Observaciones</label>
-            <input
-              className="form-control"
-              type="text"
-              name="observacion"
-              value={InfraccionSeleccionado ? InfraccionSeleccionado.observacion: ''}
-              onChange={handleChange}
-            />
-            <br />
-            <label>Testigo (A y N)</label>
-            <input
-              className="form-control"
-              type="text"
-              name="apellidonombretestigoinf"
-              value={InfraccionSeleccionado ? InfraccionSeleccionado.apellidonombretestigoinf: ''}
-              onChange={handleChange}
-            />
-            <br />
-            <label>Inspector (N y A)</label>
-            <input
-              className="form-control"
-              type="text"
-              name="Inspectorinf"
-              value={InfraccionSeleccionado ? InfraccionSeleccionado.Inspectorinf: ''}
-              onChange={handleChange}
-            />
-            <br />
-            <label>Código Inspector</label>
-            <input
-              className="form-control"
-              type="text"
-              name="Inspectorcod"
-              value={InfraccionSeleccionado ? InfraccionSeleccionado.Inspectorcod: ''}
-              onChange={handleChange}
-            />
-            <br />
-            <label>Detalle General</label>
-            <input
-              className="form-control"
-              type="text"
-              name="detallegeneral"
-              value={InfraccionSeleccionado ? InfraccionSeleccionado.detallegeneral: ''}
-              onChange={handleChange}
-            />           
-            <br />
-            <label>Informe Inspección Nº</label>
-            <input
-              className="form-control"
-              type="text"
-              name="informeinpecnum"
-              value={InfraccionSeleccionado ? InfraccionSeleccionado.informeinpecnum: ''}
-              onChange={handleChange}
-            />
-            <br />
-            <label>Informe Inspector Observaciones</label>
-            <input
-              className="form-control"
-              type="text"
-              name="inforinspecobsevaciones"
-              value={InfraccionSeleccionado ? InfraccionSeleccionado.inforinspecobsevaciones: ''}
-              onChange={handleChange}
-            />
-            <br />
-            <label>Subir Fotos:</label>
-            <input
-              className="form-control"
-              type="file"
-              name="fotoinf"
-              value={InfraccionSeleccionado ? InfraccionSeleccionado.fotoinf:''}
-              onChange={handleChange}
-            />
-          </div>
-        </ModalBody>
-        <ModalFooter>
-          <button className="btn btn-danger"
-          onClick={()=>insertar()}>
-            Insertar
-          </button>
-          <button
-            className="btn btn-danger"
-            onClick={()=>setModalInsertar(false)}
-          >
-            Cancelar
-          </button>
-        </ModalFooter>
-      </Modal>
-    </div>
+      </div>
   );
-}
+}       
+        
 
 export default InspecCreate;
 

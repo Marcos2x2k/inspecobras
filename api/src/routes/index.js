@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 
-
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 router.use(express.json());
@@ -9,11 +8,11 @@ const axios = require('axios');
 
 // ACA DEFINO PARA PODER SUBIR IMAGENES
 const multer = require('multer');
-
+// const ejs = require('ejs')
 
 //defino los models a usar e importo los modelos conectados
 const { Expediente, Inspeccion, Ticket, expedienteinspeccion } = require('../db.js'); 
-const { route } = require('../app.js');
+// const { route } = require('../app.js');
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
@@ -95,21 +94,53 @@ router.get("/infracciones/:id", async (req, res) => {
 // *************** post **************
 
 // con MULTER
-const storage = multer.diskStorage({
-    destination:(req, res, cb) =>{
-      cb(null, './src/uploads') //guarda imagen cruda
-      },
-    filename:(req, file, cb) => {
-        const ext = file.originalname.split('.').pop() // retorna png
-        cb(null, `${Date.now()}.${ext}`)
-      }
-  })
+// const storage = multer.diskStorage({
+//     destination:(req, res, cb) =>{
+//       cb(null, './src/uploads') //guarda imagen cruda
+//       },
+//     filename:(req, file, cb) => {
+//         const ext = file.originalname.split('.').pop() // retorna png
+//         cb(null, `${Date.now()}.${ext}`)
+//       }
+//   })
   
-  const upload = multer({storage:storage})
+//   const upload = multer({storage:storage})
   
-  router.post('/upload', upload.single('file'), (req, res) => {    
-    res.send ({data:'Imagen Cargada'})
-  })
+//   router.post('/upload', upload.single('file'), (req, res) => {    
+//     res.send ({data:'Imagen Cargada'})
+//   })
+
+// ** este multer filtra las imagenes y muestra la info del archivo y ubic
+
+// en storage se coloca donde van a ser guardado los archivos
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, './src/uploads')
+    },    
+    filename: (req, file, cb) => {
+        cb(null, Date.now()+file.originalname)
+    }
+});
+
+const fileFilter = (res, file, cb) =>{
+    if (file.mimetype === "image/jpeg" || file.mimetype === "image/jpg" || file.mimetype === "image/png"){
+        cb(null, true)
+    }else{       
+        cb(null, false)
+    }
+}
+
+var upload = multer({
+    storage:storage,
+    fileFilter:fileFilter
+})
+
+router.post("/upload", upload.single('file'), async(req, res, cb)=>{
+    if (req.file) {
+        const fotoint=req.file.path;
+        res.send(fotoint)
+    }
+})
 
 // CON EXPRESS UPLOAD
 // const uploadexpress = require('express-fileupload')

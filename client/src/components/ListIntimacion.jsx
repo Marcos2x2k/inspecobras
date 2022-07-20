@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import logo from './styles/logo.svg';
 import './styles/AppCrud.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Modal, ModalBody, ModalHeader, ModalFooter, Button} from 'reactstrap';
+import {Modal, ModalBody, ModalHeader, ModalFooter, Button, Form} from 'reactstrap';
 import {Link} from 'react-router-dom';
 // import { applyMiddleware } from 'redux';
 
@@ -216,9 +216,40 @@ function ListIntimacion() {
     setModalInsertar(false);
   }
 
+//   function handleSubmit(p) {
+//     p.preventDefault();
+//     //console.log(p)
+//     setErrors(validate({
+//       ...input,
+//       [p.target.numexpediente]: p.target.value
+//     }));
+//     dispatch(postExpediente(input)); // input es el payload
+//     alert("Intimación Creada!!!")
+//     setInput({ // seteo el input a cero
+//       id: '',
+//       boletaintnum: '',
+//       adremaint: '',
+//       numexpedienteint: '',
+//       señorseñora: '',
+//       domiciliopart: '',
+//       lugaractuacion: '',
+//       otorgaplazode: '',
+//       paracumplimientoa: '',
+//       fechaintimacion: '',
+//       horaintimacion: '',
+//       vencimientoint: '',
+//       notificadoint: '',
+//       aclaracion: '',
+//       numcodigoint: '',
+//       Inspectorint: '',
+//       fotoint: ''
+//     })
+//     // history.push('/home')
+//     navigate('/home');
+// } 
   return (
     
-    <div className="AppCrud">
+    <div>
                     <a href="/home"><img height="50" src={require('./images/logoMuni.png')} /></a><br/>    
                     {/* <img src='https://ciudaddecorrientes.gov.ar/sites/default/themes/ciudaddecorrientes/logo.png' alt="to home" /> */}
                 
@@ -271,6 +302,197 @@ function ListIntimacion() {
         </tbody>
       </table>
 
+
+      {/* // ***** INSERTAR - CREAR ****** */}
+      <Modal isOpen={modalInsertar}>
+        <ModalHeader>
+          <div>
+            <h3>Carga de Boleta Intimación</h3>
+          </div>
+        </ModalHeader>
+        <ModalBody>
+        <div className="form-group">
+            {/* <label>ID</label>
+            <input
+              className="form-control"
+              readOnly
+              type="text"
+              name="id"
+              value={data[data.length-1].id+1}
+            /> */}
+            <br />
+            <h5>Boleta Intimación Nº</h5>
+            <input
+              className="form-control"
+              type="text"
+              name="boletaintnum"
+              value={IntimacionSeleccionado ? IntimacionSeleccionado.boletaintnum: ''}
+              onChange={handleChange}
+            />
+            <br />
+            <label>ADREMA (en el caso que tenga)</label>
+            <input
+              className="form-control"
+              type="text"
+              name="adremaint"
+              value={IntimacionSeleccionado ? IntimacionSeleccionado.adremaint: ''}
+              onChange={handleChange}
+            />
+            <br />
+            <label>EXPEDIENTE Nº (en el caso que tenga)</label>
+            <input
+              className="form-control"
+              type="text"
+              name="numexpedienteint"
+              value={IntimacionSeleccionado ? IntimacionSeleccionado.numexpedienteint: ''}
+              onChange={handleChange}
+            />
+            <br />
+            <label>Fecha Intimación (mes/dia/año)</label>
+            <input
+              className="form-control"
+              type="text"
+              name="fechaintimacion"
+              value={IntimacionSeleccionado ? IntimacionSeleccionado.fechaintimacion: ''}
+              onChange={handleChange}
+            />
+            <label>Hora Intimación (hora/minuto)</label>
+            <input
+              className="form-control"
+              type="text"
+              name="horaintimacion"
+              value={IntimacionSeleccionado ? IntimacionSeleccionado.horaintimacion: ''}
+              onChange={handleChange}
+            />
+            <br />
+            <label>Vencimiento Intimación:</label>
+            <input
+              className="form-control"
+              type="text"
+              name="vencimientoint"
+              value={IntimacionSeleccionado ? IntimacionSeleccionado.vencimientoint: ''}
+              onChange={handleChange}
+            />
+            <br />
+            <label>Nombre y Apellido (señor/a)</label>
+            <input
+              className="form-control"
+              type="text"
+              name="señorseñora"
+              value={IntimacionSeleccionado ? IntimacionSeleccionado.señorseñora: ''}
+              onChange={handleChange}
+            />
+            <br />
+            <label>Domicilio Particular</label>
+            <input
+              className="form-control"
+              type="text"
+              name="domiciliopart"
+              value={IntimacionSeleccionado ? IntimacionSeleccionado.domiciliopart: ''}
+              onChange={handleChange}
+            />
+            <br />
+            <label>Domicilio/Lugar Actuación</label>
+            <input
+              className="form-control"
+              type="text"
+              name="lugaractuacion"
+              value={IntimacionSeleccionado ? IntimacionSeleccionado.lugaractuacion: ''}
+              onChange={handleChange}
+            />
+            <br />
+            <label>Otorgó el Plazo de (Días)</label>
+            <input
+              className="form-control"
+              type="text"
+              name="otorgaplazode"
+              value={IntimacionSeleccionado ? IntimacionSeleccionado.otorgaplazode: ''}
+              onChange={handleChange}
+            />
+            <br />
+            <label>Para el Cumplimiento a</label>
+            <textarea
+              rows="2"
+              className="form-control"
+              type="text"
+              name="paracumplimientoa"
+              value={IntimacionSeleccionado ? IntimacionSeleccionado.paracumplimientoa: ''}
+              onChange={handleChange}
+            />
+            <br />
+            <label>NOTIFICADO</label>
+            <input
+              className="form-control"
+              type="text"
+              name="notificadoint"
+              value={IntimacionSeleccionado ? IntimacionSeleccionado.notificadoint: ''}
+              onChange={handleChange}
+            />
+            <br />
+            <label>ACLARACIÓN</label>
+            <textarea
+              rows="2"
+              className="form-control"
+              type="text"
+              name="aclaracion"
+              value={IntimacionSeleccionado ? IntimacionSeleccionado.aclaracion: ''}
+              onChange={handleChange}
+            />
+            <br />
+            <label>Inspector</label>
+            <input
+              className="form-control"
+              type="text"
+              name="Inspectorint"
+              value={IntimacionSeleccionado ? IntimacionSeleccionado.Inspectorint: ''}
+              onChange={handleChange}
+            />
+            <br />
+            <label>Número Código Interno</label>
+            <input
+              className="form-control"
+              type="text"
+              name="numcodigoint"
+              value={IntimacionSeleccionado ? IntimacionSeleccionado.numcodigoint: ''}
+              onChange={handleChange}
+            />
+            <br />
+            <label>Subir Fotos:</label>
+            <br/><br/>
+            <form method="post" enctype="multipart/form-data" action="/upload">
+              <input 
+              type="file" 
+              name="fotoint"
+              value={IntimacionSeleccionado ? IntimacionSeleccionado.fotoint : ''}
+              onChange={handleChange}>              
+              </input>
+              {/* <input type="submit" value="Submit"></input> */}
+            </form>
+              {/* <input
+                className="form-control"
+                type="text"
+                name="fotoint"
+                value={IntimacionSeleccionado ? IntimacionSeleccionado.fotoint : ''}
+                onChange={handleChange}
+              /> */}
+              <br />
+
+          </div>
+          
+        </ModalBody>
+        <ModalFooter>
+          <button className="btn btn-primary"
+          onClick={()=>insertar()}>
+            Crear
+          </button>
+          <button
+            className="btn btn-danger"
+            onClick={()=>setModalInsertar(false)}
+          >
+            Cancelar
+          </button>
+        </ModalFooter>
+      </Modal>
       {/* ************* MODO EDITAR ***************/}
       <Modal isOpen={modalEditar}>
         <ModalHeader>
@@ -280,7 +502,7 @@ function ListIntimacion() {
         </ModalHeader>
         <ModalBody>
           <div className="form-group">
-            <label>Boleta Intimacion Nº</label>
+            <h5>Boleta Intimacion Nº</h5>
             {/* <h1>{IntimacionSeleccionado.señorseñora}</h1> */}
             <input
               className="form-control" 
@@ -460,7 +682,7 @@ function ListIntimacion() {
         </ModalHeader>
         <ModalBody>
           <div className="form-group">
-            <label className = "labelcreateediteliminar">Boleta Intimacion Nº</label>
+            <h5>Boleta Intimacion Nº</h5>
             {/* <h1>{IntimacionSeleccionado.señorseñora}</h1> */}
             <input
               className="form-control" type="text" name="boletaintnum" readOnly
@@ -643,7 +865,6 @@ function ListIntimacion() {
 
       <Modal isOpen={modalEliminar}>
         <ModalBody>
-
           Estás Seguro que deseas eliminar la Intimación Nº {IntimacionSeleccionado && IntimacionSeleccionado.boletaintnum}
           <br/>
           de la fecha {IntimacionSeleccionado && IntimacionSeleccionado.fechaintimacion}
@@ -661,187 +882,6 @@ function ListIntimacion() {
         </ModalFooter>
       </Modal>
 
-
-      <Modal isOpen={modalInsertar}>
-        <ModalHeader>
-          <div>
-            <h3>Carga de Boleta Intimación</h3>
-          </div>
-        </ModalHeader>
-        <ModalBody>
-        <div className="form-group">
-            {/* <label>ID</label>
-            <input
-              className="form-control"
-              readOnly
-              type="text"
-              name="id"
-              value={data[data.length-1].id+1}
-            /> */}
-            <br />
-            <label>Boleta Intimación Nº</label>
-            <input
-              className="form-control"
-              type="text"
-              name="boletaintnum"
-              value={IntimacionSeleccionado ? IntimacionSeleccionado.boletaintnum: ''}
-              onChange={handleChange}
-            />
-            <br />
-            <label>ADREMA (en el caso que tenga)</label>
-            <input
-              className="form-control"
-              type="text"
-              name="adremaint"
-              value={IntimacionSeleccionado ? IntimacionSeleccionado.adremaint: ''}
-              onChange={handleChange}
-            />
-            <br />
-            <label>EXPEDIENTE Nº (en el caso que tenga)</label>
-            <input
-              className="form-control"
-              type="text"
-              name="numexpedienteint"
-              value={IntimacionSeleccionado ? IntimacionSeleccionado.numexpedienteint: ''}
-              onChange={handleChange}
-            />
-            <br />
-            <label>Fecha Intimación (mes/dia/año)</label>
-            <input
-              className="form-control"
-              type="text"
-              name="fechaintimacion"
-              value={IntimacionSeleccionado ? IntimacionSeleccionado.fechaintimacion: ''}
-              onChange={handleChange}
-            />
-            <label>Hora Intimación (hora/minuto)</label>
-            <input
-              className="form-control"
-              type="text"
-              name="horaintimacion"
-              value={IntimacionSeleccionado ? IntimacionSeleccionado.horaintimacion: ''}
-              onChange={handleChange}
-            />
-            <br />
-            <label>Vencimiento Intimación:</label>
-            <input
-              className="form-control"
-              type="text"
-              name="vencimientoint"
-              value={IntimacionSeleccionado ? IntimacionSeleccionado.vencimientoint: ''}
-              onChange={handleChange}
-            />
-            <br />
-            <label>Nombre y Apellido (señor/a)</label>
-            <input
-              className="form-control"
-              type="text"
-              name="señorseñora"
-              value={IntimacionSeleccionado ? IntimacionSeleccionado.señorseñora: ''}
-              onChange={handleChange}
-            />
-            <br />
-            <label>Domicilio Particular</label>
-            <input
-              className="form-control"
-              type="text"
-              name="domiciliopart"
-              value={IntimacionSeleccionado ? IntimacionSeleccionado.domiciliopart: ''}
-              onChange={handleChange}
-            />
-            <br />
-            <label>Domicilio/Lugar Actuación</label>
-            <input
-              className="form-control"
-              type="text"
-              name="lugaractuacion"
-              value={IntimacionSeleccionado ? IntimacionSeleccionado.lugaractuacion: ''}
-              onChange={handleChange}
-            />
-            <br />
-            <label>Otorgó el Plazo de (Días)</label>
-            <input
-              className="form-control"
-              type="text"
-              name="otorgaplazode"
-              value={IntimacionSeleccionado ? IntimacionSeleccionado.otorgaplazode: ''}
-              onChange={handleChange}
-            />
-            <br />
-            <label>Para el Cumplimiento a</label>
-            <textarea
-              rows="2"
-              className="form-control"
-              type="text"
-              name="paracumplimientoa"
-              value={IntimacionSeleccionado ? IntimacionSeleccionado.paracumplimientoa: ''}
-              onChange={handleChange}
-            />
-            <br />
-            <label>NOTIFICADO</label>
-            <input
-              className="form-control"
-              type="text"
-              name="notificadoint"
-              value={IntimacionSeleccionado ? IntimacionSeleccionado.notificadoint: ''}
-              onChange={handleChange}
-            />
-            <br />
-            <label>ACLARACIÓN</label>
-            <textarea
-              rows="2"
-              className="form-control"
-              type="text"
-              name="aclaracion"
-              value={IntimacionSeleccionado ? IntimacionSeleccionado.aclaracion: ''}
-              onChange={handleChange}
-            />
-            <br />
-            <label>Inspector</label>
-            <input
-              className="form-control"
-              type="text"
-              name="Inspectorint"
-              value={IntimacionSeleccionado ? IntimacionSeleccionado.Inspectorint: ''}
-              onChange={handleChange}
-            />
-            <br />
-            <label>Número Código Interno</label>
-            <input
-              className="form-control"
-              type="text"
-              name="numcodigoint"
-              value={IntimacionSeleccionado ? IntimacionSeleccionado.numcodigoint: ''}
-              onChange={handleChange}
-            />
-            <br />
-            <label>Subir Fotos:</label>
-            {/* <input
-              className="form-control"
-              type="text"
-              name="fotoint"
-              value= {IntimacionSeleccionado ? IntimacionSeleccionado.fotoint: ''}
-              onChange={handleChange}
-            /> */}
-          </div>
-          <form method="post" enctype="multipart/form-data" action="/upload">
-                <input type="file" name="file"></input>
-                {/* <input type="submit" value="Submit"></input> */}
-          </form>
-        </ModalBody>
-        <ModalFooter>
-          <button className="btn btn-primary"
-          onClick={()=>insertar()}>
-            Crear
-          </button>
-          <button
-            className="btn btn-danger"
-            onClick={()=>setModalInsertar(false)}
-          >
-            Cancelar
-          </button>
-        </ModalFooter>
-      </Modal>
     </div>
   );
 }
