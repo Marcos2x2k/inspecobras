@@ -1,35 +1,44 @@
-var multer = require('multer');
-var ejs = require ('ejs');
+// // ACA DEFINO PARA PODER SUBIR IMAGENES
+// const multer = require('multer');
+// // const ejs = require('ejs')
 
-const { Route } = require('react-router-dom');
+// // ** este multer filtra las imagenes y muestra la info del archivo y ubic
 
-var storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, './uploads')
-    },
-    filename: (req, file, cb) => {
-        cb(null, Date.now()+file.originalname)
-    }
-});
+// // en storage se coloca donde van a ser guardado los archivos
+// var storage = multer.diskStorage({
+//     destination: function (req, file, cb) {
+//         cb(null, './src/uploads')
+//     },    
+//     filename: (req, file, cb) => {
+//         cb(null, Date.now()+file.originalname)
+//     }
+// });
 
-const fileFilter = (req,file,cb) =>{
-    if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/jpg' || file.mimetype === 'image/png'){
-        cb(null, true)
-    }else{
-        cb(null, false)
-    }
-}
+// const fileFilter = (res, file, cb) =>{
+//     if (file.mimetype === "image/jpeg" || file.mimetype === "image/jpg" || file.mimetype === "image/png"){
+//         cb(null, true)
+//     }else{       
+//         cb(null, false)
+//     }
+// }
 
-var upload = multer({
-    storage:storage,
-    fileFilter:fileFilter
-})
+// var upload = multer({
+//     storage:storage,
+//     fileFilter:fileFilter
+// })
 
-// ** para poner en las rutas de Post
-
-// Router.post("/upload", upload.single('myImg'),async(req,res,next)=>{
-//     if(req,file){
-//         const pathName=req.file.path;
-//         res.send(req.file,pathName)
+// router.post("/upload", upload.single('file'), async(req, res, cb)=>{
+//     if (req.file) {
+//         const fotoint=req.file.path;
+//         res.send(fotoint)
 //     }
 // })
+
+// // ** para poner en las rutas de Post
+
+// // Router.post("/upload", upload.single('myImg'),async(req,res,next)=>{
+// //     if(req,file){
+// //         const pathName=req.file.path;
+// //         res.send(req.file,pathName)
+// //     }
+// // })

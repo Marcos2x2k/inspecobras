@@ -33,6 +33,7 @@ import Construccion from './components/Construccion.jsx'
 import ListTicket from './components/ListTicket.jsx'
 import ListInspeccion from './components/ListInspeccion.jsx'
 import ListIntimacion from './components/ListIntimacion.jsx'
+// import Upload from './components/Upload.jsx'
 // import uploads from './components/uploads'
 
 
@@ -59,6 +60,7 @@ const App = () => {
           <Route  path='/ListTicket' element={<ListTicket/>}/>
           <Route  path='/ListInspeccion' element={<ListInspeccion/>}/>
           <Route  path='/ListIntimacion' element={<ListIntimacion/>}/>
+          {/* <Route  path='/Upload' element={<Upload/>}/> */}
           {/* <Route  path='/uploads' element={<uploads/>}/>  subir imagenes */}
           {/* <Route exact path='/expedientes/:id' element={<Details/>}/> */}
           {/* <Route path='/expedcreate' element={<ExpedCreate/>}/>         */}

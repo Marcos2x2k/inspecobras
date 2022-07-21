@@ -11,7 +11,8 @@ const multer = require('multer');
 // const ejs = require('ejs')
 
 //defino los models a usar e importo los modelos conectados
-const { Expediente, Inspeccion, Ticket, expedienteinspeccion } = require('../db.js'); 
+const { Expediente, Inspeccion, Intimacion, Infraccion, Ticket, expedienteinspeccion } = require('../db.js'); 
+// const { default: Infracciones } = require('../../../client/src/components/IntimCreate.jsx');
 // const { route } = require('../app.js');
 
 // Configurar los routers
@@ -91,6 +92,10 @@ router.get("/infracciones/:id", async (req, res) => {
 });
 
 
+
+
+
+
 // *************** post **************
 
 // con MULTER
@@ -135,7 +140,7 @@ var upload = multer({
     fileFilter:fileFilter
 })
 
-router.post("/upload", upload.single('file'), async(req, res, cb)=>{
+router.post("/upload", upload.single('fotoint'), async(req, res, cb)=>{
     if (req.file) {
         const fotoint=req.file.path;
         res.send(fotoint)
@@ -233,6 +238,100 @@ router.post('/newinspeccion', async (req, res) =>{
     res.send('Nueva Inspección Creada')
 
 })
+
+router.post ('/newintimacion', async (req,res) =>{
+    let {
+        boletaintnum, 
+        adremaint,
+        numexpedienteint,
+        señorseñora,
+        domiciliopart,
+        lugaractuacion,
+        otorgaplazode,
+        paracumplimientoa,
+        fechaintimacion,
+        horaintimacion,
+        vencimientoint,
+        notificadoint,
+        aclaracion,
+        numcodigoint,
+        inspectorint,
+        fotoint
+    } = req.body
+    
+    let intimacionCreate = await Intimacion.create ({
+        boletaintnum, 
+        adremaint,
+        numexpedienteint,
+        señorseñora,
+        domiciliopart,
+        lugaractuacion,
+        otorgaplazode,
+        paracumplimientoa,
+        fechaintimacion,
+        horaintimacion,
+        vencimientoint,
+        notificadoint,
+        aclaracion,
+        numcodigoint,
+        inspectorint,
+        fotoint
+    })
+    res.send ('INTIMACION CREADA')
+})
+
+router.post ('/newinfraccion', async (req, res) =>{
+    let {
+        actainfnum, 
+        fechainfraccion,
+        horainfraccion,
+        numexpedienteinf,
+        adremainf,
+        apellidonombrepropietarioinf,
+        dnipropietarioinf,
+        cuilpropietarioinf,
+        lugardeconstitucioninf,
+        Causasinf,
+        Ordenanzanum,
+        articuloinf,
+        incisonum,
+        observacion,
+        apellidonombretestigoinf,
+        Inspectorinf,
+        Inspectorcod,
+        detallegeneral,
+        informeinpecnum,
+        inforinspecobsevaciones,
+        fotoinf
+    } = req.body
+
+    let infraccionCreate = await Infraccion.create ({
+        actainfnum, 
+        fechainfraccion,
+        horainfraccion,
+        numexpedienteinf,
+        adremainf,
+        apellidonombrepropietarioinf,
+        dnipropietarioinf,
+        cuilpropietarioinf,
+        lugardeconstitucioninf,
+        Causasinf,
+        Ordenanzanum,
+        articuloinf,
+        incisonum,
+        observacion,
+        apellidonombretestigoinf,
+        Inspectorinf,
+        Inspectorcod,
+        detallegeneral,
+        informeinpecnum,
+        inforinspecobsevaciones,
+        fotoinf
+    })
+    res.send ('NUEVA INFRACCION CREADA')
+})
+
+
 
 router.post ('/newticket', async (req, res) =>{
 

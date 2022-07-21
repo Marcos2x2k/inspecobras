@@ -459,15 +459,7 @@ function ListIntimacion() {
             <br />
             <label>Subir Fotos:</label>
             <br/><br/>
-            <form method="post" enctype="multipart/form-data" action="/upload">
-              <input 
-              type="file" 
-              name="fotoint"
-              value={IntimacionSeleccionado ? IntimacionSeleccionado.fotoint : ''}
-              onChange={handleChange}>              
-              </input>
-              {/* <input type="submit" value="Submit"></input> */}
-            </form>
+            
               {/* <input
                 className="form-control"
                 type="text"
@@ -478,7 +470,16 @@ function ListIntimacion() {
               <br />
 
           </div>
-          
+          <form method="post" enctype="multipart/form-data" action="/upload">
+              <input 
+              type="file" 
+              name="fotoint"
+              value={IntimacionSeleccionado ? IntimacionSeleccionado.fotoint: ''}
+              // value={IntimacionSeleccionado ? IntimacionSeleccionado.fotoint : ''}
+              onChange={handleChange}>              
+              </input>              
+              {/* <input type="submit" value="Submit"></input> */}
+            </form>
         </ModalBody>
         <ModalFooter>
           <button className="btn btn-primary"

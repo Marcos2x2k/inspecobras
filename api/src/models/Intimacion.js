@@ -2,6 +2,12 @@ const {DataTypes} = require('sequelize')
 
 module.exports = (sequelize) => {
     sequelize.define('intimacion',{
+        id:{
+            type: DataTypes.UUID,
+            defaultValue: DataTypes.UUIDV4,
+            primaryKey: true,
+            allowNull: false
+          },        
         boletaintnum:{
             type: DataTypes.STRING,
             allownull: true,
@@ -58,7 +64,7 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
             allownull: true
         },
-        Inspectorint:{
+        inspectorint:{
             type: DataTypes.STRING,
             allownull: true
         },
