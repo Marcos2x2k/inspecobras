@@ -18,7 +18,7 @@ import { Link } from 'react-router-dom';
 
 //ME IMPORTO EL COMPONENTE Card y renderizo en linea 
 import CardInspeccion from './Cards/CardInspeccion';
-import SearchBar from './SearchBar';
+import SearchBarExp from './SearchBars/SearchBarInsp';
 import Paginado from './Paginado';
 
 export default function ListExpediente() {
@@ -125,7 +125,7 @@ export default function ListExpediente() {
                     <Button color='primary' onClick={p => { handleClick(p) }}>Recargar Inspeciones</Button> <label> </label>
                     <Link to='/Home'><Button color="danger">Volver Menu Principal</Button></Link>
                     <br /><br />
-                    <SearchBar
+                    <SearchBarExp
                     />
                     <br /><br />
                     {/* <br /><br /> */}

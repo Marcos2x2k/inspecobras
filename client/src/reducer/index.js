@@ -31,12 +31,32 @@ export default function rootReducer(state =  initialState, action){
                     // el payload lo creamos en actions como payload: json.data
                     allInfracciones: action.payload
                 }  
-
+        case 'GET_INTIMACIONES':
+                    return{
+                        ...state, // guardamos el estado anterior como buena practica
+                        infracciones: action.payload,  
+                        //Asi creamos en JSON - var json = await axios.get("http://localhost:3001/dogs",{});
+                        // el payload lo creamos en actions como payload: json.data
+                        allInfracciones: action.payload
+                    }  
         case 'GET_NAME_EXPEDIENTES':
             return{
                 ...state,
                 expedientes: action.payload
             }  
+        case 'GET_NAME_INFRACCIONES':
+            return{
+                ...state,
+                infracciones: action.payload
+            }  
+        case 'GET_NAME_INTIMACIONES':
+            return{
+                ...state,
+                intimaciones: action.payload
+            }  
+
+
+
         case 'POST_EXPEDIENTES'://No se declara en actions, se declara en el reducer. 
                           //en action solo se trae la ruta
                  return{
@@ -44,9 +64,16 @@ export default function rootReducer(state =  initialState, action){
                  }
         case 'POST_INFRACCIONES'://No se declara en actions, se declara en el reducer. 
                  //en action solo se trae la ruta
-        return{
-           ...state
+                return{
+                    ...state
         }
+        case 'POST_INTIMACIONES'://No se declara en actions, se declara en el reducer. 
+        //en action solo se trae la ruta
+                return{
+                    ...state
+        }
+
+
         case 'GET_DETAILS_INFRACCIONES': 
                 // console.log (state)
                 console.log (action.payload)          
@@ -55,14 +82,22 @@ export default function rootReducer(state =  initialState, action){
                     expedientesDetails: action.payload              
                                   
         }       
-        case 'GET_DETAILS_EXPEDIENTES': 
+        case 'GET_DETAILS_INTIMACIONES': 
                 // console.log (state)
                 console.log (action.payload)          
                 return {                    
                     ...state,     
-                    expedientesDetails: action.payload              
+                    intimacionesDetails: action.payload              
                                   
-                }        
+                }   
+                case 'GET_DETAILS_INTIMACIONES': 
+                // console.log (state)
+                console.log (action.payload)          
+                return {                    
+                    ...state,     
+                    intimacionesDetails: action.payload              
+                                  
+                }     
         case 'ORDER_BY_NAME':
                 let sortedArr = action.payload === 'asc' ?
                 state.expedientes.sort(function(a,b){

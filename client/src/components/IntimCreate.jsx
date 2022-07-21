@@ -4,7 +4,8 @@ import './styles/Creates.css'; // importo los styles de mi Home.css
 // import Button from '@mui/material/Button';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {Button, Tablet, Container} from 'reactstrap'
-import SearchBar from './SearchBar';
+import SearchBarInf from './SearchBarInf';
+
 
 //IMPORTO PORQUE USAMOS HOOKS
 import {useState, useEffect, Fragment} from 'react'; //  HOOK USAMOS useState es un hook (//)Fragment es como un div para envolver hijos div en app)
@@ -20,7 +21,7 @@ import {Link} from 'react-router-dom';
 
 //ME IMPORTO EL COMPONENTE Card y renderizo en linea 
 // import Card from './Card';
-// import SearchBar from './SearchBar';
+// import SearchBarInt from './SearchBarInt';
 // import Paginado from './Paginado';
 
 export default function Infracciones (){ 
@@ -140,7 +141,9 @@ export default function Infracciones (){
                 <img src={require('./images/separadorpagina.png')}/>
                            
                 <form onSubmit={(p) => handleSubmit(p)}>
+                
                  <div>
+                        
                       <div>
                         <br/><br/>
                         <label className='selectfont'> Nº Expediente: </label>

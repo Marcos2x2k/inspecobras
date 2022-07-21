@@ -3,7 +3,7 @@ import React from 'react';
 import './styles/Creates.css'; // importo los styles de mi Home.css
 // import Button from '@mui/material/Button';
 import {Button, Tablet, Container} from 'reactstrap'
-import SearchBar from './SearchBar';
+// import SearchBarTick from './SearchBars/SearchBarTick';
 
 //IMPORTO PORQUE USAMOS HOOKS
 import {useState, useEffect, Fragment} from 'react'; //  HOOK USAMOS useState es un hook (//)Fragment es como un div para envolver hijos div en app)

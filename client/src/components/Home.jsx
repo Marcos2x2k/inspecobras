@@ -6,7 +6,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Button, Tablet, Container } from 'reactstrap'
 import './styles/Home.css'; // importo los styles de mi Home.css
-import NavBar from './NavBar';
+// import NavBar from './NavBar';
 
 //IMPORTO PORQUE USAMOS HOOKS
 import { useState, useEffect, Fragment } from 'react'; //  HOOK USAMOS useState es un hook (//)Fragment es como un div para envolver hijos div en app)

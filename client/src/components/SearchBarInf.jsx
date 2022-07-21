@@ -1,9 +1,9 @@
 import React from 'react';
 import {useState} from 'react';
 import { useDispatch } from 'react-redux';
-import {getNameExpedientes} from '../actions';
+import {getNameIntimaciones} from '../actions';
 
-export default function SearchBar(){
+export default function SearchBarInf(){
      // aca usamos Hook
     const dispatch = useDispatch()
     const [name, setName] = useState("")
@@ -15,7 +15,7 @@ export default function SearchBar(){
     }
     function handleSubmit(p){
         p.preventDefault()
-        dispatch(getNameExpedientes(name))
+        dispatch(getNameIntimaciones(name))
     }
 
     return (
@@ -24,7 +24,7 @@ export default function SearchBar(){
             <form onSubmit={(p)=> handleSubmit(p)}> 
                 <input
                 type = 'text'
-                placeholder = "Buscar Expediente..."
+                placeholder = "Buscar Infracciones..."
                 onChange={(p) => handInputChange(p)}                
             />
                 <button type='submit'>Buscar</button>

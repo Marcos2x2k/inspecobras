@@ -18,7 +18,7 @@ import { Link } from 'react-router-dom';
 
 //ME IMPORTO EL COMPONENTE Card y renderizo en linea 
 import Card from './Cards/Card';
-import SearchBar from './SearchBar';
+import SearchBarExp from './SearchBars/SearchBarExp';
 import Paginado from './Paginado';
 
 export default function ListExpediente() {
@@ -156,7 +156,7 @@ const infoTotal = listaExpedientes.concat(expedientes);
                     <Button color='primary' onClick={p => { handleClick(p) }}>Recargar Exp.</Button> <label> </label>
                     <Link to='/Home'><Button color="danger">Volver Menu Principal</Button></Link>
                     <br /><br />
-                    <SearchBar
+                    <SearchBarExp
                     />
                     <br /><br />
                     {/* <br /><br /> */}

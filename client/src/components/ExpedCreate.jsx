@@ -4,7 +4,7 @@ import './styles/Creates.css'; // importo los styles de mi Home.css
 // import Button from '@mui/material/Button';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {Button, Tablet, Container} from 'reactstrap'
-import SearchBar from './SearchBar';
+// import SearchBarExp from './Searchbars/SearchBarExp';
 
 //IMPORTO PORQUE USAMOS HOOKS
 import {useState, useEffect, Fragment} from 'react'; //  HOOK USAMOS useState es un hook (//)Fragment es como un div para envolver hijos div en app)
@@ -333,7 +333,6 @@ export default function ExpedCreate (){
 )}
 
 // ******** parte original para mejorar ******
-
 
 // import React from 'react';
 // import {Navigate, useNavigate} from 'react-router-dom';

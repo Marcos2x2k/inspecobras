@@ -37,6 +37,24 @@ const getAllExpedientes = async () =>{
     }
 }
 
+const getDbInfoInt = async () => {
+    const infoDB = await Intimacion.findAll({
+    //    include:{
+    //        model: Inspeccion,
+    //        atributes: ['numexpediente']
+    //    } 
+    })
+    return getDbInfoInt;
+}
+const getAllIntimaciones = async () =>{
+    try{
+        const DBinfoint = await getDbInfoInt()
+        return DBinfoint;
+    }catch (err){
+        console.log('error trayendo info de la Base de Datos', err)
+    }
+}
+
 // ********* Sector de GET Y POST
 
 router.get ('/expedientes', async (req,res) => {
@@ -60,6 +78,17 @@ router.get ('/infracciones', async (req,res) => {
         res.status(400).send('No se encuentra el Expediente Requerido')
     }else{
         res.status(200).send(infoTotali)
+    }   
+})
+router.get ('/intimaciones', async (req,res) => {
+    const numdeboletaint = req.query.name;
+    const infoTotalint = getAllIntimaciones();
+    if(numdeboletaint) {
+        const intnumboleta = await infoTotalint.map(p => p.numdeboletaint.toLowerCase().includes(numdeboletaint.toLowerCase()))
+        res.status(200).send(intnumboleta)
+        res.status(400).send('No se encuentra el Expediente Requerido')
+    }else{
+        res.status(200).send(infoTotalint)
     }   
 })
 
@@ -87,14 +116,23 @@ router.get("/infracciones/:id", async (req, res) => {
         console.log(infId)        
         expId.length ? 
                 res.status(200).send(infId) : 
-                res.status(404).send('NO EXISTE Id del Expediente Requerido')        
+                res.status(404).send('NO EXISTE Id de Infracción Requerido')        
     } 
 });
 
-
-
-
-
+router.get("/intimaciones/:id", async (req, res) => {
+    const id = req.params.id;
+    const infoTotal = await getAllIntimaciones();    
+    //console.log (infoTotal)
+    if (id){
+        const infId = await infoTotal.filter((p) => p.id == id)
+        
+        console.log(infId)        
+        expId.length ? 
+                res.status(200).send(infId) : 
+                res.status(404).send('NO EXISTE Id de Intimación Requerido')        
+    } 
+});
 
 // *************** post **************
 

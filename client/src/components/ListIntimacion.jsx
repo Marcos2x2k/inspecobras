@@ -3,22 +3,40 @@ import logo from './styles/logo.svg';
 import './styles/AppCrud.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Modal, ModalBody, ModalHeader, ModalFooter, Button, Form} from 'reactstrap';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
+import {useDispatch, useSelector} from 'react-redux'; 
+import {postIntimacion} from '../actions';
+import SearchBarInt from './SearchBarInt';
+
+
 // import { applyMiddleware } from 'redux';
-
-
-function ListIntimacion() { 
-
-
-  const dataIntimacion = [
-    { id: 1, 
-      boletaintnum: "7106",
-      adremaint:"A1-232323-1",
-      numexpedienteint:"5454P2022",
+const dataIntimacionarray = [
+  { id: 1, 
+    boletaintnum: "7106",
+    adremaint:"A1-232323-1",
+    numexpedienteint:"5454P2022",
+    señorseñora: "Jose Romero",
+    domiciliopart:"Se Desconoce",
+    lugaractuacion:"Santa Fé esquina Rivadavia",
+    otorgaplazode:"2",
+    paracumplimientoa:"proceder a reparar la vereda en mal estado, conforme normativas vigentes",
+    fechaintimacion:"06/06/2022",
+    horaintimacion:"11:05",
+    vencimientoint:"08/06/2022",
+    notificadoint:"propuetario o responsable de Adrema Ausente",
+    aclaracion:"se deja presente en la puerta de entrada",
+    numcodigoint:"07/046",
+    Inspectorint:"Ramos Carlos Alegre",
+    fotoint:"https://www.elindependiente.com/wp-content/uploads/2022/04/construccion-656x368.jpg"
+  }
+  ,{ 
+      boletaintnum: "7106", 
+      adremaint:"A1-655656-1",
+      numexpedienteint:"3354P2021",
       señorseñora: "Jose Romero",
-      domiciliopart:"Se Desconoce",
+      domiciliopart:"Gral Paz 5854",
       lugaractuacion:"Santa Fé esquina Rivadavia",
-      otorgaplazode:"2",
+      otorgaplazode:"5",
       paracumplimientoa:"proceder a reparar la vereda en mal estado, conforme normativas vigentes",
       fechaintimacion:"06/06/2022",
       horaintimacion:"11:05",
@@ -28,86 +46,84 @@ function ListIntimacion() {
       numcodigoint:"07/046",
       Inspectorint:"Ramos Carlos Alegre",
       fotoint:"https://www.elindependiente.com/wp-content/uploads/2022/04/construccion-656x368.jpg"
+    },{ 
+      boletaintnum: "7106", 
+      adremaint:"A1-232323-1",
+      numexpedienteint:"5454P2022",
+      señorseñora: "Jose Romero",
+      domiciliopart:"Se Desconoce",
+      lugaractuacion:"Santa Fé esquina Rivadavia",
+      otorgaplazode:"7",
+      paracumplimientoa:"proceder a reparar la vereda en mal estado, conforme normativas vigentes",
+      fechaintimacion:"06/06/2022",
+      horaintimacion:"11:05",
+      vencimientoint:"08/06/2022",
+      notificadoint:"propuetario o responsable de Adrema Ausente",
+      aclaracion:"se deja presente en la puerta de entrada",
+      numcodigoint:"07/046",
+      Inspectorint:"Ramos Carlos Alegre",
+      fotoint:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4-eihuwaWCZCE3nTplaz-ezykiIB8xezbhtWicPynTGOml7drYLxxqtHg6eq5YuDqKhA&usqp=CAU"
+    },{  
+      boletaintnum: "7106", 
+      adremaint:"A1-662239-1",
+      numexpedienteint:"1111P2019",
+      señorseñora: "Jose Romero",
+      domiciliopart:"Se Desconoce",
+      lugaractuacion:"Santa Fé esquina Rivadavia",
+      otorgaplazode:"30",
+      paracumplimientoa:"proceder a reparar la vereda en mal estado, conforme normativas vigentes",
+      fechaintimacion:"06/06/2019",
+      horaintimacion:"11:05",
+      vencimientoint:"08/06/2020",
+      notificadoint:"propuetario o responsable Ausente",
+      aclaracion:"se deja presente al propietario",
+      numcodigoint:"07/046",
+      Inspectorint:"Ramos Carlos Alegre",
+      fotoint:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4-eihuwaWCZCE3nTplaz-ezykiIB8xezbhtWicPynTGOml7drYLxxqtHg6eq5YuDqKhA&usqp=CAU"
+    },{ 
+      boletaintnum: "0504", 
+      adremaint:"A1-00000-1",
+      numexpedienteint:"1111P2019",
+      señorseñora: "Sosa diego",
+      domiciliopart:"Se perdio",
+      lugaractuacion:"Tte. Ibañez",
+      otorgaplazode:"60",
+      paracumplimientoa:"proceder a reparar la vereda en mal estado",
+      fechaintimacion:"05/076/2022",
+      horaintimacion:"00:49",
+      vencimientoint:"08/06/2022",
+      notificadoint:"propuetario o responsable Ausente",
+      aclaracion:"se deja presente al propietario",
+      numcodigoint:"07/046",
+      Inspectorint:"Ramos Carlos Alegre",
+      fotoint:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFTdWH9IB1MQ7DObxNsQXNh7Od82V3cUJZdqnLkGsc-HX1tek2zDj1g0dYDydy182kHpo&usqp=CAU"
     }
-    ,{ id: 2, 
-        boletaintnum: "7106", 
-        adremaint:"A1-655656-1",
-        numexpedienteint:"3354P2021",
-        señorseñora: "Jose Romero",
-        domiciliopart:"Gral Paz 5854",
-        lugaractuacion:"Santa Fé esquina Rivadavia",
-        otorgaplazode:"5",
-        paracumplimientoa:"proceder a reparar la vereda en mal estado, conforme normativas vigentes",
-        fechaintimacion:"06/06/2022",
-        horaintimacion:"11:05",
-        vencimientoint:"08/06/2022",
-        notificadoint:"propuetario o responsable de Adrema Ausente",
-        aclaracion:"se deja presente en la puerta de entrada",
-        numcodigoint:"07/046",
-        Inspectorint:"Ramos Carlos Alegre",
-        fotoint:"https://www.elindependiente.com/wp-content/uploads/2022/04/construccion-656x368.jpg"
-      },{ id: 3, 
-        boletaintnum: "7106", 
-        adremaint:"A1-232323-1",
-        numexpedienteint:"5454P2022",
-        señorseñora: "Jose Romero",
-        domiciliopart:"Se Desconoce",
-        lugaractuacion:"Santa Fé esquina Rivadavia",
-        otorgaplazode:"7",
-        paracumplimientoa:"proceder a reparar la vereda en mal estado, conforme normativas vigentes",
-        fechaintimacion:"06/06/2022",
-        horaintimacion:"11:05",
-        vencimientoint:"08/06/2022",
-        notificadoint:"propuetario o responsable de Adrema Ausente",
-        aclaracion:"se deja presente en la puerta de entrada",
-        numcodigoint:"07/046",
-        Inspectorint:"Ramos Carlos Alegre",
-        fotoint:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4-eihuwaWCZCE3nTplaz-ezykiIB8xezbhtWicPynTGOml7drYLxxqtHg6eq5YuDqKhA&usqp=CAU"
-      },{ id: 4, 
-        boletaintnum: "7106", 
-        adremaint:"A1-662239-1",
-        numexpedienteint:"1111P2019",
-        señorseñora: "Jose Romero",
-        domiciliopart:"Se Desconoce",
-        lugaractuacion:"Santa Fé esquina Rivadavia",
-        otorgaplazode:"30",
-        paracumplimientoa:"proceder a reparar la vereda en mal estado, conforme normativas vigentes",
-        fechaintimacion:"06/06/2019",
-        horaintimacion:"11:05",
-        vencimientoint:"08/06/2020",
-        notificadoint:"propuetario o responsable Ausente",
-        aclaracion:"se deja presente al propietario",
-        numcodigoint:"07/046",
-        Inspectorint:"Ramos Carlos Alegre",
-        fotoint:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4-eihuwaWCZCE3nTplaz-ezykiIB8xezbhtWicPynTGOml7drYLxxqtHg6eq5YuDqKhA&usqp=CAU"
-      },{ id: 5, 
-        boletaintnum: "0504", 
-        adremaint:"A1-00000-1",
-        numexpedienteint:"1111P2019",
-        señorseñora: "Sosa diego",
-        domiciliopart:"Se perdio",
-        lugaractuacion:"Tte. Ibañez",
-        otorgaplazode:"60",
-        paracumplimientoa:"proceder a reparar la vereda en mal estado",
-        fechaintimacion:"05/076/2022",
-        horaintimacion:"00:49",
-        vencimientoint:"08/06/2022",
-        notificadoint:"propuetario o responsable Ausente",
-        aclaracion:"se deja presente al propietario",
-        numcodigoint:"07/046",
-        Inspectorint:"Ramos Carlos Alegre",
-        fotoint:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFTdWH9IB1MQ7DObxNsQXNh7Od82V3cUJZdqnLkGsc-HX1tek2zDj1g0dYDydy182kHpo&usqp=CAU"
-      }
-  ];
+];
 
-  const [data, setData] = useState(dataIntimacion);
+function ListIntimacion() { 
+  const [errors, setErrors] = useState({});     
+  const navigate = useNavigate();
+  const dispatch = useDispatch(); // PARA USAR HOOKS
+  const allIntimaciones = useSelector((state) => state.intimaciones) //HOOKS es lo mismo q maps.state.props
+  const [orden, setOrden] = useState(''); // es un estado local q arranca vacio para el Asc y Desc Order
+
+  function validate(input){
+    let errors ={};
+    if (!input.boletaintnum) {
+            errors.boletaintnum = 'Requiere Numero de Boleta';
+    }else if (!input.señorseñora) {
+            errors.señorseñora = 'Requiere Nombre y Apellido'   
+    return errors;
+    };
+ }
+  const { intimaciones, name, page, order } = useSelector(state => state);
+  const [data, setData] = useState(dataIntimacionarray);
   const [modalEditar, setModalEditar] = useState(false);
   const [modalEditarInfo, setModalEditarInfo] = useState(false);
   const [modalEliminar, setModalEliminar] = useState(false);
   const [modalInsertar, setModalInsertar] = useState(false);
 
   const [IntimacionSeleccionado, setIntimacionSeleccionado] = useState({
-        id: '', 
         boletaintnum: '', 
         adremaint:'',
         numexpedienteint:'',
@@ -137,13 +153,70 @@ function ListIntimacion() {
 //   (caso==='Editar')?setModalEditar(true):setModalEliminar(true)
   }
 
-  const handleChange=e=>{
-    const {name, value}=e.target;    
-    setIntimacionSeleccionado((prevState)=>({
-      ...prevState,
-      [name]: value
+  //     //------------- PARTE DE HANDLES ---------------------
+//   function handleChange(p) { // va a  ir modificando cuando cambien los input
+//     setInput({
+//         ...input,
+//         [p.target.name] : p.target.value  // VER PORQUE BLOQUEA 24-5-22
+//     })
+//     setErrors(validate({
+//         ...input,
+//         [p.target.fechainicioentrada] : p.target.value
+//     }))
+//     console.log(input)
+// }
+const handleChange= (e) =>{
+  const {name, value}=e.target;    
+  setIntimacionSeleccionado((prevState)=>({
+    ...prevState,
+    [name]: value
+  }));
+}
+
+function handleSelect(p){
+  setIntimacionSeleccionado({
+    ...IntimacionSeleccionado,
+    //genre:[...input.genre, p.target.value] //para el array de Generos q concatene las selecciones
+    })
+}
+function handleDelete(p){
+  setIntimacionSeleccionado({
+        ...IntimacionSeleccionado,
+        // va guardando en el arreglo todo lo que voy eligiendo de generos linea 42
+        //genre: input.genre.filter (occ => occ !== p)
+    })
+}  
+  function handleSubmit(p) {
+    p.preventDefault();
+    //console.log(p)
+    setErrors(validate({
+      ...IntimacionSeleccionado,
+      [p.target.boletaintnum]: p.target.value
     }));
-  }
+    dispatch(postIntimacion(IntimacionSeleccionado)); // input es el payload
+    alert("Intimación Creada!!!")
+    setIntimacionSeleccionado({ // seteo el input a cero
+      boletaintnum: '',
+      adremaint: '',
+      numexpedienteint: '',
+      señorseñora: '',
+      domiciliopart: '',
+      lugaractuacion: '',
+      otorgaplazode: '',
+      paracumplimientoa: '',
+      fechaintimacion: '',
+      horaintimacion: '',
+      vencimientoint: '',
+      notificadoint: '',
+      aclaracion: '',
+      numcodigoint: '',
+      Inspectorint: '',
+      fotoint: ''
+    })
+    // history.push('/home')
+    navigate('/home');
+  } 
+
 
   const editar =()=>{
     var dataNueva=data;
@@ -247,14 +320,19 @@ function ListIntimacion() {
 //     // history.push('/home')
 //     navigate('/home');
 // } 
+
+
+
+const dataIntimacion = dataIntimacionarray.concat(intimaciones);
   return (
     
     <div>
                     <a href="/home"><img height="50" src={require('./images/logoMuni.png')} /></a><br/>    
                     {/* <img src='https://ciudaddecorrientes.gov.ar/sites/default/themes/ciudaddecorrientes/logo.png' alt="to home" /> */}
                 
-                    <h1>SECCIÓN DE CARGA DE INTIMACIONES</h1>                    
-                    <img height="200" src={require('./images/intimaciones.jpg')} /> <br/><br/>
+                    <h1>SECCIÓN DE CARGA DE INTIMACIONES</h1>                     
+                                  
+                    <img height="200" src={require('./images/intimaciones.jpg')} /> <br/>
                     {/* <select className="selectfont">
                         <option value="" selected disabled hidden>ORDENAR</option>                
                         <option value='asc'>Fecha</option>
@@ -264,13 +342,16 @@ function ListIntimacion() {
                     </select>        */}
                     {/* <Link to= '/ListInfraccion'><Button  color='secondary'>Lista Instimaciones</Button></Link> {" - "}  */}
                     {/* <Link to= '/ListInfraccion'><Button  color='secondary'>Lista Multas</Button></Link> {" - "}  */}
-                                        
+                     
+                    <br/>
                     <button className='btn btn-success' onClick={()=>abrirModalInsertar()}>Crear Intimación</button> {" - "}
                     <Link to= '/Home'><Button color='primary'>Volver Menu Principal</Button></Link> {" - "} 
                     <Link to= '/InspecCreate'><Button color='secondary'>Ir a Multas/Infracciones</Button></Link>
                     <br/>
                     <img src={require('./images/separadorpagina.png')} />
                     <h1>Lista de Intimaciones</h1>  
+                    <SearchBarInt
+                    />     
     
     <br /><br />
       <table className="table table-bordered">
@@ -303,7 +384,7 @@ function ListIntimacion() {
       </table>
 
 
-      {/* // ***** INSERTAR - CREAR ****** */}
+      {/* // ***** INSERTAR - CREAR ****** */}      
       <Modal isOpen={modalInsertar}>
         <ModalHeader>
           <div>
@@ -482,6 +563,9 @@ function ListIntimacion() {
             </form>
         </ModalBody>
         <ModalFooter>
+          <form onSubmit={(p) => handleSubmit(p)}>
+              <button type='submit'> Crear Intimación! </button>
+          </form>
           <button className="btn btn-primary"
           onClick={()=>insertar()}>
             Crear
