@@ -22,7 +22,7 @@ import SearchBarExp from './SearchBars/SearchBarExp';
 import Paginado from './Paginado';
 
 export default function ListExpediente() {
-    const { expedientes, name, page, order } = useSelector(state => state);
+    const {expedientes} = useSelector(state => state); // ,name, page, order 
     const dispatch = useDispatch(); // PARA USAR HOOKS
     const allExpedientes = useSelector((state) => state.expedientes) //HOOKS es lo mismo q maps.state.props
     const [orden, setOrden] = useState(''); // es un estado local q arranca vacio para el Asc y Desc Order
@@ -174,7 +174,7 @@ const infoTotal = listaExpedientes.concat(expedientes);
                     />
                 </div>
                 <div>
-                    {infoTotal?.map((p) => {  // CON ? PREGUNTA SI EXISTE Y DESPUES MAPEA   
+                    {expedientes?.map((p) => {  // CON ? PREGUNTA SI EXISTE Y DESPUES MAPEA   
                         return (
                             <Fragment>
                                 <div>

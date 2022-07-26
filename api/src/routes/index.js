@@ -17,6 +17,7 @@ const { Expediente, Inspeccion, Intimacion, Infraccion, Ticket, expedienteinspec
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
+// **** SECTOR LLAMADA INFO DE BASE DE DATOS
 
 const getDbInfo = async () => {
     const infoDB = await Expediente.findAll({
@@ -28,6 +29,25 @@ const getDbInfo = async () => {
     return infoDB;
 }
 
+const getDbInfoInt = async () => {
+    const infoDBint = await Intimacion.findAll({
+    //    include:{
+    //        model: Inspeccion,
+    //        atributes: ['numexpediente']
+    //    } 
+    })
+    return infoDBint;
+}
+const getDbInfoInf = async () => {
+    const infoDBinf = await Infraccion.findAll({
+    //    include:{
+    //        model: Inspeccion,
+    //        atributes: ['numexpediente']
+    //    } 
+    })
+    return infoDBinf;
+}
+
 const getAllExpedientes = async () =>{
     try{
         const DBinfo = await getDbInfo()
@@ -37,15 +57,6 @@ const getAllExpedientes = async () =>{
     }
 }
 
-const getDbInfoInt = async () => {
-    const infoDB = await Intimacion.findAll({
-    //    include:{
-    //        model: Inspeccion,
-    //        atributes: ['numexpediente']
-    //    } 
-    })
-    return getDbInfoInt;
-}
 const getAllIntimaciones = async () =>{
     try{
         const DBinfoint = await getDbInfoInt()
@@ -55,9 +66,19 @@ const getAllIntimaciones = async () =>{
     }
 }
 
-// ********* Sector de GET Y POST
+const getAllInfracciones = async () =>{
+    try{
+        const DBinfoinf = await getDbInfoInf()
+        return DBinfoinf;
+    }catch (err){
+        console.log('error trayendo info de la Base de Datos', err)
+    }
+}
 
-router.get ('/expedientes', async (req,res) => {
+
+// ********* Sector de GET ********
+
+router.get ('/expedientes', async (req,res) => { // llama todos los expedientes en la DB
     const numexpediente = req.query.name;
     const infoTotal = await getAllExpedientes();
     if(numexpediente) {
@@ -68,69 +89,59 @@ router.get ('/expedientes', async (req,res) => {
         res.status(200).send(infoTotal)
     }   
 })
-
-router.get ('/infracciones', async (req,res) => {
-    const numinfracciones = req.query.name;
-    const infoTotali = await getAllInfracciones();
-    if(numinfracciones) {
-        const infraccionesnum = await infoTotal.filter(p => p.numinfraccion.toLowerCase().includes(numinfraccion.toLowerCase()))
-        res.status(200).send(infraccionesnum)
-        res.status(400).send('No se encuentra el Expediente Requerido')
-    }else{
-        res.status(200).send(infoTotali)
-    }   
-})
-router.get ('/intimaciones', async (req,res) => {
+router.get ('/intimaciones', async (req,res) => { // llama todas las intimaciones en la DB
     const numdeboletaint = req.query.name;
-    const infoTotalint = getAllIntimaciones();
+    const infoTotalint = await getAllIntimaciones();
     if(numdeboletaint) {
-        const intnumboleta = await infoTotalint.map(p => p.numdeboletaint.toLowerCase().includes(numdeboletaint.toLowerCase()))
+        const intnumboleta = await infoTotalint.filter(p => p.numdeboletaint.toLowerCase().includes(numdeboletaint.toLowerCase()))
         res.status(200).send(intnumboleta)
-        res.status(400).send('No se encuentra el Expediente Requerido')
+        res.status(400).send('No se encuentra la Intimación Requerida')
     }else{
         res.status(200).send(infoTotalint)
     }   
 })
+router.get ('/infracciones', async (req,res) => { // llama todos las infracciones en la DB
+    const numinfraccion = req.query.name;
+    const infoTotalinf = await getAllInfracciones();
+    if(numinfraccion) {
+        const infraccionesnum = await infoTotalinf.filter(p => p.numinfraccion.toLowerCase().includes(numinfraccion.toLowerCase()))
+        res.status(200).send(infraccionesnum)
+        res.status(400).send('No se encuentra la Infracción Requerida')
+    }else{
+        res.status(200).send(infoTotalinf)
+    }   
+})
+
 
 router.get("/expedientes/:id", async (req, res) => {
     const id = req.params.id;
-    const infoTotal = await getAllExpedientes();    
-    //console.log (infoTotal)
+    const infoTotal = await getAllExpedientes();   
     if (id){
-        const expId = await infoTotal.filter((p) => p.id == id)
-        
-        console.log(expId)        
+        const expId = await infoTotal.filter((p) => p.numexpediente == id)                 
         expId.length ? 
                 res.status(200).send(expId) : 
-                res.status(404).send('NO EXISTE Id del Expediente Requerido')        
+                res.status(404).send('NO EXISTE el Expediente Requerido')        
     } 
 });
-
+router.get("/intimaciones/:id", async (req, res) => {
+    const id = req.params.id;
+    const infoTotal = await getAllIntimaciones();        
+    if (id){
+        const infboletaintnum = await infoTotal.filter((p) => p.boletaintnum === id)                 
+        boletaintnum.length ? 
+                res.status(200).send(infboletaintnum) : 
+                res.status(404).send('NO EXISTE Id de Intimación Requerido')        
+    } 
+});
 router.get("/infracciones/:id", async (req, res) => {
     const id = req.params.id;
-    const infoTotal = await getAllInfracciones();    
-    //console.log (infoTotal)
+    const infoTotal = await getAllInfracciones();  
     if (id){
         const infId = await infoTotal.filter((p) => p.id == id)
-        
         console.log(infId)        
         expId.length ? 
                 res.status(200).send(infId) : 
                 res.status(404).send('NO EXISTE Id de Infracción Requerido')        
-    } 
-});
-
-router.get("/intimaciones/:id", async (req, res) => {
-    const id = req.params.id;
-    const infoTotal = await getAllIntimaciones();    
-    //console.log (infoTotal)
-    if (id){
-        const infId = await infoTotal.filter((p) => p.id == id)
-        
-        console.log(infId)        
-        expId.length ? 
-                res.status(200).send(infId) : 
-                res.status(404).send('NO EXISTE Id de Intimación Requerido')        
     } 
 });
 
@@ -154,7 +165,6 @@ router.get("/intimaciones/:id", async (req, res) => {
 //   })
 
 // ** este multer filtra las imagenes y muestra la info del archivo y ubic
-
 // en storage se coloca donde van a ser guardado los archivos
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {

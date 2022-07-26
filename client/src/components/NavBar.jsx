@@ -4,7 +4,6 @@ import { useDispatch } from 'react-redux';
 
 export default function NavBar(){
 
-
 return (
   console.log ("marcos")
 )

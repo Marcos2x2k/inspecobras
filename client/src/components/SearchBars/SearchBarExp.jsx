@@ -6,16 +6,16 @@ import {getNameExpedientes} from '../../actions';
 export default function SearchBarExp(){
      // aca usamos Hook
     const dispatch = useDispatch()
-    const [name, setName] = useState("")
+    const [numexpediente, setNumexpediente] = useState("")
 
     function handInputChange(p){
         p.preventDefault()
-        setName(p.target.value)
+        setNumexpediente(p.target.value)
         // console.log(name)
     }
     function handleSubmit(p){
         p.preventDefault()
-        dispatch(getNameExpedientes(name))
+        dispatch(getNameExpedientes(numexpediente))
     }
 
     return (

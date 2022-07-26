@@ -1,18 +1,18 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect, Fragment} from 'react';
 import logo from './styles/logo.svg';
 import './styles/AppCrud.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Modal, ModalBody, ModalHeader, ModalFooter, Button, Form} from 'reactstrap';
 import {Link, useNavigate} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux'; 
-import {postIntimacion} from '../actions';
+import {getIntimaciones, postIntimacion} from '../actions';
 import SearchBarInt from './SearchBarInt';
 
 
 // import { applyMiddleware } from 'redux';
 const dataIntimacionarray = [
   { id: 1, 
-    boletaintnum: "7106",
+    boletaintnum: "7777",
     adremaint:"A1-232323-1",
     numexpedienteint:"5454P2022",
     señorseñora: "Jose Romero",
@@ -29,8 +29,8 @@ const dataIntimacionarray = [
     Inspectorint:"Ramos Carlos Alegre",
     fotoint:"https://www.elindependiente.com/wp-content/uploads/2022/04/construccion-656x368.jpg"
   }
-  ,{ 
-      boletaintnum: "7106", 
+  ,{ id: 2, 
+      boletaintnum: "8888", 
       adremaint:"A1-655656-1",
       numexpedienteint:"3354P2021",
       señorseñora: "Jose Romero",
@@ -47,7 +47,8 @@ const dataIntimacionarray = [
       Inspectorint:"Ramos Carlos Alegre",
       fotoint:"https://www.elindependiente.com/wp-content/uploads/2022/04/construccion-656x368.jpg"
     },{ 
-      boletaintnum: "7106", 
+      id: 3, 
+      boletaintnum: "9999", 
       adremaint:"A1-232323-1",
       numexpedienteint:"5454P2022",
       señorseñora: "Jose Romero",
@@ -64,7 +65,8 @@ const dataIntimacionarray = [
       Inspectorint:"Ramos Carlos Alegre",
       fotoint:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4-eihuwaWCZCE3nTplaz-ezykiIB8xezbhtWicPynTGOml7drYLxxqtHg6eq5YuDqKhA&usqp=CAU"
     },{  
-      boletaintnum: "7106", 
+      id: 4, 
+      boletaintnum: "1111", 
       adremaint:"A1-662239-1",
       numexpedienteint:"1111P2019",
       señorseñora: "Jose Romero",
@@ -81,7 +83,8 @@ const dataIntimacionarray = [
       Inspectorint:"Ramos Carlos Alegre",
       fotoint:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4-eihuwaWCZCE3nTplaz-ezykiIB8xezbhtWicPynTGOml7drYLxxqtHg6eq5YuDqKhA&usqp=CAU"
     },{ 
-      boletaintnum: "0504", 
+      id: 5, 
+      boletaintnum: "2222", 
       adremaint:"A1-00000-1",
       numexpedienteint:"1111P2019",
       señorseñora: "Sosa diego",
@@ -104,8 +107,10 @@ function ListIntimacion() {
   const [errors, setErrors] = useState({});     
   const navigate = useNavigate();
   const dispatch = useDispatch(); // PARA USAR HOOKS
-  const allIntimaciones = useSelector((state) => state.intimaciones) //HOOKS es lo mismo q maps.state.props
+  const intimaciones = useSelector((state) => state.intimaciones) //HOOKS es lo mismo q maps.state.props
   const [orden, setOrden] = useState(''); // es un estado local q arranca vacio para el Asc y Desc Order
+  // const { intimaciones, name, page, order } = useSelector(state => state);
+  const alldata = dataIntimacionarray.concat(intimaciones);
 
   function validate(input){
     let errors ={};
@@ -115,9 +120,8 @@ function ListIntimacion() {
             errors.señorseñora = 'Requiere Nombre y Apellido'   
     return errors;
     };
- }
-  const { intimaciones, name, page, order } = useSelector(state => state);
-  const [data, setData] = useState(dataIntimacionarray);
+ }  
+  const [data, setData] = useState(alldata);
   const [modalEditar, setModalEditar] = useState(false);
   const [modalEditarInfo, setModalEditarInfo] = useState(false);
   const [modalEliminar, setModalEliminar] = useState(false);
@@ -141,7 +145,11 @@ function ListIntimacion() {
         Inspectorint:'',
         fotoint:''
   });
-
+ // TRAIGO DEL ESTADO LOS Expedientes CUANDO EL COMPONENTE SE MONTA
+  useEffect(() => {
+  dispatch(getIntimaciones());
+  // getListGenres para usar con filtrados por Genero
+  }, [dispatch])
   const seleccionarIntimacion=(elemento, caso)=>{
   setIntimacionSeleccionado(elemento);
   if (caso==='EditarInfo') setModalEditarInfo(true)
@@ -323,7 +331,7 @@ function handleDelete(p){
 
 
 
-const dataIntimacion = dataIntimacionarray.concat(intimaciones);
+
   return (
     
     <div>

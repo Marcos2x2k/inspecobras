@@ -4,7 +4,7 @@ import './styles/AppCrud.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Modal, ModalBody, ModalHeader, ModalFooter, Button, Label} from 'reactstrap';
 import {Link} from 'react-router-dom';
-import { applyMiddleware } from 'redux';
+// import { applyMiddleware } from 'redux'; aprender ridux toolkin
 
 // const upload = require('./libs/storage')
 // import multer from 'multer';
@@ -147,7 +147,7 @@ function InspecCreate() {
   else
   if (caso==='Eliminar') setModalEliminar(true)
   
-//   (caso==='Editar')?setModalEditar(true):setModalEliminar(true)
+  // (caso==='Editar')?setModalEditar(true):setModalEliminar(true)
   }
 
   const handleChange=e=>{

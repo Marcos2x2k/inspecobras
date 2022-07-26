@@ -3,7 +3,9 @@
 const initialState = {
     numxpedientes: [],    
     expedientes:[],
-    expedientesDetails:[]
+    expedientesDetails:[],
+    intimaciones:[],
+    infracciones:[]
     // anio:[],
     // fecha:[],
     // ticket: [],
@@ -34,28 +36,27 @@ export default function rootReducer(state =  initialState, action){
         case 'GET_INTIMACIONES':
                     return{
                         ...state, // guardamos el estado anterior como buena practica
-                        infracciones: action.payload,  
+                        intimaciones: action.payload,  
                         //Asi creamos en JSON - var json = await axios.get("http://localhost:3001/dogs",{});
                         // el payload lo creamos en actions como payload: json.data
-                        allInfracciones: action.payload
+                        allIntimaciones: action.payload
                     }  
         case 'GET_NAME_EXPEDIENTES':
             return{
                 ...state,
                 expedientes: action.payload
             }  
+        case 'GET_NAME_INTIMACIONES':
+                return{
+                    ...state,
+                    intimaciones: action.payload
+                } 
         case 'GET_NAME_INFRACCIONES':
             return{
                 ...state,
                 infracciones: action.payload
             }  
-        case 'GET_NAME_INTIMACIONES':
-            return{
-                ...state,
-                intimaciones: action.payload
-            }  
-
-
+    
 
         case 'POST_EXPEDIENTES'://No se declara en actions, se declara en el reducer. 
                           //en action solo se trae la ruta

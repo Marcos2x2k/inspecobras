@@ -21,7 +21,15 @@ export function getExpedientes(){  // esta Action permite renderizar todos los G
         })
     }
 }
-
+export function getIntimaciones(){
+    return async function (dispatch){
+        var json = await axios.get("http://localhost:3001/intimaciones", {});
+        // var info = await axios(`http://localhost:3001/types/${name}`); otra forma
+        return dispatch({
+            type: "GET_INTIMACIONES", 
+            payload: json.data});
+    };
+}
 export function getInfracciones(){  // esta Action permite renderizar todos los Games
     return function(dispatch){
         axios.get('http://localhost:3001/infracciones',{})
@@ -34,15 +42,7 @@ export function getInfracciones(){  // esta Action permite renderizar todos los 
     }
 }
 
-export function getIntimaciones(){
-    return async function (dispatch){
-        var json = await axios.get("http://localhost:3001/intimaciones", {});
-        // var info = await axios(`http://localhost:3001/types/${name}`); otra forma
-        return dispatch({
-            type: "GET_INTIMACIONES", 
-            payload: json.data});
-    };
-}
+
 export function getMultas(){
     return async function (dispatch){
         var json = await axios.get("http://localhost:3001/multas", {});

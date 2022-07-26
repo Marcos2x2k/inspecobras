@@ -1,6 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import './styles/LandingPage.css'; // importo los styles de mi landinpage.css
+import { Button, Tablet, Container } from 'reactstrap'
+
 
 export default function LandingPage(){
     return(
@@ -11,13 +13,14 @@ export default function LandingPage(){
             <img height="110" src={require('./images/logo redondo muni.png')} alt="to home"/>
             <br/>
             {/* <img src='https://ciudaddecorrientes.gov.ar/sites/default/themes/ciudaddecorrientes/logo.png' alt="to home" /> */}
-                <h1 className="colorLetras">Bienvenidos a la App de Inspeciones Urbanas</h1>            
-                <img src={require('./images/separadorpagina.png')}/><br/>
-                <Link to = '/home'>     
-                    <br/>
-                    <img className="logo"  src={require('./images/obras-y-gestion.png')} alt="to home"/>   
-                </Link>
-            {/* <button src='/Home'>INGRESAR</button>             */}
+            <h1 className="colorLetras">Bienvenidos a la App de Inspeciones Urbanas</h1>            
+            <img src={require('./images/separadorpagina.png')}/><br/>
+            <Link to = '/home'>     
+                <br/>
+                <img className="logo"  src={require('./images/obras-y-gestion.png')} alt="to home"/>   
+            </Link>
+            <br /> <br /> 
+            <Button color='primary' src='/Home'>LOGIN</Button>            
             <br />  
             {/* <p aling="center">
                 ---------------------------------------------------------------------------------------------------------------------------------------
