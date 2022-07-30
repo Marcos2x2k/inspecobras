@@ -9,7 +9,7 @@ module.exports = (sequelize) => {
             allowNull: false
           },        
         boletaintnum:{
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER,
             allownull: true,
         },
         adremaint:{

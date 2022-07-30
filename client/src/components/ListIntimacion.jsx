@@ -11,7 +11,8 @@ import SearchBarInt from './SearchBarInt';
 
 // import { applyMiddleware } from 'redux';
 const dataIntimacionarray = [
-  { id: 1, 
+  { 
+    id: 1, 
     boletaintnum: "7777",
     adremaint:"A1-232323-1",
     numexpedienteint:"5454P2022",
@@ -340,7 +341,7 @@ function handleDelete(p){
                 
                     <h1>SECCIÓN DE CARGA DE INTIMACIONES</h1>                     
                                   
-                    <img height="200" src={require('./images/intimaciones.jpg')} /> <br/>
+                    <img className= 'imagenredondoint' height="200" src={require('./images/Multa-1.jpg')} /> <br/>
                     {/* <select className="selectfont">
                         <option value="" selected disabled hidden>ORDENAR</option>                
                         <option value='asc'>Fecha</option>

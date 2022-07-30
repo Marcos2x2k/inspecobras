@@ -1,10 +1,25 @@
+// *** ejemplos practicos
+// router.get('/users', getUsers); TRAER TODOS
+// router.get('/users/:id', getUserById); TRAER 1 
+// router.post('/users', createUser); CREAR
+// router.put('/users/:id', updateUser) ACTUALIZAR
+// router.delete('/users/:id', deleteUser); BORRAR
+
+
 const express = require('express');
 const router = express.Router();
+const morgan = require('morgan')
+const app = express();
+
+app.use(morgan('dev'));
+app.use(express.json());
+
 
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 router.use(express.json());
 const axios = require('axios');
+const { pool } = require('pg');
 
 // ACA DEFINO PARA PODER SUBIR IMAGENES
 const multer = require('multer');
@@ -112,6 +127,41 @@ router.get ('/infracciones', async (req,res) => { // llama todos las infraccione
     }   
 })
 
+// *** zona delete ***
+router.delete("/deleteexp/:numexpediente", async (req, res) => {
+    // const boletaintnum = req.params.id;
+    // const infoTotalinf = await getAllInfracciones();
+    // const deleteid = 
+    await Expediente.destroy({ where: { numexpediente: req.params.numexpediente } })
+    .then(result => {
+        res.json(`EXPEDIENTE BORRADO ${result}`);
+    });   
+    // res.json(`User ${deleteid} deleted Successfully`);
+}); 
+
+router.delete("/deleteint/:boletaintnum", async (req, res) => {
+    // const boletaintnum = req.params.id;
+    // const infoTotalinf = await getAllInfracciones();
+    // const deleteid = 
+    await Intimacion.destroy({ where: { boletaintnum: req.params.boletaintnum } })
+    .then(result => {
+        res.json(`BOLETA DE INTIMACIÓN BORRADA ${result}`);
+    });   
+    // res.json(`User ${deleteid} deleted Successfully`);
+}); 
+
+router.delete("/deleteinf/:actainfnum", async (req, res) => {
+    // const boletaintnum = req.params.id;
+    // const infoTotalinf = await getAllInfracciones();
+    // const deleteid = 
+    await Infraccion.destroy({ where: { actainfnum: req.params.actainfnum } })
+    .then(result => {
+        res.json(`ACTA DE INFRACCION BORRADA`);
+    });   
+    // res.json(`User ${deleteid} deleted Successfully`);
+}); 
+
+
 
 router.get("/expedientes/:id", async (req, res) => {
     const id = req.params.id;
@@ -123,10 +173,11 @@ router.get("/expedientes/:id", async (req, res) => {
                 res.status(404).send('NO EXISTE el Expediente Requerido')        
     } 
 });
+
 router.get("/intimaciones/:id", async (req, res) => {
     const id = req.params.id;
     const infoTotal = await getAllIntimaciones();        
-    if (id){
+    if (infoTotal){
         const infboletaintnum = await infoTotal.filter((p) => p.boletaintnum === id)                 
         boletaintnum.length ? 
                 res.status(200).send(infboletaintnum) : 
@@ -136,7 +187,7 @@ router.get("/intimaciones/:id", async (req, res) => {
 router.get("/infracciones/:id", async (req, res) => {
     const id = req.params.id;
     const infoTotal = await getAllInfracciones();  
-    if (id){
+    if (infoTotal){
         const infId = await infoTotal.filter((p) => p.id == id)
         console.log(infId)        
         expId.length ? 
