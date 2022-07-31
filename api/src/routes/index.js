@@ -10,10 +10,42 @@ const express = require('express');
 const router = express.Router();
 const morgan = require('morgan')
 const app = express();
+const bcrypt = require('bcrypt')
+const passport = require('passport')
+// los dos de abajo permiten a express manejar sesiones
+const cookieParser = require('cookie-parser')
+const session = require('express-session')
+const PassportLocal = require('passport-local').Strategy;
 
+
+// ESTOS SON MIDLEWARE Q USO
 app.use(morgan('dev'));
 app.use(express.json());
+app.use(express.urlencoded({extended: true}));
+app.use(cookieParser('miultrahipersecreto'))
+app.use(session({
+    secret: 'miultrahipersecreto',
+    resave: true,
+    saveUninitialized:true
+}))
 
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.use(new PassportLocal(function(user, password, done){
+    // done(err,{name:"Marcos"},{}) Opcional
+    if (user === "Marcos" && password === "123")
+        return done(null, {id:1, name: "cody"});   // CREO EL USUARIO
+    done(null, false)
+}));
+// 1 => Serialización
+passport.serializeUser(function(user, done){
+    done(null, user.id)
+})
+// Deserialización
+passport.serializeUser(function(id, done){
+    done(null, {id:1 , name:"Cody"})
+})
 
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
@@ -26,7 +58,7 @@ const multer = require('multer');
 // const ejs = require('ejs')
 
 //defino los models a usar e importo los modelos conectados
-const { Expediente, Inspeccion, Intimacion, Infraccion, Ticket, expedienteinspeccion } = require('../db.js'); 
+const { User, Expediente, Inspeccion, Intimacion, Infraccion, Ticket, expedienteinspeccion } = require('../db.js'); 
 // const { default: Infracciones } = require('../../../client/src/components/IntimCreate.jsx');
 // const { route } = require('../app.js');
 
@@ -90,8 +122,24 @@ const getAllInfracciones = async () =>{
     }
 }
 
-
 // ********* Sector de GET ********
+
+router.get("/", (req, res) =>{
+    //si iniciamos sesion mostramos LANDING
+
+    //Si no se inicia que mande al login de nuevo
+})
+
+router.get('/login', async (req, res) =>{
+    //Mostrar el formulario de Login
+})
+
+router.post('/login', passport.authenticate({
+    successRedirect: "/LandingPage",
+    failure: "/PaginaLogin"
+    //Mostrar el formulario de Login
+}));
+
 
 router.get ('/expedientes', async (req,res) => { // llama todos los expedientes en la DB
     const numexpediente = req.query.name;
@@ -99,18 +147,19 @@ router.get ('/expedientes', async (req,res) => { // llama todos los expedientes 
     if(numexpediente) {
         const expedientesnum = await infoTotal.filter(p => p.numexpediente.toLowerCase().includes(numexpediente.toLowerCase()))
         res.status(200).send(expedientesnum)
-        res.status(400).send('No se encuentra el Expediente Requerido')
+        // res.status(400).send('No se encuentra el Expediente Requerido')
     }else{
+        // res.status(400).send('No se encuentra el Expediente Requerido')
         res.status(200).send(infoTotal)
     }   
 })
 router.get ('/intimaciones', async (req,res) => { // llama todas las intimaciones en la DB
-    const numdeboletaint = req.query.name;
+    const boletaintnum = req.query.name;
     const infoTotalint = await getAllIntimaciones();
-    if(numdeboletaint) {
-        const intnumboleta = await infoTotalint.filter(p => p.numdeboletaint.toLowerCase().includes(numdeboletaint.toLowerCase()))
+    if(boletaintnum) {
+        const intnumboleta = await infoTotalint.filter(p => p.boletaintnum.toLowerCase().includes(boletaintnum.toLowerCase()))
         res.status(200).send(intnumboleta)
-        res.status(400).send('No se encuentra la Intimación Requerida')
+        // res.status(400).send('No se encuentra la Intimación Requerida')
     }else{
         res.status(200).send(infoTotalint)
     }   
@@ -139,11 +188,22 @@ router.delete("/deleteexp/:numexpediente", async (req, res) => {
     // res.json(`User ${deleteid} deleted Successfully`);
 }); 
 
-router.delete("/deleteint/:boletaintnum", async (req, res) => {
+router.delete("/deleteinsp/:informeinspnum", async (req, res) => {
     // const boletaintnum = req.params.id;
     // const infoTotalinf = await getAllInfracciones();
     // const deleteid = 
-    await Intimacion.destroy({ where: { boletaintnum: req.params.boletaintnum } })
+    await Inspeccion.destroy({ where: { informeinspnum: req.params.informeinspnum } })
+    .then(result => {
+        res.json(`INFRACCION BORRADA ${result}`);
+    });   
+    // res.json(`User ${deleteid} deleted Successfully`);
+}); 
+
+router.delete("/deleteint/:id", async (req, res) => {
+    // const boletaintnum = req.params.id;
+    // const infoTotalinf = await getAllInfracciones();
+    // const deleteid = 
+    await Intimacion.destroy({ where: { id: req.params.id } })
     .then(result => {
         res.json(`BOLETA DE INTIMACIÓN BORRADA ${result}`);
     });   
@@ -162,58 +222,69 @@ router.delete("/deleteinf/:actainfnum", async (req, res) => {
 }); 
 
 
+// ***** SECTOR BUSCAR ******
 
-router.get("/expedientes/:id", async (req, res) => {
-    const id = req.params.id;
-    const infoTotal = await getAllExpedientes();   
-    if (id){
-        const expId = await infoTotal.filter((p) => p.numexpediente == id)                 
-        expId.length ? 
-                res.status(200).send(expId) : 
-                res.status(404).send('NO EXISTE el Expediente Requerido')        
-    } 
+router.get("/expedientes/:numexpediente", async (req, res) => {    
+    let numexpediente = req.params.numexpediente;
+    Expediente.findOne({where: {numexpediente:numexpediente}})
+    .then (p =>{
+        res.json (p)
+    })   
+    // const infoTotal = await getAllExpedientes();   
+    // if (id){
+    //     const expId = await infoTotal.filter((p) => p.numexpediente == id)                 
+    //     expId.length ? 
+    //             res.status(200).send(expId) : 
+    //             res.status(404).send('NO EXISTE el Expediente Requerido')        
+    // } 
 });
 
-router.get("/intimaciones/:id", async (req, res) => {
-    const id = req.params.id;
-    const infoTotal = await getAllIntimaciones();        
-    if (infoTotal){
-        const infboletaintnum = await infoTotal.filter((p) => p.boletaintnum === id)                 
-        boletaintnum.length ? 
-                res.status(200).send(infboletaintnum) : 
-                res.status(404).send('NO EXISTE Id de Intimación Requerido')        
-    } 
+router.get("/intimaciones/:boletaintnum", async (req, res) => {
+    let boletaintnum = req.params.boletaintnum;
+    Intimacion.findOne({where: {boletaintnum:boletaintnum}})
+    .then (p =>{
+        res.json (p)
+    })    
 });
-router.get("/infracciones/:id", async (req, res) => {
-    const id = req.params.id;
-    const infoTotal = await getAllInfracciones();  
-    if (infoTotal){
-        const infId = await infoTotal.filter((p) => p.id == id)
-        console.log(infId)        
-        expId.length ? 
-                res.status(200).send(infId) : 
-                res.status(404).send('NO EXISTE Id de Infracción Requerido')        
-    } 
+router.get("/infracciones/:actainfnum", async (req, res) => {
+    let actainfnum = req.params.actainfnum;
+    Infraccion.findOne({where: {actainfnum:actainfnum}})
+    .then (p =>{
+        res.json (p)
+    })    
 });
 
-// *************** post **************
+// ****** SECTOR DE EDITAR - PUT ******
 
-// con MULTER
-// const storage = multer.diskStorage({
-//     destination:(req, res, cb) =>{
-//       cb(null, './src/uploads') //guarda imagen cruda
-//       },
-//     filename:(req, file, cb) => {
-//         const ext = file.originalname.split('.').pop() // retorna png
-//         cb(null, `${Date.now()}.${ext}`)
-//       }
-//   })
-  
-//   const upload = multer({storage:storage})
-  
-//   router.post('/upload', upload.single('file'), (req, res) => {    
-//     res.send ({data:'Imagen Cargada'})
-//   })
+router.put ("editarint/:id", async (res, req) =>{
+    Post.Update({
+        
+        boletaintnum: req.body.boletaintnum, 
+        adremaint: req.body.adremaint,
+        numexpedienteint: req.body.numexpedienteint,
+        señorseñora: req.body.señorseñora,
+        domiciliopart: req.body.domiciliopart,
+        lugaractuacion: req.body.lugaractuacion,
+        otorgaplazode: req.body.otorgaplazode,
+        paracumplimientoa: req.body.paracumplimientoa,
+        fechaintimacion: req.body.fechaintimacion,
+        horaintimacion: req.body.horaintimacion,
+        vencimientoint: req.body.vencimientoint,
+        notificadoint: req.body.notificadoint,
+        aclaracion: req.body.aclaracion,
+        numcodigoint: req.body.numcodigoint,
+        inspectorint: req.body.inspectorint,
+        fotoint: req.body.fotoint
+     }, { where: { boletaintnum: req.params.id } })
+    .then(result => {
+        res.json(`ACTA DE INFRACCION EDITADA`);
+    });
+})
+
+
+
+
+// *************** UPDATE IMAGENES **************
 
 // ** este multer filtra las imagenes y muestra la info del archivo y ubic
 // en storage se coloca donde van a ser guardado los archivos
@@ -256,6 +327,40 @@ router.post("/upload", upload.single('fotoint'), async(req, res, cb)=>{
 //     })
 // })
 
+// ******* SECTOR POST - AGREGAR *******
+router.post('/login', async (req,res)=>{
+    let {            
+       user,
+       email,
+       password
+    } = req.body
+    // password = await bcrypt.hash(password, 10);
+    let userCreate = await User.create({          
+       user,
+       email,
+       password
+    })
+    let errors = [];
+    if(!user || !email || !password){
+        errors.push({message: "POR FAVOR RELLENAR TODOS LOS DATOS"})
+    } 
+    if (password.length > 6) {errors.push({message: "Contraseña debe tener más de 6 caracteres"})}
+
+    if(errors.length>0){
+        // res.render("registro", 
+        ({errors})
+    }else{
+        let hashedPassword = await bcrypt.hash(password, 10);
+        console.log(hashedPassword)
+    }
+
+
+
+
+    res.send('USUARIO Creado')
+})
+
+
 router.post('/newexpediente', async (req, res) => {
 
         let {
@@ -294,12 +399,15 @@ router.post('/newexpediente', async (req, res) => {
             permisobraoactainfrac
         })
 
-        // let expedientesDb = await Inspeccion.findAll({
-        //     where: { name: numexpediente }
-        // })        
-        //expedienteCreate.addExpediente(expedienteCreate)
-        res.send('Expediente Nuevo Creado')
-})
+        // let errors = [];
+        // if(!numexpediente || !fechainicioentrada || !estado|| !iniciadornomyape|| !domicilio|| !adrema|| !directorobraoperitovisor
+        //    || !destinodeobra|| !superficieterreno|| !superficieaconstruir|| !superficiesubsueloplantabaja|| !superficieprimerpisoymaspisos
+        //    || !observaciones|| !zona|| !permisobraoactainfrac){
+        //     errors.push({message: "POR FAVOR RELLENAR TODOS LOS DATOS"})
+        //    } 
+            res.send('Expediente Nuevo Creado')
+    })
+
 
 
 router.post('/newinspeccion', async (req, res) =>{
@@ -329,13 +437,7 @@ router.post('/newinspeccion', async (req, res) =>{
         fecha,
         paseafecha 
     })
-
-    // let inspeccionDb = await Expediente.findAll({
-    //         where: { name: numexpediente }
-    //     })
-    // inspeccioncreate.addInspecciones(inspeccionDb)
     res.send('Nueva Inspección Creada')
-
 })
 
 router.post ('/newintimacion', async (req,res) =>{
@@ -430,8 +532,6 @@ router.post ('/newinfraccion', async (req, res) =>{
     res.send ('NUEVA INFRACCION CREADA')
 })
 
-
-
 router.post ('/newticket', async (req, res) =>{
 
     let {
@@ -478,6 +578,8 @@ router.post ('/newticket', async (req, res) =>{
     res.send('Nuevo Ticket Creado!')
 
 })
+
+
 
 
 module.exports = router;

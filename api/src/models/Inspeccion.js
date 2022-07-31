@@ -8,6 +8,10 @@ module.exports = (sequelize) => {
             primaryKey: true,
             allowNull: false
           },    
+          informeinspnum:{
+            type: DataTypes.INTEGER,
+            allowNull: false
+          },
         numexpediente:{
             type: DataTypes.STRING,
             allowNull: false,
