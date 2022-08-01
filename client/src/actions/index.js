@@ -145,7 +145,7 @@ export function getDetailsExpedientes(id){
             dispatch({type:'GET_DETAILS_EXPEDIENTES', payload: response.data})
         })
         .catch(()=>{
-            console.log('No se encuentra Id');
+            console.log('No se encuentra EXPEDIENTE requerido');
         })
     }
 }
@@ -159,6 +159,18 @@ export function getDetailsIntimaciones(id){
         })
         .catch(()=>{
             console.log('No se encuentra la Intimación Requerida');
+        })
+    }
+}
+
+export function getDetailsTickets(id){
+    return function(dispatch){
+        axios.get('http://localhost:3001/tickets/'+id)
+        .then((response)=>{
+            dispatch({type:'GET_DETAILS_TICKETS', payload: response.data})
+        })
+        .catch(()=>{
+            console.log('No se encuentra el TICKET Requerido');
         })
     }
 }

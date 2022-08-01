@@ -7,9 +7,9 @@ import { Link } from "react-router-dom";
 
 import './styles/Card.css';
 
-function Details(){
+function DetailsTicket(){
     // trae del Reducer-index-> CASE (GET_DETAILS_EXPEDIENTE) expedientesDetail
-    const allDetails = useSelector((state) => state.ticketDetails);   
+    const allDetailsTickets = useSelector((state) => state.ticketDetails);   
     
     const dispatch = useDispatch();
     const { id } = useParams();
@@ -31,72 +31,84 @@ function Details(){
                 <img src={require('./images/separadorpagina.png')}/>
                 <br />   
                 <Link to='/home'><button>REGRESAR AL MENU PRINCIPAL</button></Link> <label> </label>
-                <Link to='/ListExpediente'><button>REGRESAR AL LISTADO</button></Link>
+                <Link to='/ListTicket'><button>REGRESAR AL LISTADO</button></Link>
                 <br /> <br />                     
                 
                   <div class="detailcontainer">  
                   <div class="header">               
-                    <h3 class="heading"> NUMERO EXPEDIENTE: </h3> 
-                    <h3 class="headingRojo"> {allDetails.numexpediente}</h3>
+                    <h3 class="heading"> NUMERO DE TICKET: </h3> 
+                    <h3 class="headingRojo"> {allDetailsTickets.numticket}</h3>
                   </div>
                   <div class="header">
-                    <h3 class="heading"> FECHA INICIO ENTRADA: </h3> 
-                    <h3 class="headingRojo">{allDetails.fechainicioentrada}</h3>
+                    <h3 class="heading"> INICIADOR (N/A): </h3> 
+                    <h3 class="headingRojo">{allDetailsTickets.iniciador}</h3>
                   </div>
                   <div class="header">
-                    <h3 class="heading">ESTADO: </h3> 
-                    <h3 class="headingRojo">{allDetails.estado}</h3>
-                  </div>
-                  <div class="header">
-                    <h3 class="heading">INICIADOR (NyA): </h3> 
-                    <h3 class="headingRojo">{allDetails.iniciadornomyape}</h3>
+                    <h3 class="heading">UBICACIÓN: </h3> 
+                    <h3 class="headingRojo">{allDetailsTickets.ubicacion}</h3>
                   </div>
                   <div class="header">
                     <h3 class="heading">ADREMA: </h3> 
-                    <h3 class="headingRojo">{allDetails.adrema}</h3>
+                    <h3 class="headingRojo">{allDetailsTickets.adrema}</h3>
                   </div>
                   <div class="header">
-                    <h3 class="heading">DOMICILIO: </h3> 
-                    <h3 class="headingRojo">{allDetails.domicilio}</h3>
+                    <h3 class="heading">DIRECTOR DE OBRA: </h3> 
+                    <h3 class="headingRojo">{allDetailsTickets.directordeobra}</h3>
                   </div>
-                  <div class="header">
-                    <h3 class="heading">DIRECTOS DE OBRA: </h3> 
-                    <h3 class="headingRojo">{allDetails.directorobraoperitovisor}</h3>
-                  </div> 
                   <div class="header">
                     <h3 class="heading">DESTINO DE OBRA: </h3> 
-                    <h3 class="headingRojo">{allDetails.destinodeobra}</h3> 
-                  </div>
-                  <div class="header">
-                    <h3 class="heading">SUP. TERRENO:  </h3> 
-                    <h3 class="headingRojo">{allDetails.superficieterreno}</h3>
-                  </div> 
-                  <div class="header">
-                    <h3 class="heading">SUP. A CONSTRUIR: </h3> 
-                    <h3 class="headingRojo">{allDetails.superficieaconstruir}</h3> 
-                  </div>
-                  <div class="header">
-                    <h3 class="heading">SUP. SUELO P.B.: </h3> 
-                    <h3 class="headingRojo">{allDetails.superficiesubsueloplantabaja}</h3>
-                  </div>
-                  <div class="header">
-                    <h3 class="heading">SUP. SUELO 1º PISO O PISOS: </h3> 
-                    <h3 class="headingRojo">{allDetails.superficieprimerpisoymaspisos}</h3> 
+                    <h3 class="headingRojo">{allDetailsTickets.destinodelaobra}</h3>
                   </div>
                   <div class="header">
                     <h3 class="heading">ZONA: </h3> 
-                    <h3 class="headingRojo">{allDetails.zona}</h3> 
+                    <h3 class="headingRojo">{allDetailsTickets.zona}</h3>
+                  </div> 
+                  <div class="header">
+                    <h3 class="heading">OBSERVACIONES: </h3> 
+                    <h3 class="headingRojo">{allDetailsTickets.observaciones}</h3> 
                   </div>
                   <div class="header">
-                    <h3 class="heading">OBSERVACIONES: </h3>
-                    <h3 class="headingRojo">{allDetails.observaciones}</h3>
+                    <h3 class="heading">PERMISO OBRA NUMERO:  </h3> 
+                    <h3 class="headingRojo">{allDetailsTickets.permisodeobranum}</h3>
+                  </div> 
+                  <div class="header">
+                    <h3 class="heading">ACTA INFRACCION NUMERO: </h3> 
+                    <h3 class="headingRojo">{allDetailsTickets.actasdeinfraccionnum}</h3> 
                   </div>
                   <div class="header">
-                    <h3 class="heading">PERMISO OBRA/ACTA INFRACCIÓN: </h3>
-                    <h3 class="headingRojo"> {allDetails.permisobraoactainfrac}</h3>
+                    <h3 class="heading">FECHA DE ENTRADA INSPECCIONES: </h3> 
+                    <h3 class="headingRojo">{allDetailsTickets.fechaentradaainspecciones}</h3>
+                  </div>
+                  <div class="header">
+                    <h3 class="heading">INSPECTOR: </h3> 
+                    <h3 class="headingRojo">{allDetailsTickets.inspector}</h3> 
+                  </div>
+                  <div class="header">
+                    <h3 class="heading">FECHA DE INSPECCIÓN: </h3> 
+                    <h3 class="headingRojo">{allDetailsTickets.fechainspecccion}</h3> 
+                  </div>
+                  <div class="header">
+                    <h3 class="heading">INTIMACIÓN: </h3>
+                    <h3 class="headingRojo">{allDetailsTickets.intimacion}</h3>
+                  </div>
+                  <div class="header">
+                    <h3 class="heading">INFRACCIONES:</h3>
+                    <h3 class="headingRojo"> {allDetailsTickets.infracciones}</h3>
+                  </div>
+                  <div class="header">
+                    <h3 class="heading">OBSERVACIONES DEL LUGAR:</h3>
+                    <h3 class="headingRojo"> {allDetailsTickets.observacioneslugar}</h3>
+                  </div>
+                  <div class="header">
+                    <h3 class="heading">PASE A:</h3>
+                    <h3 class="headingRojo"> {allDetailsTickets.pasea}</h3>
+                  </div>
+                  <div class="header">
+                    <h3 class="heading">FECHA:</h3>
+                    <h3 class="headingRojo"> {allDetailsTickets.fecha}</h3>
                   </div>
                   <br/>                  
-                  <img className='logoredondo'  src={allDetails.fotoexpediente} width="300" height="150" /> <br/>
+                  {/* <img className='logoredondo'  src={allDetailsTickets.fotoexpediente} width="300" height="150" /> <br/> */}
                   {/* <img className='logoredondo'  src={require('./images/mirandoplano.jpg')} width="400" height="200" /> <br/>
                   <h5 className='blanco'> --------------------------------------------------------------------------------- </h5>
                     {/* <img src={require('./images/mirandoplano.jpg')} width = "400px" height="270px"/>   */}
@@ -117,7 +129,7 @@ function Details(){
     )
 } 
 
-export default Details;
+export default DetailsTicket;
 //     // var genre2= []
 //     // if (genre) { 
 //     //     Array.isArray(genre)     

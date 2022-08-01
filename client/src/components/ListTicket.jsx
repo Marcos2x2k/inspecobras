@@ -172,6 +172,7 @@ export default function ListTickets() {
                                             ubicacion={p.ubicacion}
                                             adrema={p.adrema}
                                             directordeobra={p.directordeobra}
+                                            destinodelaobra={p.destinodelaobra}
                                         />
                                     </Link>                                    
                             ) 
