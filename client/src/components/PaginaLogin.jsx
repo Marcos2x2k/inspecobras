@@ -8,10 +8,17 @@ import { useNavigate } from 'react-router-dom';
 
 export default function PaginaLogin(){
     const navigate = useNavigate();
-    // function handleSubmit(p) {
-    //     p.preventDefault(); 
-    //     navigate('/LandingPage');
-    // } 
+    const user = "";
+    const password="";
+    function handleSubmit(p) {
+        p.preventDefault(); 
+        if (user==="Marcos" && password==="123"){
+        alert ("Contraseña o Usuario Incorrecto")
+        navigate('/');         
+        }else{            
+                navigate('/LandingPage');
+        }
+    } 
     return(
         <div>
             <br/>
@@ -28,12 +35,15 @@ export default function PaginaLogin(){
                 
             </ul>         
             {/* <form onSubmit={(p) => handleSubmit(p)}> */}
-            <form action="http://localhost:3000/LandingPage" method="get" >
+            {/* <form action="http://localhost:3000/LandingPage" method="get" > */}
+            <form onSubmit={(p) => handleSubmit(p)}>
                 <div className="">
                     <input 
                     type="text" 
                     id="user" 
                     name="user" 
+                    // value=""
+                    // onChange={}
                     placeholder='USUARIO' required>                        
                     </input>
                 </div>
@@ -41,8 +51,10 @@ export default function PaginaLogin(){
                 <div className="">
                     <input 
                     type="password"
-                    id="password"
+                    id=""
                     name="password"
+                    // value=""
+                    // onChange={}
                     placeholder='CONTRASEÑA' required>
                     </input>
                 </div>

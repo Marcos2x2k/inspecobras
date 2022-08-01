@@ -30,7 +30,8 @@ module.exports = (sequelize) => {
         },
         fotoinspeccion:{    // pidio doc en macro para excel y coloco aca tambien
             type: DataTypes.STRING,
-            allowNull: true
+            allowNull: true,
+            defaultValue: "https://muchosnegociosrentables.com/wp-content/uploads/2020/11/negocios-exitosos-de-construccion-8-ideas.jpg"
         },
         intimacion:{
             type: DataTypes.STRING,
