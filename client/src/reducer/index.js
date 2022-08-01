@@ -40,7 +40,17 @@ export default function rootReducer(state =  initialState, action){
                         //Asi creamos en JSON - var json = await axios.get("http://localhost:3001/dogs",{});
                         // el payload lo creamos en actions como payload: json.data
                         allIntimaciones: action.payload
-                    }  
+                    } 
+                    
+                    
+        case 'GET_TICKETS':
+            return{
+            ...state, // guardamos el estado anterior como buena practica
+            tickets: action.payload,  
+            //Asi creamos en JSON - var json = await axios.get("http://localhost:3001/dogs",{});
+            // el payload lo creamos en actions como payload: json.data
+            allTickets: action.payload
+        } 
         case 'GET_NAME_EXPEDIENTES':
             return{
                 ...state,
@@ -56,8 +66,11 @@ export default function rootReducer(state =  initialState, action){
                 ...state,
                 infracciones: action.payload
             }  
-    
-
+        case 'GET_NAME_TICKETS':
+            return{
+                ...state,
+                tickets: action.payload
+            }  
         case 'POST_EXPEDIENTES'://No se declara en actions, se declara en el reducer. 
                           //en action solo se trae la ruta
                  return{
@@ -73,7 +86,11 @@ export default function rootReducer(state =  initialState, action){
                 return{
                     ...state
         }
-
+        case 'POST_TICKETS'://No se declara en actions, se declara en el reducer. 
+        //en action solo se trae la ruta
+                return{
+                    ...state
+        }
         case 'DELETE_EXPEDIENTES':
             return{
                 ...state
@@ -89,6 +106,10 @@ export default function rootReducer(state =  initialState, action){
         }
 
         case 'DELETE_INSPECCIONES':
+            return{
+                ...state
+        }
+        case 'DELETE_TICKETS':
             return{
                 ...state
         }
@@ -110,9 +131,15 @@ export default function rootReducer(state =  initialState, action){
             console.log (action.payload)          
             return {                    
             ...state,     
-            infraccionesDetails: action.payload              
-                                  
+            infraccionesDetails: action.payload  
         }     
+        case 'GET_DETAILS_TICKETS': 
+        console.log (action.payload)          
+        return {                    
+        ...state,     
+        ticketsDetails: action.payload  
+    }  
+
         case 'ORDER_BY_NAME':
                 let sortedArr = action.payload === 'asc' ?
                 state.expedientes.sort(function(a,b){

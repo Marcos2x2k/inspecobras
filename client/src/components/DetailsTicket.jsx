@@ -2,19 +2,19 @@ import React from 'react';// estado, iniciadornomyape, domicilio, adrema, direct
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getDetailsExpedientes } from "../actions/index";
+import { getDetailsTickets } from "../actions/index";
 import { Link } from "react-router-dom";
 
 import './styles/Card.css';
 
 function Details(){
     // trae del Reducer-index-> CASE (GET_DETAILS_EXPEDIENTE) expedientesDetail
-    const allDetails = useSelector((state) => state.expedientesDetails);   
+    const allDetails = useSelector((state) => state.ticketDetails);   
     
     const dispatch = useDispatch();
     const { id } = useParams();
     useEffect(() => {
-        dispatch(getDetailsExpedientes(id));
+        dispatch(getDetailsTickets(id));
         // window.scrollTo(0, 0);
       },[dispatch,id])
       
@@ -29,10 +29,10 @@ function Details(){
                 <h1 className="colorLetrasamarillas">DETALLES DE EXPEDIENTE SELECCIONADO</h1> 
                            
                 <img src={require('./images/separadorpagina.png')}/>
-                <br />  <br />  
+                <br />   
                 <Link to='/home'><button>REGRESAR AL MENU PRINCIPAL</button></Link> <label> </label>
                 <Link to='/ListExpediente'><button>REGRESAR AL LISTADO</button></Link>
-                <br /> <br />  
+                <br /> <br />                     
                 
                   <div class="detailcontainer">  
                   <div class="header">               

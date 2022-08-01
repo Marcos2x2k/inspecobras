@@ -10,7 +10,7 @@ import './styles/Home.css'; // importo los styles de mi Home.css
 //IMPORTO PORQUE USAMOS HOOKS
 import { useState, useEffect, Fragment } from 'react'; //  HOOK USAMOS useState es un hook (//)Fragment es como un div para envolver hijos div en app)
 import { useDispatch, useSelector } from 'react-redux';
-import { getExpedientes, setPage, orderByName } from '../actions/index.js';//Siempre importo las acciones nuevas 
+import { getTickets, setPage, orderByName } from '../actions/index.js';//Siempre importo las acciones nuevas 
 
 //LINK nos sirve para poder movernos por nuestra aplicación
 //más fácilmente en lugar de tener que cambiar la URL manualmente en el navegador.
@@ -18,20 +18,20 @@ import { Link } from 'react-router-dom';
 
 //ME IMPORTO EL COMPONENTE Card y renderizo en linea 
 import CardTicket from './Cards/CardTicket';
-// import SearchBarTick from './SearchBars/SearchBarTick';
+import SearchBarTick from './SearchBars/SearchBarTick';
 import Paginado from './Paginado';
 
-export default function ListExpediente() {
-    const { expedientes, name, page, order } = useSelector(state => state);
+export default function ListTickets() {
+    const { tickets, name, page, order } = useSelector(state => state);
     const dispatch = useDispatch(); // PARA USAR HOOKS
-    const allExpedientes = useSelector((state) => state.expedientes) //HOOKS es lo mismo q maps.state.props
+    const allTickets = useSelector((state) => state.tickets) //HOOKS es lo mismo q maps.state.props
     const [orden, setOrden] = useState(''); // es un estado local q arranca vacio para el Asc y Desc Order
 
     //CREO VARIOS ESTADOS LOCALES y lo seteo en 1- ACA CALCULO LAS CARD POR PAGINAS
     const [currentPage, setCurrentPage] = useState(1); //defino 2 stados 1 con pagina actual y otro q resetea pagina actual
-    const [expedientesPerPage, setExpedientesPerPage] = useState(10); // seteo los perros por pagina, depues usar variable para mostrar por cantidad elegida    
-    const indexOfLastexpediente = currentPage * expedientesPerPage // aca vale 0 a 14 = 15
-    const indexOfFirstexpediente = indexOfLastexpediente - expedientesPerPage // 0
+    const [ticketsPerPage, setTicketsPerPage] = useState(10); // seteo los perros por pagina, depues usar variable para mostrar por cantidad elegida    
+    const indexOfLastTicket = currentPage * ticketsPerPage // aca vale 0 a 14 = 15
+    const indexOfFirsticket = indexOfLastTicket - ticketsPerPage // 0
 
     //currentGames devuelve un arreglo q entra del 1 al 15
     //creo una constante de los Games en la pagina actual y me traigo el array del estado de los Games 
@@ -42,13 +42,13 @@ export default function ListExpediente() {
     }
     // TRAIGO DEL ESTADO LOS Expedientes CUANDO EL COMPONENTE SE MONTA
     useEffect(() => {
-        dispatch(getExpedientes());
+        dispatch(getTickets());
         // getListGenres para usar con filtrados por Genero
     }, [dispatch])
     // PARA RESETEAR AL TOCAR EL BOTON volver a cargar los Expedientes
     function handleClick(p) {
         p.preventDefault(); //PREVENTIVO PARA Q NO RECARGUE TODA LA PAGINA
-        dispatch(getExpedientes())
+        dispatch(getTickets())
     };
     // ORDENAMIENTO DE PAGINA ASCENDENTE O DESCENDENTE
     function handleSort(p) {
@@ -58,62 +58,62 @@ export default function ListExpediente() {
         setOrden(`Ordenado ${p.target.value}`)  //es un estado local vacio, lo uso para modif estado local y renderize
     };
 
-    const listaticket = [
-        {
-        numticket: "2020",
-        iniciador: "Jose Ramirez",
-        ubicacion: "Las Heras Nº 2020",
-        adrema: "A1-343434-1",
-        directordeobra: "Carlos Rosendo",
-        destinodelaobra: "Viv.Familiar",
-        observaciones:"No Posee",
-        permisodeobranum :"1232A2020",
-        actasdeinfraccionnum: "123123",
-        fechaentradaainspecciones:"12/05/2020",
-        inspector:"Alberto Sanchez",
-        fechainspecccion:"02/06/2020",
-        intimacion:"5050",
-        infracciones:"1",
-        observacioneslugar:"Terreno Baldio",
-        pasea:"Sector Suelo",
-        fecha:"14/06/2020",
-    },{
-        numticket: "2020",
-        iniciador: "Jose Ramirez",
-        ubicacion: "Las Heras Nº 2020",
-        adrema: "A1-343434-1",
-        directordeobra: "Carlos Rosendo",
-        destinodelaobra: "Viv.Familiar",
-        observaciones:"No Posee",
-        permisodeobranum :"1232A2020",
-        actasdeinfraccionnum: "123123",
-        fechaentradaainspecciones:"12/05/2020",
-        inspector:"Alberto Sanchez",
-        fechainspecccion:"02/06/2020",
-        intimacion:"5050",
-        infracciones:"1",
-        observacioneslugar:"Terreno Baldio",
-        pasea:"Sector Suelo",
-        fecha:"14/06/2020",
-    },{
-        numticket: "2020",
-        iniciador: "Jose Ramirez",
-        ubicacion: "Las Heras Nº 2020",
-        adrema: "A1-343434-1",
-        directordeobra: "Carlos Rosendo",
-        destinodelaobra: "Viv.Familiar",
-        observaciones:"No Posee",
-        permisodeobranum :"1232A2020",
-        actasdeinfraccionnum: "123123",
-        fechaentradaainspecciones:"12/05/2020",
-        inspector:"Alberto Sanchez",
-        fechainspecccion:"02/06/2020",
-        intimacion:"5050",
-        infracciones:"1",
-        observacioneslugar:"Terreno Baldio",
-        pasea:"Sector Suelo",
-        fecha:"14/06/2020",
-    }]
+    // const listaticket = [
+    //     {
+    //     numticket: "2020",
+    //     iniciador: "Jose Ramirez",
+    //     ubicacion: "Las Heras Nº 2020",
+    //     adrema: "A1-343434-1",
+    //     directordeobra: "Carlos Rosendo",
+    //     destinodelaobra: "Viv.Familiar",
+    //     observaciones:"No Posee",
+    //     permisodeobranum :"1232A2020",
+    //     actasdeinfraccionnum: "123123",
+    //     fechaentradaainspecciones:"12/05/2020",
+    //     inspector:"Alberto Sanchez",
+    //     fechainspecccion:"02/06/2020",
+    //     intimacion:"5050",
+    //     infracciones:"1",
+    //     observacioneslugar:"Terreno Baldio",
+    //     pasea:"Sector Suelo",
+    //     fecha:"14/06/2020",
+    // },{
+    //     numticket: "2020",
+    //     iniciador: "Jose Ramirez",
+    //     ubicacion: "Las Heras Nº 2020",
+    //     adrema: "A1-343434-1",
+    //     directordeobra: "Carlos Rosendo",
+    //     destinodelaobra: "Viv.Familiar",
+    //     observaciones:"No Posee",
+    //     permisodeobranum :"1232A2020",
+    //     actasdeinfraccionnum: "123123",
+    //     fechaentradaainspecciones:"12/05/2020",
+    //     inspector:"Alberto Sanchez",
+    //     fechainspecccion:"02/06/2020",
+    //     intimacion:"5050",
+    //     infracciones:"1",
+    //     observacioneslugar:"Terreno Baldio",
+    //     pasea:"Sector Suelo",
+    //     fecha:"14/06/2020",
+    // },{
+    //     numticket: "2020",
+    //     iniciador: "Jose Ramirez",
+    //     ubicacion: "Las Heras Nº 2020",
+    //     adrema: "A1-343434-1",
+    //     directordeobra: "Carlos Rosendo",
+    //     destinodelaobra: "Viv.Familiar",
+    //     observaciones:"No Posee",
+    //     permisodeobranum :"1232A2020",
+    //     actasdeinfraccionnum: "123123",
+    //     fechaentradaainspecciones:"12/05/2020",
+    //     inspector:"Alberto Sanchez",
+    //     fechainspecccion:"02/06/2020",
+    //     intimacion:"5050",
+    //     infracciones:"1",
+    //     observacioneslugar:"Terreno Baldio",
+    //     pasea:"Sector Suelo",
+    //     fecha:"14/06/2020",
+    // }]
 
     return (
 
@@ -141,8 +141,8 @@ export default function ListExpediente() {
                     <Button color='primary' onClick={p => { handleClick(p) }}>Recargar Tickets</Button> <label> </label>
                     <Link to='/Home'><Button color="danger">Volver Menu Principal</Button></Link>
                     <br /><br />
-                    {/* <SearchBarTick
-                    /> */}
+                    <SearchBarTick
+                    />
                     <br /><br />
                     {/* <br /><br /> */}
                     <img src={require('./images/separadorpagina.png')} />
@@ -153,33 +153,28 @@ export default function ListExpediente() {
                 <div>
                     {/* Rompía pagina */}
                     <Paginado
-                        expedientesPerPage={expedientesPerPage}
-                        allExpedientes={allExpedientes.length}
+                        ticketsPerPage={ticketsPerPage}
+                        // allTickets={allTickets.length}
                         paginado={paginado}
                     />
                 </div>
                 <div>
-                    {listaticket?.map((p) => {  // CON ? PREGUNTA SI EXISTE Y DESPUES MAPEA   
+                    {allTickets?.map((p) => {  // CON ? PREGUNTA SI EXISTE Y DESPUES MAPEA   
                         return (
                             <Fragment>
                                 <div>
                                     <Link
                                         key={p.id}
-                                        to={`/expedientes/${p.id}`}>
+                                        to={`/tickets/${p.id}`}>
                                         <CardTicket
-                                            numticket={p.numticket}
-                                            // image={p.image ? p.image : p.image}
+                                            numticket={p.numticket}                                            
                                             iniciador={p.iniciador}
                                             ubicacion={p.ubicacion}
                                             adrema={p.adrema}
                                             directordeobra={p.directordeobra}
                                         />
-                                    </Link>
-                                    {/* : (
-                            <div>
-                                <h1>CARGANDO...</h1>                  
-                            </div>
-                            ) */}
+                                    </Link>                                    
+                            ) 
                                 </div>
 
                             </Fragment>

@@ -52,6 +52,16 @@ export function getMultas(){
             payload: json.data});
     };
 }
+
+export function getTickets(){
+    return async function (dispatch){
+        var json = await axios.get("http://localhost:3001/tickets", {});
+        // var info = await axios(`http://localhost:3001/types/${name}`); otra forma
+        return dispatch({
+            type: "GET_TICKETS", 
+            payload: json.data});
+    };
+}
 // esta Action permite BUSQUEDA todos los expedientes por numExpediente
 export function getNameExpedientes(name){ 
     return async function (dispatch){
@@ -82,7 +92,19 @@ export function getNameExpedientes(name){
         }}
         }
 
-
+        export function getNameTickets(name){ 
+            return async function (dispatch){
+            try{
+                var json = await axios.get("http://localhost:3001/tickets?name=" + name);
+                return dispatch({
+                    type: "GET_NAME_TICKETS",
+                    payload: json.data
+                })
+            } 
+            catch (error) {
+                console.log(error)
+            }}
+            }
 
 // PARA EL POST DE GENRES y CREAR AL NUEVO JUEGO
 export function postExpediente(payload){ //recibe un objeto con toda la info del Game a crear (GameCreate)

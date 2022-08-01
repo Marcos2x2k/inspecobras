@@ -156,6 +156,7 @@ export default function TicketCreate (){
                         placeholder="nnnn/l/aaaa"                        
                         onChange={(p)=>handleChange(p)}
                         autoComplete="off"
+                        required
                         />
                         {/* <br /> */}                
                         <label className='selectfont'>  Iniciador (nombre y apellido): </label>
@@ -167,6 +168,7 @@ export default function TicketCreate (){
                         value= {input.iniciador}
                         onChange={(p)=>handleChange(p)}
                         autoComplete="off"
+                        required
                         />
                 <br /><br />
                 <label> Ubicación:  </label>
@@ -176,6 +178,7 @@ export default function TicketCreate (){
                         value= {input.ubicacion}
                         onChange={(p)=>handleChange(p)}
                         autoComplete="off"
+                        required
                         />
                 {/* <br /> */}
                 <label className="selectfont"> Nº Adrema: </label>
@@ -185,6 +188,7 @@ export default function TicketCreate (){
                         value= {input.adrema}
                         onChange={(p)=>handleChange(p)}
                         autoComplete="off"
+                        required
                         />
                 <br /><br />
                 <label className="selectfont"> Domicilio: </label>
@@ -194,6 +198,7 @@ export default function TicketCreate (){
                         value= {input.domicilio}
                         onChange={(p)=>handleChange(p)}
                         autoComplete="off"
+                        required
                         />
                 {/* <br /> */}                
                 <label className="selectfont"> Director de obra/Perito visor: </label>
@@ -203,6 +208,7 @@ export default function TicketCreate (){
                         value={input.directordeobra}
                         onChange={(p)=>handleChange(p)}
                         autoComplete="off"
+                        required
                         />
                 {/* <br /> */}
                 <label className="selectfont"> Destino de Obra: </label>
@@ -212,6 +218,7 @@ export default function TicketCreate (){
                         value= {input.destinodelaobra}
                         onChange={(p)=>handleChange(p)}
                         autoComplete="off"
+                        required
                         />
                 <br /><br />
                 <label className="selectfont"> Zona: </label>
@@ -221,6 +228,7 @@ export default function TicketCreate (){
                         value= {input.zona}
                         onChange={(p)=>handleChange(p)}
                         autoComplete="off"
+                        required
                         />
                 {/* <br /> */}
                 <label className="selectfont"> Permiso de Obra Nº: </label>
@@ -230,6 +238,7 @@ export default function TicketCreate (){
                         value= {input.permisodeobranum}
                         onChange={(p)=>handleChange(p)}
                         autoComplete="off"
+                        required
                         />
                 <br /><br />
                 <label className="selectfont"> Acta de Infracción Nº: </label>
@@ -239,6 +248,7 @@ export default function TicketCreate (){
                         value= {input.actasdeinfraccionnum}
                         onChange={(p)=>handleChange(p)}
                         autoComplete="off"
+                        required
                         />
                 {/* <br /> */}
                 <label className="selectfont"> Fecha de Entrada Inspección: </label>
@@ -248,6 +258,7 @@ export default function TicketCreate (){
                         value= {input.fechaentradaainspecciones}
                         onChange={(p)=>handleChange(p)}
                         autoComplete="off"
+                        required
                         />
                 <br /><br />
                 <label className="selectfont"> Inspector: </label>
@@ -257,6 +268,7 @@ export default function TicketCreate (){
                         value= {input.inspector}
                         onChange={(p)=>handleChange(p)}
                         autoComplete="off"
+                        required
                         />
                 {/* <br /> */}  
                 <label className="selectfont"> Fecha Inspección: </label>
@@ -266,6 +278,7 @@ export default function TicketCreate (){
                         value= {input.fechainspecccion}
                         onChange={(p)=>handleChange(p)}
                         autoComplete="off"
+                        required
                         />
                 <br/><br/>
                 <label className="selectfont"> Intimación: </label>
@@ -275,6 +288,7 @@ export default function TicketCreate (){
                         value= {input.intimacion}
                         onChange={(p)=>handleChange(p)}
                         autoComplete="off"
+                        required
                 />             
                 <label className="selectfont"> Infracciones: </label>
                 <input
@@ -283,6 +297,7 @@ export default function TicketCreate (){
                         value= {input.infracciones}
                         onChange={(p)=>handleChange(p)}
                         autoComplete="off"
+                        required
                 />    
                 <br/>  <br/>
                 <label className="selectfont"> Observaciones del Lugar: </label>
@@ -291,6 +306,7 @@ export default function TicketCreate (){
                         value= {input.observacioneslugar}
                         onChange={(p)=>handleChange(p)}
                         autoComplete="off"
+                        required
                 />  
                 <br/><br/>
                 <label className="selectfont"> Pase a: </label>
@@ -300,6 +316,7 @@ export default function TicketCreate (){
                         value= {input.pasea}
                         onChange={(p)=>handleChange(p)}
                         autoComplete="off"
+                        required
                 />   
                  <label className="selectfont"> Fecha: </label>
                  <input
@@ -308,6 +325,7 @@ export default function TicketCreate (){
                         value= {input.fecha}
                         onChange={(p)=>handleChange(p)}
                         autoComplete="off"
+                        required
                 />              
                 
                 <br/><br/><br/>                

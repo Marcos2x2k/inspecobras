@@ -95,6 +95,16 @@ const getDbInfoInf = async () => {
     })
     return infoDBinf;
 }
+const getDbInfoTickets = async () => {
+    const infoDBticket = await Ticket.findAll({
+    //    include:{
+    //        model: Inspeccion,
+    //        atributes: ['numexpediente']
+    //    } 
+    })
+    return infoDBticket;
+}
+
 
 const getAllExpedientes = async () =>{
     try{
@@ -123,6 +133,14 @@ const getAllInfracciones = async () =>{
     }
 }
 
+const getAllTickets = async () =>{
+    try{
+        const DBinfoTickets = await getDbInfoTickets()
+        return DBinfoTickets;
+    }catch (err){
+        console.log('error trayendo info de la Base de Datos', err)
+    }
+}
 // ********* Sector de GET ********
 
 router.get("/", (req, res) =>{
@@ -176,6 +194,18 @@ router.get ('/infracciones', async (req,res) => { // llama todos las infraccione
         res.status(400).send('No se encuentra la Infracción Requerida')
     }else{
         res.status(200).send(infoTotalinf)
+    }   
+})
+
+router.get ('/tickets', async (req,res) => { // llama todos las infracciones en la DB
+    const numticket = req.query.name;
+    const infoTotalTickets = await getAllTickets();
+    if(numticket) {
+        const ticketsnum = await infoTotalTickets.filter(p => p.numticket.toLowerCase().includes(numticket.toLowerCase()))
+        res.status(200).send(ticketsnum)
+        // res.status(400).send('No se encuentra la Infracción Requerida')
+    }else{
+        res.status(200).send(infoTotalTickets)
     }   
 })
 
@@ -255,6 +285,13 @@ router.get("/infracciones/:actainfnum", async (req, res) => {
     .then (p =>{
         res.json (p)
     })    
+});
+router.get("/tickets/:id", async (req, res) => {    
+    let numticket = req.params.id;
+    Ticket.findOne({where: {id:numticket}})
+    .then (p =>{
+        res.json (p)
+    })
 });
 
 // ****** SECTOR DE EDITAR - PUT ******
@@ -579,7 +616,6 @@ router.post ('/newticket', async (req, res) =>{
         fecha,
     })
     res.send('Nuevo Ticket Creado!')
-
 })
 
 
