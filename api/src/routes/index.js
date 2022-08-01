@@ -21,31 +21,32 @@ const PassportLocal = require('passport-local').Strategy;
 // ESTOS SON MIDLEWARE Q USO
 app.use(morgan('dev'));
 app.use(express.json());
-app.use(express.urlencoded({extended: true}));
-app.use(cookieParser('miultrahipersecreto'))
-app.use(session({
-    secret: 'miultrahipersecreto',
-    resave: true,
-    saveUninitialized:true
-}))
+// app.use(express.urlencoded({extended: true}));
+// app.use(cookieParser('miultrahipersecreto'))
+// app.use(session({
+//     secret: 'miultrahipersecreto',
+//     resave: true,
+//     saveUninitialized:true
+// }))
+// app.set('view engine', 'ejs')
+// app.use(passport.initialize());
+// app.use(passport.session());
 
-app.use(passport.initialize());
-app.use(passport.session());
-
-passport.use(new PassportLocal(function(user, password, done){
-    // done(err,{name:"Marcos"},{}) Opcional
-    if (user === "Marcos" && password === "123")
-        return done(null, {id:1, name: "cody"});   // CREO EL USUARIO
-    done(null, false)
-}));
-// 1 => Serialización
-passport.serializeUser(function(user, done){
-    done(null, user.id)
-})
-// Deserialización
-passport.serializeUser(function(id, done){
-    done(null, {id:1 , name:"Cody"})
-})
+// passport.use(new PassportLocal(function(user, password, done){
+//     // done(err,{name:"Marcos"},{}) Opcional
+//     if (user === "Marcos" && password === "123")
+//         return done(null, {id:1, name: "cody"});   // CREO EL USUARIO
+//     done(null, false)
+// }));
+// // {id: 1, name: "Cody"}
+// // 1 => Serialización
+// passport.serializeUser(function(user, done){
+//     done(null, user.id)
+// })
+// // Deserialización
+// passport.serializeUser(function(id, done){
+//     done(null, {id:1 , name:"Cody"})
+// })
 
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
@@ -55,7 +56,7 @@ const { pool } = require('pg');
 
 // ACA DEFINO PARA PODER SUBIR IMAGENES
 const multer = require('multer');
-// const ejs = require('ejs')
+const ejs = require('ejs')
 
 //defino los models a usar e importo los modelos conectados
 const { User, Expediente, Inspeccion, Intimacion, Infraccion, Ticket, expedienteinspeccion } = require('../db.js'); 
@@ -68,10 +69,10 @@ const { User, Expediente, Inspeccion, Intimacion, Infraccion, Ticket, expediente
 
 const getDbInfo = async () => {
     const infoDB = await Expediente.findAll({
-       include:{
-           model: Inspeccion,
-           atributes: ['numexpediente']
-       } 
+    //    include:{
+    //        model: Inspeccion,
+    //        atributes: ['numexpediente']
+    //    } 
     })
     return infoDB;
 }
@@ -132,11 +133,12 @@ router.get("/", (req, res) =>{
 
 router.get('/login', async (req, res) =>{
     //Mostrar el formulario de Login
+    res.render("login")
 })
 
-router.post('/login', passport.authenticate({
-    successRedirect: "/LandingPage",
-    failure: "/PaginaLogin"
+router.post('/login', passport.authenticate('local',{
+    successRedirect: "http://localhost:3000/LandingPage",
+    failure: "http://localhost:3000/"
     //Mostrar el formulario de Login
 }));
 
@@ -148,7 +150,8 @@ router.get ('/expedientes', async (req,res) => { // llama todos los expedientes 
         const expedientesnum = await infoTotal.filter(p => p.numexpediente.toLowerCase().includes(numexpediente.toLowerCase()))
         res.status(200).send(expedientesnum)
         // res.status(400).send('No se encuentra el Expediente Requerido')
-    }else{
+    }
+    else{
         // res.status(400).send('No se encuentra el Expediente Requerido')
         res.status(200).send(infoTotal)
     }   
@@ -224,9 +227,9 @@ router.delete("/deleteinf/:actainfnum", async (req, res) => {
 
 // ***** SECTOR BUSCAR ******
 
-router.get("/expedientes/:numexpediente", async (req, res) => {    
-    let numexpediente = req.params.numexpediente;
-    Expediente.findOne({where: {numexpediente:numexpediente}})
+router.get("/expedientes/:id", async (req, res) => {    
+    let numexpediente = req.params.id;
+    Expediente.findOne({where: {id:numexpediente}})
     .then (p =>{
         res.json (p)
     })   

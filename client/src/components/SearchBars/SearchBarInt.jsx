@@ -1,20 +1,21 @@
 import React from 'react';
 import {useState} from 'react';
 import { useDispatch } from 'react-redux';
-import {getNameIntimaciones} from '../actions'
-export default function SearchBarInt(){
+import {getNameIntimaciones} from '../../actions';
+
+export default function SearchBarExp(){
      // aca usamos Hook
     const dispatch = useDispatch()
-    const [name, setName] = useState("")
+    const [boletaintnum, setboletaintnum] = useState("")
 
     function handInputChange(p){
         p.preventDefault()
-        setName(p.target.value)
+        setboletaintnum(p.target.value)
         // console.log(name)
     }
     function handleSubmit(p){
         p.preventDefault()
-        dispatch(getNameIntimaciones(name))
+        dispatch(getNameIntimaciones(boletaintnum))
     }
 
     return (
@@ -23,9 +24,9 @@ export default function SearchBarInt(){
             <form onSubmit={(p)=> handleSubmit(p)}> 
                 <input
                 type = 'text'
-                placeholder = "Buscar Intimaciones..."
+                placeholder = "Buscar..."
                 onChange={(p) => handInputChange(p)}                
-                />
+            />
                 <button type='submit'>Buscar</button>
             </form>
         </div>

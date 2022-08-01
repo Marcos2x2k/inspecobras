@@ -42,8 +42,7 @@ export default function ListExpediente() {
     }
     // TRAIGO DEL ESTADO LOS Expedientes CUANDO EL COMPONENTE SE MONTA
     useEffect(() => {
-        dispatch(getExpedientes());
-        // getListGenres para usar con filtrados por Genero
+        dispatch(getExpedientes());        
     }, [dispatch])
     // PARA RESETEAR AL TOCAR EL BOTON volver a cargar los Expedientes
     function handleClick(p) {
@@ -58,77 +57,77 @@ export default function ListExpediente() {
         setOrden(`Ordenado ${p.target.value}`)  //es un estado local vacio, lo uso para modif estado local y renderize
     };
 
-    const listaExpedientes = [{
-            numexpediente: "2222Z2022",
-            fechainicioentrada:"12/12/12",
-            estado: "P/Inspeccion",
-            iniciadornomyape: "SOTOMAYOR ROBERTO",
-            domicilio:"ALMIRANTE BROWN Nº 2756",
-            adrema:"A1-16964-1",
-            directorobraoperitovisor:"ARQº ROBERTO JOSELOCHI",
-            destinodeobra:"VIVIENDA FAMILIAR",
-            superficieterreno:"250",
-            superficieaconstruir:"200",
-            superficiesubsueloplantabaja:"150",
-            superficieprimerpisoymaspisos:"0",
-            zona:"1Z",
-            observaciones:"RELEVAMIENTO Y CONFORME A OBRA",
-            permisobraoactainfrac:"p/Inspeccion",
-            fotoexpediente:"https://resizer.glanacion.com/resizer/6tyJgUJUFqTuEpSotiR7u10cvRU=/768x0/filters:format(webp):quality(80)/cloudfront-us-east-1.images.arcpublishing.com/lanacionar/BEJIF6ZS75BFVHJZU72YBZLO5A.jpg"
-    }, {
-        numexpediente: "2323Z2021",
-        fechainicioentrada:"21/02/2020",
-        estado: "P/Reforma",
-        iniciadornomyape: "JUAN CARLOS AGUIRRE",
-        domicilio:"LaMadrid Nº 224",
-        adrema:"A1-321312-2",
-        directorobraoperitovisor:"ARQº DIEGO SOSA",
-        destinodeobra:"DEPOSITO",
-        superficieterreno:"2500",
-        superficieaconstruir:"1500",
-        superficiesubsueloplantabaja:"1500",
-        superficieprimerpisoymaspisos:"0",
-        zona:"1Z",
-        observaciones:"RELEVAMIENTO Y CONFORME A OBRA",
-        permisobraoactainfrac:"p/Inspeccion",
-        fotoexpediente:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4UVudBSvwFfvrF1-BAwEA6cp_gl1bw16eug&usqp=CAU"
-}, {
-    numexpediente: "1123G2019",
-    fechainicioentrada:"12/12/19",
-    estado: "P/Inspeccion",
-    iniciadornomyape: "MAXIMILIANO OBRA",
-    domicilio:"GENERAL PAZ Nº 1234",
-    adrema:"A1-43234E-1",
-    directorobraoperitovisor:"ARQº LUIS FERNANDEZ",
-    destinodeobra:"VIVIENDA FAMILIAR",
-    superficieterreno:"550",
-    superficieaconstruir:"500",
-    superficiesubsueloplantabaja:"400",
-    superficieprimerpisoymaspisos:"100",
-    zona:"A4",
-    observaciones:"RELEVAMIENTO Y CONFORME A OBRA",
-    permisobraoactainfrac:"p/Inspeccion",
-    fotoexpediente:"https://imagenes.elpais.com/resizer/Wxv4_f95isHNmO6ilKtN74DJQ1s=/414x0/filters:focal(3108x1948:3118x1958)/cloudfront-eu-central-1.images.arcpublishing.com/prisa/OFZQVBC35ZB3HCQNBBWPDEGTSY.jpg"
-},
-{
-    numexpediente: "2218Z2018",
-    fechainicioentrada:"03/01/18",
-    estado: "P/Inspeccion",
-    iniciadornomyape: "JESUS AMARILLA",
-    domicilio:"LOS TULIPANES Nº S/N",
-    adrema:"A1-345634-4",
-    directorobraoperitovisor:"ARQº JESUS AMARILLA",
-    destinodeobra:"NEGOCIO FAMILIAR",
-    superficieterreno:"250",
-    superficieaconstruir:"200",
-    superficiesubsueloplantabaja:"150",
-    superficieprimerpisoymaspisos:"0",
-    zona:"1Z",
-    observaciones:"RELEVAMIENTO Y CONFORME A OBRA",
-    permisobraoactainfrac:"p/Inspeccion",
-    fotoexpediente:"https://www.lavoz.com.ar/resizer/VJkxJ2b6AtsPB5CFrkSFv7UFdj8=/1023x682/smart/cloudfront-us-east-1.images.arcpublishing.com/grupoclarin/HCBQO25UF5AFZBZOSVP7S7MGPA.jpg"
-}]
-const infoTotal = listaExpedientes.concat(expedientes);
+//     const listaExpedientes = [{
+//             numexpediente: "2222Z2022",
+//             fechainicioentrada:"12/12/12",
+//             estado: "P/Inspeccion",
+//             iniciadornomyape: "SOTOMAYOR ROBERTO",
+//             domicilio:"ALMIRANTE BROWN Nº 2756",
+//             adrema:"A1-16964-1",
+//             directorobraoperitovisor:"ARQº ROBERTO JOSELOCHI",
+//             destinodeobra:"VIVIENDA FAMILIAR",
+//             superficieterreno:"250",
+//             superficieaconstruir:"200",
+//             superficiesubsueloplantabaja:"150",
+//             superficieprimerpisoymaspisos:"0",
+//             zona:"1Z",
+//             observaciones:"RELEVAMIENTO Y CONFORME A OBRA",
+//             permisobraoactainfrac:"p/Inspeccion",
+//             fotoexpediente:"https://resizer.glanacion.com/resizer/6tyJgUJUFqTuEpSotiR7u10cvRU=/768x0/filters:format(webp):quality(80)/cloudfront-us-east-1.images.arcpublishing.com/lanacionar/BEJIF6ZS75BFVHJZU72YBZLO5A.jpg"
+//     }, {
+//         numexpediente: "2323Z2021",
+//         fechainicioentrada:"21/02/2020",
+//         estado: "P/Reforma",
+//         iniciadornomyape: "JUAN CARLOS AGUIRRE",
+//         domicilio:"LaMadrid Nº 224",
+//         adrema:"A1-321312-2",
+//         directorobraoperitovisor:"ARQº DIEGO SOSA",
+//         destinodeobra:"DEPOSITO",
+//         superficieterreno:"2500",
+//         superficieaconstruir:"1500",
+//         superficiesubsueloplantabaja:"1500",
+//         superficieprimerpisoymaspisos:"0",
+//         zona:"1Z",
+//         observaciones:"RELEVAMIENTO Y CONFORME A OBRA",
+//         permisobraoactainfrac:"p/Inspeccion",
+//         fotoexpediente:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4UVudBSvwFfvrF1-BAwEA6cp_gl1bw16eug&usqp=CAU"
+// }, {
+//     numexpediente: "1123G2019",
+//     fechainicioentrada:"12/12/19",
+//     estado: "P/Inspeccion",
+//     iniciadornomyape: "MAXIMILIANO OBRA",
+//     domicilio:"GENERAL PAZ Nº 1234",
+//     adrema:"A1-43234E-1",
+//     directorobraoperitovisor:"ARQº LUIS FERNANDEZ",
+//     destinodeobra:"VIVIENDA FAMILIAR",
+//     superficieterreno:"550",
+//     superficieaconstruir:"500",
+//     superficiesubsueloplantabaja:"400",
+//     superficieprimerpisoymaspisos:"100",
+//     zona:"A4",
+//     observaciones:"RELEVAMIENTO Y CONFORME A OBRA",
+//     permisobraoactainfrac:"p/Inspeccion",
+//     fotoexpediente:"https://imagenes.elpais.com/resizer/Wxv4_f95isHNmO6ilKtN74DJQ1s=/414x0/filters:focal(3108x1948:3118x1958)/cloudfront-eu-central-1.images.arcpublishing.com/prisa/OFZQVBC35ZB3HCQNBBWPDEGTSY.jpg"
+// },
+// {
+//     numexpediente: "2218Z2018",
+//     fechainicioentrada:"03/01/18",
+//     estado: "P/Inspeccion",
+//     iniciadornomyape: "JESUS AMARILLA",
+//     domicilio:"LOS TULIPANES Nº S/N",
+//     adrema:"A1-345634-4",
+//     directorobraoperitovisor:"ARQº JESUS AMARILLA",
+//     destinodeobra:"NEGOCIO FAMILIAR",
+//     superficieterreno:"250",
+//     superficieaconstruir:"200",
+//     superficiesubsueloplantabaja:"150",
+//     superficieprimerpisoymaspisos:"0",
+//     zona:"1Z",
+//     observaciones:"RELEVAMIENTO Y CONFORME A OBRA",
+//     permisobraoactainfrac:"p/Inspeccion",
+//     fotoexpediente:"https://www.lavoz.com.ar/resizer/VJkxJ2b6AtsPB5CFrkSFv7UFdj8=/1023x682/smart/cloudfront-us-east-1.images.arcpublishing.com/grupoclarin/HCBQO25UF5AFZBZOSVP7S7MGPA.jpg"
+// }]
+// const infoTotal = listaExpedientes.concat(expedientes);
 
     return (
 
@@ -174,28 +173,23 @@ const infoTotal = listaExpedientes.concat(expedientes);
                     />
                 </div>
                 <div>
-                    {expedientes?.map((p) => {  // CON ? PREGUNTA SI EXISTE Y DESPUES MAPEA   
+                    {allExpedientes?.map((p) => {  // CON ? PREGUNTA SI EXISTE Y DESPUES MAPEA   
                         return (
                             <Fragment>
                                 <div>
                                     <Link
                                         key={p.id}
                                         to={`/expedientes/${p.id}`}>
-                                        <Card
-                                            numexpediente={p.numexpediente}
-                                            // image={p.image ? p.image : p.image}
+                                        <Card                                            
+                                            numexpediente={p.numexpediente}                                            
                                             fechainicioentrada={p.fechainicioentrada}
                                             adrema={p.adrema}
                                             estado={p.estado}
                                             iniciadornomyape={p.iniciadornomyape}
                                             fotoexpediente={p.fotoexpediente}
                                         />
-                                    </Link>
-                                    {/* : (
-                            <div>
-                                <h1>CARGANDO...</h1>                  
-                            </div>
-                            ) */}
+                                    </Link>                                    
+                            )
                                 </div>
 
                             </Fragment>

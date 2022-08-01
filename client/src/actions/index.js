@@ -140,6 +140,21 @@ export function getDetailsIntimaciones(id){
         })
     }
 }
+
+export function deleteIntimaciones(id){
+    return function(dispatch){
+        axios.get('http://localhost:3001/deleteint/'+id)
+        .then((response)=>{
+            dispatch({type:'GET_DELETE_INTIMACIONES', payload: response.data})
+        })
+        .catch(()=>{
+            console.log('No se encuentra ID Intimacion');
+        })
+    }
+}
+
+
+
 //hacemos la accion de filtrar por API o Bdatos // payload trae el value de la accion q elija
 export function filterCreated(value){ //payload es el value q me llega
     // console.log(payload)
@@ -177,3 +192,9 @@ export function orderByName(payload){
     }
 }
 
+export function deleteIntimacion(payload){
+    return{
+        type: 'GET_DELETE_INTIMACIONES',
+        payload
+    }
+}

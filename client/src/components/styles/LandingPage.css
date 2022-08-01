@@ -25,6 +25,17 @@
     border:2px solid black; 
     text-shadow: black 1px 3px;   
 }
+
+.colorLetrasbordenegro{
+    font-family:cursive;
+    font-size:40px;
+    color: rgb(218, 232, 20);
+    background-color: rgb(19, 19, 18);
+    border:2px solid black;
+    /* text-shadow: rgb(19, 212, 19) 1px 3px;      */
+}
+
+
 .colorLetrasamarillas{
     font-size:24px;
     color: rgb(242, 234, 234);

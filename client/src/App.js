@@ -33,6 +33,7 @@ import Construccion from './components/Construccion.jsx'
 import ListTicket from './components/ListTicket.jsx'
 import ListInspeccion from './components/ListInspeccion.jsx'
 import ListIntimacion from './components/ListIntimacion.jsx'
+import PaginaLogin  from './components/PaginaLogin.jsx'
 // import Upload from './components/Upload.jsx'
 // import uploads from './components/uploads'
 
@@ -46,7 +47,9 @@ const App = () => {
       {/* <h1>PROYECTO MUNICIPALIDAD CTES</h1> */}
       {/* <h3>by Marcos Dacunda</h3> */}
         <Routes>         
-          <Route  path='/' element={<LandingPage/>}/>   
+          {/* <Route  path='/' element={<LandingPage/>}/>    */}
+          <Route  path='/' element={<PaginaLogin/>}/>
+          <Route  path='/LandingPage' element={<LandingPage/>}/>
           <Route  path='/Home' element={<Home/>}/>          
           <Route  path='/ExpedCreate' element={<ExpedCreate/>}/>
           <Route  path='/TicketCreate' element={<TicketCreate/>}/>

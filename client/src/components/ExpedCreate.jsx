@@ -153,6 +153,7 @@ export default function ExpedCreate (){
                         placeholder="NNNN/L/AAAA"                        
                         onChange={(p)=>handleChange(p)}
                         autoComplete="off"
+                        required
                         />
                         <label> </label>
                         {/* <br /> */}                
@@ -165,6 +166,7 @@ export default function ExpedCreate (){
                         value= {input.fechainicioentrada}
                         onChange={(p)=>handleChange(p)}
                         autoComplete="off"
+                        required
                         />
                 <br /><br />
                 <label className='selectfont'> Estado:  </label>
@@ -175,6 +177,7 @@ export default function ExpedCreate (){
                         value= {input.estado}
                         onChange={(p)=>handleChange(p)}
                         autoComplete="off"
+                        required
                         />
                 {/* <br /> */}
                 <label className="selectfont"> Iniciador: </label>
@@ -185,6 +188,7 @@ export default function ExpedCreate (){
                         value= {input.iniciadornomyape}
                         onChange={(p)=>handleChange(p)}
                         autoComplete="off"
+                        required
                         />
                 <br /><br />
                 <label className="selectfont"> Domicilio: </label>
@@ -195,6 +199,7 @@ export default function ExpedCreate (){
                         value= {input.domicilio}
                         onChange={(p)=>handleChange(p)}
                         autoComplete="off"
+                        required
                         />
                 {/* <br /> */}
                 <label className="selectfont"> Adrema: </label>
@@ -205,6 +210,7 @@ export default function ExpedCreate (){
                         value= {input.adrema}
                         onChange={(p)=>handleChange(p)}
                         autoComplete="off"
+                        required
                         />
                 <br /><br />
                 <label className="selectfont"> Director o Perito: </label>
@@ -215,6 +221,7 @@ export default function ExpedCreate (){
                         value={input.directorobraoperitovisor}
                         onChange={(p)=>handleChange(p)}
                         autoComplete="off"
+                        required
                         />
                 {/* <br /> */}
                 <label className="selectfont"> Destino de Obra: </label>
@@ -225,6 +232,7 @@ export default function ExpedCreate (){
                         placeholder="Viv.Familiar/Deposito/Negocio/etc"
                         onChange={(p)=>handleChange(p)}
                         autoComplete="off"
+                        required
                         />
                 <br /><br />
                 <label className="selectfont"> Superficie Terreno: </label>
@@ -235,6 +243,7 @@ export default function ExpedCreate (){
                         value= {input.superficieterreno}
                         onChange={(p)=>handleChange(p)}
                         autoComplete="off"
+                        required
                         />
                 {/* <br /> */}
                 <label className="selectfont"> Superf. a Const.: </label>
@@ -245,6 +254,7 @@ export default function ExpedCreate (){
                         value= {input.superficieaconstruir}
                         onChange={(p)=>handleChange(p)}
                         autoComplete="off"
+                        required
                         />
                 <br /><br />
                 <label className="selectfont"> Superficie A:</label>
@@ -255,6 +265,7 @@ export default function ExpedCreate (){
                         value= {input.superficiesubsueloplantabaja}
                         onChange={(p)=>handleChange(p)}
                         autoComplete="off"
+                        required
                         />
                 {/* <br /> */}
                 <label className="selectfont"> Superficie B:</label>
@@ -265,6 +276,7 @@ export default function ExpedCreate (){
                         value= {input.superficieprimerpisoymaspisos}
                         onChange={(p)=>handleChange(p)}
                         autoComplete="off"
+                        required
                         />
                 <br /><br />
                 <label className="selectfont"> Zona: </label>
@@ -274,6 +286,7 @@ export default function ExpedCreate (){
                         value= {input.zona}
                         onChange={(p)=>handleChange(p)}
                         autoComplete="off"
+                        required
                         />
                 {/* <br /> */}                
                 <br/><br/>
@@ -287,6 +300,7 @@ export default function ExpedCreate (){
                         value= {input.permisobraoactainfrac}
                         onChange={(p)=>handleChange(p)}
                         autoComplete="off"
+                        required
                         />
                 <br /> <br />
                 <label className="selectfont"> Observaciones: </label>
@@ -297,9 +311,10 @@ export default function ExpedCreate (){
                         value= {input.observaciones}
                         onChange={(p)=>handleChange(p)}
                         autoComplete="off"
+                        required
                 />  
                 <br/>          
-                <label className="negrita">Subir Fotos:</label>
+                {/* <label className="negrita">Subir Fotos:</label>
                 <br/>
                 <input
                 //  className="negrita"
@@ -308,8 +323,7 @@ export default function ExpedCreate (){
                  value={input.fotoexpediente}
                  onChange={(p)=>handleChange(p)}
                   />    
-                <br/><br/><br/>                
-                         
+                <br/><br/><br/>                 */}                        
                  
                 </div>
                 </div>  

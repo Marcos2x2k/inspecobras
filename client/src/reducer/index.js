@@ -74,10 +74,25 @@ export default function rootReducer(state =  initialState, action){
                     ...state
         }
 
+        case 'DELETE_EXPEDIENTES':
+            return{
+                ...state
+        }
 
-        case 'GET_DETAILS_INFRACCIONES': 
-                // console.log (state)
-                console.log (action.payload)          
+        case 'DELETE_INTIMACIONES':
+            return{
+                ...state
+        }
+        case 'DELETE_INFRACCIONES':
+            return{
+                ...state
+        }
+
+        case 'DELETE_INSPECCIONES':
+            return{
+                ...state
+        }
+        case 'GET_DETAILS_EXPEDIENTES':       
                 return {                    
                     ...state,     
                     expedientesDetails: action.payload              
@@ -85,20 +100,19 @@ export default function rootReducer(state =  initialState, action){
         }       
         case 'GET_DETAILS_INTIMACIONES': 
                 // console.log (state)
-                console.log (action.payload)          
+                // console.log (action.payload)          
                 return {                    
                     ...state,     
                     intimacionesDetails: action.payload              
                                   
                 }   
-                case 'GET_DETAILS_INTIMACIONES': 
-                // console.log (state)
-                console.log (action.payload)          
-                return {                    
-                    ...state,     
-                    intimacionesDetails: action.payload              
+        case 'GET_DETAILS_INFRACCIONES': 
+            console.log (action.payload)          
+            return {                    
+            ...state,     
+            infraccionesDetails: action.payload              
                                   
-                }     
+        }     
         case 'ORDER_BY_NAME':
                 let sortedArr = action.payload === 'asc' ?
                 state.expedientes.sort(function(a,b){

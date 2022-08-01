@@ -91,6 +91,7 @@ module.exports = (sequelize) => {
     fotoexpediente:{
       type: DataTypes.STRING,
       allowNull: true,
+      defaultValue: "https://colonbuenosaires.com.ar/elfaro/wp-content/uploads/2017/09/expe.jpg"
     },
   });
 };

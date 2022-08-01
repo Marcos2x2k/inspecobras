@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <br/>
+        <img height="90" src={require('./images/logoMuni.png')} alt="to home"/> 
+        <label className='blanco'> ----------------- </label>
+        <img height="110" src={require('./images/logo redondo muni.png')} alt="to home"/>
+        <br/>
+        {/* <img src='https://ciudaddecorrientes.gov.ar/sites/default/themes/ciudaddecorrientes/logo.png' alt="to home" /> */}
+        <h1 className="colorLetrasbordenegro">- SECCIÓN DE LOGIN  -</h1>            
+        <img src={require('./images/separadorpagina.png')}/><br/>
+        <br /> <br />  <br />   
+
+        <ul>
+            
+        </ul>         
+        <form type="/login" method="POST">
+            <div className="">
+                <input 
+                type="text" 
+                id="" 
+                name="user" 
+                placeholder='USUARIO' required>                        
+                </input>
+            </div>
+            <br /> <br />
+            <div className="">
+                <input 
+                type="password"
+                id=""
+                name="password"
+                placeholder='CONTRASEÑA' required>
+                </input>
+            </div>
+            <br /> <br /> <br /> 
+            <input
+            type="submit"
+            value="INGRESO">                    
+            </input>
+        </form>
+        {/* <Button color='primary' src='/login'>INGRESAR</Button>             */}
+        <br />          
+        <img src={require('./images/separadorpagina.png')}/>
+        <br/><br/>
+        <br/>
+        <a href="tel: 080055556864"><img src={require('./images/Muni-pie-pagina.png')}/></a>
+        <a target="_blank" href="https://www.google.com/maps/place/25+de+Mayo+1178,+W3400+BCO,+Corrientes/@-27.4643245,-58.8359019,19z/data=!4m5!3m4!1s0x94456ca5cf8581b3:0xc800c5930b7d65f0!8m2!3d-27.4645143!4d-58.835628"><img src={require('./images/Muni-pie-pagina2.png')}  /></a>           
+        <h5>TODOS LOS DERECHOS RESERVADOS • MUNICIPALIDAD DE LA CIUDAD DE CORRIENTES • © 2022</h5>            
+        {/* <p><a href="https://www.linkedin.com/in/Marcos-Dacunda/" target="_blank">WebMaster: Marcos A. Dacunda G.</a></p>             */}
+    </div>
+</body>
+</html>
