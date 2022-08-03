@@ -191,17 +191,17 @@ function handleSelect(p){
     //genre:[...input.genre, p.target.value] //para el array de Generos q concatene las selecciones
     })
 }
-function handleDelete(p){
-    p.preventDefault();
-    //console.log(p)
-    setErrors(validate({
-      ...IntimacionSeleccionado,
-      [p.target.boletaintnum]: p.target.value
-    }));
-    dispatch(deleteIntimacion(IntimacionSeleccionado)); // input es el payload
-    alert("Intimación Borrada!!!")
-    navigate('/home');
-  }
+// function handleDelete(p){
+//     p.preventDefault();
+//     //console.log(p)
+//     setErrors(validate({
+//       ...IntimacionSeleccionado,
+//       [p.target.boletaintnum]: p.target.value
+//     }));
+//     dispatch(deleteIntimacion(IntimacionSeleccionado)); // input es el payload
+//     alert("Intimación Borrada!!!")
+//     navigate('/home');
+//   }
   
   function handleSubmit(p) {
     p.preventDefault();
@@ -569,16 +569,15 @@ return (
                 onChange={handleChange}
               /> */}
               {/* <br /> */}
-
           </div>      
-          
-              <input 
+              {/* ACA SE DEBE SUBIR LAS FOTOS */}
+              {/* <input 
               type="file" 
               name="fotoint"
               value={IntimacionSeleccionado ? IntimacionSeleccionado.fotoint: ''}
               // value={IntimacionSeleccionado ? IntimacionSeleccionado.fotoint : ''}
               onChange={handleChange}>              
-              </input>              
+              </input>               */}
               {/* <input type="submit" value="Submit"></input> */}
             </form>
         </ModalBody>
@@ -975,9 +974,9 @@ return (
           de la fecha {IntimacionSeleccionado && IntimacionSeleccionado.fechaintimacion}
         </ModalBody>
         <ModalFooter>
-          <form onSubmit={(p) => handleDelete(p)}>
+          {/* <form onSubmit={(p) => handleDelete(p)}>
               <button className="btn btn-primary" type='submit'> Eliminar Intimación </button>
-          </form>
+          </form> */}
           <button className="btn btn-danger" onClick={()=>eliminar()}>
             Sí
           </button>

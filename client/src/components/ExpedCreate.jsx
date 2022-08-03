@@ -213,6 +213,38 @@ export default function ExpedCreate (){
                         required
                         />
                 <br /><br />
+                <label className="selectfont"> Fiduciario/Prop/Socio: </label>                                
+                <input
+                        type="text"                    
+                        name="fiduciariopropsocio"
+                        placeholder="Fiduciario/Prop/Socio"
+                        value= {input.fiduciariopropsocio}
+                        onChange={(p)=>handleChange(p)}
+                        autoComplete="off"
+                        required
+                        />
+                <label className="selectfont"> Dirección Fiduciario/Prop/Socio: </label>
+                <input
+                        type="text"                    
+                        name="direcfiduciariopropsocio"
+                        placeholder="Dirección"
+                        value= {input.direcfiduciariopropsocio}
+                        onChange={(p)=>handleChange(p)}
+                        autoComplete="off"
+                        required
+                        />
+                <br /><br />
+                <label className="selectfont"> E-Mail Fiduciario/Prop/Socio: </label>
+                <input
+                        type="text"                    
+                        name="correofiduciariopropsocio"
+                        placeholder="E-Mail / Correo"
+                        value= {input.correofiduciariopropsocio}
+                        onChange={(p)=>handleChange(p)}
+                        autoComplete="off"
+                        required
+                        />
+                <br /><br />
                 <label className="selectfont"> Director o Perito: </label>
                 <input
                         type="text"                    

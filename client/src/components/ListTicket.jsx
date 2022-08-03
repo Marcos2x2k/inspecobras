@@ -10,7 +10,7 @@ import './styles/Home.css'; // importo los styles de mi Home.css
 //IMPORTO PORQUE USAMOS HOOKS
 import { useState, useEffect, Fragment } from 'react'; //  HOOK USAMOS useState es un hook (//)Fragment es como un div para envolver hijos div en app)
 import { useDispatch, useSelector } from 'react-redux';
-import { getTickets, setPage, orderByName } from '../actions/index.js';//Siempre importo las acciones nuevas 
+import { getTickets,setPageTickets, orderByNameTickets} from '../actions/index.js'; //,setPage, orderByName //Siempre importo las acciones nuevas 
 
 //LINK nos sirve para poder movernos por nuestra aplicación
 //más fácilmente en lugar de tener que cambiar la URL manualmente en el navegador.
@@ -19,7 +19,9 @@ import { Link } from 'react-router-dom';
 //ME IMPORTO EL COMPONENTE Card y renderizo en linea 
 import CardTicket from './Cards/CardTicket';
 import SearchBarTick from './SearchBars/SearchBarTick';
-import Paginado from './Paginado';
+import paginadoTickets from './PaginadoTicket';
+import DetailsTicket from './DetailsTicket'
+import PaginadoTickets from './PaginadoTicket';
 
 export default function ListTickets() {
     const { tickets, name, page, order } = useSelector(state => state);
@@ -28,19 +30,19 @@ export default function ListTickets() {
     const [orden, setOrden] = useState(''); // es un estado local q arranca vacio para el Asc y Desc Order
 
     //CREO VARIOS ESTADOS LOCALES y lo seteo en 1- ACA CALCULO LAS CARD POR PAGINAS
-    const [currentPage, setCurrentPage] = useState(1); //defino 2 stados 1 con pagina actual y otro q resetea pagina actual
+    const [currentPageTicket, setCurrentPageTicket] = useState(1); //defino 2 stados 1 con pagina actual y otro q resetea pagina actual
     const [ticketsPerPage, setTicketsPerPage] = useState(10); // seteo los perros por pagina, depues usar variable para mostrar por cantidad elegida    
-    const indexOfLastTicket = currentPage * ticketsPerPage // aca vale 0 a 14 = 15
+    const indexOfLastTicket = currentPageTicket * ticketsPerPage // aca vale 0 a 14 = 15
     const indexOfFirsticket = indexOfLastTicket - ticketsPerPage // 0
 
     //currentGames devuelve un arreglo q entra del 1 al 15
     //creo una constante de los Games en la pagina actual y me traigo el array del estado de los Games 
     //const currentExpedientes =  allExpedientes.slice(indexOfFirstexpediente, indexOfLastexpediente)  /// rompeee la pagina
 
-    const paginado = (pageNumber) => {
-        setCurrentPage(pageNumber)
+    const paginadoTickets = (pageNumber) => {
+        setCurrentPageTicket(pageNumber)
     }
-    // TRAIGO DEL ESTADO LOS Expedientes CUANDO EL COMPONENTE SE MONTA
+    // TRAIGO DEL ESTADO LOS Tickets CUANDO EL COMPONENTE SE MONTA
     useEffect(() => {
         dispatch(getTickets());
         // getListGenres para usar con filtrados por Genero
@@ -53,8 +55,8 @@ export default function ListTickets() {
     // ORDENAMIENTO DE PAGINA ASCENDENTE O DESCENDENTE
     function handleSort(p) {
         p.preventDefault();
-        dispatch(orderByName(p.target.value)) //despacho la accion
-        setCurrentPage(1); //ordenamiento seteado en pagina 1
+        dispatch(orderByNameTickets(p.target.value)) //despacho la accion
+        setCurrentPageTicket(1); //ordenamiento seteado en pagina 1
         setOrden(`Ordenado ${p.target.value}`)  //es un estado local vacio, lo uso para modif estado local y renderize
     };
 
@@ -137,7 +139,7 @@ export default function ListTickets() {
                         <option value='fecharegistrado'>Fecha Plano Registrado</option>
                     </select>   */}
 
-                    <Link to='/TicketCreate'><Button color='primary'>CARGAR TICKET</Button></Link> <label> </label>
+                    <Link to='/TicketCreate'><Button color='primary'>CREAR/CARGAR TICKET</Button></Link> <label> </label>
                     <Button color='primary' onClick={p => { handleClick(p) }}>Recargar Tickets</Button> <label> </label>
                     <Link to='/Home'><Button color="danger">Volver Menu Principal</Button></Link>
                     <br /><br />
@@ -152,10 +154,10 @@ export default function ListTickets() {
 
                 <div>
                     {/* Rompía pagina */}
-                    <Paginado
+                    <PaginadoTickets
                         ticketsPerPage={ticketsPerPage}
-                        // allTickets={allTickets.length}
-                        paginado={paginado}
+                        allTickets={allTickets.length}
+                        paginadoTickets={paginadoTickets}
                     />
                 </div>
                 <div>
@@ -177,7 +179,6 @@ export default function ListTickets() {
                                     </Link>                                    
                             ) 
                                 </div>
-
                             </Fragment>
                         );
                     })}

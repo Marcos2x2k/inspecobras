@@ -77,6 +77,15 @@ const getDbInfo = async () => {
     return infoDB;
 }
 
+const getDbInfoInspeccion = async () => {
+    const infoDBinspeccion = await Inspeccion.findAll({
+    //    include:{
+    //        model: Inspeccion,
+    //        atributes: ['numexpediente']
+    //    } 
+    })
+    return infoDBinspeccion;
+}
 const getDbInfoInt = async () => {
     const infoDBint = await Intimacion.findAll({
     //    include:{
@@ -110,6 +119,14 @@ const getAllExpedientes = async () =>{
     try{
         const DBinfo = await getDbInfo()
         return DBinfo;
+    }catch (err){
+        console.log('error trayendo info de la Base de Datos', err)
+    }
+}
+const getAllInspecciones = async () =>{
+    try{
+        const DBinfoInsp = await getDbInfoInspeccion()
+        return DBinfoInsp;
     }catch (err){
         console.log('error trayendo info de la Base de Datos', err)
     }
@@ -174,6 +191,17 @@ router.get ('/expedientes', async (req,res) => { // llama todos los expedientes 
         res.status(200).send(infoTotal)
     }   
 })
+router.get ('/inspecciones', async (req,res) => { // llama todas las intimaciones en la DB
+    const boletainspnum = req.query.name;
+    const infoTotalinsp = await getAllInspecciones();
+    if(boletainspnum) {
+        const intnumboleta = await infoTotalinsp.filter(p => p.boletainspnum.toLowerCase().includes(boletainspnum.toLowerCase()))
+        res.status(200).send(boletainspnum)
+        // res.status(400).send('No se encuentra la Intimación Requerida')
+    }else{
+        res.status(200).send(infoTotalinsp)
+    }   
+})
 router.get ('/intimaciones', async (req,res) => { // llama todas las intimaciones en la DB
     const boletaintnum = req.query.name;
     const infoTotalint = await getAllIntimaciones();
@@ -209,23 +237,35 @@ router.get ('/tickets', async (req,res) => { // llama todos las infracciones en 
     }   
 })
 
+router.get ('/users', async (req,res) => { // llama todos las infracciones en la DB
+    const numuser = req.query.name;
+    const infoTotalUsers = await getAllTickets();
+    if(numuser) {
+        const ticketsnum = await infoTotalUsers.filter(p => p.numuser.toLowerCase().includes(numuser.toLowerCase()))
+        res.status(200).send(numuser)
+        // res.status(400).send('No se encuentra la Infracción Requerida')
+    }else{
+        res.status(200).send(infoTotalUsers)
+    }   
+})
+
 // *** zona delete ***
-router.delete("/deleteexp/:numexpediente", async (req, res) => {
+router.delete("/deleteexp/:id", async (req, res) => {
     // const boletaintnum = req.params.id;
     // const infoTotalinf = await getAllInfracciones();
     // const deleteid = 
-    await Expediente.destroy({ where: { numexpediente: req.params.numexpediente } })
+    await Expediente.destroy({ where: { numexpediente: req.params.id } })
     .then(result => {
         res.json(`EXPEDIENTE BORRADO ${result}`);
     });   
     // res.json(`User ${deleteid} deleted Successfully`);
 }); 
 
-router.delete("/deleteinsp/:informeinspnum", async (req, res) => {
+router.delete("/deleteinsp/:id", async (req, res) => {
     // const boletaintnum = req.params.id;
     // const infoTotalinf = await getAllInfracciones();
     // const deleteid = 
-    await Inspeccion.destroy({ where: { informeinspnum: req.params.informeinspnum } })
+    await Inspeccion.destroy({ where: { informeinspnum: req.params.id } })
     .then(result => {
         res.json(`INFRACCION BORRADA ${result}`);
     });   
@@ -236,24 +276,34 @@ router.delete("/deleteint/:id", async (req, res) => {
     // const boletaintnum = req.params.id;
     // const infoTotalinf = await getAllInfracciones();
     // const deleteid = 
-    await Intimacion.destroy({ where: { id: req.params.id } })
+    await Intimacion.destroy({ where: { boletaintnum: req.params.id } })
     .then(result => {
         res.json(`BOLETA DE INTIMACIÓN BORRADA ${result}`);
     });   
     // res.json(`User ${deleteid} deleted Successfully`);
 }); 
 
-router.delete("/deleteinf/:actainfnum", async (req, res) => {
+router.delete("/deleteinf/:id", async (req, res) => {
     // const boletaintnum = req.params.id;
     // const infoTotalinf = await getAllInfracciones();
     // const deleteid = 
-    await Infraccion.destroy({ where: { actainfnum: req.params.actainfnum } })
+    await Infraccion.destroy({ where: { actainfnum: req.params.id } })
     .then(result => {
         res.json(`ACTA DE INFRACCION BORRADA`);
     });   
     // res.json(`User ${deleteid} deleted Successfully`);
 }); 
 
+router.delete("/deleteticket/:id", async (req, res) => {
+    // const boletaintnum = req.params.id;
+    // const infoTotalinf = await getAllInfracciones();
+    // const deleteid = 
+    await Ticket.destroy({ where: { numticket: req.params.id } })
+    .then(result => {
+        res.json(`TICKET BORRADO`);
+    });   
+    // res.json(`User ${deleteid} deleted Successfully`);
+}); 
 
 // ***** SECTOR BUSCAR ******
 
@@ -272,23 +322,31 @@ router.get("/expedientes/:id", async (req, res) => {
     // } 
 });
 
-router.get("/intimaciones/:boletaintnum", async (req, res) => {
-    let boletaintnum = req.params.boletaintnum;
-    Intimacion.findOne({where: {boletaintnum:boletaintnum}})
+router.get("/intimaciones/:id", async (req, res) => {
+    let id = req.params.id;
+    Intimacion.findOne({where: {boletaintnum:id}})
     .then (p =>{
         res.json (p)
     })    
 });
-router.get("/infracciones/:actainfnum", async (req, res) => {
-    let actainfnum = req.params.actainfnum;
-    Infraccion.findOne({where: {actainfnum:actainfnum}})
+router.get("/infracciones/:id", async (req, res) => {
+    let id = req.params.id;;
+    Infraccion.findOne({where: {actainfnum:id}})
     .then (p =>{
         res.json (p)
     })    
 });
 router.get("/tickets/:id", async (req, res) => {    
-    let numticket = req.params.id;
-    Ticket.findOne({where: {id:numticket}})
+    let id = req.params.id;
+    Ticket.findOne({where: {numticket:id}})
+    .then (p =>{
+        res.json (p)
+    })
+});
+
+router.get("/users/:id", async (req, res) => {    
+    let id = req.params.id;
+    User.findOne({where: {userid:id}})
     .then (p =>{
         res.json (p)
     })
@@ -368,14 +426,16 @@ router.post("/upload", upload.single('fotoint'), async(req, res, cb)=>{
 // })
 
 // ******* SECTOR POST - AGREGAR *******
-router.post('/login', async (req,res)=>{
-    let {            
+router.post('/newuser', async (req,res)=>{ //POST PARA NUEVO USUARIO
+    let {   
+    //    userid,         
        user,
        email,
        password
     } = req.body
     // password = await bcrypt.hash(password, 10);
-    let userCreate = await User.create({          
+    let userCreate = await User.create({
+    //    userid,          
        user,
        email,
        password
@@ -393,16 +453,10 @@ router.post('/login', async (req,res)=>{
         let hashedPassword = await bcrypt.hash(password, 10);
         console.log(hashedPassword)
     }
-
-
-
-
     res.send('USUARIO Creado')
 })
 
-
 router.post('/newexpediente', async (req, res) => {
-
         let {
             numexpediente,
             fechainicioentrada,
@@ -410,6 +464,9 @@ router.post('/newexpediente', async (req, res) => {
             iniciadornomyape,
             domicilio,
             adrema,
+            fiduciariopropsocio,
+            direcfiduciariopropsocio,
+            correofiduciariopropsocio,
             directorobraoperitovisor,
             destinodeobra,
             superficieterreno,
@@ -418,7 +475,8 @@ router.post('/newexpediente', async (req, res) => {
             superficieprimerpisoymaspisos,
             observaciones,
             zona,
-            permisobraoactainfrac
+            permisobraoactainfrac,
+            userid
         } = req.body
 
         let expedienteCreate = await Expediente.create({
@@ -428,6 +486,9 @@ router.post('/newexpediente', async (req, res) => {
             iniciadornomyape,
             domicilio,
             adrema,
+            fiduciariopropsocio,
+            direcfiduciariopropsocio,
+            correofiduciariopropsocio,
             directorobraoperitovisor,
             destinodeobra,
             superficieterreno,
@@ -436,9 +497,9 @@ router.post('/newexpediente', async (req, res) => {
             superficieprimerpisoymaspisos,
             observaciones,
             zona,
-            permisobraoactainfrac
+            permisobraoactainfrac,
+            userid
         })
-
         // let errors = [];
         // if(!numexpediente || !fechainicioentrada || !estado|| !iniciadornomyape|| !domicilio|| !adrema|| !directorobraoperitovisor
         //    || !destinodeobra|| !superficieterreno|| !superficieaconstruir|| !superficiesubsueloplantabaja|| !superficieprimerpisoymaspisos
@@ -448,10 +509,7 @@ router.post('/newexpediente', async (req, res) => {
             res.send('Expediente Nuevo Creado')
     })
 
-
-
 router.post('/newinspeccion', async (req, res) =>{
-
     let {
         numexpediente,
         fechaentradinspec,
@@ -462,7 +520,8 @@ router.post('/newinspeccion', async (req, res) =>{
         observaciones,
         paseanumdestino,
         fecha,
-        paseafecha    
+        paseafecha,
+        userid
     } = req.body
 
     let inspeccioncreate = await Inspeccion.create ({
@@ -475,7 +534,8 @@ router.post('/newinspeccion', async (req, res) =>{
         observaciones,
         paseanumdestino,
         fecha,
-        paseafecha 
+        paseafecha,
+        userid 
     })
     res.send('Nueva Inspección Creada')
 })
@@ -497,7 +557,8 @@ router.post ('/newintimacion', async (req,res) =>{
         aclaracion,
         numcodigoint,
         inspectorint,
-        fotoint
+        fotoint,
+        userid
     } = req.body
     
     let intimacionCreate = await Intimacion.create ({
@@ -516,7 +577,8 @@ router.post ('/newintimacion', async (req,res) =>{
         aclaracion,
         numcodigoint,
         inspectorint,
-        fotoint
+        fotoint,
+        userid
     })
     res.send ('INTIMACION CREADA')
 })
@@ -543,7 +605,8 @@ router.post ('/newinfraccion', async (req, res) =>{
         detallegeneral,
         informeinpecnum,
         inforinspecobsevaciones,
-        fotoinf
+        fotoinf,
+        userid
     } = req.body
 
     let infraccionCreate = await Infraccion.create ({
@@ -567,7 +630,8 @@ router.post ('/newinfraccion', async (req, res) =>{
         detallegeneral,
         informeinpecnum,
         inforinspecobsevaciones,
-        fotoinf
+        fotoinf,
+        userid
     })
     res.send ('NUEVA INFRACCION CREADA')
 })
@@ -593,6 +657,7 @@ router.post ('/newticket', async (req, res) =>{
         observacioneslugar,
         pasea,
         fecha,
+        userid
     } = req.body
 
     let ticketcreate = await Ticket.create ({
@@ -614,11 +679,27 @@ router.post ('/newticket', async (req, res) =>{
         observacioneslugar,
         pasea,
         fecha,
+        userid
     })
     res.send('Nuevo Ticket Creado!')
 })
 
+// router.post ('/newuser', async (req, res) =>{
+//     let {       
+//         userid,
+//         user,
+//         email,
+//         password
+//     } = req.body
 
+//     let ticketcreate = await User.create ({        
+//         userid,
+//         user,
+//         email,
+//         password
+//     })
+//     res.send('Nuevo Usuario Creado!')
+// })
 
 
 module.exports = router;

@@ -10,12 +10,12 @@ import './styles/Card.css';
 function Details(){
     // trae del Reducer-index-> CASE (GET_DETAILS_EXPEDIENTE) expedientesDetail
     const allDetails = useSelector((state) => state.expedientesDetails);   
-    
+    console.log("ALLDETAILEXPEDIENTES", allDetails)
     const dispatch = useDispatch();
     const { id } = useParams();
     useEffect(() => {
         dispatch(getDetailsExpedientes(id));
-        // window.scrollTo(0, 0);
+        window.scrollTo(0, 0);
       },[dispatch,id])
       
       // console.log(allDetails)
@@ -54,6 +54,18 @@ function Details(){
                   <div class="header">
                     <h3 class="heading">ADREMA: </h3> 
                     <h3 class="headingRojo">{allDetails.adrema}</h3>
+                  </div>
+                  <div class="header">
+                    <h3 class="heading">FIDUCIARIO/PROP/SOCIO: </h3> 
+                    <h3 class="headingRojo">{allDetails.fiduciariopropsocio}</h3>
+                  </div>
+                  <div class="header">
+                    <h3 class="heading">DOMICILIO FIDUCIARIO/PROP/SOCIO: </h3> 
+                    <h3 class="headingRojo">{allDetails.direcfiduciariopropsocio}</h3>
+                  </div>
+                  <div class="header">
+                    <h3 class="heading">E-MAIL / CORREO: </h3> 
+                    <h3 class="headingRojo">{allDetails.correofiduciariopropsocio}</h3>
                   </div>
                   <div class="header">
                     <h3 class="heading">DOMICILIO: </h3> 

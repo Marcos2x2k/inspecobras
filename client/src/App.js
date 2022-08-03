@@ -21,18 +21,25 @@ import {Routes, Route} from 'react-router-dom'; //, BrowserRouter
 // IMPORTO LOS COMPONENTES
 import LandingPage from './components/LandingPage.jsx'
 import Home from './components/Home.jsx';
-import TicketCreate from './components/TicketCreate';
+
 import ExpedCreate from './components/ExpedCreate.jsx';
 import InspecCreate from './components/InspecCreate.jsx';
 import IntimCreate from './components/IntimCreate.jsx';
+// import Infraccion from './components/ListInfraccionCreate.jsx'
+import TicketCreate from './components/TicketCreate';
+
 import ListExpediente from './components/ListExpediente.jsx'
-import ListInfraccion from './components/ListInfraccion.jsx'
-import Details from './components/Details.jsx'
-import Estadisticas from './components/Estadisticas.jsx'
-import Construccion from './components/Construccion.jsx'
-import ListTicket from './components/ListTicket.jsx'
 import ListInspeccion from './components/ListInspeccion.jsx'
 import ListIntimacion from './components/ListIntimacion.jsx'
+import ListInfraccion from './components/ListInfraccion.jsx'
+import ListTicket from './components/ListTicket.jsx'
+
+import Details from './components/Details.jsx'
+import DetailsTickets from './components/DetailsTicket.jsx'
+
+import Estadisticas from './components/Estadisticas.jsx'
+import Construccion from './components/Construccion.jsx'
+
 import PaginaLogin  from './components/PaginaLogin.jsx'
 // import Upload from './components/Upload.jsx'
 // import uploads from './components/uploads'
@@ -50,19 +57,27 @@ const App = () => {
           {/* <Route  path='/' element={<LandingPage/>}/>    */}
           <Route  path='/' element={<PaginaLogin/>}/>
           <Route  path='/LandingPage' element={<LandingPage/>}/>
-          <Route  path='/Home' element={<Home/>}/>          
-          <Route  path='/ExpedCreate' element={<ExpedCreate/>}/>
-          <Route  path='/TicketCreate' element={<TicketCreate/>}/>
+          <Route  path='/Home' element={<Home/>}/>    
+
+          <Route  path='/ExpedCreate' element={<ExpedCreate/>}/>          
           <Route  path='/InspecCreate' element={<InspecCreate/>}/>
           <Route  path='/IntimCreate' element={<IntimCreate/>}/>
-          <Route  path='/ListExpediente' element={<ListExpediente/>}/>
-          <Route  path='/ListInfraccion' element={<ListInfraccion/>}/>
+          {/* <Route path='/InfracCreate' element={<InfracCreate>} */}
+          <Route  path='/TicketCreate' element={<TicketCreate/>}/>
+
+
+          
           <Route  path='/expedientes/:id' element={<Details/>}/>
+          <Route  path='/tickets/:id' element={<DetailsTickets/>}/>
+          
           <Route  path='/Estadisticas' element={<Estadisticas/>}/>
           <Route  path='/Construccion' element={<Construccion/>}/>
-          <Route  path='/ListTicket' element={<ListTicket/>}/>
+
+          <Route  path='/ListExpediente' element={<ListExpediente/>}/>         
           <Route  path='/ListInspeccion' element={<ListInspeccion/>}/>
           <Route  path='/ListIntimacion' element={<ListIntimacion/>}/>
+          <Route  path='/ListInfraccion' element={<ListInfraccion/>}/>
+          <Route  path='/ListTicket' element={<ListTicket/>}/>
           {/* <Route  path='/Upload' element={<Upload/>}/> */}
           {/* <Route  path='/uploads' element={<uploads/>}/>  subir imagenes */}
           {/* <Route exact path='/expedientes/:id' element={<Details/>}/> */}

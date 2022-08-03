@@ -60,6 +60,10 @@ module.exports = (sequelize) => {
         fechapasea:{
             type: DataTypes.STRING,
             allowNull: true
-        }
+        },
+        userid:{
+            type: DataTypes.STRING,
+            allowNull: true
+          }
     });
 };

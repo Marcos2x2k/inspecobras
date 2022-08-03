@@ -187,6 +187,7 @@ export default function ListExpediente() {
                                             estado={p.estado}
                                             iniciadornomyape={p.iniciadornomyape}
                                             fotoexpediente={p.fotoexpediente}
+                                            fiduciariopropsocio={p.fiduciariopropsocio}
                                         />
                                     </Link>                                    
                             )

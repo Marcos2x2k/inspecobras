@@ -46,6 +46,17 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: true
     },
+    fiduciariopropsocio:{
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    direcfiduciariopropsocio:{
+      type: DataTypes.STRING,
+      allowNull: true
+    },correofiduciariopropsocio:{
+      type: DataTypes.STRING,
+      allowNull: true
+    },
     directorobraoperitovisor:{
       type: DataTypes.STRING,
       allowNull: true
@@ -93,5 +104,9 @@ module.exports = (sequelize) => {
       allowNull: true,
       defaultValue: "https://colonbuenosaires.com.ar/elfaro/wp-content/uploads/2017/09/expe.jpg"
     },
+    userid:{
+      type: DataTypes.STRING,
+      allowNull: true
+    }
   });
 };

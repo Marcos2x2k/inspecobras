@@ -9,13 +9,13 @@ import './styles/Card.css';
 
 function DetailsTicket(){
     // trae del Reducer-index-> CASE (GET_DETAILS_EXPEDIENTE) expedientesDetail
-    const allDetailsTickets = useSelector((state) => state.ticketDetails);   
-    
+    const allDetailsTickets = useSelector((state) => state.ticketsDetails);   
+    console.log ("TICKET DETAIL", allDetailsTickets)
     const dispatch = useDispatch();
     const { id } = useParams();
     useEffect(() => {
         dispatch(getDetailsTickets(id));
-        // window.scrollTo(0, 0);
+        window.scrollTo(0, 0);
       },[dispatch,id])
       
       // console.log(allDetails)
@@ -26,7 +26,7 @@ function DetailsTicket(){
             <div>
                 <img height="50" src={require('./images/logoMuni.png')}/>               
                 
-                <h1 className="colorLetrasamarillas">DETALLES DE EXPEDIENTE SELECCIONADO</h1> 
+                <h1 className="colorLetrasamarillas">DETALLES DE TICKET SELECCIONADO</h1> 
                            
                 <img src={require('./images/separadorpagina.png')}/>
                 <br />   
@@ -35,11 +35,11 @@ function DetailsTicket(){
                 <br /> <br />                     
                 
                   <div class="detailcontainer">  
-                  <div class="header">               
+                   <div class="header">               
                     <h3 class="heading"> NUMERO DE TICKET: </h3> 
-                    <h3 class="headingRojo"> {allDetailsTickets.numticket}</h3>
+                    {/* <h3 class="headingRojo"> {allDetailsTickets.numticket}</h3> */}
                   </div>
-                  <div class="header">
+                  {/*<div class="header">
                     <h3 class="heading"> INICIADOR (N/A): </h3> 
                     <h3 class="headingRojo">{allDetailsTickets.iniciador}</h3>
                   </div>
@@ -106,7 +106,7 @@ function DetailsTicket(){
                   <div class="header">
                     <h3 class="heading">FECHA:</h3>
                     <h3 class="headingRojo"> {allDetailsTickets.fecha}</h3>
-                  </div>
+                  </div> */}
                   <br/>                  
                   {/* <img className='logoredondo'  src={allDetailsTickets.fotoexpediente} width="300" height="150" /> <br/> */}
                   {/* <img className='logoredondo'  src={require('./images/mirandoplano.jpg')} width="400" height="200" /> <br/>

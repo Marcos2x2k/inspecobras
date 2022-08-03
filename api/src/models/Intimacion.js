@@ -73,5 +73,9 @@ module.exports = (sequelize) => {
             allownull: true,
             defaultValue: "https://muchosnegociosrentables.com/wp-content/uploads/2020/11/negocios-exitosos-de-construccion-8-ideas.jpg"
         },
+        userid:{
+            type: DataTypes.STRING,
+            allowNull: true
+          }
     })
 }

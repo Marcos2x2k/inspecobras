@@ -42,13 +42,12 @@ export function getInfracciones(){  // esta Action permite renderizar todos los 
     }
 }
 
-
 export function getMultas(){
     return async function (dispatch){
         var json = await axios.get("http://localhost:3001/multas", {});
         // var info = await axios(`http://localhost:3001/types/${name}`); otra forma
         return dispatch({
-            type: "GET_PLATFORMS", 
+            type: "GET_MULTAS", 
             payload: json.data});
     };
 }
@@ -114,10 +113,24 @@ export function postExpediente(payload){ //recibe un objeto con toda la info del
         return response
     }
 }
+export function postInspeccion(payload){ //recibe un objeto con toda la info del Game a crear (GameCreate)
+    return async function (dispatch){
+        const response = await axios.post("http://localhost:3001/newinspeccion", payload)
+        console.log (response);
+        return response
+    }
+}
 
 export function postIntimacion(payload){ //recibe un objeto con toda la info del Game a crear (GameCreate)
     return async function (dispatch){
         const response = await axios.post("http://localhost:3001/newIntimacion", payload)
+        console.log (response);
+        return response
+    }
+}
+export function postInfraccion(payload){ //recibe un objeto con toda la info del Game a crear (GameCreate)
+    return async function (dispatch){
+        const response = await axios.post("http://localhost:3001/newInfraccion", payload)
         console.log (response);
         return response
     }
@@ -130,13 +143,7 @@ export function postTicket(payload){ //recibe un objeto con toda la info del Gam
         return response
     }
 }
-export function postInspeccion(payload){ //recibe un objeto con toda la info del Game a crear (GameCreate)
-    return async function (dispatch){
-        const response = await axios.post("http://localhost:3001/newinspeccion", payload)
-        console.log (response);
-        return response
-    }
-}
+
 // la logica siempre hacerla en reducer o en los components
 export function getDetailsExpedientes(id){
     return function(dispatch){
@@ -146,6 +153,17 @@ export function getDetailsExpedientes(id){
         })
         .catch(()=>{
             console.log('No se encuentra EXPEDIENTE requerido');
+        })
+    }
+}
+export function getDetailsInspecciones(id){
+    return function(dispatch){
+        axios.get('http://localhost:3001/inspecciones/'+id)
+        .then((response)=>{
+            dispatch({type:'GET_DETAILS_INSPECCIONES', payload: response.data})
+        })
+        .catch(()=>{
+            console.log('No se encuentra la Inspeccion requerida');
         })
     }
 }
@@ -163,6 +181,18 @@ export function getDetailsIntimaciones(id){
     }
 }
 
+export function getDetailsInfracciones(id){
+    return function(dispatch){
+        axios.get('http://localhost:3001/infracciones/'+id)
+        .then((response)=>{
+            dispatch({type:'GET_DETAILS_INFRACCIONES', payload: response.data})
+        })
+        .catch(()=>{
+            console.log('No se encuentra la Infracción Requerida');
+        })
+    }
+}
+
 export function getDetailsTickets(id){
     return function(dispatch){
         axios.get('http://localhost:3001/tickets/'+id)
@@ -175,6 +205,28 @@ export function getDetailsTickets(id){
     }
 }
 
+export function deleteExpedientes(id){
+    return function(dispatch){
+        axios.get('http://localhost:3001/deleteexp/'+id)
+        .then((response)=>{
+            dispatch({type:'GET_DELETE_EXPEDIENTES', payload: response.data})
+        })
+        .catch(()=>{
+            console.log('No se encuentra ID del Expediente');
+        })
+    }
+}
+export function deleteInspecciones(id){
+    return function(dispatch){
+        axios.get('http://localhost:3001/deleteinspeccion/'+id)
+        .then((response)=>{
+            dispatch({type:'GET_DELETE_INSPECCIONES', payload: response.data})
+        })
+        .catch(()=>{
+            console.log('No se encuentra ID Inspección');
+        })
+    }
+}
 export function deleteIntimaciones(id){
     return function(dispatch){
         axios.get('http://localhost:3001/deleteint/'+id)
@@ -186,8 +238,28 @@ export function deleteIntimaciones(id){
         })
     }
 }
-
-
+export function deleteInfracciones(id){
+    return function(dispatch){
+        axios.get('http://localhost:3001/deleteinf/'+id)
+        .then((response)=>{
+            dispatch({type:'GET_DELETE_INFRACCIONES', payload: response.data})
+        })
+        .catch(()=>{
+            console.log('No se encuentra ID Intimacion');
+        })
+    }
+}
+export function deleteTickets(id){
+    return function(dispatch){
+        axios.get('http://localhost:3001/deletetickets/'+id)
+        .then((response)=>{
+            dispatch({type:'GET_DELETE_TICKETS', payload: response.data})
+        })
+        .catch(()=>{
+            console.log('No se encuentra ID Tickets');
+        })
+    }
+}
 
 //hacemos la accion de filtrar por API o Bdatos // payload trae el value de la accion q elija
 export function filterCreated(value){ //payload es el value q me llega
@@ -204,7 +276,12 @@ export function orderByExpediente(payload){
         payload
     }
 }
-
+export function orderByTicket(payload){
+    return{
+        type: 'ORDER_BY_TICKET',
+        payload
+    }
+}
 export function orderByFecha(payload){
     return{
         type: 'ORDER_BY_FECHA',
@@ -218,7 +295,12 @@ export function setPage(page){
         payload: page
     }
 }
-
+export function setPageTickets(page){
+    return {
+        type: SET_PAGE,
+        payload: page
+    }
+}
 export function orderByName(payload){
     return{
         type: 'ORDER_BY_NAME',
@@ -226,9 +308,16 @@ export function orderByName(payload){
     }
 }
 
-export function deleteIntimacion(payload){
+export function orderByNameTickets(payload){
     return{
-        type: 'GET_DELETE_INTIMACIONES',
+        type: 'TICKETS_ORDER_BY_NAME',
         payload
     }
 }
+
+// export function deleteIntimacion(payload){
+//     return{
+//         type: 'GET_DELETE_INTIMACIONES',
+//         payload
+//     }
+// }

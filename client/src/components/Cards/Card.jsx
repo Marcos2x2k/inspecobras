@@ -2,7 +2,7 @@
 import React from "react";
 import '../styles/Card.css'; // importo los styles de mi Card.css
 
-export default function Card({numexpediente, fechainicioentrada, adrema, estado, iniciadornomyape, fotoexpediente }){ // platform
+export default function Card({numexpediente, fechainicioentrada, adrema, estado, iniciadornomyape, fotoexpediente,fiduciariopropsocio }){ // platform
     
   
     return (
@@ -27,7 +27,12 @@ export default function Card({numexpediente, fechainicioentrada, adrema, estado,
                 <div class="header">
                     <h3 class="heading">ESTADO: </h3>
                     <h3 class="headingRojo"> {estado}</h3> 
-                </div>                 
+                </div>  
+                <div class="header">
+                    <h3 class="heading">FIDUCIARIO/PROP/SOCIO: </h3>
+                    <h3 class="headingRojo"> {fiduciariopropsocio}</h3> 
+                </div>  
+                <br/>               
                 <p> </p>
                 <img className='miniaturaimagen' src={fotoexpediente} alt="Imagen No Disponible" width = "200px" height="100px"/>
                 

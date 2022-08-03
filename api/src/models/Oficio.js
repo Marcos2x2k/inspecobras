@@ -34,5 +34,9 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
             allowNull: true,
           },    
+          userid:{
+            type: DataTypes.STRING,
+            allowNull: true
+          }
     });
 };
