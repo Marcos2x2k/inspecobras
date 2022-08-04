@@ -10,15 +10,15 @@ module.exports = (sequelize) => {
           },    
           actainfnum:{
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
           },
           fechainfraccion:{
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },        
         horainfraccion:{
             type: DataTypes.STRING,
-            allowNull:false  
+            allowNull:true  
         },
         numexpedienteinf:{    // pidio doc en macro para excel y coloco aca tambien
             type: DataTypes.STRING,
@@ -91,6 +91,7 @@ module.exports = (sequelize) => {
         fotoinf:{
             type: DataTypes.STRING,
             allowNull: true,
+            defaultValue: "https://noticias.coches.com/wp-content/uploads/2018/05/multa1-300x169.jpg"
         },       
         userid:{
             type: DataTypes.STRING,

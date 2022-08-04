@@ -69,6 +69,11 @@ export default function rootReducer(state = initialState, action){
                 ...state,
                 expedientes: action.payload
             }  
+        case 'GET_NAME_INSPECCIONES':
+                return{
+                    ...state,
+                    inspecciones: action.payload
+                } 
         case 'GET_NAME_INTIMACIONES':
                 return{
                     ...state,

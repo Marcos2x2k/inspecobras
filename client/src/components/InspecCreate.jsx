@@ -1,9 +1,12 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect, Fragment} from 'react';
 import logo from './styles/logo.svg';
 import './styles/AppCrud.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Modal, ModalBody, ModalHeader, ModalFooter, Button, Label} from 'reactstrap';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
+import {useDispatch, useSelector} from 'react-redux'; 
+import {getInfracciones, postInfraccion, deleteInfracciones, getNameInfracciones} from '../actions';
+import SearchBarInf from './SearchBars/SearchBarInf';
 // import { applyMiddleware } from 'redux'; aprender ridux toolkin
 
 // const upload = require('./libs/storage')
@@ -13,109 +16,123 @@ import {Link} from 'react-router-dom';
 // const upload = multer({
 //   dest: 'Storage/imgs'  
 // })
+const dataInfraccionarray = [
+  // { id: 1, 
+  //   actainfnum: "7106",
+  //   fechainfraccion:"06/06/2022",
+  //   horainfraccion:"11:05",
+  //   numexpedienteinf:"5454P2022",
+  //   adremainf:"A1-232323-1",      
+  //   apellidonombrepropietarioinf: "Jose Romero",
+  //   dnipropietarioinf:"29825852",
+  //   cuilpropietarioinf:"20298258521",
+  //   lugardeconstitucioninf:"Las Margaritas 448",      
+  //   Causasinf:"por estar realizando trabajos y no poseer en obra, y plano registrado",
+  //   Ordenanzanum:"vigente",            
+  //   articuloinf:"--",
+  //   incisonum:"--",
+  //   observacion:"se deja presente en la puerta de entrada",
+  //   apellidonombretestigoinf:"Jose Carlos Amarilla",
+  //   Inspectorinf:"Ramos Carlos Alegre",
+  //   Inspectorcod:"07/045",
+  //   detallegeneral:"se realizaron trabajos de elevacion de techo y mamposteria",
+  //   informeinpecnum:"3939",
+  //   inforinspecobsevaciones:"En el dia de la fecha se labro acta de infraccion, y paralizacion de obra numero 520",
+  //   fotoinf:"https://cloudfront-us-east-1.images.arcpublishing.com/infobae/6JZ3CA5VYBBUFOKM7V7WYLOC4A.jpg"
+  // },{ id: 2, 
+  //   actainfnum: "7106",
+  //   fechainfraccion:"06/06/2022",
+  //   horainfraccion:"11:05",
+  //   numexpedienteinf:"5454P2022",
+  //   adremainf:"A1-232323-1",      
+  //   apellidonombrepropietarioinf: "Jose Romero",
+  //   dnipropietarioinf:"29825852",
+  //   cuilpropietarioinf:"20298258521",
+  //   lugardeconstitucioninf:"Las Margaritas 448",      
+  //   Causasinf:"por estar realizando trabajos y no poseer en obra, y plano registrado",
+  //   Ordenanzanum:"vigente",            
+  //   articuloinf:"--",
+  //   incisonum:"--",
+  //   observacion:"se deja presente en la puerta de entrada",
+  //   apellidonombretestigoinf:"Jose Carlos Amarilla",
+  //   Inspectorinf:"Ramos Carlos Alegre",
+  //   Inspectorcod:"07/045",
+  //   detallegeneral:"se realizaron trabajos de elevacion de techo y mamposteria",
+  //   informeinpecnum:"3939",
+  //   inforinspecobsevaciones:"En el dia de la fecha se labro acta de infraccion, y paralizacion de obra numero 520",
+  //   fotoinf:"https://cloudfront-us-east-1.images.arcpublishing.com/infobae/6JZ3CA5VYBBUFOKM7V7WYLOC4A.jpg"
+  // },{ id: 3, 
+  //   actainfnum: "7106",
+  //   fechainfraccion:"06/06/2022",
+  //   horainfraccion:"11:05",
+  //   numexpedienteinf:"5454P2022",
+  //   adremainf:"A1-232323-1",      
+  //   apellidonombrepropietarioinf: "Jose Romero",
+  //   dnipropietarioinf:"29825852",
+  //   cuilpropietarioinf:"20298258521",
+  //   lugardeconstitucioninf:"Las Margaritas 448",      
+  //   Causasinf:"por estar realizando trabajos y no poseer en obra, y plano registrado",
+  //   Ordenanzanum:"vigente",            
+  //   articuloinf:"--",
+  //   incisonum:"--",
+  //   observacion:"se deja presente en la puerta de entrada",
+  //   apellidonombretestigoinf:"Jose Carlos Amarilla",
+  //   Inspectorinf:"Ramos Carlos Alegre",
+  //   Inspectorcod:"07/045",
+  //   detallegeneral:"se realizaron trabajos de elevacion de techo y mamposteria",
+  //   informeinpecnum:"3939",
+  //   inforinspecobsevaciones:"En el dia de la fecha se labro acta de infraccion, y paralizacion de obra numero 520",
+  //   fotoinf:"https://www.portafolio.co/files/article_multimedia/uploads/2021/05/21/60a871f85a678.jpeg"
+  // },{ id: 4, 
+  //   actainfnum: "7106",
+  //   fechainfraccion:"06/06/2022",
+  //   horainfraccion:"11:05",
+  //   numexpedienteinf:"5454P2022",
+  //   adremainf:"A1-232323-1",      
+  //   apellidonombrepropietarioinf: "Jose Romero",
+  //   dnipropietarioinf:"29825852",
+  //   cuilpropietarioinf:"20298258521",
+  //   lugardeconstitucioninf:"Las Margaritas 448",      
+  //   Causasinf:"por estar realizando trabajos y no poseer en obra, y plano registrado",
+  //   Ordenanzanum:"vigente",            
+  //   articuloinf:"--",
+  //   incisonum:"--",
+  //   observacion:"se deja presente en la puerta de entrada",
+  //   apellidonombretestigoinf:"Jose Carlos Amarilla",
+  //   Inspectorinf:"Ramos Carlos Alegre",
+  //   Inspectorcod:"07/045",
+  //   detallegeneral:"se realizaron trabajos de elevacion de techo y mamposteria",
+  //   informeinpecnum:"3939",
+  //   inforinspecobsevaciones:"En el dia de la fecha se labro acta de infraccion, y paralizacion de obra numero 520",
+  //   fotoinf:"https://resizer.glanacion.com/resizer/uPDa4YdZzQTkWwOKkv89_-FFA1s=/768x0/filters:format(webp):quality(80)/cloudfront-us-east-1.images.arcpublishing.com/lanacionar/PXQS63VFNRHCZGMQB3QNJXYRWA.jpg"
+  // },
+];
 
 function InspecCreate() {
+  const [errors, setErrors] = useState({});     
+  const navigate = useNavigate();
+  const dispatch = useDispatch(); // PARA USAR HOOKS
+  const infracciones = useSelector((state) => state.infracciones) //HOOKS es lo mismo q maps.state.props
+  const [orden, setOrden] = useState(''); // es un estado local q arranca vacio para el Asc y Desc Order
+  //const { intimaciones, name, page, order } = useSelector(state => state);
+  const alldatainf = dataInfraccionarray.concat(infracciones);
 
-  const dataInfraccion = [
-    { id: 1, 
-      actainfnum: "7106",
-      fechainfraccion:"06/06/2022",
-      horainfraccion:"11:05",
-      numexpedienteinf:"5454P2022",
-      adremainf:"A1-232323-1",      
-      apellidonombrepropietarioinf: "Jose Romero",
-      dnipropietarioinf:"29825852",
-      cuilpropietarioinf:"20298258521",
-      lugardeconstitucioninf:"Las Margaritas 448",      
-      Causasinf:"por estar realizando trabajos y no poseer en obra, y plano registrado",
-      Ordenanzanum:"vigente",            
-      articuloinf:"--",
-      incisonum:"--",
-      observacion:"se deja presente en la puerta de entrada",
-      apellidonombretestigoinf:"Jose Carlos Amarilla",
-      Inspectorinf:"Ramos Carlos Alegre",
-      Inspectorcod:"07/045",
-      detallegeneral:"se realizaron trabajos de elevacion de techo y mamposteria",
-      informeinpecnum:"3939",
-      inforinspecobsevaciones:"En el dia de la fecha se labro acta de infraccion, y paralizacion de obra numero 520",
-      fotoinf:"https://cloudfront-us-east-1.images.arcpublishing.com/infobae/6JZ3CA5VYBBUFOKM7V7WYLOC4A.jpg"
-    },{ id: 2, 
-      actainfnum: "7106",
-      fechainfraccion:"06/06/2022",
-      horainfraccion:"11:05",
-      numexpedienteinf:"5454P2022",
-      adremainf:"A1-232323-1",      
-      apellidonombrepropietarioinf: "Jose Romero",
-      dnipropietarioinf:"29825852",
-      cuilpropietarioinf:"20298258521",
-      lugardeconstitucioninf:"Las Margaritas 448",      
-      Causasinf:"por estar realizando trabajos y no poseer en obra, y plano registrado",
-      Ordenanzanum:"vigente",            
-      articuloinf:"--",
-      incisonum:"--",
-      observacion:"se deja presente en la puerta de entrada",
-      apellidonombretestigoinf:"Jose Carlos Amarilla",
-      Inspectorinf:"Ramos Carlos Alegre",
-      Inspectorcod:"07/045",
-      detallegeneral:"se realizaron trabajos de elevacion de techo y mamposteria",
-      informeinpecnum:"3939",
-      inforinspecobsevaciones:"En el dia de la fecha se labro acta de infraccion, y paralizacion de obra numero 520",
-      fotoinf:"https://cloudfront-us-east-1.images.arcpublishing.com/infobae/6JZ3CA5VYBBUFOKM7V7WYLOC4A.jpg"
-    },{ id: 3, 
-      actainfnum: "7106",
-      fechainfraccion:"06/06/2022",
-      horainfraccion:"11:05",
-      numexpedienteinf:"5454P2022",
-      adremainf:"A1-232323-1",      
-      apellidonombrepropietarioinf: "Jose Romero",
-      dnipropietarioinf:"29825852",
-      cuilpropietarioinf:"20298258521",
-      lugardeconstitucioninf:"Las Margaritas 448",      
-      Causasinf:"por estar realizando trabajos y no poseer en obra, y plano registrado",
-      Ordenanzanum:"vigente",            
-      articuloinf:"--",
-      incisonum:"--",
-      observacion:"se deja presente en la puerta de entrada",
-      apellidonombretestigoinf:"Jose Carlos Amarilla",
-      Inspectorinf:"Ramos Carlos Alegre",
-      Inspectorcod:"07/045",
-      detallegeneral:"se realizaron trabajos de elevacion de techo y mamposteria",
-      informeinpecnum:"3939",
-      inforinspecobsevaciones:"En el dia de la fecha se labro acta de infraccion, y paralizacion de obra numero 520",
-      fotoinf:"https://www.portafolio.co/files/article_multimedia/uploads/2021/05/21/60a871f85a678.jpeg"
-    },{ id: 4, 
-      actainfnum: "7106",
-      fechainfraccion:"06/06/2022",
-      horainfraccion:"11:05",
-      numexpedienteinf:"5454P2022",
-      adremainf:"A1-232323-1",      
-      apellidonombrepropietarioinf: "Jose Romero",
-      dnipropietarioinf:"29825852",
-      cuilpropietarioinf:"20298258521",
-      lugardeconstitucioninf:"Las Margaritas 448",      
-      Causasinf:"por estar realizando trabajos y no poseer en obra, y plano registrado",
-      Ordenanzanum:"vigente",            
-      articuloinf:"--",
-      incisonum:"--",
-      observacion:"se deja presente en la puerta de entrada",
-      apellidonombretestigoinf:"Jose Carlos Amarilla",
-      Inspectorinf:"Ramos Carlos Alegre",
-      Inspectorcod:"07/045",
-      detallegeneral:"se realizaron trabajos de elevacion de techo y mamposteria",
-      informeinpecnum:"3939",
-      inforinspecobsevaciones:"En el dia de la fecha se labro acta de infraccion, y paralizacion de obra numero 520",
-      fotoinf:"https://resizer.glanacion.com/resizer/uPDa4YdZzQTkWwOKkv89_-FFA1s=/768x0/filters:format(webp):quality(80)/cloudfront-us-east-1.images.arcpublishing.com/lanacionar/PXQS63VFNRHCZGMQB3QNJXYRWA.jpg"
-    },
-  ];
-
-  const [data, setData] = useState(dataInfraccion);
+  function validate(input){
+    let errors ={};
+    if (!input.boletainfnum) {
+            errors.boletainfnum = 'Requiere Numero de Boleta';
+    }else if (!input.señorseñora) {
+            errors.señorseñora = 'Requiere Nombre y Apellido'   
+    return errors;
+    };
+ }  
+  const [data, setData] = useState(alldatainf);
   const [modalEditar, setModalEditar] = useState(false);
   const [modalEditarInfo, setModalEditarInfo] = useState(false);
   const [modalEliminar, setModalEliminar] = useState(false);
   const [modalInsertar, setModalInsertar] = useState(false);
 
   const [InfraccionSeleccionado, setInfraccionSeleccionado] = useState({    
-        id: '', 
         actainfnum: '', 
         fechainfraccion:'',
         horainfraccion:'',
@@ -138,7 +155,11 @@ function InspecCreate() {
         inforinspecobsevaciones:'',
         fotoinf:''
   });
-
+ // TRAIGO DEL ESTADO LAS INFRACCIONES CUANDO EL COMPONENTE SE MONTA
+ useEffect(() => {
+  dispatch(getInfracciones());
+  // getListGenres para usar con filtrados por Genero
+  }, [dispatch])
   const seleccionarIntimacion=(elemento, caso)=>{
   setInfraccionSeleccionado(elemento);
   if (caso==='EditarInfo') setModalEditarInfo(true)
@@ -149,6 +170,18 @@ function InspecCreate() {
   
   // (caso==='Editar')?setModalEditar(true):setModalEliminar(true)
   }
+//     ------------- PARTE DE HANDLES ---------------------
+//   function handleChange(p) { // va a  ir modificando cuando cambien los input
+//     setInput({
+//         ...input,
+//         [p.target.name] : p.target.value  // VER PORQUE BLOQUEA 24-5-22
+//     })
+//     setErrors(validate({
+//         ...input,
+//         [p.target.fechainicioentrada] : p.target.value
+//     }))
+//     console.log(input)
+// }
 
   const handleChange=e=>{
     const {name, value}=e.target;
@@ -157,6 +190,64 @@ function InspecCreate() {
       [name]: value
     }));
   }
+  function handleClick(p) {
+    p.preventDefault(); //PREVENTIVO PARA Q NO RECARGUE TODA LA PAGINA
+    dispatch(getInfracciones())
+  };
+  function handleSelect(p){
+    setInfraccionSeleccionado({
+      ...InfraccionSeleccionado,
+      //genre:[...input.genre, p.target.value] //para el array de Generos q concatene las selecciones
+    })
+  }
+// function handleDelete(p){
+//     p.preventDefault();
+//     //console.log(p)
+//     setErrors(validate({
+//       ...IntimacionSeleccionado,
+//       [p.target.boletaintnum]: p.target.value
+//     }));
+//     dispatch(deleteIntimacion(IntimacionSeleccionado)); // input es el payload
+//     alert("Intimación Borrada!!!")
+//     navigate('/home');
+//   }
+
+function handleSubmit(p) {
+  p.preventDefault();
+  //console.log(p)
+  setErrors(validate({
+    ...InfraccionSeleccionado,
+    [p.target.boletainfnum]: p.target.value
+  }));
+  dispatch(postInfraccion(InfraccionSeleccionado)); // input es el payload
+  alert("Infraccion Creada!!!")
+  setInfraccionSeleccionado({ // seteo el input a cero
+        actainfnum:'', 
+        fechainfraccion:'',
+        horainfraccion:'',
+        numexpedienteinf:'',
+        adremainf:'',
+        apellidonombrepropietarioinf:'',
+        dnipropietarioinf:'',
+        cuilpropietarioinf:'',
+        lugardeconstitucioninf:'',
+        Causasinf:'',
+        Ordenanzanum:'',
+        articuloinf:'',
+        incisonum:'',
+        observacion:'',
+        apellidonombretestigoinf:'',
+        Inspectorinf:'',
+        Inspectorcod:'',
+        detallegeneral:'',
+        informeinpecnum:'',
+        inforinspecobsevaciones:'',
+        fotoinf:'',
+        userid:''
+  })
+  // history.push('/home')
+  navigate('/home');
+} 
 
   const editar =()=>{
     var dataNueva=data;
@@ -246,7 +337,7 @@ function InspecCreate() {
                     {/* <img src='https://ciudaddecorrientes.gov.ar/sites/default/themes/ciudaddecorrientes/logo.png' alt="to home" /> */}
                 
                     <h2 className="colorLetrasGris">SECCIÓN DE CARGA DE MULTAS/INFRACIONES</h2>                    
-                    <img className='logocorrientes' height="200" src={require('./images/Multa-1.jpg')} /> <br/><br/>
+                    <img className= 'imagenredondoint' height="200" src={require('./images/Multa-1.jpg')} /> <br/><br/>
                     {/* <select className="selectfont">
                         <option value="" selected disabled hidden>ORDENAR</option>                
                         <option value='asc'>Fecha</option>
@@ -257,8 +348,9 @@ function InspecCreate() {
                     {/* <Link to= '/ListInfraccion'><Button  color='secondary'>Lista Instimaciones</Button></Link> {" - "}  */}
                     {/* <Link to= '/ListInfraccion'><Button  color='secondary'>Lista Multas</Button></Link> {" - "}  */}
                     <button className="btn btn-danger" onClick={()=>abrirModalInsertar()}>Crear Multa/Infracción</button> {" - "}
-                    <Link to= '/Home'><Button color='primary'>Volver Menu Principal</Button></Link> {" - "} 
-                    <Link to= '/ListIntimacion'><Button  color='secondary'>Ir a Intimaciones</Button></Link>
+                    <Link to= '/ListInspeccion'><Button  color='secondary'>Ir a Inspecciones</Button></Link> {" - "} 
+                    <Link to= '/ListIntimacion'><Button  color='secondary'>Ir a Intimaciones</Button></Link> {" - "} 
+                    <Link to= '/Home'><Button color='primary'>Volver Menu Principal</Button></Link>
                     <br/>
                     <img src={require('./images/separadorpagina.png')} /> <br/>
                     <h1 className="">Lista de Multas</h1>         
@@ -300,7 +392,7 @@ function InspecCreate() {
         </tbody>
       </table>
 
-      // **** INSERTAR - CREAR ****
+      {/* // **** INSERTAR - CREAR **** */}
   <Modal isOpen={modalInsertar}>
         <ModalHeader>
           <div>
@@ -308,6 +400,7 @@ function InspecCreate() {
           </div>
         </ModalHeader>
         <ModalBody>
+        <form method="post" enctype="multipart/form-data" action="/upload">
           <div className="form-group">
             {/* <label>ID</label> */}
             {/* <input
@@ -501,21 +594,25 @@ function InspecCreate() {
               onChange={handleChange}
             />
             <br />
-            <label>Subir Fotos:</label>
-            <input
+            {/* <label>Subir Fotos:</label> */}
+            {/* <input
               className="form-control"
               type="file"
               name="fotoinf"
               value={InfraccionSeleccionado ? InfraccionSeleccionado.fotoinf:''}
               onChange={handleChange}
-            />
+            /> */}
           </div>
+        </form>
         </ModalBody>
         <ModalFooter>
-          <button className="btn btn-danger"
+        <form onSubmit={(p) => handleSubmit(p)}>
+              <button className="btn btn-primary" type='submit'> Crear Intimación! </button>
+          </form>
+          {/* <button className="btn btn-danger"
           onClick={()=>insertar()}>
             Insertar
-          </button>
+          </button> */}
           <button
             className="btn btn-danger"
             onClick={()=>setModalInsertar(false)}
@@ -525,7 +622,7 @@ function InspecCreate() {
         </ModalFooter>
       </Modal>
 
-      // ****************** MODO EDITAR ******************
+      {/* // ****************** MODO EDITAR ****************** */}
       <Modal isOpen={modalEditar}>
         <ModalHeader>
           <div>

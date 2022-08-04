@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {Modal, ModalBody, ModalHeader, ModalFooter, Button, Form} from 'reactstrap';
 import {Link, useNavigate} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux'; 
-import {getIntimaciones, postIntimacion, deleteIntimacion, getNameIntimaciones} from '../actions';
+import {getIntimaciones, postIntimacion, deleteIntimaciones, getNameIntimaciones} from '../actions';
 import SearchBarInt from './SearchBars/SearchBarInt';
 
 
@@ -146,7 +146,7 @@ function ListIntimacion() {
         Inspectorint:'',
         fotoint:''
   });
- // TRAIGO DEL ESTADO LOS Expedientes CUANDO EL COMPONENTE SE MONTA
+ // TRAIGO DEL ESTADO LAS INTIMACIONES CUANDO EL COMPONENTE SE MONTA
   useEffect(() => {
   dispatch(getIntimaciones());
   // getListGenres para usar con filtrados por Genero
@@ -363,8 +363,9 @@ return (
                      
                     <br/>
                     <button className='btn btn-success' onClick={()=>abrirModalInsertar()}>Crear Intimación</button> {" - "}
-                    <Link to= '/Home'><Button color='primary'>Volver Menu Principal</Button></Link> {" - "} 
-                    <Link to= '/InspecCreate'><Button color='secondary'>Ir a Multas/Infracciones</Button></Link>
+                    <Link to= '/ListInspeccion'><Button color='secondary'>Ir a Inspecciones</Button></Link> {" - "} 
+                    <Link to= '/InspecCreate'><Button color='secondary'>Ir a Multas/Infracciones</Button></Link> {" - "}
+                    <Link to= '/Home'><Button color='primary'>Volver Menu Principal</Button></Link>
                     {/* <Button to= '/ListIntimacion'>Recargar Exp.</Button> <label> </label> */}
                     <br/>
                     <img src={require('./images/separadorpagina.png')} />

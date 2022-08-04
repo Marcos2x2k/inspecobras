@@ -21,6 +21,15 @@ export function getExpedientes(){  // esta Action permite renderizar todos los G
         })
     }
 }
+export function getInspecciones(){
+    return async function (dispatch){
+        var json = await axios.get("http://localhost:3001/inspecciones", {});
+        // var info = await axios(`http://localhost:3001/types/${name}`); otra forma
+        return dispatch({
+            type: "GET_INSPECCIONES", 
+            payload: json.data});
+    };
+}
 export function getIntimaciones(){
     return async function (dispatch){
         var json = await axios.get("http://localhost:3001/intimaciones", {});
@@ -75,7 +84,20 @@ export function getNameExpedientes(name){
         console.log(error)
     }}
     }
-
+    
+        export function getNameInspecciones(name){ 
+            return async function (dispatch){
+            try{
+                var json = await axios.get("http://localhost:3001/Inspecciones?name=" + name);
+                return dispatch({
+                    type: "GET_NAME_INSPECCIONES",
+                    payload: json.data
+                })
+            } 
+            catch (error) {
+                console.log(error)
+            }}
+            }
 
     export function getNameIntimaciones(name){ 
         return async function (dispatch){
@@ -90,7 +112,19 @@ export function getNameExpedientes(name){
             console.log(error)
         }}
         }
-
+        export function getNameInfracciones(name){ 
+            return async function (dispatch){
+            try{
+                var json = await axios.get("http://localhost:3001/Infracciones?name=" + name);
+                return dispatch({
+                    type: "GET_NAME_INFRACCIONES",
+                    payload: json.data
+                })
+            } 
+            catch (error) {
+                console.log(error)
+            }}
+            }
         export function getNameTickets(name){ 
             return async function (dispatch){
             try{
