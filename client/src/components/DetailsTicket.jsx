@@ -32,14 +32,14 @@ function DetailsTicket(){
                 <br />   
                 <Link to='/home'><button>REGRESAR AL MENU PRINCIPAL</button></Link> <label> </label>
                 <Link to='/ListTicket'><button>REGRESAR AL LISTADO</button></Link>
-                <br /> <br />                     
+                <br /> <br />                    
                 
                   <div class="detailcontainer">  
                    <div class="header">               
                     <h3 class="heading"> NUMERO DE TICKET: </h3> 
-                    {/* <h3 class="headingRojo"> {allDetailsTickets.numticket}</h3> */}
+                    <h3 class="headingRojo"> {allDetailsTickets.numticket}</h3>
                   </div>
-                  {/*<div class="header">
+                  <div class="header">
                     <h3 class="heading"> INICIADOR (N/A): </h3> 
                     <h3 class="headingRojo">{allDetailsTickets.iniciador}</h3>
                   </div>
@@ -106,7 +106,7 @@ function DetailsTicket(){
                   <div class="header">
                     <h3 class="heading">FECHA:</h3>
                     <h3 class="headingRojo"> {allDetailsTickets.fecha}</h3>
-                  </div> */}
+                  </div>
                   <br/>                  
                   {/* <img className='logoredondo'  src={allDetailsTickets.fotoexpediente} width="300" height="150" /> <br/> */}
                   {/* <img className='logoredondo'  src={require('./images/mirandoplano.jpg')} width="400" height="200" /> <br/>

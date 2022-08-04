@@ -323,22 +323,22 @@ router.get("/expedientes/:id", async (req, res) => {
 });
 
 router.get("/intimaciones/:id", async (req, res) => {
-    let id = req.params.id;
-    Intimacion.findOne({where: {boletaintnum:id}})
+    let boletaintnum = req.params.id;
+    Intimacion.findOne({where: {id:boletaintnum}})
     .then (p =>{
         res.json (p)
     })    
 });
 router.get("/infracciones/:id", async (req, res) => {
-    let id = req.params.id;;
-    Infraccion.findOne({where: {actainfnum:id}})
+    let actainfnum = req.params.id;;
+    Infraccion.findOne({where: {id:actainfnum}})
     .then (p =>{
         res.json (p)
     })    
 });
 router.get("/tickets/:id", async (req, res) => {    
-    let id = req.params.id;
-    Ticket.findOne({where: {numticket:id}})
+    let numticket = req.params.id;
+    Ticket.findOne({where: {id:numticket}})
     .then (p =>{
         res.json (p)
     })
