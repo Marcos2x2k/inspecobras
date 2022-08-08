@@ -39,6 +39,9 @@ const dataInfraccionarray = [
   //   informeinpecnum:"3939",
   //   inforinspecobsevaciones:"En el dia de la fecha se labro acta de infraccion, y paralizacion de obra numero 520",
   //   fotoinf:"https://cloudfront-us-east-1.images.arcpublishing.com/infobae/6JZ3CA5VYBBUFOKM7V7WYLOC4A.jpg"
+
+  // }
+
   // },{ id: 2, 
   //   actainfnum: "7106",
   //   fechainfraccion:"06/06/2022",
@@ -106,6 +109,7 @@ const dataInfraccionarray = [
   //   inforinspecobsevaciones:"En el dia de la fecha se labro acta de infraccion, y paralizacion de obra numero 520",
   //   fotoinf:"https://resizer.glanacion.com/resizer/uPDa4YdZzQTkWwOKkv89_-FFA1s=/768x0/filters:format(webp):quality(80)/cloudfront-us-east-1.images.arcpublishing.com/lanacionar/PXQS63VFNRHCZGMQB3QNJXYRWA.jpg"
   // },
+
 ];
 
 function InspecCreate() {
@@ -200,6 +204,20 @@ function InspecCreate() {
       //genre:[...input.genre, p.target.value] //para el array de Generos q concatene las selecciones
     })
   }
+
+function handleDelete(p){
+    p.preventDefault();
+    //console.log(p)
+    setErrors(validate({
+      ...InfraccionSeleccionado,
+      [p.target.boletainfnum]: p.target.value
+    }));
+    dispatch(deleteInfracciones(InfraccionSeleccionado.id)); // input es el payload
+    alert("infracción Borrada!!!")
+    dispatch(getInfracciones())
+    navigate('/home');
+  }
+
 // function handleDelete(p){
 //     p.preventDefault();
 //     //console.log(p)
@@ -211,6 +229,7 @@ function InspecCreate() {
 //     alert("Intimación Borrada!!!")
 //     navigate('/home');
 //   }
+
 
 function handleSubmit(p) {
   p.preventDefault();
@@ -336,7 +355,9 @@ function handleSubmit(p) {
                     <a href="/home"><img height="50" src={require('./images/logoMuni.png')} /></a><br/>    
                     {/* <img src='https://ciudaddecorrientes.gov.ar/sites/default/themes/ciudaddecorrientes/logo.png' alt="to home" /> */}
                 
-                    <h2 className="colorLetrasGris">SECCIÓN DE CARGA DE MULTAS/INFRACIONES</h2>                    
+
+                    <h1 className="colorLetras">SECCIÓN DE CARGA DE MULTAS/INFRACIONES</h1>                       
+
                     <img className= 'imagenredondoint' height="200" src={require('./images/Multa-1.jpg')} /> <br/><br/>
                     {/* <select className="selectfont">
                         <option value="" selected disabled hidden>ORDENAR</option>                
@@ -351,10 +372,15 @@ function handleSubmit(p) {
                     <Link to= '/ListInspeccion'><Button  color='secondary'>Ir a Inspecciones</Button></Link> {" - "} 
                     <Link to= '/ListIntimacion'><Button  color='secondary'>Ir a Intimaciones</Button></Link> {" - "} 
                     <Link to= '/Home'><Button color='primary'>Volver Menu Principal</Button></Link>
+
+                    <br/>                    
+
                     <br/>
+
                     <img src={require('./images/separadorpagina.png')} /> <br/>
                     <h1 className="">Lista de Multas</h1>         
-                    
+                    <SearchBarInf
+                    />
                     
                     
       {/* <h2>Países en los que la gente pasa más tiempo en redes sociales (2019)</h2> */}
@@ -1104,9 +1130,12 @@ function handleSubmit(p) {
           de la fecha {InfraccionSeleccionado && InfraccionSeleccionado.fechainfraccion}
         </ModalBody>
         <ModalFooter>
-          <button className="btn btn-danger" onClick={()=>eliminar()}>
+        <form onSubmit={(p) => handleDelete(p)}>
+              <button className="btn btn-primary" type='submit'> Eliminar Infracción </button>
+          </form>
+          {/* <button className="btn btn-danger" onClick={()=>eliminar()}>
             Sí
-          </button>
+          </button> */}
           <button
             className="btn btn-secondary"
             onClick={()=>setModalEliminar(false)}

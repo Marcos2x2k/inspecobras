@@ -86,26 +86,29 @@ const handleChange= (e) =>{
   }));
 }
 function handleClick(p) {
-  p.preventDefault(); //PREVENTIVO PARA Q NO RECARGUE TODA LA PAGINA
+  // p.preventDefault(); //PREVENTIVO PARA Q NO RECARGUE TODA LA PAGINA
   dispatch(getInspecciones())
 };
+
 function handleSelect(p){
   setInspeccionSeleccionado({
     ...inspeccionSeleccionado,
     //genre:[...input.genre, p.target.value] //para el array de Generos q concatene las selecciones
     })
 }
-// function handleDelete(p){
-//     p.preventDefault();
-//     //console.log(p)
-//     setErrors(validate({
-//       ...inspeccionSeleccionado,
-//       [p.target.boletaintnum]: p.target.value
-//     }));
-//     dispatch(deleteIntimacion(inspeccionSeleccionado)); // input es el payload
-//     alert("Intimación Borrada!!!")
-//     navigate('/home');
-//   }
+
+function handleDelete(p){
+  p.preventDefault();
+  console.log(p)
+  setErrors(validate({
+    ...inspeccionSeleccionado.id,
+    [p.target.id]: p.target.value
+  }));
+  dispatch(deleteInspecciones(inspeccionSeleccionado.id)); // input es el payload
+  alert("Inspección Borrada!!!")
+  // dispatch(getInspecciones())
+  navigate('/Home');
+}
   
   function handleSubmit(p) {
     p.preventDefault();
@@ -115,7 +118,7 @@ function handleSelect(p){
       [p.target.informeinspnum]: p.target.value
     }));
     dispatch(postInspeccion(inspeccionSeleccionado)); // input es el payload
-    alert("Intimación Creada!!!")
+    alert("Inspección Creada!!!")
     setInspeccionSeleccionado({ // seteo el input a cero
         numexpediente:'',
         fechaentradinspec:'',
@@ -219,6 +222,7 @@ return (
                     <button className='btn btn-success' onClick={()=>abrirModalInsertar()}>Crear/Cargar Inspección</button> {" - "}                    
                     <Link to= '/ListIntimacion'><Button color='secondary'>Ir a Intimaciones</Button></Link> {" - "}
                     <Link to= '/InspecCreate'><Button color='secondary'>Ir a Multas/Infracciones</Button></Link> {" - "}
+                    <Button color='primary' onClick={p => { handleClick(p) }}>Recargar Inspecciones</Button> <label> </label> {" - "}
                     <Link to= '/Home'><Button color='primary'>Volver Menu Principal</Button></Link> 
                     {/* <Button to= '/ListIntimacion'>Recargar Exp.</Button> <label> </label> */}
                     <br/>
@@ -784,17 +788,17 @@ return (
 
       <Modal isOpen={modalEliminar}>
         <ModalBody>
-          Estás Seguro que deseas eliminar la Intimación Nº {inspeccionSeleccionado && inspeccionSeleccionado.boletaintnum}
+          Estás Seguro que deseas eliminar la Inspección Nº {inspeccionSeleccionado && inspeccionSeleccionado.boletaintnum}
           <br/>
           de la fecha {inspeccionSeleccionado && inspeccionSeleccionado.fechaintimacion}
         </ModalBody>
         <ModalFooter>
-          {/* <form onSubmit={(p) => handleDelete(p)}>
-              <button className="btn btn-primary" type='submit'> Eliminar Intimación </button>
-          </form> */}
-          <button className="btn btn-danger" onClick={()=>eliminar()}>
+          <form onSubmit={(p) => handleDelete(p)}>
+              <button className="btn btn-primary" type='submit'> Eliminar Inspección </button>
+          </form>
+          {/* <button className="btn btn-danger" onClick={()=>eliminar()}>
             Sí
-          </button>
+          </button> */}
           <button
             className="btn btn-secondary"
             onClick={()=>setModalEliminar(false)}

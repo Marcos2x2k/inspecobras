@@ -191,6 +191,20 @@ function handleSelect(p){
     //genre:[...input.genre, p.target.value] //para el array de Generos q concatene las selecciones
     })
 }
+
+function handleDelete(p){
+    p.preventDefault();
+    console.log(p)
+    setErrors(validate({
+      ...IntimacionSeleccionado.id,
+      [p.target.id]: p.target.value
+    }));
+    dispatch(deleteIntimaciones(IntimacionSeleccionado.id)); // input es el payload
+    alert("Intimación Borrada!!!")
+    dispatch(getIntimaciones())
+    navigate('/Home');
+  }
+
 // function handleDelete(p){
 //     p.preventDefault();
 //     //console.log(p)
@@ -202,6 +216,7 @@ function handleSelect(p){
 //     alert("Intimación Borrada!!!")
 //     navigate('/home');
 //   }
+
   
   function handleSubmit(p) {
     p.preventDefault();
@@ -288,8 +303,7 @@ function handleSelect(p){
         }
 
   const eliminar =()=>{
-    setData(data.filter(intimacion=>intimacion.id!==IntimacionSeleccionado.id));
-
+    setData(data.filter(intimacion=>intimacion.id!==IntimacionSeleccionado.id));    
     setModalEliminar(false);
   }
 
@@ -348,9 +362,9 @@ return (
                     <a href="/home"><img height="50" src={require('./images/logoMuni.png')} /></a><br/>    
                     {/* <img src='https://ciudaddecorrientes.gov.ar/sites/default/themes/ciudaddecorrientes/logo.png' alt="to home" /> */}
                 
-                    <h1>SECCIÓN DE CARGA DE INTIMACIONES</h1>                     
+                    <h1 className="colorLetras">SECCIÓN DE CARGA DE INTIMACIONES</h1>                     
                                   
-                    <img className= 'imagenredondoint' height="200" src={require('./images/Multa-1.jpg')} /> <br/>
+                    <img className= 'imagenredondoint' height="200" src={require('./images/Intimado.jpg')} /> <br/>
                     {/* <select className="selectfont">
                         <option value="" selected disabled hidden>ORDENAR</option>                
                         <option value='asc'>Fecha</option>
@@ -766,6 +780,7 @@ return (
          {/* <button className="btn btn-success" onClick={()=>editar()}>
             Modo Admin
           </button> */}
+          
           <button className="btn btn-primary" onClick={()=>editar()}>
             Actualizar
           </button>
@@ -974,13 +989,20 @@ return (
           <br/>
           de la fecha {IntimacionSeleccionado && IntimacionSeleccionado.fechaintimacion}
         </ModalBody>
+
+        <ModalFooter>        
+          <form onSubmit={(p) => handleDelete(p)}>
+              <button className="btn btn-primary" type='submit'> Eliminar Intimación </button>
+          </form>
+          {/* <button className="btn btn-danger" onClick={()=>eliminar()}>
+
         <ModalFooter>
           {/* <form onSubmit={(p) => handleDelete(p)}>
               <button className="btn btn-primary" type='submit'> Eliminar Intimación </button>
           </form> */}
-          <button className="btn btn-danger" onClick={()=>eliminar()}>
+          {/* <button className="btn btn-danger" onClick={()=>eliminar()}>
             Sí
-          </button>
+          </button> */}
           <button
             className="btn btn-secondary"
             onClick={()=>setModalEliminar(false)}

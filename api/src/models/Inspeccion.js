@@ -10,23 +10,23 @@ module.exports = (sequelize) => {
           },    
           informeinspnum:{
             type: DataTypes.INTEGER,
-            allowNull: false
+            allowNull: true
           },
         numexpediente:{
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
           },
         fechaentradinspec:{
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         inspecfecha:{
             type: DataTypes.STRING,
-            allowNull:false  
+            allowNull:true  
         },
         inspector:{
             type: DataTypes.STRING,
-            allowNull:false  
+            allowNull:true  
         },
         fotoinspeccion:{    // pidio doc en macro para excel y coloco aca tambien
             type: DataTypes.STRING,

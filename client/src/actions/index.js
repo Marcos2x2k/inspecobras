@@ -241,7 +241,7 @@ export function getDetailsTickets(id){
 
 export function deleteExpedientes(id){
     return function(dispatch){
-        axios.get('http://localhost:3001/deleteexp/'+id)
+        axios.delete('http://localhost:3001/deleteexp/'+id)
         .then((response)=>{
             dispatch({type:'GET_DELETE_EXPEDIENTES', payload: response.data})
         })
@@ -252,7 +252,7 @@ export function deleteExpedientes(id){
 }
 export function deleteInspecciones(id){
     return function(dispatch){
-        axios.get('http://localhost:3001/deleteinspeccion/'+id)
+        axios.delete('http://localhost:3001/deleteinsp/'+id)
         .then((response)=>{
             dispatch({type:'GET_DELETE_INSPECCIONES', payload: response.data})
         })
@@ -263,7 +263,7 @@ export function deleteInspecciones(id){
 }
 export function deleteIntimaciones(id){
     return function(dispatch){
-        axios.get('http://localhost:3001/deleteint/'+id)
+        axios.delete('http://localhost:3001/deleteint/'+id)
         .then((response)=>{
             dispatch({type:'GET_DELETE_INTIMACIONES', payload: response.data})
         })
@@ -274,7 +274,7 @@ export function deleteIntimaciones(id){
 }
 export function deleteInfracciones(id){
     return function(dispatch){
-        axios.get('http://localhost:3001/deleteinf/'+id)
+        axios.delete('http://localhost:3001/deleteinf/'+id)
         .then((response)=>{
             dispatch({type:'GET_DELETE_INFRACCIONES', payload: response.data})
         })
@@ -285,7 +285,7 @@ export function deleteInfracciones(id){
 }
 export function deleteTickets(id){
     return function(dispatch){
-        axios.get('http://localhost:3001/deletetickets/'+id)
+        axios.delete('http://localhost:3001/deletetickets/'+id)
         .then((response)=>{
             dispatch({type:'GET_DELETE_TICKETS', payload: response.data})
         })

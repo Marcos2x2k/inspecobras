@@ -3,11 +3,12 @@ import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getDetailsTickets } from "../actions/index";
-import { Link } from "react-router-dom";
+import {Link, useNavigate} from 'react-router-dom';
 
 import './styles/Card.css';
 
 function DetailsTicket(){
+  const navigate = useNavigate();
     // trae del Reducer-index-> CASE (GET_DETAILS_EXPEDIENTE) expedientesDetail
     const allDetailsTickets = useSelector((state) => state.ticketsDetails);   
     console.log ("TICKET DETAIL", allDetailsTickets)
@@ -17,7 +18,19 @@ function DetailsTicket(){
         dispatch(getDetailsTickets(id));
         window.scrollTo(0, 0);
       },[dispatch,id])
-      
+
+      // function handleDelete(p){
+      //   p.preventDefault();
+      //   console.log(p)
+      //   setErrors(validate({
+      //     ...getDetailsTickets.id,
+      //     [p.target.id]: p.target.value
+      //   }));
+      //   dispatch(deleteIntimaciones(getDetailsTickets.id)); // input es el payload
+      //   alert("Intimación Borrada!!!")
+      //   dispatch(getIntimaciones())
+      //   navigate('/Home');
+      // }
       // console.log(allDetails)
     return (
          
@@ -32,6 +45,8 @@ function DetailsTicket(){
                 <br />   
                 <Link to='/home'><button>REGRESAR AL MENU PRINCIPAL</button></Link> <label> </label>
                 <Link to='/ListTicket'><button>REGRESAR AL LISTADO</button></Link>
+                {/* <Link to='/ListTicket'><button>ELIMINAR TICKETS</button></Link> */}
+                {/* <button color='primary' onClick={p => { handleDelete(p) }}>ELIMINAR TICKETS</button> <label> </label> */}
                 <br /> <br />                    
                 
                   <div class="detailcontainer">  

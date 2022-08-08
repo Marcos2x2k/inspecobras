@@ -254,7 +254,7 @@ router.delete("/deleteexp/:id", async (req, res) => {
     // const boletaintnum = req.params.id;
     // const infoTotalinf = await getAllInfracciones();
     // const deleteid = 
-    await Expediente.destroy({ where: { numexpediente: req.params.id } })
+    await Expediente.destroy({ where: { id: req.params.id } })
     .then(result => {
         res.json(`EXPEDIENTE BORRADO ${result}`);
     });   
@@ -265,7 +265,7 @@ router.delete("/deleteinsp/:id", async (req, res) => {
     // const boletaintnum = req.params.id;
     // const infoTotalinf = await getAllInfracciones();
     // const deleteid = 
-    await Inspeccion.destroy({ where: { informeinspnum: req.params.id } })
+    await Inspeccion.destroy({ where: { id: req.params.id } })
     .then(result => {
         res.json(`INFRACCION BORRADA ${result}`);
     });   
@@ -276,7 +276,7 @@ router.delete("/deleteint/:id", async (req, res) => {
     // const boletaintnum = req.params.id;
     // const infoTotalinf = await getAllInfracciones();
     // const deleteid = 
-    await Intimacion.destroy({ where: { boletaintnum: req.params.id } })
+    await Intimacion.destroy({ where: { id: req.params.id } })
     .then(result => {
         res.json(`BOLETA DE INTIMACIÓN BORRADA ${result}`);
     });   
@@ -287,18 +287,18 @@ router.delete("/deleteinf/:id", async (req, res) => {
     // const boletaintnum = req.params.id;
     // const infoTotalinf = await getAllInfracciones();
     // const deleteid = 
-    await Infraccion.destroy({ where: { actainfnum: req.params.id } })
+    await Infraccion.destroy({ where: { id: req.params.id } })
     .then(result => {
         res.json(`ACTA DE INFRACCION BORRADA`);
     });   
     // res.json(`User ${deleteid} deleted Successfully`);
 }); 
 
-router.delete("/deleteticket/:id", async (req, res) => {
+router.delete("/deletetickets/:id", async (req, res) => {
     // const boletaintnum = req.params.id;
     // const infoTotalinf = await getAllInfracciones();
     // const deleteid = 
-    await Ticket.destroy({ where: { numticket: req.params.id } })
+    await Ticket.destroy({ where: { id: req.params.id } })
     .then(result => {
         res.json(`TICKET BORRADO`);
     });   
