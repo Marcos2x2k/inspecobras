@@ -59,11 +59,11 @@ export default function Home() {
                     
                     {/* <NavBar
                     /> */}
-                    <Link to='/ListExpediente'><Button color='primary'> LISTA EXPEDIENTES </Button></Link> {" - "}
-                    <Link to='/ListTicket'><Button color='primary'> LISTA TICKET </Button></Link> {" - "}
+                    <Link to='/ListExpediente'><Button color='primary'> LISTA EXPEDIENTES </Button></Link> {" - "}                    
                     <Link to='/ListInspeccion'><Button color='danger'>INSPECCIONES</Button></Link>  {" - "}
-                    <Link to='/ListIntimacion'><Button color='danger'>INTIMACIONES</Button></Link>  {" - "}
+                    <Link to='/ListIntimacion'><Button color='primary'>INTIMACIONES</Button></Link>  {" - "}
                     <Link to='/InspecCreate'><Button color='danger'> INFRACCIONES/MULTAS </Button></Link>  {" - "}
+                    <Link to='/ListTicket'><Button color='primary'> LISTA TICKET </Button></Link> {" - "}
                     {/* <Link to='/ExpedCreate'><Button color='danger'>CREAR EXPEDIENTE</Button></Link>  {" - "}                
                     <Link to='/TicketCreate'><Button color='danger'>CREAR TICKET</Button></Link>  {" - "} */}              
 

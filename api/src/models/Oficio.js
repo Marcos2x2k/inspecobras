@@ -6,11 +6,11 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
             allowNull: false,
           },  
-          numexpediente:{
+        numexpediente:{
             type: DataTypes.STRING,
             allowNull: false
           },   
-          causa:{
+        causa:{
             type: DataTypes.STRING,
             allowNull:false
           },      
@@ -34,7 +34,7 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
             allowNull: true,
           },    
-          userid:{
+        userid:{
             type: DataTypes.STRING,
             allowNull: true
           }

@@ -4,6 +4,8 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getDetailsExpedientes } from "../actions/index";
 import { Link } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {Button} from 'reactstrap';
 
 import './styles/Card.css';
 
@@ -113,7 +115,10 @@ function Details(){
                   <h5 className='blanco'> --------------------------------------------------------------------------------- </h5>
                     {/* <img src={require('./images/mirandoplano.jpg')} width = "400px" height="270px"/>   */}
                     {/* <img className='logoredondo'  src={require('./images/mirandoplano.jpg')} width="400" height="270" /> */}
-                </div>            
+                </div>   
+                <br /> 
+                <Button color='primary'> Editar </Button> {"   "}
+                <Button color='danger'> Eliminar </Button>         
             </div>
             {/* ) : (
                <div>

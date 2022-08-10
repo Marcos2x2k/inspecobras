@@ -4,6 +4,8 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getDetailsTickets } from "../actions/index";
 import {Link, useNavigate} from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {Button} from 'reactstrap';
 
 import './styles/Card.css';
 
@@ -19,6 +21,10 @@ function DetailsTicket(){
         window.scrollTo(0, 0);
       },[dispatch,id])
 
+    function myalert() {
+      alert("Funcion NO disponible!");
+    }
+          
       // function handleDelete(p){
       //   p.preventDefault();
       //   console.log(p)
@@ -128,8 +134,15 @@ function DetailsTicket(){
                   <h5 className='blanco'> --------------------------------------------------------------------------------- </h5>
                     {/* <img src={require('./images/mirandoplano.jpg')} width = "400px" height="270px"/>   */}
                     {/* <img className='logoredondo'  src={require('./images/mirandoplano.jpg')} width="400" height="270" /> */}
-                </div>            
+                </div>   
+                <br /> 
+          {/* <button onclick="myalert()">
+            Show Alert Message
+          </button>           */}
+                            
             </div>
+            <Button color='primary'> Editar </Button> {"   "}
+            <Button color='danger'> Eliminar </Button>
             {/* ) : (
                <div>
                    <h1>CARGANDO...</h1>                  

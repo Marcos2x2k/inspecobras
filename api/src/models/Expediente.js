@@ -5,8 +5,8 @@ module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('expediente', {
     id:{
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
+      type: DataTypes.INTEGER,      
+      autoIncrement: true,
       primaryKey: true,
       allowNull: false
     },
@@ -22,21 +22,17 @@ module.exports = (sequelize) => {
     //   type: DataTypes.INTEGER,
     //   allowNull: false
     // },
-    numexpediente:{
-      type: DataTypes.STRING,
-      allowNull: false      
-    },
-    fechainicioentrada:{
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
     estado: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
+    numexpediente:{
+      type: DataTypes.STRING,
+      allowNull: true      
+    },    
     iniciadornomyape:{
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: true
     },
     domicilio:{
       type: DataTypes.STRING,
@@ -45,7 +41,7 @@ module.exports = (sequelize) => {
     adrema:{
       type: DataTypes.STRING,
       allowNull: true
-    },
+    },   
     fiduciariopropsocio:{
       type: DataTypes.STRING,
       allowNull: true
@@ -65,10 +61,10 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: true,
     },
-    zona:{ 
-      type: DataTypes.STRING,
-      allowNull: true
-    },
+    // zona:{ 
+    //   type: DataTypes.STRING,
+    //   allowNull: true
+    // },
     superficieterreno:{
       type: DataTypes.STRING,
       allowNull: true,
@@ -104,9 +100,15 @@ module.exports = (sequelize) => {
       allowNull: true,
       defaultValue: "https://colonbuenosaires.com.ar/elfaro/wp-content/uploads/2017/09/expe.jpg"
     },
+    fechainicioentrada:{
+      type: DataTypes.DATE,
+      allowNull: true,
+      defaultValue: DataTypes.NOW
+    },
     userid:{
       type: DataTypes.STRING,
-      allowNull: true
+      allowNull: true,
+      defaultValue:"123"
     }
   });
 };

@@ -31,9 +31,11 @@ export default function Estadisticas() {
             <div>
 
                 <div>
-                <a href="/Home"><img height="50" src={require('./images/logoMuni.png')} /></a>
+                    <a href="/Home"><img height="60" src={require('./images/logoMuni.png')} /></a>
+                    <br />
                     {/* <img src='https://ciudaddecorrientes.gov.ar/sites/default/themes/ciudaddecorrientes/logo.png' height="50" alt="to home" /> */}
-
+                    <img className='logocorrientes' src={require('./images/statistics.jpg')} width="180" />
+                    <br /><br />
                     <h1 className="colorLetrasamarillas">Sección de Estadisticas</h1>
                     {/* <Button variant="contained">CARGAR EXPEDIENTE</Button> */}
                     {/* <Link to= '/ExpedCreate'><button className="selectfont">CARGAR EXPEDIENTE</button></Link> */}
@@ -51,23 +53,7 @@ export default function Estadisticas() {
                             <option value="r22">2022</option>
                             {/* <option value="api">Api</option> */}
                     </select>  
-                    {"  ------   "}
-                    <select>                
-                            <option value="" selected disabled hidden>Infracciones Años</option>                
-                            <option value="r20">2020</option>
-                            <option value="r21">2021</option>
-                            <option value="r22">2022</option>
-                            {/* <option value="api">Api</option> */}
-                    </select> 
-                    {"  ---------   "}
-                    <select>                
-                            <option value="" selected disabled hidden>Ticket Años</option>                
-                            <option value="r20">2020</option>
-                            <option value="r21">2021</option>
-                            <option value="r22">2022</option>
-                            {/* <option value="api">Api</option> */}
-                    </select> 
-                    {"  -----   "}
+                    {"  --   "}
                     <select>                
                             <option value="" selected disabled hidden>Inspecciones Años</option>                
                             <option value="r20">2020</option>
@@ -75,6 +61,32 @@ export default function Estadisticas() {
                             <option value="r22">2022</option>
                             {/* <option value="api">Api</option> */}
                     </select>  
+                    {"  --   "}
+                    <select>                
+                            <option value="" selected disabled hidden>Intimaciones Años</option>                
+                            <option value="r20">2020</option>
+                            <option value="r21">2021</option>
+                            <option value="r22">2022</option>
+                            {/* <option value="api">Api</option> */}
+                    </select> 
+                    {"  --   "}
+                    <select>                
+                            <option value="" selected disabled hidden>Infracciones Años</option>                
+                            <option value="r20">2020</option>
+                            <option value="r21">2021</option>
+                            <option value="r22">2022</option>
+                            {/* <option value="api">Api</option> */}
+                    </select> 
+                    {"  --   "}
+                    <select>                
+                            <option value="" selected disabled hidden>Tickets Años</option>                
+                            <option value="r20">2020</option>
+                            <option value="r21">2021</option>
+                            <option value="r22">2022</option>
+                            {/* <option value="api">Api</option> */}
+                    </select> 
+                    
+
                     
 
                     <br />
@@ -84,10 +96,8 @@ export default function Estadisticas() {
                 <br />
                 <br />
                 {/* <img src="https://ciudaddecorrientes.gov.ar/sites/default/themes/ciudaddecorrientes/images/bottom-bg.png"/> */}
-
-               
-                <img className='logocorrientes' src={require('./images/statistics.jpg')} width="150" />
-                <br />
+             
+                
                 <label>---------------------------------------------------------------------------------</label>
                 <br />
                 <img src={require('./images/estadistica1.jpg')} width="550" />

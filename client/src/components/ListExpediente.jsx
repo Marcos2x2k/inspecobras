@@ -29,7 +29,7 @@ export default function ListExpediente() {
 
     //CREO VARIOS ESTADOS LOCALES y lo seteo en 1- ACA CALCULO LAS CARD POR PAGINAS
     const [currentPage, setCurrentPage] = useState(1); //defino 2 stados 1 con pagina actual y otro q resetea pagina actual
-    const [expedientesPerPage, setExpedientesPerPage] = useState(10); // seteo los perros por pagina, depues usar variable para mostrar por cantidad elegida    
+    const [expedientesPerPage, setExpedientesPerPage] = useState(250); // seteo los perros por pagina, depues usar variable para mostrar por cantidad elegida    
     const indexOfLastexpediente = currentPage * expedientesPerPage // aca vale 0 a 14 = 15
     const indexOfFirstexpediente = indexOfLastexpediente - expedientesPerPage // 0
 
@@ -74,59 +74,7 @@ export default function ListExpediente() {
 //             observaciones:"RELEVAMIENTO Y CONFORME A OBRA",
 //             permisobraoactainfrac:"p/Inspeccion",
 //             fotoexpediente:"https://resizer.glanacion.com/resizer/6tyJgUJUFqTuEpSotiR7u10cvRU=/768x0/filters:format(webp):quality(80)/cloudfront-us-east-1.images.arcpublishing.com/lanacionar/BEJIF6ZS75BFVHJZU72YBZLO5A.jpg"
-//     }, {
-//         numexpediente: "2323Z2021",
-//         fechainicioentrada:"21/02/2020",
-//         estado: "P/Reforma",
-//         iniciadornomyape: "JUAN CARLOS AGUIRRE",
-//         domicilio:"LaMadrid Nº 224",
-//         adrema:"A1-321312-2",
-//         directorobraoperitovisor:"ARQº DIEGO SOSA",
-//         destinodeobra:"DEPOSITO",
-//         superficieterreno:"2500",
-//         superficieaconstruir:"1500",
-//         superficiesubsueloplantabaja:"1500",
-//         superficieprimerpisoymaspisos:"0",
-//         zona:"1Z",
-//         observaciones:"RELEVAMIENTO Y CONFORME A OBRA",
-//         permisobraoactainfrac:"p/Inspeccion",
-//         fotoexpediente:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4UVudBSvwFfvrF1-BAwEA6cp_gl1bw16eug&usqp=CAU"
-// }, {
-//     numexpediente: "1123G2019",
-//     fechainicioentrada:"12/12/19",
-//     estado: "P/Inspeccion",
-//     iniciadornomyape: "MAXIMILIANO OBRA",
-//     domicilio:"GENERAL PAZ Nº 1234",
-//     adrema:"A1-43234E-1",
-//     directorobraoperitovisor:"ARQº LUIS FERNANDEZ",
-//     destinodeobra:"VIVIENDA FAMILIAR",
-//     superficieterreno:"550",
-//     superficieaconstruir:"500",
-//     superficiesubsueloplantabaja:"400",
-//     superficieprimerpisoymaspisos:"100",
-//     zona:"A4",
-//     observaciones:"RELEVAMIENTO Y CONFORME A OBRA",
-//     permisobraoactainfrac:"p/Inspeccion",
-//     fotoexpediente:"https://imagenes.elpais.com/resizer/Wxv4_f95isHNmO6ilKtN74DJQ1s=/414x0/filters:focal(3108x1948:3118x1958)/cloudfront-eu-central-1.images.arcpublishing.com/prisa/OFZQVBC35ZB3HCQNBBWPDEGTSY.jpg"
-// },
-// {
-//     numexpediente: "2218Z2018",
-//     fechainicioentrada:"03/01/18",
-//     estado: "P/Inspeccion",
-//     iniciadornomyape: "JESUS AMARILLA",
-//     domicilio:"LOS TULIPANES Nº S/N",
-//     adrema:"A1-345634-4",
-//     directorobraoperitovisor:"ARQº JESUS AMARILLA",
-//     destinodeobra:"NEGOCIO FAMILIAR",
-//     superficieterreno:"250",
-//     superficieaconstruir:"200",
-//     superficiesubsueloplantabaja:"150",
-//     superficieprimerpisoymaspisos:"0",
-//     zona:"1Z",
-//     observaciones:"RELEVAMIENTO Y CONFORME A OBRA",
-//     permisobraoactainfrac:"p/Inspeccion",
-//     fotoexpediente:"https://www.lavoz.com.ar/resizer/VJkxJ2b6AtsPB5CFrkSFv7UFdj8=/1023x682/smart/cloudfront-us-east-1.images.arcpublishing.com/grupoclarin/HCBQO25UF5AFZBZOSVP7S7MGPA.jpg"
-// }]
+//     }]
 // const infoTotal = listaExpedientes.concat(expedientes);
 
     return (
@@ -157,11 +105,9 @@ export default function ListExpediente() {
                     <br /><br />
                     <SearchBarExp
                     />
-                    <br /><br />
-                    {/* <br /><br /> */}
-                    <img src={require('./images/separadorpagina.png')} />
+                    <br />                    
                     {/* <img src="https://ciudaddecorrientes.gov.ar/sites/default/themes/ciudaddecorrientes/images/bottom-bg.png"/> */}
-                    <br />
+                    
                 </div>
 
                 <div>
@@ -172,6 +118,8 @@ export default function ListExpediente() {
                         paginado={paginado}
                     />
                 </div>
+                <br />
+                <img src={require('./images/separadorpagina.png')} />
                 <div>
                     {allExpedientes?.map((p) => {  // CON ? PREGUNTA SI EXISTE Y DESPUES MAPEA   
                         return (
@@ -189,10 +137,8 @@ export default function ListExpediente() {
                                             fotoexpediente={p.fotoexpediente}
                                             fiduciariopropsocio={p.fiduciariopropsocio}
                                         />
-                                    </Link>                                    
-                            )
+                                    </Link>
                                 </div>
-
                             </Fragment>
                         );
                     })}

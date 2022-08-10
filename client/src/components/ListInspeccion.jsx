@@ -205,7 +205,7 @@ return (
                     <a href="/home"><img height="50" src={require('./images/logoMuni.png')} /></a><br/>    
                     {/* <img src='https://ciudaddecorrientes.gov.ar/sites/default/themes/ciudaddecorrientes/logo.png' alt="to home" /> */}
                 
-                    <h1>SECCIÓN DE CARGA DE INSPECCIONES</h1>                     
+                    <h1 className="colorLetras">SECCIÓN DE CARGA DE INSPECCIONES</h1>                     
                                   
                     <img className= 'imagenredondoint' height="200" src={require('./images/prog-obra-const.jpg')} /> <br/>
                     {/* <select className="selectfont">
@@ -222,7 +222,7 @@ return (
                     <button className='btn btn-success' onClick={()=>abrirModalInsertar()}>Crear/Cargar Inspección</button> {" - "}                    
                     <Link to= '/ListIntimacion'><Button color='secondary'>Ir a Intimaciones</Button></Link> {" - "}
                     <Link to= '/InspecCreate'><Button color='secondary'>Ir a Multas/Infracciones</Button></Link> {" - "}
-                    <Button color='primary' onClick={p => { handleClick(p) }}>Recargar Inspecciones</Button> <label> </label> {" - "}
+                    {/* <Button color='primary' onClick={p => { handleClick(p) }}>Recargar Inspecciones</Button> <label> </label> {" - "} */}
                     <Link to= '/Home'><Button color='primary'>Volver Menu Principal</Button></Link> 
                     {/* <Button to= '/ListIntimacion'>Recargar Exp.</Button> <label> </label> */}
                     <br/>

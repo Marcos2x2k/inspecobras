@@ -4,6 +4,7 @@ const initialState = {
     expedientes:[],
     numexpedientes: [],     
     expedientesDetails:[],
+    expedientesDelete:[],
     inspecciones:[],    
     inspeccionesDetails:[],
     intimaciones:[],
@@ -14,6 +15,9 @@ const initialState = {
     numtickets:[],
     ticketsDetails:[],
     ticketsDelete: [],
+    oficios:[],
+    oficiosDetails:[],
+    oficiosDelete:[],
     // anio:[],
     // fecha:[],   
 }
